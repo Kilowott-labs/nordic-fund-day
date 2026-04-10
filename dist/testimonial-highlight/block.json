@@ -1,0 +1,81 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "agent-theme/testimonial-highlight",
+  "version": "1.0.0",
+  "title": "Testimonial Highlight",
+  "category": "theme",
+  "icon": "awards",
+  "description": "Testimonial section with heading, CTA button, and achievement cards",
+  "textdomain": "agent-theme",
+  "attributes": {
+    "subtitle": {
+      "type": "string",
+      "default": "Sharing the love"
+    },
+    "heading": {
+      "type": "string",
+      "default": "Speak up in a crowded digital world. Build a reputation on the voice of your work."
+    },
+    "buttonText": {
+      "type": "string",
+      "default": "Let's chat"
+    },
+    "buttonUrl": {
+      "type": "string",
+      "default": "#"
+    },
+    "buttonOpenInNewTab": {
+      "type": "boolean",
+      "default": false
+    },
+    "backgroundColor": {
+      "type": "string",
+      "default": "#000000"
+    },
+    "cards": {
+      "type": "array",
+      "default": [
+        {
+          "id": 1,
+          "text": "#1 Team in the world\non Dribbble",
+          "icon": "",
+          "iconId": 0
+        },
+        {
+          "id": 2,
+          "text": "Top 100 Global Companies on Clutch",
+          "icon": "",
+          "iconId": 0
+        },
+        {
+          "id": 3,
+          "text": "5 Stars Rating on\nGoodFirms",
+          "icon": "",
+          "iconId": 0
+        },
+        {
+          "id": 4,
+          "text": "100% Job Success on\nUpwork",
+          "icon": "",
+          "iconId": 0
+        }
+      ]
+    }
+  },
+  "supports": {
+    "html": false,
+    "align": ["wide", "full"],
+    "spacing": {
+      "padding": true,
+      "margin": true
+    },
+    "color": {
+      "background": true,
+      "text": false
+    }
+  },
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css"
+}

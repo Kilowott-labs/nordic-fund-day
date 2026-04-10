@@ -1,0 +1,11 @@
+{
+  "id": "224:485",
+  "name": "Rectangle",
+  "type": "RECTANGLE",
+  "layout_ref": "layout_F2PZUG",
+  "dimensions": {
+    "width": "78.31",
+    "height": "20"
+  },
+  "yaml_content": "      - id: 224:485\n        name: Rectangle\n        type: RECTANGLE\n        layout: layout_F2PZUG"
+}

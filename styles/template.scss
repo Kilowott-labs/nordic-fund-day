@@ -1,0 +1,24 @@
+//template-kjerneside specific styles
+@use "./mixins/index" as mix;
+@use "svg.scss" as svg;
+.page-template-template-kjerneside{
+    .breadcrumb-mobile{
+        @include mix.bp(tablet-md) {
+            display: none;
+        }
+    }
+
+    .standard-page-banner{
+        .yoast-breadcrumbs{
+            @include mix.bp(tablet-sm) {
+                display: none;
+            }
+        }
+
+        h1{
+            @include mix.bp(tablet-sm) {
+                margin-top: 0 !important;
+            }
+        }
+    }
+}

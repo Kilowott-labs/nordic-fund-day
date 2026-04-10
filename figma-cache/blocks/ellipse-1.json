@@ -1,0 +1,11 @@
+{
+  "id": "224:391",
+  "name": "Ellipse 1",
+  "type": "ELLIPSE",
+  "layout_ref": "layout_RHVNOX",
+  "dimensions": {
+    "width": "1077",
+    "height": "1077"
+  },
+  "yaml_content": "      - id: 224:391\n        name: Ellipse 1\n        type: ELLIPSE\n        layout: layout_RHVNOX\n        fills: fill_IQNH5J\n        effects: effect_X41DJV"
+}

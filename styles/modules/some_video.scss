@@ -1,0 +1,47 @@
+//SoMe video style
+@use "../mixins/index" as mix;
+@use "../svg.scss" as svg;
+
+.short-videos{
+    position: relative;
+    @include mix.bp(tablet-sm){
+        padding-right: 0 !important;
+    }
+
+    .swiper-wrapper {
+        display: flex;
+    }
+
+    .swiper-slide {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 0 !important;
+        margin-right: 32px !important;
+        @include mix.bp(tablet-sm){
+            margin-right: 16px !important;
+        }
+        @include mix.bp(mobile){
+            width: 85vw !important;
+            flex-shrink: 0;
+        }        
+    }
+
+    .instagram-media {
+        max-width: 100% !important;
+        width: 100% !important;
+        min-width: 296px !important;      
+        margin: 0 !important;
+        border: none !important;
+        border-radius: 0 !important;
+    }
+
+    .swiper-button-next,
+    .swiper-button-prev {
+        color: var(--wp--preset--color--dark);
+        background: rgba(255, 255, 255, 0.8);
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+    }
+}

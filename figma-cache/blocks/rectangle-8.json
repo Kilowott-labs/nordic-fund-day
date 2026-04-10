@@ -1,0 +1,11 @@
+{
+  "id": "224:483",
+  "name": "Rectangle",
+  "type": "RECTANGLE",
+  "layout_ref": "layout_YLH2BX",
+  "dimensions": {
+    "width": "82.53",
+    "height": "20"
+  },
+  "yaml_content": "      - id: 224:483\n        name: Rectangle\n        type: RECTANGLE\n        layout: layout_YLH2BX"
+}

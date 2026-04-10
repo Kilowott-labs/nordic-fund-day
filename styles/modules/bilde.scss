@@ -1,0 +1,15 @@
+.image-with-caption{
+    figure{
+        img{
+            aspect-ratio: 3 / 2;
+            object-fit: cover;
+        }
+        figcaption{
+            font-size: var(--wp--preset--font-size--text-medium);
+            padding: 0.5rem 0;
+            margin: 0;
+            text-align: left;
+            color: var(--wp--preset--color--dark);
+        }
+    }
+}

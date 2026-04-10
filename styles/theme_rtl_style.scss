@@ -1,0 +1,52 @@
+//rtl specific handling for custom block
+
+//rtl support to all media text blocks
+body.rtl{
+    .wp-block-media-text{
+        direction: rtl;
+    }
+}
+
+//hero 1 specific support
+body.rtl{
+    //hero 1 image
+    .hero-1{
+        .wp-block-media-text__media{
+            img,&:after{
+                transform: scaleX(-1);
+                transform-origin: center;
+            }
+        }
+    }
+
+    //kurs card date overlay
+    .kurs-list,.courses-grid-container{
+        .course-date-overlay {
+            left: unset;
+            right: 16px;
+        }
+    }
+
+    //medlemsfordeler
+    .search-filter{
+        &:before{
+            right: 1rem;
+        }
+
+        input[type=search]{
+            padding: .5rem 3.5rem .5rem .75rem;
+        }
+    }
+
+    //nav menu
+    header.wp-block-template-part{
+        .off-canvas-wrapper{
+            transform: translateX(-100%);
+        }  
+        &.is-open{
+            .off-canvas-wrapper{
+                transform: translateX(0);
+            }  
+        }
+    }
+}

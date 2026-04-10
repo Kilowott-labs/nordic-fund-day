@@ -1,0 +1,107 @@
+@use "../mixins/index.scss" as mix;
+
+.country-selector.weglot-dropdown.weglot-widget{ 
+    background: transparent;
+    z-index:1000;
+    a{
+        padding: .5rem 1rem .5rem 1rem;
+        height: auto;
+        font-size: var(--wp--preset--font-size--text-large);
+        color: var(--wp--preset--color--neutral-darkest);
+        font-family: var(--wp--preset--font-family--fftext);
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
+        &:before{
+            margin: 0;
+        }
+        &:hover{
+            background-color: var(--wp--preset--color--primary-lightest);
+        }
+    }
+    .weglot-language{
+        border: none;
+
+        &:after{
+            display:none ;
+                }
+
+
+        span.wglanguage-name{
+            background: transparent;
+            height: auto;
+            border: none;
+            display: flex;
+            gap:0.5rem;
+            padding: .6rem 0;
+            position: relative;
+            overflow:hidden;
+            align-items: center;
+            transition: all 600ms cubic-bezier(0.55, 0.055, 0.675, 0.19);
+            font-size: var(--wp--preset--font-size--text-large) ;
+            color: var(--wp--preset--color--neutral-darkest) ;
+            font-family: var(--wp--preset--font-family--fftext) ;
+            line-height: 1.5;
+            &:before{
+                margin:0;
+            }
+             &:after{
+              content:'';
+              display: inline-block;
+              background-color:  var(--wp--preset--color--primary);;
+              width: 100%;
+              height: 2px;
+              position: absolute;
+              bottom:0;
+              left:0;
+              transform: translate3d(-100%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+              transform-style: preserve-3d;
+              transition:all 0.3s;
+            }  
+            @include mix.bp(tablet-md){
+                &:hover{
+                    &:after{
+                    transform: translate3d(0%, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+                    }   
+                }
+            }
+            
+             @include mix.bp(tablet-sm){
+            font-size:0 !important;
+            gap:0;
+            }
+        }
+
+    } 
+
+    input:checked ~ ul{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        right: 400px;
+        top: var(--header-height) !important;
+        left: auto;
+        bottom: auto;
+        padding: 2rem;
+        grid-column-gap: 1rem;
+        grid-row-gap: 1rem;
+        box-shadow: 0 20px 24px -4px #00000014;
+        position: fixed;
+        min-width:fit-content;
+        width: fit-content;
+
+        @include mix.bp(tablet-sm){
+            min-width:100%;
+            width: 100%;
+            left: 0;
+        }
+
+        @include mix.bp(mobile){
+           grid-template-columns: 1fr 1fr ; 
+                }
+    }
+
+   @include mix.bp(tablet-sm){
+      z-index: 1;
+        }
+}
+

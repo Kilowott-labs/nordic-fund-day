@@ -1,0 +1,456 @@
+@use "../mixins/index" as mix;
+
+.search-bar-wrapper{
+    width: 100vw;
+    position: fixed;
+    left: 0;
+    top: 129px;
+    box-sizing: border-box;
+    display: none;
+    top: var(--header-height) !important;
+    
+    &.is-open{
+        display: block; 
+    }
+    .wp-block-search{
+        &__label,&__button{
+            display:none !important;
+        }
+    }
+}
+
+.wp-block-search{
+    padding:0 !important;
+    background-color: transparent;
+
+    &__label{
+        display:none;
+    }
+    &__inside-wrapper{
+        position: relative;
+        display: flex;
+        gap:1rem;
+
+        .aa-Form{
+            align-items: center;
+            justify-content: flex-start;
+            display: flex;
+
+            .aa{
+                &-InputWrapperPrefix{
+                    top: auto;
+                    left: 12px;
+                    z-index: 1 !important;
+                    
+                    .aa-Label{
+                        align-content: center;
+                    }
+
+                    .aa-SubmitButton{
+                        height: fit-content;
+                        width: fit-content;
+
+                        svg {
+                            max-height: 32px;
+                            max-width: 32px;
+                            width: 32px;
+                            height: 32px;
+                            color:#0009;
+                        }
+                    } 
+                }
+
+                &-InputWrapper{
+                    .aa-Input{
+                        flex:1;
+                        height: 64px;
+                        box-sizing: border-box;
+                        padding: 8px 24px 8px 3.5rem;
+                        border: 1px solid var(--wp--preset--color--primary-light);
+                        border-radius: 0;
+                        background: var(--wp--preset--color--white);
+                        color: var(--wp--preset--color--dark);
+                        font-family: var(--wp--preset--font-family--fftext);
+                        font-size: 1.25rem;
+                        font-weight: 400;
+                        line-height: var(--wp--custom--line-height--large);
+                        transition: none;
+                        // background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100%' height='100%' viewBox='0 0 24 24' fill='none' preserveAspectRatio='xMidYMid meet' aria-hidden='true' role='img'><path d='M10 18C11.775 17.9996 13.4988 17.4054 14.897 16.312L19.293 20.708L20.707 19.294L16.311 14.898C17.405 13.4997 17.9996 11.7754 18 10C18 5.589 14.411 2 10 2C5.589 2 2 5.589 2 10C2 14.411 5.589 18 10 18ZM10 4C13.309 4 16 6.691 16 10C16 13.309 13.309 16 10 16C6.691 16 4 13.309 4 10C4 6.691 6.691 4 10 4Z' fill='%230009'/></svg>");
+                        // background-repeat: no-repeat;
+                        // background-size: 32px 32px;
+                        // background-position:12px center;
+
+                        &::placeholder {
+                            color: #999;
+                            font-size: 1.25rem;
+                        }
+
+                        &:focus {
+                            border: 2px solid var(--wp--preset--color--primary);
+                            outline: none;
+                            box-shadow: none;
+                        }
+                    }
+                }
+            }
+        }
+        
+
+        p:has(.wp-block-search__button){
+            position: relative;
+            overflow: clip;
+            isolation: isolate;
+            --scale-value: -130%;
+            --transitionSpeed: 0.35s;
+            cursor: pointer;
+            width: fit-content; 
+            margin: 0;
+            
+            &:after{
+                content: "";
+                height: 100%;
+                position: absolute;
+                inset: 0% auto auto 0%;
+                transform-style: preserve-3d;
+                z-index: -1;
+                transition: all var(--transitionSpeed) ease;
+                width: 180%;
+                transform: translate3d(var(--scale-value), 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(-40deg, 0deg);
+                background-color: var(--wp--preset--color--primary-darkest);
+            }
+
+            outline: none !important;
+            box-shadow: none !important;
+            background-color: var(--wp--preset--color--primary);
+            background-size: 300% 300% !important;
+            background-position: 100% 100% !important;
+            transition: background-position 0.75s ease !important;
+
+            .wp-block-search__button{
+                white-space: nowrap;
+                text-decoration: none !important;
+                font-family: var(--wp--preset--font-family--fftext);
+                font-size: var(--wp--preset--font-size--text-medium) ;
+                font-weight: 500;
+                z-index: 1;
+                position: relative;
+                height: 64px;
+                background:none !important;
+
+                @include mix.bp(mobile){
+                    width:100%;
+                }
+                
+            }
+
+            &:hover {
+                &:after{
+                    --scale-value: -20%;
+                }
+            }
+
+            @include mix.bp(mobile){
+                width: 100% !important;
+            }
+        }
+
+        p,pre{
+            &:empty{
+                display:none;
+                margin: 0;
+            }
+        }
+
+        @include mix.bp(mobile){
+            flex-wrap: wrap;
+        }
+    }
+
+   
+}
+
+.aa{
+    &-PanelLayout{
+        max-height: 60vh !important;
+        
+        @include mix.bp(mobile){
+           max-height: 50vh !important;
+        }
+        
+        &.no-result{
+            padding:20px 16px;
+        }
+    }
+
+    &-SourceHeader {
+        margin: 0;
+
+        .header-wrapper{
+            .header-title{
+                font-size: 1.125rem !important;
+                line-height: 1.5 !important;
+                font-weight: 400 !important;
+                color: var(--wp--preset--color--neutral-darkest) !important;
+                span{
+                    font-weight: 600  !important;
+                }
+            }
+
+        }
+    }
+
+    &-Item{
+        padding: 0 !important;
+        background: none !important;
+
+        &:last-of-type{
+            .search-result-item{
+                border: none;
+            }
+        }
+    }
+
+    &-SourceFooter{
+        a.site-btn{
+            margin: 0;                   
+            position: relative;
+            display: flex;
+            align-items: center;
+            font-size: 1.125rem;
+            font-weight: 400;
+            line-height: 1.5;
+            color: var(--wp--preset--color--primary-darkest) !important;
+            text-decoration: none !important;
+
+            &:before{       
+                transition: all .5s;
+                content: '';
+                background-image: url("data:image/svg+xml;charset=utf8,%3C?xml version='1.0' encoding='iso-8859-1'?%3E%3C!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0) --%3E%3Csvg version='1.1' id='Capa_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 256 256' style='enable-background:new 0 0 256 256;' xml:space='preserve'%3E%3Cg%3E%3Cg%3E%3Cpolygon points='79.093,0 48.907,30.187 146.72,128 48.907,225.813 79.093,256 207.093,128 '/%3E%3C/g%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3C/svg%3E");
+                background-position: 0%;
+                background-repeat: no-repeat;
+                background-size: 10px;
+                width: 15px;
+                height: 10px;
+                padding-left: 10px;
+            }
+            &:hover{
+                @media screen and (min-width: 769px) {
+                    &:before{
+                        background-position: 8px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.search-result-item{
+    padding: 1rem 0;
+    border-bottom: 1px solid #0000001a;
+
+    > a {
+        display: flex;
+        gap: 2rem;
+        text-decoration: none !important;
+    }
+
+    > p, p:empty{
+        display:none !important;
+    }
+
+    .course-date-overlay{
+        display: none !important;
+    }
+
+    .meta-data{
+        order: 3;
+        width: 100%;
+        flex-wrap: wrap;
+        display: flex;
+        align-items: center;
+        gap: 1rem 2rem;
+    }
+
+    .entry{
+        &-thumbnail{
+            height: 6rem;
+            width: 6rem;
+            img{
+                height: 100%;
+                width: 100%;
+                object-fit: cover;                
+            }
+        }
+        &-text-content{
+            display: flex;
+            flex: 1;
+            flex-wrap: wrap;
+            row-gap: 4px;
+            color: var(--wp--preset--color--neutral-darkest);
+        }
+
+        &-category{
+            width: fit-content;
+            font-size: .875rem;
+            font-weight: 600;
+            line-height: 1.5;
+            text-decoration: none;
+            align-content: center;
+            text-transform: uppercase;
+            color: var(--wp--preset--color--neutral-darkest);
+        }
+        &-date{
+            width: fit-content;
+            font-size: .875rem;
+            font-weight: 400;
+            line-height: 1.5;
+            text-decoration: none;
+            align-content: center;
+             color: var(--wp--preset--color--neutral-darkest);
+             
+           
+            &:before{
+                content:'•';
+                display: inline-block;
+                margin-left: .5rem;
+                margin-right: .5rem;
+                text-decoration: none;
+                 color: var(--wp--preset--color--neutral-darkest);
+            }
+        }
+        &-title{
+            width: 100%;
+            margin: 0;
+            font-size: 1.125rem;
+            font-weight: 700;
+            line-height: 1.4;
+            text-decoration: none;
+            align-content: center;
+             color: var(--wp--preset--color--neutral-darkest);
+             
+        }
+        &-summary{
+            width: 100%;
+            font-size: .875rem;
+            line-height: 1.5;
+            font-weight: 400;
+            text-decoration: none;
+            align-content: center;
+             color: var(--wp--preset--color--neutral-darkest);
+        }
+        &-from-date,&-location{
+            width: fit-content;
+            display: flex;
+            align-items: center;
+            gap:0.5rem;
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.5;
+            text-decoration: none;
+            align-content: center;
+            color: var(--wp--preset--color--neutral-darkest);
+            &:before{
+                content: '';
+                display:inline-block;
+                width: 24px;
+                height: 24px;
+                background-repeat:no-repeat;
+                background-position: center;
+                background-size: cover;
+            }
+        }
+
+        &-from-date{
+            &::before{
+                background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none'><path d='M3 6V20C3 20.5304 3.21071 21.0391 3.58579 21.4142C3.96086 21.7893 4.46957 22 5 22H19C19.5304 22 20.0391 21.7893 20.4142 21.4142C20.7893 21.0391 21 20.5304 21 20V6C21 5.46957 20.7893 4.96086 20.4142 4.58579C20.0391 4.21071 19.5304 4 19 4H17V2H15V4H9V2H7V4H5C4.46957 4 3.96086 4.21071 3.58579 4.58579C3.21071 4.96086 3 5.46957 3 6ZM19 20H5V8H19V20Z' fill='%23000'/></svg>");
+            }
+        }
+
+        &-location{
+            &::before{
+                background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none'><path d='M12 14C14.206 14 16 12.206 16 10C16 7.794 14.206 6 12 6C9.794 6 8 7.794 8 10C8 12.206 9.794 14 12 14ZM12 8C13.103 8 14 8.897 14 10C14 11.103 13.103 12 12 12C10.897 12 10 11.103 10 10C10 8.897 10.897 8 12 8Z' fill='%23000'/><path d='M11.42 21.814C11.5892 21.9349 11.792 21.9998 12 21.9998C12.208 21.9998 12.4107 21.9349 12.58 21.814C12.884 21.599 20.029 16.44 20 10C20 5.589 16.411 2 12 2C7.589 2 4 5.589 4 9.995C3.971 16.44 11.116 21.599 11.42 21.814ZM12 4C15.309 4 18 6.691 18 10.005C18.021 14.443 13.612 18.428 12 19.735C10.389 18.427 5.979 14.441 6 10C6 6.691 8.691 4 12 4Z' fill='%23000'/></svg>");
+            }
+        }
+    }
+}
+
+body{
+    &.search-results, &.search-no-results{
+        .wp-site-blocks{
+            background-color: var(--wp--preset--color--primary-lightest);
+            > .wp-block-group{
+                .wp-block-search__inside-wrapper{
+                    margin-bottom: 70px;
+                    max-width: 768px;
+                }
+            }
+        }
+
+        .algolia-content{
+            background-color: var(--wp--preset--color--white);
+            width: calc(100vw - 32px);
+            margin-left: calc(-50vw + 50%);
+            margin-right: calc(-50vw + 50%);
+            padding: 48px 16px;
+
+            .algolia-tabs, #ajax-search-results-wrapper{
+                max-width: 1280px;
+                margin: 0 auto;
+            }
+        }
+
+        .category-filter{
+            position: relative !important;
+            z-index: 1 !important;
+            top:0 !important;
+            
+            .radio-button-group {
+                label{
+                    font-size:1.125rem;
+                    line-height: 1.5;
+                    padding: .5rem 1rem;
+                }
+            }
+        }
+
+        #ajax-search-results-wrapper{
+            .search-result-item{
+                padding: 2rem 0;
+
+                &:last-of-type{
+                    border: none;
+                }
+
+                .entry{
+                    &-title{
+                        font-size: 1.5rem;
+                    }
+
+                    &-summary{
+                        font-size: 1.125rem;
+                    }
+                }
+            }
+        }
+        
+    }
+
+    &.admin-bar{
+        .search-bar-wrapper{
+            margin-top:32px !important;
+            @media (max-width:782px){
+                margin-top:46px !important;
+            }
+            @media (max-width:600px){
+                margin-top:0 !important;
+            }
+        }
+    }
+}
+
+
+body.block-editor-iframe__body, body.block-editor-page {
+       .search-bar-wrapper{
+            display:block !important;
+       }
+    }

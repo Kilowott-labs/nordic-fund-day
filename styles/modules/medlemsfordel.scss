@@ -1,0 +1,150 @@
+//medlemsfordel-banner style
+@use "../mixins/index" as mix;
+@use "../svg.scss" as svg;
+
+//cpt single common style
+.medlemsfordel-banner,.kurs-banner{
+    .wp-block-columns{
+        .wp-block-post-terms{
+            grid-column-gap: 1rem;
+            grid-row-gap: 1rem;
+            align-items: center;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+
+            &__separator{
+                display: none;
+            }
+
+            a{
+                background-color: var(--wp--preset--color--primary-light);
+                border: 1px var(--wp--preset--color--primary);
+                border-radius: 200px;
+                padding: .25rem 1rem;
+                text-decoration: none;
+                text-transform: uppercase;
+            }
+        }
+    }
+}
+
+//cta buttons
+.cta-buttons{
+    margin-top: 2rem;
+    @include mix.bp(tablet-sm){
+        margin-top: 1.5rem;
+    }
+
+    &.wp-block-buttons{
+        grid-column-gap: 1rem;
+        grid-row-gap: 1rem;
+        flex-wrap: wrap;
+        align-items: center;
+        display: flex;
+
+        .wp-block-button{
+            @include mix.bp(tablet-sm){
+                width: 100%;
+            }
+        } 
+    }//cta btn block
+}
+
+//medlemsfordel archive styles
+.page-template-archive-medlems_fordel{
+    .category-filter{
+        background-color: var(--wp--preset--color--white);        
+    }
+}
+
+//medlemsfordel single styles
+.medlemsfordel-banner{
+    @include mix.bp(tablet-md){
+        padding-bottom: 0 !important;
+        margin-bottom: 4rem !important;
+    }
+    .wp-block-columns{
+        @include mix.bp(tablet-sm){
+            flex-direction: column;
+        }
+        .wp-block-column{          
+
+            &:nth-child(1){  
+                .wp-block-group{  
+                    @include mix.bp(tablet-md){
+                        margin-bottom: -3rem;  
+                    }
+                    img{     
+                        aspect-ratio: 1;
+                    }
+                }              
+            }
+            &:nth-child(2){  
+                .wp-block-button{
+                    @include mix.bp(tablet-sm){
+                        width: 100%;
+                    }
+
+                    &__link{
+                        padding: .75rem 1.5rem;
+
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        gap: .5rem;
+                        &:before{                            
+                            content: "";
+                            flex: 0 0 24px;
+                            width: 24px;
+                            height: 24px;
+                            -webkit-mask-image: svg.$medlem_link_icon;
+                            -webkit-mask-repeat: no-repeat;
+                            -webkit-mask-position: center;
+                            -webkit-mask-size: contain;
+                            mask-image: svg.$medlem_link_icon;
+                            mask-repeat: no-repeat;
+                            mask-position: center;
+                            mask-size: contain;
+                            background-color: var(--wp--preset--color--white);
+                        }
+                    }
+                }
+            }
+
+           
+        }
+    }
+}
+
+//firmalogo style
+.medlemsfordel-banner,.medlem-grid-container,.tax-fordel_kategori,.wp-block-post-related,.search-results-list{
+    .wp-block-post-featured-image,.entry-thumbnail{
+        position: relative;
+        img.firmalogo{
+            position: absolute;
+            inset: 1rem auto auto 1rem;
+            background-color: var(--wp--preset--color--white);
+            border-radius: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 6rem !important;
+            height: 6rem !important;
+            object-fit: contain !important;
+            padding: 0.25rem;            
+        }
+    }
+}
+
+
+//search result page firma logo style
+.search-results-list{
+    .entry-thumbnail{
+        img.firmalogo{
+            inset: 0.2rem auto auto 0.2rem;
+            width: 1.5rem !important;
+            height: 1.5rem !important;  
+        }
+    }
+}

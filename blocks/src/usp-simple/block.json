@@ -1,0 +1,60 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "agent-theme/usp-simple",
+  "version": "1.0.0",
+  "title": "USP Simple",
+  "category": "ytf",
+  "icon": "star-filled",
+  "description": "Three USP items with icon, title and description in a centered horizontal row, collapsing to vertical on mobile.",
+  "textdomain": "agent-theme",
+  "attributes": {
+    "sectionBgColor": {
+      "type": "string",
+      "default": ""
+    },
+    "textColor": {
+      "type": "string",
+      "default": ""
+    },
+    "items": {
+      "type": "array",
+      "default": [
+        {
+          "id": 1,
+          "icon": "certification",
+          "iconUrl": "",
+          "iconId": 0,
+          "iconAlt": "",
+          "title": "Top Certifications",
+          "description": "Our facilities have earned top manufacturing certifications for safety, quality and management."
+        },
+        {
+          "id": 2,
+          "icon": "quality",
+          "iconUrl": "",
+          "iconId": 0,
+          "iconAlt": "",
+          "title": "Quality Testing",
+          "description": "We conduct quality tests at every stage of the production and manufacturing process to ensure quality and potency."
+        },
+        {
+          "id": 3,
+          "icon": "co2",
+          "iconUrl": "",
+          "iconId": 0,
+          "iconAlt": "",
+          "title": "Converting CO<sub>2</sub> to Oxygen",
+          "description": "Forever's more than 50 million aloe vera plants will cleanse the Earth of tons of CO<sub>2</sub> over our lifetime."
+        }
+      ]
+    }
+  },
+  "supports": {
+    "html": false,
+    "align": ["wide", "full"],
+    "spacing": { "padding": true, "margin": true }
+  },
+  "editorScript": "file:./index.js",
+  "style": "file:./style-index.css"
+}

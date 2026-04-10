@@ -1,0 +1,59 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "agent-theme/usp-numbers",
+  "version": "1.0.0",
+  "title": "USP Numbers",
+  "category": "ytf",
+  "icon": "list-view",
+  "description": "Three numbered USP steps with gradient stroke numbers, titles and descriptions alongside a heading and CTA.",
+  "textdomain": "agent-theme",
+  "attributes": {
+    "heading": {
+      "type": "string",
+      "default": "Explore the<br>creative process"
+    },
+    "headingColor": {
+      "type": "string",
+      "default": ""
+    },
+    "buttonText": {
+      "type": "string",
+      "default": "Call for Joining"
+    },
+    "buttonUrl": {
+      "type": "string",
+      "default": "#"
+    },
+    "items": {
+      "type": "array",
+      "default": [
+        {
+          "id": 1,
+          "title": "Research",
+          "description": "Focussed on understanding your business requirements, users and problems"
+        },
+        {
+          "id": 2,
+          "title": "Ideation & design",
+          "description": "In this stage we work closely to come up with lots of solutions & finalize design."
+        },
+        {
+          "id": 3,
+          "title": "Development",
+          "description": "I develop your product in Webflow and help you with maintaining it."
+        }
+      ]
+    }
+  },
+  "supports": {
+    "html": false,
+    "align": ["wide", "full"],
+    "spacing": {
+      "padding": true,
+      "margin": true
+    }
+  },
+  "editorScript": "file:./index.js",
+  "style": "file:./style-index.css"
+}

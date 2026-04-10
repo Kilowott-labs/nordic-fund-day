@@ -1,0 +1,16 @@
+/*
+Theme Name: Agent Theme v
+Theme URI: 
+Author: CoreTrek
+Author URI: 
+Description: Wordpress template for  testing purposes
+Requires PHP: 6.7
+Version: 1.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: test
+*/
+
+html, body {
+    min-height:100vh;
+}

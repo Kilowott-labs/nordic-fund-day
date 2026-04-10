@@ -1,0 +1,97 @@
+//hero 1 module styles, used on frontpage
+@use "../mixins/index" as mix;
+@use "../svg.scss" as svg;
+
+.hero-1{
+    background-image: linear-gradient(90deg, var(--wp--preset--color--primary-darkest), #351d15 50%);
+    @media (max-width: 768px){
+        background-image: linear-gradient(270deg, var(--wp--preset--color--primary-darkest), #351d15 50%);
+    }    
+
+    .wp-block-media-text__content{
+        padding: 0;//overwrite default padding
+        .wp-block-group{
+            padding-inline: 0;//overwrite default padding
+
+            justify-self: end;
+            max-width: 35rem;
+            margin: 2rem 5rem 4rem 5vw;
+            @include mix.bp(tablet-sm){
+                justify-self: start; 
+                margin-left: var(--wp--style--root--padding-left);
+                margin-right: var(--wp--style--root--padding-right);
+            }
+
+            .wp-block-heading{
+                max-width: 30rem;                
+                line-height: 1.1;
+                margin-inline: 0 !important;
+            }
+
+            .wp-block-button{
+                &.is-login{
+                    .wp-block-button__link{
+                        display: flex;
+                        align-items: center;
+                        gap: .5rem;
+                        &:before{
+                            content: "";
+                            display: block;
+                            width: 24px;
+                            height: 24px;
+                            -webkit-mask-image: svg.$login_icon;
+                            -webkit-mask-repeat: no-repeat;
+                            -webkit-mask-position: center;
+                            -webkit-mask-size: contain;
+                            background-color: var(--wp--preset--color--white);
+                        }
+                    }
+                }
+            }
+        }      
+
+    }//text col
+    .wp-block-media-text__media{
+        position: relative;
+        @include mix.bp(tablet-md){
+            min-height: 60vh !important;
+        }
+        height: 60vh;
+        max-height: 60rem;
+        margin-inline: 10% 0;
+        overflow: hidden;
+        &:after{ 
+            content: ""; 
+            display: inline-block;
+            background-image: svg.$hero_1_overlay;
+            background-position: 0%;
+            background-repeat: no-repeat;
+            background-size: cover;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            inset: 0% auto auto 0%;
+        }
+
+        &:before{
+            content: "";  
+            display: inline-block;         
+            background-image: svg.$hero_1_image;
+            background-repeat: no-repeat;
+            background-position: 0%;
+            height: 70%;
+            width: 100%;
+            z-index: 1;
+            position: absolute;
+            inset: 30% auto auto 15%;
+        }
+
+        img{
+            @media (max-width: 768px){
+                aspect-ratio: 3 / 2;
+                height: auto;
+                max-height: none;
+            }
+        }
+    }//imaage
+}

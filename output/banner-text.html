@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fleur Décor - Collections</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        @font-face {
+            font-family: 'Ragna';
+            src: local('serif');
+            font-display: swap;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .font-ragna {
+            font-family: 'Ragna', serif;
+            font-feature-settings: 'liga' 0;
+        }
+        
+        .collection-item {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .collection-item:hover {
+            opacity: 0.8;
+        }
+        
+        .collection-item.active {
+            opacity: 1;
+        }
+        
+        .collection-item:not(.active) {
+            opacity: 0.4;
+        }
+        
+        .fade-transition {
+            transition: opacity 0.5s ease-in-out;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+    <div class="relative w-full flex flex-col lg:flex-row">
+        <!-- Left Image Section - Sticky on desktop -->
+        <div class="w-full lg:w-1/2 h-[60vh] lg:h-screen bg-[#c2c2c2] lg:sticky lg:top-0">
+            <img 
+                id="mainImage"
+                src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=1200&q=80" 
+                alt="Elegant floral chandelier and table setting"
+                class="w-full h-full object-cover fade-transition"
+            />
+        </div>
+
+        <!-- Right Content Section - Scrollable -->
+        <div class="w-full lg:w-1/2 bg-[#ead8d6] flex items-start justify-center py-16 lg:py-24 min-h-screen">
+            <div class="relative max-w-[600px] w-full px-8 md:px-12 lg:px-20">
+                
+                <!-- Collection Names -->
+                <div class="space-y-6 mb-20">
+                    <!-- Vera Bloom - Active -->
+                    <div class="collection-item active" data-collection="vera-bloom" 
+                         data-image="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=1200&q=80"
+                         data-season="SPRING COLLECTION"
+                         data-desc1="The Fleur Décor Spring Collection is inspired by the gentle awakening of nature — where florals bloom freely, light softens, and every detail feels full of possibility."
+                         data-desc2="Designed for couples drawn to elegance with a natural softness, this collection embraces fresh palettes, delicate textures, and floral abundance. It is a celebration of new beginnings, curated with intention and refined artistry."
+                         data-button="VIEW SPRING DECOR">
+                        <div class="flex items-center gap-3 mb-1">
+                            <svg class="w-[15px] h-[15px] flex-shrink-0 collection-icon" viewBox="0 0 15 15" fill="none">
+                                <path d="M14.9102 0H14.8429C14.7559 0.00841751 14.6689 0.0476992 14.5819 0.115039C14.523 0.154321 14.4753 0.199214 14.4388 0.249719C14.0236 0.664983 13.6308 1.04938 13.2576 1.40292C12.4158 2.17733 11.5264 2.90685 10.5808 3.58586C9.66049 4.26768 8.63636 4.65208 7.50842 4.73345C6.17284 4.68014 4.59035 3.88328 2.76094 2.33726C2.17172 1.83221 1.59933 1.30191 1.04377 0.743547C1.00449 0.704265 0.965208 0.664983 0.928732 0.625701C0.810887 0.505051 0.693042 0.3844 0.578002 0.263749C0.572391 0.258137 0.569585 0.255331 0.563973 0.249719C0.527497 0.199214 0.476992 0.157127 0.420875 0.115039C0.333895 0.0476992 0.246914 0.0112233 0.159933 0H0.0925926C0.03367 0 0.00280584 0.0308642 0.00280584 0.0897868V0.157127C0.016835 0.291807 0.10101 0.426487 0.249719 0.563973C1.5881 1.90236 2.63187 3.08361 3.38384 4.10494C4.27609 5.32548 4.72783 6.45623 4.73625 7.5C4.72783 8.54377 4.27609 9.67452 3.38384 10.8951C2.63187 11.9164 1.5853 13.0976 0.249719 14.436C0.0982043 14.5707 0.016835 14.7054 0.00280584 14.8429V14.9102C0.00280584 14.9691 0.03367 15 0.0925926 15H0.159933C0.246914 14.9916 0.333895 14.9523 0.420875 14.885C0.479798 14.8457 0.527497 14.8008 0.563973 14.7531C0.569585 14.7475 0.572391 14.7447 0.578002 14.7391C0.695847 14.6156 0.810887 14.495 0.928732 14.3771C0.968013 14.3378 1.0073 14.2985 1.04377 14.2593C1.59933 13.7009 2.17172 13.1706 2.76094 12.6655C4.59035 11.1195 6.17284 10.3227 7.50842 10.2694C8.63356 10.3507 9.65769 10.7323 10.5808 11.4169C11.5236 12.096 12.4158 12.8255 13.2576 13.5999C13.6308 13.9534 14.0236 14.3378 14.4388 14.7531C14.4753 14.8036 14.5258 14.8485 14.5819 14.8878C14.6689 14.9523 14.7559 14.9916 14.8429 15.0028H14.9102C14.9691 15.0028 15 14.9719 15 14.913V14.8457C14.986 14.711 14.9018 14.5763 14.7531 14.4388C13.4007 13.1004 12.3541 11.9136 11.619 10.8754C10.7379 9.67172 10.289 8.54938 10.2666 7.50281C10.289 6.45623 10.7379 5.33389 11.619 4.13019C12.3569 3.09203 13.4007 1.90516 14.7531 0.566779C14.9046 0.432099 14.986 0.294613 15 0.159933V0.0925926C15 0.03367 14.9691 0.00280584 14.9102 0.00280584V0Z" fill="#604683"/>
+                            </svg>
+                            <h1 class="font-ragna text-[36px] md:text-[40px] leading-[1.1] collection-title tracking-[2px]" style="color: #604683;">
+                                VERA BLOOM
+                            </h1>
+                        </div>
+                        <p class="font-light text-[13px] md:text-[14px] leading-[1.5] collection-subtitle tracking-[1.4px] ml-[27px]" style="color: #604683;">
+                            SPRING COLLECTION
+                        </p>
+                    </div>
+
+                    <!-- Solera -->
+                    <div class="collection-item" data-collection="solera"
+                         data-image="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=1200&q=80"
+                         data-season="SUMMER COLLECTION"
+                         data-desc1="The Solera Collection captures the warmth and vibrancy of summer — where golden light dances, colors deepen, and every moment feels alive with energy."
+                         data-desc2="Perfect for couples seeking bold elegance with a sun-kissed glow, this collection features rich tones, lush textures, and statement florals. It is a celebration of passion and joy, designed with artistry and intention."
+                         data-button="VIEW SUMMER DECOR">
+                        <div class="flex items-center gap-3 mb-1">
+                            <svg class="w-[15px] h-[15px] flex-shrink-0 collection-icon" viewBox="0 0 15 15" fill="none">
+                                <path d="M14.9102 0H14.8429C14.7559 0.00841751 14.6689 0.0476992 14.5819 0.115039C14.523 0.154321 14.4753 0.199214 14.4388 0.249719C14.0236 0.664983 13.6308 1.04938 13.2576 1.40292C12.4158 2.17733 11.5264 2.90685 10.5808 3.58586C9.66049 4.26768 8.63636 4.65208 7.50842 4.73345C6.17284 4.68014 4.59035 3.88328 2.76094 2.33726C2.17172 1.83221 1.59933 1.30191 1.04377 0.743547C1.00449 0.704265 0.965208 0.664983 0.928732 0.625701C0.810887 0.505051 0.693042 0.3844 0.578002 0.263749C0.572391 0.258137 0.569585 0.255331 0.563973 0.249719C0.527497 0.199214 0.476992 0.157127 0.420875 0.115039C0.333895 0.0476992 0.246914 0.0112233 0.159933 0H0.0925926C0.03367 0 0.00280584 0.0308642 0.00280584 0.0897868V0.157127C0.016835 0.291807 0.10101 0.426487 0.249719 0.563973C1.5881 1.90236 2.63187 3.08361 3.38384 4.10494C4.27609 5.32548 4.72783 6.45623 4.73625 7.5C4.72783 8.54377 4.27609 9.67452 3.38384 10.8951C2.63187 11.9164 1.5853 13.0976 0.249719 14.436C0.0982043 14.5707 0.016835 14.7054 0.00280584 14.8429V14.9102C0.00280584 14.9691 0.03367 15 0.0925926 15H0.159933C0.246914 14.9916 0.333895 14.9523 0.420875 14.885C0.479798 14.8457 0.527497 14.8008 0.563973 14.7531C0.569585 14.7475 0.572391 14.7447 0.578002 14.7391C0.695847 14.6156 0.810887 14.495 0.928732 14.3771C0.968013 14.3378 1.0073 14.2985 1.04377 14.2593C1.59933 13.7009 2.17172 13.1706 2.76094 12.6655C4.59035 11.1195 6.17284 10.3227 7.50842 10.2694C8.63356 10.3507 9.65769 10.7323 10.5808 11.4169C11.5236 12.096 12.4158 12.8255 13.2576 13.5999C13.6308 13.9534 14.0236 14.3378 14.4388 14.7531C14.4753 14.8036 14.5258 14.8485 14.5819 14.8878C14.6689 14.9523 14.7559 14.9916 14.8429 15.0028H14.9102C14.9691 15.0028 15 14.9719 15 14.913V14.8457C14.986 14.711 14.9018 14.5763 14.7531 14.4388C13.4007 13.1004 12.3541 11.9136 11.619 10.8754C10.7379 9.67172 10.289 8.54938 10.2666 7.50281C10.289 6.45623 10.7379 5.33389 11.619 4.13019C12.3569 3.09203 13.4007 1.90516 14.7531 0.566779C14.9046 0.432099 14.986 0.294613 15 0.159933V0.0925926C15 0.03367 14.9691 0.00280584 14.9102 0.00280584V0Z" fill="#E3B5BB"/>
+                            </svg>
+                            <h2 class="font-ragna text-[36px] md:text-[40px] leading-[1.1] collection-title tracking-[2px]" style="color: #e3b5bb;">
+                                SOLERA
+                            </h2>
+                        </div>
+                        <p class="font-light text-[13px] md:text-[14px] leading-[1.5] collection-subtitle tracking-[1.4px] ml-[27px]" style="color: #e3b5bb;">
+                            SUMMER COLLECTION
+                        </p>
+                    </div>
+
+                    <!-- Ember and Oak -->
+                    <div class="collection-item" data-collection="ember-oak"
+                         data-image="https://images.unsplash.com/photo-1478146896981-b80fe463b330?w=1200&q=80"
+                         data-season="AUTUMN COLLECTION"
+                         data-desc1="The Ember and Oak Collection embodies the richness of autumn — where leaves turn golden, warmth deepens, and every detail feels grounded in nature's embrace."
+                         data-desc2="Crafted for couples drawn to rustic elegance and earthy sophistication, this collection features warm palettes, organic textures, and abundant seasonal florals. It is a celebration of harvest and gratitude, designed with timeless artistry."
+                         data-button="VIEW AUTUMN DECOR">
+                        <div class="flex items-center gap-3 mb-1">
+                            <svg class="w-[15px] h-[15px] flex-shrink-0 collection-icon" viewBox="0 0 15 15" fill="none">
+                                <path d="M14.9102 0H14.8429C14.7559 0.00841751 14.6689 0.0476992 14.5819 0.115039C14.523 0.154321 14.4753 0.199214 14.4388 0.249719C14.0236 0.664983 13.6308 1.04938 13.2576 1.40292C12.4158 2.17733 11.5264 2.90685 10.5808 3.58586C9.66049 4.26768 8.63636 4.65208 7.50842 4.73345C6.17284 4.68014 4.59035 3.88328 2.76094 2.33726C2.17172 1.83221 1.59933 1.30191 1.04377 0.743547C1.00449 0.704265 0.965208 0.664983 0.928732 0.625701C0.810887 0.505051 0.693042 0.3844 0.578002 0.263749C0.572391 0.258137 0.569585 0.255331 0.563973 0.249719C0.527497 0.199214 0.476992 0.157127 0.420875 0.115039C0.333895 0.0476992 0.246914 0.0112233 0.159933 0H0.0925926C0.03367 0 0.00280584 0.0308642 0.00280584 0.0897868V0.157127C0.016835 0.291807 0.10101 0.426487 0.249719 0.563973C1.5881 1.90236 2.63187 3.08361 3.38384 4.10494C4.27609 5.32548 4.72783 6.45623 4.73625 7.5C4.72783 8.54377 4.27609 9.67452 3.38384 10.8951C2.63187 11.9164 1.5853 13.0976 0.249719 14.436C0.0982043 14.5707 0.016835 14.7054 0.00280584 14.8429V14.9102C0.00280584 14.9691 0.03367 15 0.0925926 15H0.159933C0.246914 14.9916 0.333895 14.9523 0.420875 14.885C0.479798 14.8457 0.527497 14.8008 0.563973 14.7531C0.569585 14.7475 0.572391 14.7447 0.578002 14.7391C0.695847 14.6156 0.810887 14.495 0.928732 14.3771C0.968013 14.3378 1.0073 14.2985 1.04377 14.2593C1.59933 13.7009 2.17172 13.1706 2.76094 12.6655C4.59035 11.1195 6.17284 10.3227 7.50842 10.2694C8.63356 10.3507 9.65769 10.7323 10.5808 11.4169C11.5236 12.096 12.4158 12.8255 13.2576 13.5999C13.6308 13.9534 14.0236 14.3378 14.4388 14.7531C14.4753 14.8036 14.5258 14.8485 14.5819 14.8878C14.6689 14.9523 14.7559 14.9916 14.8429 15.0028H14.9102C14.9691 15.0028 15 14.9719 15 14.913V14.8457C14.986 14.711 14.9018 14.5763 14.7531 14.4388C13.4007 13.1004 12.3541 11.9136 11.619 10.8754C10.7379 9.67172 10.289 8.54938 10.2666 7.50281C10.289 6.45623 10.7379 5.33389 11.619 4.13019C12.3569 3.09203 13.4007 1.90516 14.7531 0.566779C14.9046 0.432099 14.986 0.294613 15 0.159933V0.0925926C15 0.03367 14.9691 0.00280584 14.9102 0.00280584V0Z" fill="#E3B5BB"/>
+                            </svg>
+                            <h2 class="font-ragna text-[36px] md:text-[40px] leading-[1.1] collection-title tracking-[2px]" style="color: #e3b5bb;">
+                                EMBER AND OAK
+                            </h2>
+                        </div>
+                        <p class="font-light text-[13px] md:text-[14px] leading-[1.5] collection-subtitle tracking-[1.4px] ml-[27px]" style="color: #e3b5bb;">
+                            AUTUMN COLLECTION
+                        </p>
+                    </div>
+
+                    <!-- Nocturne Ivory -->
+                    <div class="collection-item" data-collection="nocturne-ivory"
+                         data-image="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=1200&q=80"
+                         data-season="WINTER COLLECTION"
+                         data-desc1="The Nocturne Ivory Collection reflects the elegance of winter — where frost glistens, candlelight glows, and every detail feels refined and intimate."
+                         data-desc2="Designed for couples seeking timeless sophistication with a touch of magic, this collection features soft ivory tones, luxurious textures, and delicate winter florals. It is a celebration of romance and serenity, curated with exquisite artistry."
+                         data-button="VIEW WINTER DECOR">
+                        <div class="flex items-center gap-3 mb-1">
+                            <svg class="w-[15px] h-[15px] flex-shrink-0 collection-icon" viewBox="0 0 15 15" fill="none">
+                                <path d="M14.9102 0H14.8429C14.7559 0.00841751 14.6689 0.0476992 14.5819 0.115039C14.523 0.154321 14.4753 0.199214 14.4388 0.249719C14.0236 0.664983 13.6308 1.04938 13.2576 1.40292C12.4158 2.17733 11.5264 2.90685 10.5808 3.58586C9.66049 4.26768 8.63636 4.65208 7.50842 4.73345C6.17284 4.68014 4.59035 3.88328 2.76094 2.33726C2.17172 1.83221 1.59933 1.30191 1.04377 0.743547C1.00449 0.704265 0.965208 0.664983 0.928732 0.625701C0.810887 0.505051 0.693042 0.3844 0.578002 0.263749C0.572391 0.258137 0.569585 0.255331 0.563973 0.249719C0.527497 0.199214 0.476992 0.157127 0.420875 0.115039C0.333895 0.0476992 0.246914 0.0112233 0.159933 0H0.0925926C0.03367 0 0.00280584 0.0308642 0.00280584 0.0897868V0.157127C0.016835 0.291807 0.10101 0.426487 0.249719 0.563973C1.5881 1.90236 2.63187 3.08361 3.38384 4.10494C4.27609 5.32548 4.72783 6.45623 4.73625 7.5C4.72783 8.54377 4.27609 9.67452 3.38384 10.8951C2.63187 11.9164 1.5853 13.0976 0.249719 14.436C0.0982043 14.5707 0.016835 14.7054 0.00280584 14.8429V14.9102C0.00280584 14.9691 0.03367 15 0.0925926 15H0.159933C0.246914 14.9916 0.333895 14.9523 0.420875 14.885C0.479798 14.8457 0.527497 14.8008 0.563973 14.7531C0.569585 14.7475 0.572391 14.7447 0.578002 14.7391C0.695847 14.6156 0.810887 14.495 0.928732 14.3771C0.968013 14.3378 1.0073 14.2985 1.04377 14.2593C1.59933 13.7009 2.17172 13.1706 2.76094 12.6655C4.59035 11.1195 6.17284 10.3227 7.50842 10.2694C8.63356 10.3507 9.65769 10.7323 10.5808 11.4169C11.5236 12.096 12.4158 12.8255 13.2576 13.5999C13.6308 13.9534 14.0236 14.3378 14.4388 14.7531C14.4753 14.8036 14.5258 14.8485 14.5819 14.8878C14.6689 14.9523 14.7559 14.9916 14.8429 15.0028H14.9102C14.9691 15.0028 15 14.9719 15 14.913V14.8457C14.986 14.711 14.9018 14.5763 14.7531 14.4388C13.4007 13.1004 12.3541 11.9136 11.619 10.8754C10.7379 9.67172 10.289 8.54938 10.2666 7.50281C10.289 6.45623 10.7379 5.33389 11.619 4.13019C12.3569 3.09203 13.4007 1.90516 14.7531 0.566779C14.9046 0.432099 14.986 0.294613 15 0.159933V0.0925926C15 0.03367 14.9691 0.00280584 14.9102 0.00280584V0Z" fill="#E3B5BB"/>
+                            </svg>
+                            <h2 class="font-ragna text-[36px] md:text-[40px] leading-[1.1] collection-title tracking-[2px]" style="color: #e3b5bb;">
+                                NOCTURNE IVORY
+                            </h2>
+                        </div>
+                        <p class="font-light text-[13px] md:text-[14px] leading-[1.5] collection-subtitle tracking-[1.4px] ml-[27px]" style="color: #e3b5bb;">
+                            WINTER COLLECTION
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Season Label -->
+                <div class="mb-10">
+                    <p id="seasonLabel" class="font-light text-[13px] md:text-[14px] leading-[1.5] text-[#434868] tracking-[1.4px]">
+                        SPRING COLLECTION
+                    </p>
+                </div>
+
+                <!-- Description Section -->
+                <div class="mb-10">
+                    <div class="font-light text-[15px] md:text-[16px] leading-[1.6] text-[#434868] tracking-[0.32px] space-y-6">
+                        <p id="desc1">
+                            The Fleur Décor Spring Collection is inspired by the gentle awakening of nature — where florals bloom freely, light softens, and every detail feels full of possibility.
+                        </p>
+                        
+                        <p id="desc2">
+                            Designed for couples drawn to elegance with a natural softness, this collection embraces fresh palettes, delicate textures, and floral abundance. It is a celebration of new beginnings, curated with intention and refined artistry.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- CTA Button -->
+                <div>
+                    <button id="ctaButton" class="px-[40px] md:px-[45px] py-[14px] md:py-[15px] rounded-[5px] border border-[#424968] font-normal text-[15px] md:text-[16px] leading-[1.3] text-[#434868] tracking-[1.6px] hover:bg-[#424968] hover:text-white transition-colors duration-300">
+                        VIEW SPRING DECOR
+                    </button>
+                </div>
+
+                <!-- Decorative Floral Element (bottom right) -->
+                <div class="absolute bottom-0 right-0 w-[180px] h-[186px] md:w-[220px] md:h-[227px] lg:w-[248px] lg:h-[256px] opacity-20 pointer-events-none">
+                    <img src="../designs/Clip path group.svg" alt="" class="w-full h-full" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Collection switching functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const collectionItems = document.querySelectorAll('.collection-item');
+            const mainImage = document.getElementById('mainImage');
+            const seasonLabel = document.getElementById('seasonLabel');
+            const desc1 = document.getElementById('desc1');
+            const desc2 = document.getElementById('desc2');
+            const ctaButton = document.getElementById('ctaButton');
+            
+            // Color constants
+            const ACTIVE_COLOR = '#604683';   // Purple for active
+            const INACTIVE_COLOR = '#e3b5bb'; // Pink for inactive
+            
+            collectionItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    // Remove active class from all items and reset colors
+                    collectionItems.forEach(i => {
+                        i.classList.remove('active');
+                        
+                        // Reset colors to inactive
+                        const icon = i.querySelector('.collection-icon path');
+                        const title = i.querySelector('.collection-title');
+                        const subtitle = i.querySelector('.collection-subtitle');
+                        
+                        if (icon) icon.setAttribute('fill', INACTIVE_COLOR);
+                        if (title) title.style.color = INACTIVE_COLOR;
+                        if (subtitle) subtitle.style.color = INACTIVE_COLOR;
+                    });
+                    
+                    // Add active class to clicked item
+                    this.classList.add('active');
+                    
+                    // Set active colors
+                    const activeIcon = this.querySelector('.collection-icon path');
+                    const activeTitle = this.querySelector('.collection-title');
+                    const activeSubtitle = this.querySelector('.collection-subtitle');
+                    
+                    if (activeIcon) activeIcon.setAttribute('fill', ACTIVE_COLOR);
+                    if (activeTitle) activeTitle.style.color = ACTIVE_COLOR;
+                    if (activeSubtitle) activeSubtitle.style.color = ACTIVE_COLOR;
+                    
+                    // Get data attributes
+                    const imageUrl = this.dataset.image;
+                    const season = this.dataset.season;
+                    const description1 = this.dataset.desc1;
+                    const description2 = this.dataset.desc2;
+                    const buttonText = this.dataset.button;
+                    
+                    // Fade out image
+                    mainImage.style.opacity = '0';
+                    
+                    // Change image after fade
+                    setTimeout(() => {
+                        mainImage.src = imageUrl;
+                        mainImage.style.opacity = '1';
+                    }, 500);
+                    
+                    // Update content
+                    seasonLabel.textContent = season;
+                    desc1.textContent = description1;
+                    desc2.textContent = description2;
+                    ctaButton.textContent = buttonText;
+                });
+                
+                // Keyboard accessibility
+                item.addEventListener('keydown', function(e) {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        this.click();
+                    }
+                });
+                
+                // Make items focusable
+                item.setAttribute('tabindex', '0');
+                item.setAttribute('role', 'button');
+                item.setAttribute('aria-pressed', item.classList.contains('active') ? 'true' : 'false');
+            });
+        });
+    </script>
+</body>
+</html>

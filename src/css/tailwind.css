@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  @font-face {
+    font-family: 'Ragna';
+    src: local('serif');
+    font-display: swap;
+  }
+
+  /*
+   * overflow-x: clip on html/body prevents horizontal scroll without
+   * creating a new scroll container (unlike overflow-x: hidden which
+   * would break position: sticky on descendants).
+   */
+  html,
+  body {
+    overflow-x: clip;
+  }
+}
+
+@layer components {
+  /* Banner Text block — collection item interactivity */
+  .collection-item {
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+  }
+
+  .collection-item:hover {
+    opacity: 0.8;
+  }
+
+  .collection-item.active {
+    opacity: 1;
+  }
+
+  .collection-item:not(.active) {
+    opacity: 0.4;
+  }
+
+  /* Main image fade transition */
+  .fade-transition {
+    transition: opacity 0.5s ease-in-out;
+  }
+
+  /* CTA button hover using CSS custom property for dynamic color */
+  .banner-cta {
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  .banner-cta:hover {
+    background-color: var(--banner-text-color, #434868);
+    color: white !important;
+  }
+
+  /* Hide broken / empty image src */
+  [data-banner-image]:not([src]),
+  [data-banner-image][src=''] {
+    opacity: 0;
+  }
+}

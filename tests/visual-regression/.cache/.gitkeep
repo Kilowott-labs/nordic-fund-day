@@ -1,0 +1,10 @@
+# Cache Directory
+
+This directory contains cached element mappings to optimize token usage.
+
+Cache files are auto-generated and should not be committed to version control.
+
+Add to .gitignore:
+```
+tests/visual-regression/.cache/*.json
+```

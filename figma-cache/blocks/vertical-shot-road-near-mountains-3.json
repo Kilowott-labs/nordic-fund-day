@@ -1,0 +1,11 @@
+{
+  "id": "224:366",
+  "name": "Vertical Shot Road Near Mountains 3",
+  "type": "RECTANGLE",
+  "layout_ref": "layout_58RVG1",
+  "dimensions": {
+    "width": "1920",
+    "height": "2272"
+  },
+  "yaml_content": "      - id: 224:366\n        name: Vertical Shot Road Near Mountains 3\n        type: RECTANGLE\n        layout: layout_58RVG1\n        fills: fill_WGLGQN"
+}

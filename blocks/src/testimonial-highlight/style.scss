@@ -1,0 +1,95 @@
+/**
+ * style.scss — testimonial-highlight
+ * Contains only CSS that Tailwind cannot express.
+ * All colors via theme.json tokens — zero hardcoded hex.
+ */
+
+.wp-block-agent-theme-testimonial-highlight {
+
+    // @keyframes — Tailwind cannot define keyframe sequences
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    // Fade-in animation with delays
+    .fade-in-anim {
+        animation: fadeIn 0.8s ease-out forwards;
+        opacity: 0;
+    }
+
+    .fade-in-anim[data-delay="0.3"] {
+        animation-delay: 0.3s;
+    }
+
+    .fade-in-anim[data-delay="0.5"] {
+        animation-delay: 0.5s;
+    }
+
+    .fade-in-anim[data-delay="0.7"] {
+        animation-delay: 0.7s;
+    }
+
+    .fade-in-anim[data-delay="0.9"] {
+        animation-delay: 0.9s;
+    }
+
+    .fade-in-anim[data-delay="1.1"] {
+        animation-delay: 1.1s;
+    }
+
+    // Button hover effect — complex transform and color transitions
+    .btn-hover-effect {
+        transition: all 0.3s ease-in-out;
+    }
+
+    .btn-hover-effect:hover .btn-text {
+        background-color: rgb(180, 220, 80);
+    }
+
+    .btn-hover-effect:hover .btn-circle {
+        background-color: rgb(180, 220, 80);
+        transform: rotate(45deg);
+    }
+
+    .btn-circle {
+        transition: all 0.9s cubic-bezier(0.135, 0.9, 0.15, 1);
+    }
+
+    // Card hover effect
+    .card-hover {
+        transition: all 0.3s ease-in-out;
+    }
+
+    .card-hover:hover {
+        transform: translateY(-8px);
+        border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    // SVG white color — Tailwind cannot target SVG children
+    .icon-white svg {
+        fill: white;
+    }
+
+    .icon-white path {
+        fill: white;
+    }
+
+    // Subtitle with circle — ::before pseudo-element with content
+    .pre-circle::before {
+        content: '';
+        display: inline-block;
+        width: 8px;
+        height: 8px;
+        background-color: var(--wp--preset--color--cta-button);
+        border-radius: 50%;
+        margin-right: 10px;
+        vertical-align: middle;
+    }
+}

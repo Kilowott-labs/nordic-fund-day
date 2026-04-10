@@ -1,0 +1,92 @@
+@use "../mixins/index" as mix;
+@use "../svg.scss" as svg;
+// Navigation block styles
+
+.navigation-icon-block{
+    display: flex;
+    flex-direction: column;   
+    row-gap: 1rem;    
+    @include mix.bp(tablet-strict){
+        flex-direction: row;
+        flex-wrap: wrap;        
+    }
+    
+    &.wp-block-group{
+        margin-top: 0;
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+        @include mix.bp(tablet-sm){
+            padding-top: 2rem;
+            padding-bottom: 2rem;
+        }
+    }
+
+    .wp-block{
+        &-columns{
+            width: 100%;
+            column-gap: 2rem;
+            @include mix.bp(tablet-sm){
+                row-gap: 1rem;
+            }
+            @include mix.bp(tablet-strict){
+                display: contents;
+            }
+        }
+        &-column.wp-block-column{
+             @include mix.bp(tablet-strict){
+                flex: 1 1 50% !important;
+            }
+        }
+        &-group{
+            position: relative;
+            @include mix.bp(tablet-sm){
+                --wp--preset--spacing--spacer-small: 1.5rem;
+            }
+            &:before{
+                content: "";
+                transition: all .3s ease;
+                display: block;
+                width: 0;
+                height: 2px;
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                background-color: var(--wp--preset--color--primary);
+            }
+            &:after{
+                content: "";
+                display: block;
+                background-image: svg.$arrow_right;
+                width: 16px;
+                height: 16px;
+                margin-left: auto;
+                transition: all 0.3s ease;
+            }
+            &:hover{
+                &:before{
+                    width: 100%;
+                }
+                &:after{
+                    transform: translateX(1rem);
+                }
+            }
+            a{
+                text-decoration: none;
+                &:after{
+                    content: '';
+                    position: absolute;
+                    inset: 0;
+                }
+            }
+        }
+        &-image{
+            img{
+                @include mix.bp(tablet-sm){
+                    width: 32px !important;
+                    height: 32px !important;
+                }
+            }
+        }
+
+    }
+}

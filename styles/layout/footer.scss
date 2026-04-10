@@ -1,0 +1,172 @@
+@use "../mixins/index" as mix;
+
+//floating quick links Scss
+
+.floating{
+    width: 100vw;
+    position: fixed;
+    bottom:0;
+    left: 0;
+    z-index:997;
+    transform: translateY(100%);    
+    transition: 0.3s;
+
+
+    &.visible{
+          transform: translateY(0);  
+    }
+
+    >.wp-block-group{
+        min-width: 364px;
+        width: fit-content;
+        box-shadow: 0 2px 5px #00000003, 0 10px 20px #0003;
+        backdrop-filter: blur(5px);
+        background-color: #fffc;
+        
+        @include mix.bp(tablet-sm){ 
+            min-width: auto;
+        }
+
+        p{
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            border-right: 1px solid #0000001a;
+            align-items: center;
+            font-size: 1rem;
+            @include mix.bp(tablet-sm){ 
+                font-size: 0.8rem;
+            }
+            a{
+                display:contents;
+            }
+
+            &:last-child{
+                border-right: none;
+            }
+
+            img{
+                height:24px;
+                width:24px;
+            }
+        }
+    }
+}
+
+//footer Scss
+
+footer{
+    &.wp-block-template-part{
+        margin:0;
+    }
+    
+   > .wp-block-group:not(.floating){
+        background-image: 
+            url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 255.1 141.7'><g opacity='0.3'><clipPath id='a'><polygon points='44.5 47.8 0 107 0 141.7 59.5 141.7 130.1 47.8 44.5 47.8'/></clipPath><linearGradient id='b' x1='0' y1='142.2' x2='1' y2='142.2' gradientTransform='translate(130.1 26642.3) rotate(-180) scale(186.7)' gradientUnits='userSpaceOnUse'><stop offset='0' stop-color='%23490000'/><stop offset='1' stop-color='%237a0708'/></linearGradient><g clip-path='url(%23a)'><rect fill='url(%23b)' x='0' y='47.8' width='130.1' height='93.9'/></g></g><g opacity='0.3'><clipPath id='c'><polygon points='8.5 0 44.5 47.8 130.1 47.8 94.2 0 8.5 0'/></clipPath><linearGradient id='d' x1='0' y1='141.9' x2='1' y2='141.9' gradientTransform='translate(-56.5 26508) scale(186.7 -186.7)' gradientUnits='userSpaceOnUse'><stop offset='0' stop-color='%23490000'/><stop offset='1' stop-color='%237a0708'/></linearGradient><g clip-path='url(%23c)'><rect fill='url(%23d)' x='8.5' width='121.6' height='47.8'/></g></g><g opacity='0.3'><clipPath id='e'><polygon points='166.1 0 85.9 106.5 167.9 106.5 248 0 166.1 0'/></clipPath><linearGradient id='f' x1='0' y1='142.2' x2='1' y2='142.2' gradientTransform='translate(85.9 -25331.2) scale(178.6)' gradientUnits='userSpaceOnUse'><stop offset='0' stop-color='%23490000'/><stop offset='1' stop-color='%237a0708'/></linearGradient><g clip-path='url(%23e)'><rect fill='url(%23f)' x='85.9' width='162' height='106.5'/></g></g><g opacity='0.3'><clipPath id='g'><polygon points='85.9 106.5 112.5 141.7 194.4 141.7 167.9 106.5 85.9 106.5'/></clipPath><linearGradient id='h' x1='0' y1='141.8' x2='1' y2='141.8' gradientTransform='translate(264.5 -25202.7) rotate(-180) scale(178.6 -178.6)' gradientUnits='userSpaceOnUse'><stop offset='0' stop-color='%23490000'/><stop offset='1' stop-color='%237a0708'/></linearGradient><g clip-path='url(%23g)'><rect fill='url(%23h)' x='85.9' y='106.5' width='108.4' height='35.2'/></g></g></svg>"),
+            linear-gradient(90deg, #450400, #351d15) !important;
+        background-repeat: no-repeat;
+
+       @include mix.bp(tablet-sm)
+        {
+            padding-bottom: 120px !important
+        }
+   }
+
+    .footer{
+        &-site-image{
+            width: 200px;
+            height:51px;
+        }
+
+        &-top{
+            display: grid !important;
+            grid-template-columns: .75fr 1fr;
+            align-items: start !important;
+            grid-column-gap: 5vw;
+            grid-row-gap: 1rem;
+
+            @include mix.bp(tablet-sm)
+            {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        &-menus{
+            @include mix.bp(mobile)
+            {
+                grid-template-columns: 1fr;
+                row-gap:40px;
+            }
+
+            .wp-block-navigation-item__content span, li a span{
+                color: #fffc;
+                text-decoration: none;
+                
+                &:hover{   
+                    color: var(--wp--preset--color--white);
+                    text-decoration: underline;
+                }
+            }
+
+            //li specific style - default menu
+            .wp-block-navigation{                
+                &__container{   
+                    display: flex;
+                    flex-direction: column;
+                    gap: 1rem;       
+                    padding: 0;
+                    margin: 0;
+                    list-style: none;  
+                    li{
+                        font-size: var(--wp--preset--font-size--medium);
+                        a{
+                            text-decoration: none;
+                        }
+                    }
+                }
+            }
+            
+        }
+
+        &-bottom{
+            @include mix.bp(mobile)
+            {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+
+            .wp-block-social-links{
+                .wp-social-link{
+                    a{
+                        svg{
+                            fill:var(--wp--preset--color--white);
+                            color: var(--wp--preset--color--white);
+                            stroke-width: 0;
+                        }
+                    }
+
+                    &:hover{
+                        transform: scale(1);
+                    }
+                }
+            }
+
+            &-links{
+                 @include mix.bp(mobile)
+                {
+                    order: 2;
+                    flex-direction: column;
+                    align-items: flex-start;
+                }
+
+                p{
+                    a{
+                        color:#fff9;
+                        text-decoration: underline;
+                    }
+                }
+            }
+        }
+    }
+}

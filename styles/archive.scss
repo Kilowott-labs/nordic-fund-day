@@ -1,0 +1,53 @@
+//all archive page styles
+@use "./mixins/index" as mix;
+@use "svg.scss" as svg;
+//course archive
+.wp-block-coretrek-courses-archiving{
+    .courses-filters{
+        
+    }
+}
+
+//news archive page style
+.page-template-archive-posts,.page-template-wp-custom-template-aktuelt{
+
+    .category-filter{
+        @include mix.bp(tablet-md){
+            margin-bottom: 3rem;
+        }
+    }
+
+    //category date styles
+    .category-date-wrapper{
+        display: flex;
+        align-items: center;
+        .post-categories,.wp-block-post-date{
+            margin: 0 !important;
+        }
+
+        .wp-block-post-date{
+            &:before{
+                content: "•";
+                margin-inline: .5rem;
+            }
+        }
+    }
+}
+
+.artikkel-grid-container{
+    .wp-block-post-template{      
+
+    }
+}
+
+//category archive page
+.archive{
+    .tax-course_category{
+        .tax-wrapper{
+            padding-bottom: 5rem;
+            @include mix.bp(tablet-sm){
+                padding-bottom: 3rem;
+            }
+        }
+    }
+}

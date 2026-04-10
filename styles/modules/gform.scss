@@ -1,0 +1,312 @@
+
+body .gform_wrapper.gform-theme.gform-theme--foundation.gform-theme--framework {
+  font-family: var(--wp--preset--font-family--fftext);
+
+  /* === Layout === */
+  .gform_fields {
+    row-gap: 24px;
+  }
+  
+  /* === Labels === */
+  .gfield_label {
+    font-family: var(--wp--preset--font-family--fftext);
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--wp--preset--color--dark);
+    margin-bottom: 8px;
+  }
+  .gfield_required {
+    color: #f72c2c;
+    font-size: 1.125rem;
+    font-family: var(--wp--preset--font-family--fftext);
+    font-weight: 500;
+    line-height: var(--wp--custom--line-height--large);
+  }
+
+  /* === Inputs === */
+  input[type="text"],
+  input[type="email"],
+  input[type="url"],
+  input[type="tel"],
+  input[type="number"],
+  input[type="password"],
+  textarea,
+  select {
+    width: 100%;
+    height: 64px;
+    padding: 8px 24px;
+    border: 1px solid var(--wp--preset--color--primary-light);
+    border-radius: 0;
+    background: var(--wp--preset--color--white);
+    color: var(--wp--preset--color--dark);
+    font-family: var(--wp--preset--font-family--fftext);
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: var(--wp--custom--line-height--large);
+    transition: none;
+
+    &::placeholder {
+      color: #999;
+    }
+
+    &:focus {
+      border: 2px solid var(--wp--preset--color--primary);
+      outline: none;
+      box-shadow: none;
+    }
+  }
+
+  input,textarea,select{
+    box-shadow: none;
+  }
+
+  textarea{
+    height: 11.25rem;
+  }
+
+  select[multiple="multiple"]{
+    width: 100%;
+    height: auto;
+  }
+
+  /* === Descriptions === */
+  .gfield_description {
+    color: var(--wp--preset--color--neutral-darker);
+    font-family: var(--wp--preset--font-family--fftext);
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: var(--wp--custom--line-height--large);
+  }
+  .validation_message {
+    color: #ff0000;
+    font-size: 0.875rem;
+  }
+
+  
+
+  .gfield--type-fileupload{
+    .ginput_container_fileupload{
+      height: 200px;
+      display: block;
+      border: 1px solid var(--wp--preset--color--primary-light);
+      border-radius: 0;
+      background: var(--wp--preset--color--white);
+      border-radius: 0;
+      position: relative;
+      align-content: center;
+      text-align: center;
+      cursor: pointer;
+
+      &:focus{
+        border-width: 2px;
+        border-color: var(--wp--preset--color--primary);
+      }
+
+      &:before{
+        content: "";
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M6.66602 13.3333L9.99935 10M9.99935 10L13.3327 13.3333M9.99935 10V17.5M16.666 13.9524C17.6839 13.1117 18.3327 11.8399 18.3327 10.4167C18.3327 7.88536 16.2807 5.83333 13.7493 5.83333C13.5673 5.83333 13.3969 5.73833 13.3044 5.58145C12.2177 3.73736 10.2114 2.5 7.91602 2.5C4.46424 2.5 1.66602 5.29822 1.66602 8.75C1.66602 10.4718 2.36222 12.0309 3.48847 13.1613' stroke='%23060606' stroke-width='1.66667' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-size: contain;
+      }
+
+      input[type="file"]{
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        opacity: 0;
+        padding: 0;
+      }
+    }
+  }
+
+  /* === Select === */
+  .gfield--type-select{
+    .ginput_container_select{
+        select{
+            display: flex;
+            flex-wrap: nowrap;
+            align-items: center;
+            line-height: normal;
+            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none'><path d='M16.293 8.29297L12 12.586L7.70697 8.29297L6.29297 9.70697L12 15.414L17.707 9.70697L16.293 8.29297Z' fill='black'/></svg>");
+            background-repeat: no-repeat;
+            background-position: 99%;
+            background-size: 24px;
+            cursor: pointer;
+        }
+    }
+  }
+
+  /* === Choices (Checkbox / Radio) === */
+  .ginput_container_checkbox .gchoice,
+  .ginput_container_radio .gchoice {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    width: fit-content;
+
+    input {
+      width: 18px;
+      height: 18px;
+      border: 1px solid var(--wp--preset--color--neutral-darkest);
+      background: var(--wp--preset--color--white);
+      position: relative;
+      
+      &:focus{
+        border-width: 1px;
+        border-color: var(--wp--preset--color--neutral-darkest);
+      }
+
+      &:before{
+        position: absolute;
+      }
+      
+      &:checked{
+        background-color: var(--wp--preset--color--neutral-darkest);
+      }
+    }
+    label {
+      font-size: 1rem;
+      font-weight: 400;
+      font-family: var(--wp--preset--font-family--fftext);
+      line-height: var(--wp--custom--line-height--large);
+      color: var(--wp--preset--color--dark);
+      display: flex;
+      align-items: center;
+      width: fit-content;
+      margin-left: 8px;
+    }
+  }
+
+  .ginput_container_radio .gchoice {
+    input {
+      &:before{
+        border-radius: 50%;
+        height: 6px;
+        left: 35%;
+        align-self: center;
+        width: 6px;
+        background-color: var(--wp--preset--color--white);
+      }
+    }
+  }
+
+  .ginput_container_checkbox .gchoice{
+      input {
+        border-radius: 0;
+
+        &:before{
+          content:'';
+          background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 13 11'><path fill='none' stroke='white' stroke-width='2' stroke-miterlimit='10' d='M11 2L5.5 8.5 2 5'/></svg>");
+          background-repeat: no-repeat;
+          background-size: contain;
+          background-position: center;
+          width: 100%;
+          height:100%;
+          display: inline-block;
+        }
+      }
+  }
+
+  /* === Progress Bar === */
+  .gf_progressbar {
+    border-radius: 0;
+    background: var(--wp--preset--color--primary-light);
+    overflow: hidden;
+    .gf_progressbar_percentage {
+      background: var(--wp--preset--color--primary);
+      border-radius: 0;
+      height: 8px;
+      transition: width 0.4s ease;
+    }
+  }
+
+  /* === Steps === */
+  .gf_page_steps .gf_step {
+    .gf_step_number {
+      background: var(--wp--preset--color--white);
+      border: 2px solid var(--wp--preset--color--primary-light);
+      color: var(--wp--preset--color--primary-light);
+    }
+    &.gf_step_active .gf_step_number {
+      border-color: var(--wp--preset--color--primary);
+      color: var(--wp--preset--color--primary);
+    }
+    &.gf_step_completed .gf_step_number {
+      background: var(--wp--preset--color--primary);
+      border-color: var(--wp--preset--color--primary);
+      color: var(--wp--preset--color--white);
+      &:after{
+        background-color: var(--wp--preset--color--primary);
+        border-color: var(--wp--preset--color--primary);
+      }
+    }
+  }
+
+  /* === Buttons === */
+  .gform_button,
+  .gform_next_button,
+  .gform_previous_button {
+      font-size: 1.2rem !important;
+      font-family: var(--wp--preset--font-family--fftext) !important;
+      padding: 16px 40px !important;
+      border-radius: 0 !important;
+      cursor: pointer !important;
+      box-shadow: none !important;
+  }
+
+  .gform_button{
+    
+    background-color: var(--wp--preset--color--primary) !important;
+    background-size: 300% 300% !important;
+    background-position: 100% 100% !important;
+    transition: background-position 0.75s ease !important;
+    &:hover {
+      background-image: linear-gradient(-45deg,var(--wp--preset--color--primary) 50%,var(--wp--preset--color--primary-dark) 50%) !important;
+      background-position: 0 0 !important;
+    }
+
+    &:focus{
+      border:none !important;
+    }
+  }
+
+  .gform_next_button, .gform_previous_button{
+    background-size: 300% 300% !important;
+    background-position: 100% 100% !important;
+    transition: background-position 0.75s ease !important;
+    background-color: transparent !important;
+    border: 1px solid var(--wp--preset--color--primary-darkest) !important;
+    color: var(--wp--preset--color--primary-darkest) !important;
+    &:hover {
+      background-image: linear-gradient(-45deg,var(--wp--preset--color--white) 50%,var(--wp--preset--color--primary-darkest) 50%) !important;
+      background-position: 0 0 !important;
+      color: var(--wp--preset--color--white) !important;
+    }
+  }
+
+  /* === Required Legend === */
+  .gform_heading .gform_required_legend {
+    display: none;
+  }
+
+  .gform_page_footer{
+    justify-content: space-between;
+    .gform-loader{
+      display: none;
+    }
+  }
+
+}
+
+  /* === Confirmation Message === */
+ .gform_confirmation_message {
+    font-family: var(--wp--preset--font-family--fftext) !important;
+    font-size: var(--wp--preset--font-size--text-large) !important;
+    color: var(--wp--preset--color--primary-darkest) !important;
+    line-height: var(--wp--custom--line-height--large) !important;
+  }

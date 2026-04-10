@@ -1,0 +1,256 @@
+@use "../mixins/index.scss" as mix;
+
+.testimonial{
+    &-wrapper{
+        min-height: 560px;
+        position: relative;
+        padding-top: 5rem;
+        padding-bottom: 5rem;
+        //max-width:fit-content; //commented to avoid setting width issue
+        @include mix.bp(tablet-sm){    
+            padding-top: 3rem;
+            padding-bottom: 3rem;
+        }
+
+        .swiper{
+            margin-top: 0;
+            
+            &-wrapper{
+                height:auto;
+            }
+            &-button{
+                &-prev,&-next{
+                    height: 48px;
+                    width: 48px;
+                    border-radius:100%;
+                    position: absolute;
+                    inset: auto 1rem 1rem auto !important;
+                    display:flex;
+                    justify-content: center;
+                    align-items: center;
+                    transition: all 0.3s;
+                    svg{
+                        display:none;
+                    }
+                    &:before{
+                        content:'';
+                        height: 32px;
+                        width:32px;
+                        display: inline-block;
+                        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' aria-hidden='true' role='img' viewBox='0 0 24 24'%3E%3Cpath fill='currentColor' d='M15.41 7.41L14 6l-6 6l6 6l1.41-1.41L10.83 12l4.58-4.59z'/%3E%3C/svg%3E");
+                        background-repeat: no-repeat;
+                        background-position: center;
+                        background-size: contain;
+                    }
+                    &:hover{
+                        background-color: #f9fafb!important;
+                    }
+                }
+
+                &-prev{
+                    right:calc(1rem + 60px) !important;
+                   
+                }
+                &-next{
+                    &:before{
+                        transform: rotate(180deg);
+                    }
+                }
+            }
+        }
+       
+    }
+    &-card{
+        margin:0 !important;
+        height: auto !important;
+
+         @media (max-width:782px){
+            overflow: hidden;
+         }
+         > .wp-block-columns{
+                height: 100%;
+
+                @media (max-width:782px){
+                    flex-direction: column;
+                    >.wp-block-column{
+                        flex-basis: auto;
+                    }
+                }
+            }
+    }
+    &-media{
+        figure{
+            &.wp-block-image{
+            height:100%;
+            width:100%;
+            margin: 0;
+            position: relative;
+
+            img{
+                height:100%;
+                width:100%;
+                object-fit: cover;
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+
+            .figcaption{
+                display: none;
+            }
+        }
+        }
+        .popup-youtube {
+            position: relative;
+            height: 100%;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            &:before{
+                content: "";
+                position: absolute;
+                display: inline-block;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(29, 41, 57, 0.1);
+                z-index:1;
+                transition: 0.4s ease;
+                left: 0;
+                top:0;
+            }
+
+            &:after {
+                content: "";
+                display: inline-block;
+                background-image: url("data:image/svg+xml,%3Csvg width='128' height='128' viewBox='0 0 128 128' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M64 128C99.3462 128 128 99.3462 128 64C128 28.6538 99.3462 0 64 0C28.6538 0 0 28.6538 0 64C0 99.3462 28.6538 128 64 128ZM54 87.4754L90 67.3536C92.6667 65.8631 92.6667 62.1369 90 60.6464L54 40.5246C51.3333 39.0341 48 40.8972 48 43.8782V84.1218C48 87.1028 51.3333 88.9659 54 87.4754Z' fill='white' fill-opacity='0.3'/%3E%3C/svg%3E");
+                background-repeat: no-repeat;
+                background-size: contain;
+                background-position: center;
+                display: inline-block;
+                width: 6rem;
+                height: 6rem;
+                position: absolute;
+                border-radius: 50%;
+                backdrop-filter: saturate(150%) blur(12px);
+                transition: 0.4s ease;
+                scale: 1;
+                background-color: rgba(255, 255, 255, 0.1);
+                color: var(--wp--preset--color--white);
+                z-index:2;
+
+                @media (max-width:600px){
+                    width: 64px;
+                    height: 64px;
+                }
+            }
+
+            &:hover {
+                @include mix.bp(tablet-md){
+                    &:after {
+                        scale: 1.1;
+                        background-color: rgba(16, 24, 40, 0.1)
+                    }
+                    &:before{
+                    background-color: rgba(16, 24, 40, 0)
+                    }
+                }
+
+                @include mix.bp(tablet-sm){        
+                &:before{
+                    display: none;
+                    }
+                }
+            }
+        }
+        
+        @media (max-width:781px){
+            height:240px;
+            min-height: 240px;
+        }
+    }
+
+    &-content{
+        align-content: flex-end;
+        position: relative;
+        min-height: 560px;
+        height: auto;
+        box-sizing: border-box;
+        
+        &:before{
+            content:'';
+            display: inline-block;
+            width: 11rem;
+            margin-left: -4rem;
+            position: absolute;
+            inset: 0% 120% auto 0%; 
+            height: 195px;
+            top:0;
+            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1621.8 1799.5'><polygon fill='%23d44027' points='1097.1 0 1621.8 698.3 792.1 1799.3 726.5 1799.5 1554.3 698.3 1030.1 .6 1097.1 0'/><polyline fill='%23d44027' points='371.3 .3 895.7 697.8 67.7 1799.3 0 1799.5 828.2 697.8 303.6 .6'/></svg>");
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-position: center;
+
+            @media (max-width:782px){
+                top:-6rem
+            }
+        }
+
+        > .wp-block-group{ 
+            margin-top: 120px !important;
+
+            @include mix.bp(tablet-sm){        
+                margin-top: 60px !important;
+            }
+        }
+        
+        @include mix.bp(tablet-sm){        
+           padding-left: 8rem !important;
+           padding-right: 2rem !important;
+           padding-bottom: 4rem !important;
+        }
+
+        @media (max-width:782px){
+            min-height: 386px !important;
+            padding-left: 4rem !important;
+        }
+    }
+
+}
+
+body:not(.block-editor-iframe__body){
+    &:not(.block-editor-page) {
+        .testimonial-media{
+            figure.wp-block-embed{
+                display: none !important;
+            }
+        }
+    }
+}
+
+
+body.block-editor-iframe__body, body.block-editor-page {
+        .testimonial{
+            
+            &-content{
+                max-height:fit-content;
+            }
+
+            &-media{
+                figure.wp-block-image{
+                    img{
+                        position: relative;
+                        height: auto;
+                    }
+                    .figcaption{
+                        display: none;
+                    }
+                }
+            }
+            &-wrapper{
+                height:fit-content;
+            }
+        }
+        
+    }

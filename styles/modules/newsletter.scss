@@ -1,0 +1,117 @@
+@use "../mixins/index" as mix;
+
+form.mnm-embed-form{
+    .mnm-form-fields{
+        display:flex;
+        gap:1rem;
+        max-width: 550px;
+        
+        @include mix.bp(mobile)
+        {
+            flex-wrap: wrap;
+        }
+
+        input[type="email"]{
+            flex:1;
+            height: 64px;
+            box-sizing: border-box;
+            padding: 8px 24px;
+            border: 1px solid var(--wp--preset--color--primary-light);
+            border-radius: 0;
+            background: var(--wp--preset--color--white);
+            color: var(--wp--preset--color--dark);
+            font-family: var(--wp--preset--font-family--fftext);
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: var(--wp--custom--line-height--large);
+            transition: none;
+
+            &::placeholder {
+            color: #999;
+            }
+
+            &:focus {
+            border: 2px solid var(--wp--preset--color--primary);
+            outline: none;
+            box-shadow: none;
+            }
+
+            @include mix.bp(mobile)
+            {
+               width: 100%;
+            }
+        }
+
+        .submit-button-wrapper{
+            position: relative;
+            overflow: clip;
+            isolation: isolate;
+            --scale-value: -130%;
+            --transitionSpeed: 0.35s;
+            height: 64px;
+            cursor: pointer;
+            width: fit-content;
+
+            .submit-button{
+                background-color: #fff3;
+                backdrop-filter: blur(5px);
+                color: var(--wp--preset--color--white);
+                transition: background-position 0.75s ease !important;
+                background-size: 300% 300% !important;
+                background-position: 100% 100% !important;
+                height: 100%;
+
+                 &:after{
+                    content: "";
+                    height: 100%;
+                    position: absolute;
+                    inset: 0% auto auto 0%;
+                    transform-style: preserve-3d;
+                    z-index: -1;
+                    transition: all var(--transitionSpeed) ease;
+                    width: 180%;
+                    transform: translate3d(var(--scale-value), 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(-40deg, 0deg);
+                    background-color: var(--wp--preset--color--primary-darkest);
+                }
+                
+                input[type="submit"]{
+                    height: 100%;
+                    width: 100%;
+                    padding: .75rem 1.5rem;
+                    outline: none !important;
+                    box-shadow: none !important;
+                    background-color: transparent;
+                    border: 1px solid #ffffff21;
+                    position: relative;
+                    z-index: 1;
+                    color: var(--wp--preset--color--white);
+                    font-family: var(--wp--preset--font-family--fftext);
+                    font-size: var(--wp--preset--font-size--text-medium) ;
+                    font-weight: 400;
+                    cursor: pointer;
+                }
+            }
+
+            &:hover {
+                .submit-button{
+                    &:after{
+                        --scale-value: -20%;
+                    }
+                }
+            }
+
+            @include mix.bp(mobile)
+            {
+                width: 100%;
+            }
+        }
+        
+    }
+    .mnm-form-confirmation{
+        color: var(--wp--preset--color--white);
+        font-family: var(--wp--preset--font-family--fftext);
+        font-size: var(--wp--preset--font-size--headline-4); ;
+        font-weight: 600;
+        line-height: var(--wp--custom--line-height--medium);
+    }
+}

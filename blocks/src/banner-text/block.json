@@ -1,0 +1,96 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "coretrek/banner-text",
+  "version": "1.0.0",
+  "title": "Banner Text Collections",
+  "category": "ytf",
+  "icon": "art",
+  "description": "Split-screen sticky-image banner with an interactive, scrollable collection list.",
+  "textdomain": "ytf",
+  "attributes": {
+    "collections": {
+      "type": "array",
+      "default": [
+        {
+          "id": 1,
+          "name": "VERA BLOOM",
+          "season": "SPRING COLLECTION",
+          "description1": "The Fleur Décor Spring Collection is inspired by the gentle awakening of nature — where florals bloom freely, light softens, and every detail feels full of possibility.",
+          "description2": "Designed for couples drawn to elegance with a natural softness, this collection embraces fresh palettes, delicate textures, and floral abundance. It is a celebration of new beginnings, curated with intention and refined artistry.",
+          "buttonText": "VIEW SPRING DECOR",
+          "buttonUrl": "#",
+          "image": "",
+          "imageId": 0
+        },
+        {
+          "id": 2,
+          "name": "SOLERA",
+          "season": "SUMMER COLLECTION",
+          "description1": "The Solera Collection captures the warmth and vibrancy of summer — where golden light dances, colors deepen, and every moment feels alive with energy.",
+          "description2": "Perfect for couples seeking bold elegance with a sun-kissed glow, this collection features rich tones, lush textures, and statement florals. It is a celebration of passion and joy, designed with artistry and intention.",
+          "buttonText": "VIEW SUMMER DECOR",
+          "buttonUrl": "#",
+          "image": "",
+          "imageId": 0
+        },
+        {
+          "id": 3,
+          "name": "EMBER AND OAK",
+          "season": "AUTUMN COLLECTION",
+          "description1": "The Ember and Oak Collection embodies the richness of autumn — where leaves turn golden, warmth deepens, and every detail feels grounded in nature's embrace.",
+          "description2": "Crafted for couples drawn to rustic elegance and earthy sophistication, this collection features warm palettes, organic textures, and abundant seasonal florals. It is a celebration of harvest and gratitude, designed with timeless artistry.",
+          "buttonText": "VIEW AUTUMN DECOR",
+          "buttonUrl": "#",
+          "image": "",
+          "imageId": 0
+        },
+        {
+          "id": 4,
+          "name": "NOCTURNE IVORY",
+          "season": "WINTER COLLECTION",
+          "description1": "The Nocturne Ivory Collection reflects the elegance of winter — where frost glistens, candlelight glows, and every detail feels refined and intimate.",
+          "description2": "Designed for couples seeking timeless sophistication with a touch of magic, this collection features soft ivory tones, luxurious textures, and delicate winter florals. It is a celebration of romance and serenity, curated with exquisite artistry.",
+          "buttonText": "VIEW WINTER DECOR",
+          "buttonUrl": "#",
+          "image": "",
+          "imageId": 0
+        }
+      ]
+    },
+    "rightBgColor": {
+      "type": "string",
+      "default": "#ead8d6"
+    },
+    "activeColor": {
+      "type": "string",
+      "default": "#604683"
+    },
+    "inactiveColor": {
+      "type": "string",
+      "default": "#e3b5bb"
+    },
+    "textColor": {
+      "type": "string",
+      "default": "#434868"
+    },
+    "decorativeImage": {
+      "type": "string",
+      "default": ""
+    },
+    "decorativeImageId": {
+      "type": "number",
+      "default": 0
+    }
+  },
+  "supports": {
+    "html": false,
+    "align": ["full", "wide"],
+    "spacing": {
+      "padding": true,
+      "margin": true
+    }
+  },
+  "editorScript": "file:./index.js",
+  "viewScript": "file:./view.js"
+}

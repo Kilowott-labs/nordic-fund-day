@@ -1,0 +1,78 @@
+//Most of the styling same as news blocks, only feed specific styles are written here
+.news-feed{
+    .wp-block-columns{
+        .wp-block-column{
+            &:nth-child(2){
+                @media screen and (min-width: 769px) {
+                    display: flex;
+                    gap: 3rem;
+                }
+
+                .wp-block-query{
+                    @media screen and (min-width: 769px) {
+                        flex: 1;   
+                    }                 
+                }
+
+                .wp-block-group.rss-feed-block{
+                    @media screen and (max-width: 768px) {
+                        margin-top: 3.5rem !important;
+                    }
+                    @media screen and (min-width: 769px) {
+                        flex: 1;
+                        max-width: 394px;
+                    }
+                }
+
+                .wp-block-rss{
+                    .wp-block-rss__item{
+                        display: flex;
+                        flex-direction: row-reverse;
+                        flex-wrap: wrap;
+                        
+                        
+                        &:not(:last-child){
+                            border-bottom: 1px solid var(--wp--preset--color--primary-light);
+                            padding-bottom: 1rem;
+                        }
+                        &:not(:first-child){
+                            padding-top: 1rem;
+                        }
+
+                        a{
+                            text-decoration: none;
+                            &:hover{
+                                text-decoration: underline;
+                            }
+                        }
+
+                        &-publish-date,&-author{  
+                            font-size: .875rem;
+                        }
+
+                        &-title{
+                            flex: 1 1 100%;
+                            order: 3;
+                        }
+
+                        &-publish-date{                            
+                            flex: 1 0 auto;
+                            order: 1;
+
+                            &:before{
+                                content: "•";
+                                margin-inline: .5rem;
+                            }
+                        }
+
+                        &-author{                            
+                            flex: 0 0 auto;
+                            order: 2;
+                            font-weight: 600;
+                        }
+                    }
+                }//rss items specific style
+            }
+        }
+    }
+}

@@ -1,0 +1,11 @@
+{
+  "id": "224:393",
+  "name": "Subtract",
+  "type": "BOOLEAN_OPERATION",
+  "layout_ref": "layout_2Y8UEU",
+  "dimensions": {
+    "width": "1920",
+    "height": "2424"
+  },
+  "yaml_content": "      - id: 224:392\n        name: Subtract\n        type: BOOLEAN_OPERATION\n        layout: layout_BCDJ3U\n        fills: fill_2GRMTI\n        children:\n          - id: 224:393\n            name: Subtract\n            type: BOOLEAN_OPERATION\n            layout: layout_2Y8UEU\n            fills: fill_ZYX3TR\n            children:\n              - id: 224:394\n                name: Vertical Shot Road Near Mountains 2\n                type: RECTANGLE\n                layout: layout_2Y8UEU\n                fills: fill_B0OQ2L\n              - id: 224:395\n                name: Subtract\n                type: BOOLEAN_OPERATION\n                layout: layout_0VSZCB\n                fills: fill_B076K2\n                children:\n                  - id: 224:396\n                    name: Vertical Shot Road Near Mountains 1\n                    type: RECTANGLE\n                    layout: layout_0XTLX7\n                    fills: fill_KEY2QI\n                  - id: 224:397\n                    name: Vector 1\n                    type: IMAGE-SVG\n                    layout: layout_YHY8GC\n                    fills: fill_OQLN00\n          - id: 224:398\n            name: Rectangle 4\n            type: RECTANGLE\n            layout: layout_VF1EG9\n            fills: fill_OQLN00"
+}

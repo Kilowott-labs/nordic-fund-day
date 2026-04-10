@@ -1,0 +1,30 @@
+//banner block styles
+@use "../mixins/index" as mix;
+@use "../svg.scss" as svg;
+
+.banner-block{
+    .wp-block-columns{
+        background-image: svg.$half_arrow, linear-gradient(45deg, var(--wp--preset--color--primary-darkest), var(--wp--preset--color--primary-dark));    
+        background-position: 100%, 0 0;
+        background-repeat: no-repeat, repeat;
+        background-size: auto, auto;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;        
+        display: flex;
+        overflow: hidden;
+    }  
+    
+    p{
+        opacity: 0.8;
+        font-size: 1rem;
+        color: var(--wp--preset--color--white);
+    }
+
+    @include mix.bp(tablet-md){
+        .has-global-padding{
+            --wp--style--root--padding-right: 0;
+            --wp--style--root--padding-left: 0;
+        }
+    }
+}

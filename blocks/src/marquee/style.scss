@@ -1,0 +1,79 @@
+/**
+ * style.scss — marquee
+ * Only CSS that Tailwind cannot express.
+ */
+
+.wp-block-agent-theme-marquee {
+
+    // @keyframes — Tailwind cannot define keyframe sequences
+    @keyframes marquee-ltr {
+        from { transform: translate3d(0, 0, 0); }
+        to   { transform: translate3d(-50%, 0, 0); }
+    }
+
+    @keyframes marquee-rtl {
+        from { transform: translate3d(-50%, 0, 0); }
+        to   { transform: translate3d(0, 0, 0); }
+    }
+
+    .marquee-track {
+        display: flex;
+        will-change: transform;
+    }
+
+    // Animation classes driven by var(--marquee-speed) set inline on the block root
+    .marquee-track--ltr {
+        animation: marquee-ltr var(--marquee-speed, 20s) linear infinite;
+    }
+
+    .marquee-track--rtl {
+        animation: marquee-rtl var(--marquee-speed, 20s) linear infinite;
+    }
+
+    .marquee-item {
+        flex-shrink: 0;
+        display: inline-flex;
+        align-items: center;
+        white-space: nowrap;
+    }
+
+    // ::after separator dot — Tailwind cannot generate content
+    // Color driven by --marquee-separator-color set inline on each strip wrapper
+    .marquee-item--dot::after {
+        content: '';
+        display: inline-block;
+        width: 8px;
+        height: 8px;
+        border-radius: 9999px;
+        background-color: var(--marquee-separator-color, currentColor);
+        margin-left: 30px;
+    }
+
+    // Tilt layout: strips absolutely positioned for the cross-overlap effect
+    // Width and offset extend beyond viewport so rotation doesn't leave bare edges
+    .marquee-strip {
+        position: absolute;
+        width: 150%;
+        left: -25%;
+    }
+
+    .marquee-strip--1 { z-index: 2; }
+    .marquee-strip--2 { z-index: 1; }
+
+    // Responsive section height for tilt mode.
+    // Media query is required here because the height values are dynamic CSS custom
+    // properties set from block attributes — Tailwind arbitrary values cannot use
+    // CSS custom properties inside responsive height utilities.
+    &.is-tilt {
+        height: var(--marquee-height-mobile, 300px);
+
+        @media (min-width: 768px) {
+            height: var(--marquee-height-desktop, 600px);
+        }
+    }
+
+    // Pause on hover — pure CSS via data attribute, no view.js needed
+    &[data-pause-on-hover='true']:hover .marquee-track {
+        animation-play-state: paused;
+    }
+}

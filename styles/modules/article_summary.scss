@@ -1,0 +1,100 @@
+//article-summary block
+@use "../mixins/index" as mix;
+@use "../svg.scss" as svg;
+
+.article-summary{
+    .wp-block-columns{
+        position: relative;
+    }
+    
+    .wp-block-heading{
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        &::after{
+            content: '';
+            background-image: svg.$article_summary_icon;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
+            vertical-align: middle;
+            background-size: 24px;
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            padding-left: 10px;
+        }
+    }
+
+    .wp-block-list li{
+        margin-bottom: 1rem;
+        &:before{
+            content: '•';
+            width: 10px;
+            height: 10px;
+            flex: 0 0 10px;
+            mask-image: none;
+            background: none !important; 
+        }
+    }
+
+    .summary-content{
+        max-height: 240px;
+        overflow: hidden;
+        transition: all 0.5s ease;
+        &.is-expanded{
+            padding-bottom: 5rem;
+            overflow: unset;
+            max-height: 1000px;
+        }
+    } 
+
+    .wp-block-buttons{
+        background-image: linear-gradient(0deg, var(--wp--preset--color--primary-lightest) 60%, #fff0);
+        justify-content: flex-start;
+        align-items: flex-end;
+        width: 100%;
+        height: 140px;
+        padding-bottom: 2rem;
+        padding-left: 3rem;
+        display: flex;
+        position: absolute;
+        inset: auto auto 0% 0%;
+        @include mix.bp(tablet-sm) {
+            padding-top: 2rem;
+            padding-left: 2rem;
+        }
+
+
+        .wp-block-button{
+            &__link{
+                display: flex;
+                flex-direction: row-reverse;
+                transition: all 0.5s ease;
+                height: fit-content;
+                
+                &:before{
+                    content: '';
+                    background-image: svg.$chevron_down_white;
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    background-size: contain;
+                    vertical-align: middle;
+                    background-size: 24px;
+                    display: inline-block;
+                    width: 24px;
+                    height: 24px;
+                    padding-left: .5rem;
+                }
+
+                &.view-less{
+                    &:before{
+                        transform: rotate(180deg);
+                    }
+                }
+            }
+        }
+    }
+}

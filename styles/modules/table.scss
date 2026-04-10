@@ -1,0 +1,31 @@
+@use "../mixins/index" as mix;
+
+.wp-block-table{    
+    border: 1px solid var(--wp--preset--color--primary-light);
+    thead{
+        border-bottom: 0;
+        tr{
+            th{
+                border-bottom: 1px solid var(--wp--preset--color--primary-light);
+            }
+        }
+    }
+    th,td{
+        padding: 1rem 1.5rem;
+        line-height: 3rem;
+        font-weight: 500;
+        @include mix.bp(tablet-sm) {
+            min-width: 100px;
+        }
+    }
+    tbody{
+        tr{
+            &:nth-child(even){
+                background-color: var(--wp--preset--color--primary-lightest);
+            }
+            &:nth-child(odd){
+                background-color: transparent;
+            }
+        }
+    } 
+}

@@ -1,0 +1,67 @@
+.membership-benefits-block{
+    > .wp-block-columns{
+        .wp-block-column{
+            &:nth-child(2){
+                display: flex;
+                align-items: center;
+            }
+        }
+    }
+}
+
+.membership-accordion{
+    &-item{
+        opacity: 1;
+        cursor: pointer; 
+            
+        img,figcaption{
+            display: none;
+        }
+
+        &.active{
+            border-left-color: var(--wp--preset--color--primary) !important;
+        }
+    }
+
+    &-image-active{
+        height:600px;
+        img{
+            height:100%;
+            width:100%;
+            object-fit: cover;
+        }    
+        
+        figcaption{
+            display: none;
+        }
+
+        @media (max-width: 782px) { 
+             height:340px;
+         }
+    }
+
+    &-content{
+        .wp-block-buttons{
+            @media (max-width: 782px) { 
+                width: 100%;
+                .wp-block-button{
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
+
+body:not(.block-editor-iframe__body){
+    &:not(.block-editor-page) {
+        .membership-accordion{
+            &-item{
+                opacity: 0.4;
+                width: 100%;
+                &.active{
+                    opacity: 1;
+                }
+            }
+        }
+    }
+}

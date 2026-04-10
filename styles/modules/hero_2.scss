@@ -1,0 +1,87 @@
+//hero-2 specific style
+@use "../mixins/index" as mix;
+@use "../svg.scss" as svg;
+
+.hero-2{    
+    .wp-block-columns{
+        gap: 5rem;
+        @include mix.bp(tablet-sm){
+            gap: 1.25rem;
+        }
+
+        .wp-block-column{
+            &:nth-child(1){
+                .wp-block-group{
+                    position: relative;
+                    padding-top: 5rem;
+                    padding-bottom: 0;
+                    padding-left: 0;                    
+                    max-width: 32rem;
+                    z-index: 100;      
+                    @include mix.bp(tablet-md){
+                        //margin-left: auto;
+                        padding-left: 5rem;
+                        padding-top: 10rem;
+                        padding-bottom: 10rem;
+                    }
+                    @include mix.bp(tablet-sm){
+                        padding-top: 5rem !important;
+                        max-width: 20rem;
+                    }
+
+                    &:before{
+                        content: "";
+                        position: absolute;
+                        width: 12rem;
+                        inset: 0% auto auto 0%;
+                        opacity: 0.4;
+                        mix-blend-mode: overlay;
+                        height: 80%;
+                        background-image: svg.$angle_banner;
+                        background-position: center;
+                        background-repeat: no-repeat;
+                        background-size: contain; 
+                        @include mix.bp(tablet-md){
+                            width: 100%;
+                        }
+                    }
+                }
+            }
+
+            &:nth-child(2) {
+                .wp-block-group{
+                    @include mix.bp(tablet-md){                 
+                        padding-top: 11rem;
+                    }
+                }
+            }
+        }//wp-block-column
+    }//wp-block-columns
+
+    //list style
+    .wp-block-list{
+        li{
+            color: var(--wp--preset--color--white);
+            &:before{
+                background-color: var(--wp--preset--color--white);
+            }
+        }
+    }
+
+    .wp-block-buttons{
+        gap: 1rem;
+        margin-top: 2rem;
+        @include mix.bp(tablet-sm){
+            flex-flow: column;
+            justify-content: center;
+            align-self: center;
+            align-items: flex-start;
+            margin-top: 1.5rem;
+        }        
+        .wp-block-button{
+            @include mix.bp(tablet-sm){
+                width: 100%;
+            }
+        }
+    }
+}

@@ -1,0 +1,71 @@
+//innholdsside-banner styles
+@use "../mixins/index" as mix;
+@use "../svg.scss" as svg;
+.innholdsside-banner{
+    .wp-block-columns{
+        @include mix.bp(tablet-sm){
+            flex-direction: column-reverse;
+        }
+        .wp-block-column{
+            &:nth-child(1){
+                .wp-block-button{
+                    @include mix.bp(tablet-sm){
+                        width: 100%;
+                    }
+                }
+            }
+
+            &:nth-child(2){  
+                .wp-block-group{  
+                    figure.wp-block-post-featured-image{
+                        background-image: svg.$half_arrow_red;
+                        background-position: 0 0;
+                        background-repeat: no-repeat;
+                        background-size: auto;
+                        padding-top: 3rem;
+                        padding-left: 4rem;
+                        overflow: hidden;
+                        @include mix.bp(tablet-sm){
+                            padding-top: 1rem;
+                            padding-left: 2rem;
+                        }        
+        
+                        img{     
+                            aspect-ratio: 1;
+                            object-fit: cover;
+                            //height: 305px;                   
+                            @include mix.bp(tablet-md){
+                                //height: 536px;
+                            }
+                        }
+                    }
+                }              
+            }
+        }
+    }
+}
+
+
+//hide the banner feature image on woocommerce pages
+.page-template-default.woocommerce-page{
+    .innholdsside-banner{
+        .wp-block-columns{
+            .wp-block-column{
+                &:nth-child(2){  
+                    display: none;
+                }
+            }
+        }
+    }
+}
+
+
+//add margin on default page content
+.page-template-default{
+    .innholdsside-banner{
+        margin-bottom: 3rem !important;
+        @include mix.bp(tablet-sm){
+            margin-bottom: 2rem !important;
+        }
+    }
+}

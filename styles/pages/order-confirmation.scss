@@ -1,0 +1,36 @@
+@use "../mixins/index" as mix;
+
+body.woocommerce-order-received{
+    background-color: var(--wp--preset--color--primary-lightest);
+    main.wp-block-group{
+        max-width:var(--wp--style--global--wide-size);
+        margin: var(--wp--preset--spacing--spacer-small) auto 0;
+        padding: var(--wp--preset--spacing--spacer-xxsmall);
+        background: var(--wp--preset--color--white);
+        > div{
+            padding: 0 var(--wp--preset--spacing--spacer-xxsmall);
+
+            @include mix.bp(mobile){
+                padding: 0 ;   
+            }
+        }
+        .wp-block-woocommerce-order-confirmation {
+            &-status{
+                h1{
+                    margin-top: 0;
+                    font-size:var(--wp--preset--font-size--headline-1);
+                }
+                p{
+                    font-size:var(--wp--preset--font-size--headline-4);
+                    line-height: var(--wp--custom--line-height--small);
+                }
+            }
+
+            &-totals, &-billing-wrapper{
+                table, .wp-block-woocommerce-order-confirmation-billing-address{
+                    border-radius: 0;
+                }
+            }
+        }
+    }
+}

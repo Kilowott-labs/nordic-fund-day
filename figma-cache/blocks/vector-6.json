@@ -1,0 +1,11 @@
+{
+  "id": "224:482",
+  "name": "Vector",
+  "type": "IMAGE-SVG",
+  "layout_ref": "layout_YN0VJT",
+  "dimensions": {
+    "width": "14.67",
+    "height": "11.88"
+  },
+  "yaml_content": "      - id: 224:482\n        name: Vector\n        type: IMAGE-SVG\n        layout: layout_YN0VJT\n        strokes: fill_5EVUR3\n        strokeWeight: 0.9166666865348816px"
+}

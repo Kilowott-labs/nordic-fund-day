@@ -1,0 +1,39 @@
+{
+  "version": "2.0",
+  "figmaCachePath": "figma-cache/blocks",
+  "baseUrl": "https://ewnorge.kodework.com",
+  "tolerance": {
+    "dimensions": 2,
+    "spacing": 2,
+    "typography": 1,
+    "colors": 5
+  },
+  "sections": {
+    "hero-section": {
+      "figmaCacheFile": "figma-cache/blocks/hero-section.json",
+      "url": "/",
+      "rootSelector": ".wp-block-avaro-hero",
+      "viewports": ["desktop", "tablet", "mobile"]
+    },
+    "hero-growth": {
+      "figmaCacheFile": "figma-cache/blocks/hero-growth.json",
+      "url": "/",
+      "rootSelector": ".hero-growth-block",
+      "viewports": ["desktop", "tablet", "mobile"]
+    }
+  },
+  "viewportPresets": {
+    "desktop": {
+      "width": 1920,
+      "height": 1080
+    },
+    "tablet": {
+      "width": 768,
+      "height": 1024
+    },
+    "mobile": {
+      "width": 375,
+      "height": 667
+    }
+  }
+}

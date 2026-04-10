@@ -1,0 +1,79 @@
+@use "../mixins/index" as mix;
+@use "../svg.scss" as svg;
+
+.ansatte{
+    &_back_link{
+        a{
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: var(--wp--preset--color--dark);
+            gap: 0.5rem;
+
+            &:hover{
+                text-decoration: underline;                
+            }
+
+            &:before{       
+                content: ''; 
+                display: inline-block; 
+                background-image: svg.$breadcrumb;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: contain;
+                width: 15px;                
+                height: 20px;        
+                margin: 0 0.5rem 0 0;
+                vertical-align: middle;  
+                @include mix.bp(tablet-sm) {
+                    height: 16px;
+                }
+            }     
+        } 
+    }
+
+    &_grid{
+
+         @include mix.bp(tablet-sm){
+            grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+        }
+         @include mix.bp(mobile){
+            grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        }
+        @media (max-width: 450px) {
+            grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
+        }
+    }
+
+    &_card{
+        position: relative;
+        figure{
+            height: 160px;
+            width: 100%;
+            a{
+                position: absolute;
+                top:0;
+                left: 0;
+                height: 100%;
+                width: 100%;
+                z-index: 1;
+            }
+        }
+        p{
+            a{
+                position: relative;
+                z-index:2
+            }
+        }
+        .ansatte_name{
+            text-decoration: underline;
+        }
+
+        &:hover{
+            .ansatte_name{
+                text-decoration: none;
+            }
+        }
+    }
+    
+}

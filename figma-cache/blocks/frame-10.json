@@ -1,0 +1,11 @@
+{
+  "id": "224:529",
+  "name": "Frame 10",
+  "type": "FRAME",
+  "layout_ref": "layout_KHXKFQ",
+  "dimensions": {
+    "width": "?",
+    "height": "?"
+  },
+  "yaml_content": "      - id: 224:528\n        name: Frame 1984079007\n        type: FRAME\n        layout: layout_PNJQR7\n        fills: fill_EB8K2X\n        children:\n          - id: 224:529\n            name: Frame 10\n            type: FRAME\n            layout: layout_KHXKFQ\n            children:\n              - id: 224:530\n                name: image 15 [Vectorized]\n                type: IMAGE-SVG\n                layout: layout_CTXJCB\n                fills: fill_EB8K2X\n              - id: 224:547\n                name: Frame 9\n                type: FRAME\n                layout: layout_HNPGD8\n                children:\n                  - id: 224:548\n                    name: Link → Why Attend\n                    type: TEXT\n                    layout: layout_S8SAMN\n                    text: About\n                    textStyle: style_5CTKY8\n                    fills: fill_J0616S\n                  - id: 224:549\n                    name: Link → Agenda\n                    type: TEXT\n                    layout: layout_S8SAMN\n                    text: Agenda\n                    textStyle: style_5CTKY8\n                    fills: fill_J0616S\n                  - id: 224:550\n                    name: Link → Stavanger\n                    type: TEXT\n                    layout: layout_S8SAMN\n                    text: Become Partner\n                    textStyle: style_5CTKY8\n                    fills: fill_J0616S\n                  - id: 224:551\n                    name: Link\n                    type: FRAME\n                    layout: layout_I5ULLN\n                    fills: fill_J0616S\n                    borderRadius: 69.33333587646484px\n                    children:\n                      - id: 224:552\n                        name: request ACCESS\n                        type: TEXT\n                        layout: layout_S8SAMN\n                        text: request ACCESS\n                        textStyle: style_A3Y7HS\n                        fills: fill_QV2JDQ"
+}

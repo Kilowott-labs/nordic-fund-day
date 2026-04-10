@@ -1,0 +1,93 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "agent-theme/marquee",
+  "version": "1.0.0",
+  "title": "Marquee",
+  "category": "ytf",
+  "icon": "controls-repeat",
+  "description": "Animated scrolling marquee with one or two strips. Supports tilt/overlap layout, per-strip colors, direction, separator dots, speed and pause-on-hover.",
+  "textdomain": "agent-theme",
+  "attributes": {
+    "layout": {
+      "type": "string",
+      "default": "double"
+    },
+    "tilt": {
+      "type": "boolean",
+      "default": true
+    },
+    "tiltAngle": {
+      "type": "number",
+      "default": 5
+    },
+    "sectionHeight": {
+      "type": "number",
+      "default": 600
+    },
+    "sectionHeightMobile": {
+      "type": "number",
+      "default": 300
+    },
+    "sectionBg": {
+      "type": "string",
+      "default": ""
+    },
+    "speed": {
+      "type": "number",
+      "default": 20
+    },
+    "pauseOnHover": {
+      "type": "boolean",
+      "default": false
+    },
+    "strips": {
+      "type": "array",
+      "default": [
+        {
+          "id": 1,
+          "bgColor": "#C1ED00",
+          "textColor": "#141414",
+          "direction": "ltr",
+          "showSeparator": true,
+          "separatorColor": "#141414",
+          "fontSize": 30,
+          "gap": 30,
+          "items": [
+            { "id": 1, "text": "Creative agency" },
+            { "id": 2, "text": "Website marketing" },
+            { "id": 3, "text": "Digital marketing" },
+            { "id": 4, "text": "Product marketing" },
+            { "id": 5, "text": "Research marketing" },
+            { "id": 6, "text": "Lifetime Update" }
+          ]
+        },
+        {
+          "id": 2,
+          "bgColor": "#141414",
+          "textColor": "#C1ED00",
+          "direction": "rtl",
+          "showSeparator": true,
+          "separatorColor": "#C1ED00",
+          "fontSize": 30,
+          "gap": 30,
+          "items": [
+            { "id": 1, "text": "Brand identity" },
+            { "id": 2, "text": "Social media" },
+            { "id": 3, "text": "Content strategy" },
+            { "id": 4, "text": "SEO optimization" },
+            { "id": 5, "text": "Email campaigns" },
+            { "id": 6, "text": "Growth hacking" }
+          ]
+        }
+      ]
+    }
+  },
+  "supports": {
+    "html": false,
+    "align": ["wide", "full"],
+    "spacing": { "padding": true, "margin": true }
+  },
+  "editorScript": "file:./index.js",
+  "style": "file:./style-index.css"
+}

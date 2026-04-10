@@ -1,0 +1,11 @@
+{
+  "id": "224:367",
+  "name": "Rectangle 6",
+  "type": "RECTANGLE",
+  "layout_ref": "layout_RRWMUZ",
+  "dimensions": {
+    "width": "1920",
+    "height": "1082"
+  },
+  "yaml_content": "      - id: 224:367\n        name: Rectangle 6\n        type: RECTANGLE\n        layout: layout_RRWMUZ\n        fills: fill_7L2ERW"
+}

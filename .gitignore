@@ -1,0 +1,8 @@
+node_modules/
+.claude/mcp.json
+.mcp.json
+.env
+.env.*
+*.key
+*.pem
+*.p12

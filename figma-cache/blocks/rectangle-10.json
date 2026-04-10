@@ -1,0 +1,11 @@
+{
+  "id": "224:488",
+  "name": "Rectangle",
+  "type": "RECTANGLE",
+  "layout_ref": "layout_PLLUJ0",
+  "dimensions": {
+    "width": "81.2",
+    "height": "20"
+  },
+  "yaml_content": "      - id: 224:488\n        name: Rectangle\n        type: RECTANGLE\n        layout: layout_PLLUJ0"
+}

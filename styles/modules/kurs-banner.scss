@@ -1,0 +1,30 @@
+//kurs-banner style
+@use "../mixins/index" as mix;
+@use "../svg.scss" as svg;
+.kurs-banner{
+    .wp-block-columns{
+        @include mix.bp(tablet-sm){
+            flex-direction: column-reverse;
+        }
+        .wp-block-column{
+            &:nth-child(2){
+                .wp-block-group{  
+                    img{     
+                        aspect-ratio: 1;
+                    }
+                }     
+
+                .course-date-overlay{
+                    display: none;
+                }
+            }
+        }
+    }
+
+    .cta-buttons{
+        margin-top: 2rem;
+        @include mix.bp(tablet-sm){
+            margin-top: 1.5rem;
+        }
+    }
+}

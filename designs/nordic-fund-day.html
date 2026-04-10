@@ -1,0 +1,1131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nordic Fund Day — Stavanger, Norway</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+  <!-- Lenis Smooth Scroll -->
+  <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+  <!-- GSAP + ScrollTrigger -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <!-- Tailwind -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"DM Sans"', 'system-ui', 'sans-serif'],
+            mono: ['"DM Mono"', 'monospace'],
+          },
+          colors: {
+            lime: '#D4FF49',
+            'lime-cta': '#CCF546',
+            'dark': '#000000',
+            'dark-card': '#212121',
+            'dark-near': '#010101',
+            'dark-pill': '#21242C',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .animate-marquee { animation: marquee 20s linear infinite; }
+    html.lenis, html.lenis body { height: auto; }
+    .lenis.lenis-smooth { scroll-behavior: auto !important; }
+    .lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+    .hero-glow { text-shadow: 0px 0px 13px rgba(255, 255, 255, 0.8); }
+    .date-glow { text-shadow: 0px 0.77px 3.1px rgba(255, 255, 255, 0.45); }
+    /* Mobile menu */
+    .mobile-menu { display: none; }
+    .mobile-menu.open { display: flex; }
+    /* Navbar scroll state */
+    nav { transition: background 0.4s ease, backdrop-filter 0.4s ease; }
+    nav.scrolled { background: rgba(0,0,0,0.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+    /* GSAP will set initial states via JS — no CSS hiding */
+    /* Parallax layer */
+    .parallax-hero { will-change: transform; }
+    /* Magnetic hover for buttons */
+    .magnetic { transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+    /* Line reveal */
+    .line-reveal { overflow: hidden; }
+    .line-reveal span { display: inline-block; transform: translateY(110%); }
+  </style>
+</head>
+<body class="bg-black text-white font-sans antialiased overflow-x-hidden">
+
+  <!-- ============================================================ -->
+  <!-- NAVBAR (Sticky, overlays hero) -->
+  <!-- ============================================================ -->
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-transparent">
+    <div class="flex items-center justify-between px-4 sm:px-6 md:px-[90px] py-[13px]">
+      <!-- Logo -->
+      <div class="flex-shrink-0">
+        <img src="../assets/images/logo.svg" alt="Nordic Fund Day" class="h-[40px] sm:h-[52px] md:h-[64px] w-auto" />
+      </div>
+      <!-- Nav Links (desktop) -->
+      <div class="hidden md:flex items-center gap-[43px]">
+        <a href="#about" class="text-white text-lg font-bold hover:text-[#D4FF49] transition-colors">About</a>
+        <a href="#agenda" class="text-white text-lg font-bold hover:text-[#D4FF49] transition-colors">Agenda</a>
+        <a href="#partner" class="text-white text-lg font-bold hover:text-[#D4FF49] transition-colors">Become Partner</a>
+        <a href="#" class="inline-flex items-center justify-center px-[19px] py-[9px] bg-white rounded-full text-black text-base font-bold uppercase tracking-[0.05em] hover:bg-[#D4FF49] transition-colors">request ACCESS</a>
+      </div>
+      <!-- Mobile menu button -->
+      <button class="md:hidden text-white" onclick="document.getElementById('mobile-menu').classList.toggle('open')">
+        <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h20M4 14h20M4 21h20"/></svg>
+      </button>
+    </div>
+    <!-- Mobile menu dropdown -->
+    <div id="mobile-menu" class="mobile-menu flex-col gap-4 px-4 pb-6 bg-black/95 backdrop-blur-md md:hidden">
+      <a href="#about" class="text-white text-base font-bold py-2 border-b border-white/10">About</a>
+      <a href="#agenda" class="text-white text-base font-bold py-2 border-b border-white/10">Agenda</a>
+      <a href="#partner" class="text-white text-base font-bold py-2 border-b border-white/10">Become Partner</a>
+      <a href="#" class="inline-flex items-center justify-center px-5 py-3 bg-white rounded-full text-black text-sm font-bold uppercase tracking-wide mt-2">request ACCESS</a>
+    </div>
+  </nav>
+
+  <!-- ============================================================ -->
+  <!-- HERO SECTION (one big section) -->
+  <!-- ============================================================ -->
+  <section class="relative min-h-screen lg:min-h-0 lg:aspect-[1920/1948]">
+    <!-- Background Image (hero-layer handles bg + foreground + gradient) -->
+    <div class="absolute inset-0 parallax-hero">
+      <img src="../assets/images/hero-layer.png.png" alt="" class="w-full h-full object-cover" />
+    </div>
+
+    <!-- Hero Content Container — Figma: pt 198px, pl 385px on 1920w -->
+    <div class="relative z-10 flex flex-col px-4 sm:px-6 md:pl-[10vw] lg:pl-[20%] md:pr-[5vw] lg:pr-[90px] pt-[100px] sm:pt-[7vw] md:pt-[10.3vw] pb-[25vw] sm:pb-[20vw] md:pb-[15vw] lg:pb-[300px]">
+
+      <!-- Top: Title Area -->
+      <div class="flex flex-col items-start gap-3 md:gap-4">
+        <!-- Date Badge -->
+        <div data-hero-badge class="inline-flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 rounded-full bg-white/20 border border-white/50">
+          <span class="text-white text-[11px] sm:text-[14px] font-bold tracking-[0.29em] uppercase date-glow">May 5–6, 2026</span>
+        </div>
+
+        <!-- Main Title -->
+        <div class="flex flex-col gap-0 sm:gap-1 hero-glow overflow-hidden">
+          <h1 data-hero-title class="text-[36px] sm:text-[56px] md:text-[80px] lg:text-[120px] xl:text-[140px] font-black leading-[0.85] uppercase text-white">Nordic fund</h1>
+          <h1 data-hero-title class="text-[36px] sm:text-[56px] md:text-[80px] lg:text-[120px] xl:text-[140px] font-black leading-[0.85] uppercase text-white">day, STAVANGER,</h1>
+          <h1 data-hero-title class="text-[36px] sm:text-[56px] md:text-[80px] lg:text-[120px] xl:text-[140px] font-black leading-[0.85] uppercase text-white">NORWAY</h1>
+        </div>
+
+        <!-- CTA Buttons Row -->
+        <div data-hero-cta class="flex items-stretch gap-2 sm:gap-4 mt-2 sm:mt-4">
+          <!-- Investors CTA (lime bg) -->
+          <a href="#" class="group flex flex-col gap-2 sm:gap-3 px-3 sm:px-5 py-3 sm:py-6 w-[140px] sm:w-[195px] bg-[#D4FF49] hover:bg-white shadow-[0_4px_24px_rgba(212,255,73,0.3)] hover:shadow-[0_4px_32px_rgba(255,255,255,0.3)] transition-all duration-300">
+            <div class="flex items-center justify-between w-full">
+              <span class="text-[#414726] text-[10px] sm:text-[12px] font-bold tracking-[0.12em] uppercase leading-[1.75]">INVESTORS</span>
+              <svg width="18" height="18" viewBox="0 0 23 24" fill="none" class="text-[#414726] sm:w-[23px] sm:h-[24px]">
+                <path d="M5 19L19 5M19 5H5M19 5V19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <span class="text-[#414726] text-[16px] sm:text-[24px] font-semibold leading-none tracking-[-0.07em]">Request your spot</span>
+          </a>
+          <!-- Exclusive CTA (frosted glass with white border) -->
+          <a href="#" class="group flex flex-col gap-2 sm:gap-3 px-3 sm:px-5 py-3 sm:py-6 w-[140px] sm:w-[195px] border border-white/50 bg-white/10 backdrop-blur-sm shadow-[0_4px_24px_rgba(0,0,0,0.2)] hover:bg-[#D4FF49] hover:border-[#D4FF49] transition-all duration-300">
+            <div class="flex items-center justify-between w-full">
+              <span class="text-white group-hover:text-[#414726] transition-colors duration-300 text-[10px] sm:text-[12px] font-bold tracking-[0.12em] uppercase leading-[1.75]">EXCLUSIVE</span>
+              <svg width="18" height="18" viewBox="0 0 23 24" fill="none" class="text-white group-hover:text-[#414726] transition-colors duration-300 sm:w-[23px] sm:h-[24px]">
+                <path d="M5 19L19 5M19 5H5M19 5V19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <span class="text-white group-hover:text-[#414726] transition-colors duration-300 text-[16px] sm:text-[24px] font-semibold leading-none tracking-[-0.07em]">Become a Partner</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Spacer -->
+      <div class="h-[30px] sm:h-[60px] md:h-[80px] lg:h-[360px]"></div>
+
+      <!-- Bottom: Partner Logos + Card (positioned at bottom-right on desktop, full-width on mobile) -->
+      <div data-hero-bottom class="relative z-10 flex flex-col items-end gap-3 lg:gap-6 w-full lg:self-end lg:max-w-[704px]">
+
+        <!-- Partner Logos Row -->
+        <div class="flex items-center flex-wrap justify-end gap-4 sm:gap-5 lg:gap-[21px]">
+          <img src="../assets/images/logo-badge.png" alt="TGC Capital" class="h-[28px] sm:h-[40px] lg:h-[56px] w-auto object-contain" />
+          <img src="../assets/images/logo-badge.png" alt="Rogfk" class="h-[28px] sm:h-[40px] lg:h-[56px] w-auto object-contain" />
+          <img src="../assets/images/logo-badge.png" alt="EDIH" class="h-[28px] sm:h-[40px] lg:h-[56px] w-auto object-contain" />
+          <img src="../assets/images/logo-badge.png" alt="EU Co-Funded" class="h-[28px] sm:h-[40px] lg:h-[56px] w-auto object-contain" />
+          <img src="../assets/images/logo-badge.png" alt="Dealroom" class="h-[28px] sm:h-[40px] lg:h-[56px] w-auto object-contain" />
+        </div>
+
+        <!-- CTA Card with drop shadow -->
+        <div class="w-full bg-black/10 backdrop-blur-md border border-white/30 rounded-[10px] p-4 sm:p-[30px_40px] shadow-[0px_5px_33px_rgba(0,0,0,0.05)]">
+          <div class="flex flex-col items-end gap-4 sm:gap-8">
+            <p class="text-white text-[16px] sm:text-[20px] lg:text-[24px] font-bold leading-[1.2] text-right">
+              The must-attend investor event for climate, smart city, and impact startups across the Nordics.
+            </p>
+            <div class="flex flex-row items-center gap-2 sm:gap-3">
+              <a href="#" class="inline-flex items-center justify-center px-3 sm:px-6 py-2.5 sm:py-4 h-[40px] sm:h-[48px] bg-black rounded-full text-white text-[11px] sm:text-[14px] lg:text-[16px] font-semibold uppercase tracking-[0.03em] hover:bg-[#D4FF49] hover:text-black transition-all duration-300 whitespace-nowrap">
+                INVESTOR PROGRAMME
+              </a>
+              <a href="#" class="inline-flex items-center justify-center px-3 sm:px-6 py-2.5 sm:py-4 h-[40px] sm:h-[48px] bg-white rounded-full text-black text-[11px] sm:text-[14px] lg:text-[16px] font-semibold uppercase tracking-[0.03em] hover:bg-black hover:text-white transition-all duration-300 whitespace-nowrap">
+                BECOME A PARTNER
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Stats row -->
+        <div class="flex items-center gap-6 sm:gap-10 lg:gap-[57px]">
+          <div class="flex flex-col gap-[2px]">
+            <span class="font-mono font-medium text-[24px] sm:text-[32px] lg:text-[40px] leading-[1.2] text-white">80+</span>
+            <span class="text-white/90 text-[11px] sm:text-[14px] font-semibold uppercase tracking-[0.04em]">Startups</span>
+          </div>
+          <div class="flex flex-col gap-[2px]">
+            <span class="font-mono font-medium text-[24px] sm:text-[32px] lg:text-[40px] leading-[1.2] text-white">200+</span>
+            <span class="text-white/90 text-[11px] sm:text-[14px] font-semibold uppercase tracking-[0.04em]">Investors</span>
+          </div>
+          <div class="flex flex-col gap-[2px]">
+            <span class="font-mono font-medium text-[24px] sm:text-[32px] lg:text-[40px] leading-[1.2] text-white">€50M+</span>
+            <span class="text-white/90 text-[11px] sm:text-[14px] font-semibold uppercase tracking-[0.04em]">Deal Flow</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- ============================================================ -->
+  <!-- VALUE PROPOSITION — Figma node 224:772 (merged section) -->
+  <!-- ============================================================ -->
+  <section data-section class="relative bg-[#010101]">
+    <div class="flex flex-col lg:flex-row justify-between">
+      <!-- Left Column (634px in Figma) -->
+      <div class="flex flex-col gap-16 sm:gap-20 lg:gap-[172px] px-4 sm:px-6 md:px-16 lg:pl-[90px] lg:pr-0 py-16 sm:py-20 lg:py-[132px] w-full lg:w-[42%] lg:max-w-[634px] flex-shrink-0">
+        <!-- Top: Label + Heading -->
+        <div class="flex flex-col gap-4 sm:gap-6">
+          <span class="font-mono text-[11px] sm:text-[14px] font-medium tracking-[0.11em] uppercase text-white">✦ A New Format for Real Connections</span>
+          <h2 class="text-[32px] sm:text-[44px] md:text-[52px] lg:text-[64px] font-bold leading-[1] uppercase text-white">
+            If there is one event you should prioritise this year. <span class="text-[#D4FF49]">This is it.</span>
+          </h2>
+        </div>
+        <!-- Bottom: Value prop text + pain points -->
+        <div class="flex flex-col gap-5 max-w-[532px]">
+          <p class="text-white text-[15px] sm:text-lg leading-[1.6]">
+            Not because it's bigger. But because it's built differently. We've taken everything that usually doesn't work at investor events and redesigned it.
+          </p>
+          <div class="flex flex-col gap-3 sm:gap-4">
+            <div class="bg-white/10 border border-white/[0.18] rounded p-2.5">
+              <div class="flex items-center gap-3">
+                <span class="text-[#EF4343] font-bold text-base w-[10px] flex-shrink-0">✗</span>
+                <span class="text-white/60 text-sm sm:text-base">No crowded rooms where you miss the right people.</span>
+              </div>
+            </div>
+            <div class="bg-white/10 border border-white/[0.18] rounded p-2.5">
+              <div class="flex items-center gap-3">
+                <span class="text-[#EF4343] font-bold text-base w-[10px] flex-shrink-0">✗</span>
+                <span class="text-white/60 text-sm sm:text-base">No endless small talk without direction.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column — Two images side by side (1081x779 in Figma) -->
+      <div class="relative w-full lg:w-[58%] h-[350px] sm:h-[450px] md:h-[550px] lg:h-[779px] flex flex-row overflow-hidden self-start">
+
+        <!-- Left image: Presenter (419/1081 ≈ 39%) -->
+        <div class="relative w-[39%] flex-shrink-0 overflow-hidden">
+          <img src="../assets/images/girl-image.jpg" alt="Presenter on stage" class="w-full h-full object-cover object-center" />
+          <!-- Gradient overlays -->
+          <div class="absolute inset-0" style="background: linear-gradient(0deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 31%);"></div>
+          <div class="absolute inset-0" style="background: linear-gradient(0deg, rgba(0,0,0,0) 44%, rgba(0,0,0,0.5) 99%);"></div>
+          <!-- Diagonal lime slash — top-left corner -->
+          <div class="absolute top-0 left-0 w-[55%] h-[45%] pointer-events-none overflow-hidden">
+            <div class="absolute top-0 left-[-10%] w-[30px] h-[160%] bg-[#D4FF49] origin-top-left" style="transform: rotate(30deg);"></div>
+          </div>
+          <!-- Diagonal lime slash — bottom-right corner -->
+          <div class="absolute bottom-0 right-0 w-[60%] h-[50%] pointer-events-none overflow-hidden">
+            <div class="absolute bottom-0 right-[-10%] w-[30px] h-[160%] bg-[#D4FF49] origin-bottom-right" style="transform: rotate(30deg);"></div>
+          </div>
+        </div>
+
+        <!-- Right image: Audience (remaining 61%) — rotated -180deg in Figma with gradient -->
+        <div class="relative flex-1 overflow-hidden">
+          <img src="../assets/images/new-format-panel.png" alt="Audience at event" class="w-full h-full object-cover object-center" />
+          <!-- Gradient: top fade to black + bottom fade to black -->
+          <div class="absolute inset-0" style="background: linear-gradient(180deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 36%);"></div>
+          <div class="absolute inset-0" style="background: linear-gradient(0deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0) 30%);"></div>
+
+          <!-- Quote text card (positioned top-right of this image) -->
+          <div class="absolute top-5 sm:top-7 right-4 sm:right-6 max-w-[85%] sm:max-w-[75%] lg:max-w-[334px] z-[2]">
+            <div class="flex items-start gap-2 sm:gap-3">
+              <span class="text-[#D4FF49] font-bold text-sm sm:text-base flex-shrink-0">✦</span>
+              <p class="text-white text-[12px] sm:text-[14px] lg:text-[16px] leading-[1.5]">A carefully curated evening where you are guided towards the people you actually came to meet.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- EXPO SECTORS / COMPANIES PITCHING LIVE (Figma node 224:722) -->
+  <!-- ============================================================ -->
+  <section data-section class="relative min-h-[600px] md:min-h-[900px] lg:min-h-0 lg:aspect-[1920/1200] overflow-hidden" style="outline: 1px solid #bfbfbf;">
+    <div class="absolute inset-0">
+      <img src="../assets/images/pitch-context.png" alt="" class="w-full h-full object-cover object-top" />
+    </div>
+    <div class="absolute inset-0" style="background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 20%);"></div>
+    <div class="absolute inset-0" style="background: linear-gradient(180deg, rgba(0,0,0,0) 22%, rgba(0,0,0,0.7) 73%);"></div>
+
+    <div class="relative z-10 flex flex-col justify-end h-full min-h-[600px] md:min-h-[900px] lg:min-h-0 lg:aspect-[1920/1200] px-4 sm:px-6 md:px-[90px] py-8 md:py-12 lg:py-16">
+      <div class="flex flex-col lg:flex-row justify-between items-start gap-6 lg:gap-12 mb-8 lg:mb-10">
+        <div class="flex flex-col gap-4 max-w-[642px]">
+          <span class="font-mono text-[14px] font-medium tracking-[0.1em] uppercase text-white">✦ Startup Pitch Experience</span>
+          <h2 class="text-[32px] sm:text-[48px] md:text-[56px] lg:text-[64px] font-bold leading-[1] uppercase text-white">
+            70–80+ Companies<br>Pitching Live
+          </h2>
+          <span class="text-white text-[20px] sm:text-[24px] font-bold">MAY 5, 2026 at 7pm</span>
+        </div>
+        <div class="bg-black/20 backdrop-blur-sm rounded-lg p-5 sm:p-7 max-w-[520px] w-full lg:w-[520px] border border-white/10">
+          <p class="font-mono text-[14px] sm:text-[16px] leading-[1.4] text-white mb-5">
+            Nordic Fund Day features 12 handpicked Nordic and Baltic companies eager to engage with suitable investors. The program offers focused insights, fireside chats, and investor viewpoints, enhancing the quality of the deal flow.
+          </p>
+          <a href="#" class="inline-flex items-center justify-center px-6 py-3 bg-white rounded-full text-black text-[14px] sm:text-[16px] font-semibold uppercase tracking-[0.03em] hover:bg-[#D4FF49] transition-all duration-300">
+            REQUEST YOUR SPOT
+          </a>
+        </div>
+      </div>
+
+      <div class="flex flex-col sm:flex-row gap-4 overflow-x-auto pb-2">
+        <div class="flex-1 min-w-[200px] bg-[#212121] rounded-[5px] p-6 sm:p-7 flex flex-col gap-4">
+          <div class="w-10 h-10 flex items-center justify-center"><svg width="28" height="28" viewBox="0 0 28 28" fill="none"><rect x="1" y="1" width="26" height="26" rx="4" stroke="#D4FF49" stroke-width="1.5"/><path d="M15 5L8 15h5l-1 8 7-10h-5l1-8z" fill="#D4FF49"/></svg></div>
+          <h3 class="text-[#D4FF49] text-[20px] font-bold leading-[1.2]">Energy, Water & Critical Infrastructure</h3>
+          <p class="font-mono text-[14px] leading-[1.4] text-[#B9B9B9]">Energy systems, water and wastewater, stormwater, resilience, and digital infrastructure.</p>
+        </div>
+        <div class="flex-1 min-w-[200px] bg-[#212121] rounded-[5px] p-6 sm:p-7 flex flex-col gap-4">
+          <div class="w-10 h-10 flex items-center justify-center"><svg width="28" height="28" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="10" stroke="#D4FF49" stroke-width="1.5"/><circle cx="14" cy="14" r="3" stroke="#D4FF49" stroke-width="1.5"/><path d="M14 4v3M14 21v3M4 14h3M21 14h3" stroke="#D4FF49" stroke-width="1.5"/></svg></div>
+          <h3 class="text-[#D4FF49] text-[20px] font-bold leading-[1.2]">Mobility, Transport & Logistics</h3>
+          <p class="font-mono text-[14px] leading-[1.4] text-[#B9B9B9]">Solutions for the movement of people and goods, including green and blue mobility, transport systems, and logistics</p>
+        </div>
+        <div class="flex-1 min-w-[200px] bg-[#212121] rounded-[5px] p-6 sm:p-7 flex flex-col gap-4">
+          <div class="w-10 h-10 flex items-center justify-center"><svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M14 26V14M14 14C14 14 8 12 6 6c6 2 8 8 8 8z" stroke="#D4FF49" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M14 14C14 14 20 12 22 6c-6 2-8 8-8 8z" stroke="#D4FF49" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <h3 class="text-[#D4FF49] text-[20px] font-bold leading-[1.2]">Agri- &<br>Foodtech</h3>
+          <p class="font-mono text-[14px] leading-[1.4] text-[#B9B9B9]">Solutions for producing, distributing, and preserving food, enabling efficient, resilient, and sustainable food systems</p>
+        </div>
+        <div class="flex-1 min-w-[200px] bg-[#212121] rounded-[5px] p-6 sm:p-7 flex flex-col gap-4">
+          <div class="w-10 h-10 flex items-center justify-center"><svg width="28" height="28" viewBox="0 0 28 28" fill="none"><rect x="2" y="2" width="10" height="10" rx="2" stroke="#D4FF49" stroke-width="1.5"/><rect x="16" y="2" width="10" height="10" rx="2" stroke="#D4FF49" stroke-width="1.5"/><rect x="2" y="16" width="10" height="10" rx="2" stroke="#D4FF49" stroke-width="1.5"/><rect x="16" y="16" width="10" height="10" rx="2" stroke="#D4FF49" stroke-width="1.5"/></svg></div>
+          <h3 class="text-[#D4FF49] text-[20px] font-bold leading-[1.2]">Buildings, Materials & Places</h3>
+          <p class="font-mono text-[14px] leading-[1.4] text-[#B9B9B9]">Proptech, architecture, new materials, circular construction, and urban development solutions.</p>
+        </div>
+        <div class="flex-1 min-w-[200px] bg-[#212121] rounded-[5px] p-6 sm:p-7 flex flex-col gap-4">
+          <div class="w-10 h-10 flex items-center justify-center"><svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M6 4v12c0 1 1 2 2 2h4" stroke="#D4FF49" stroke-width="1.5" stroke-linecap="round"/><path d="M6 10h8c2 0 4-1 4-3s-2-3-4-3H6" stroke="#D4FF49" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M6 10h10c2 0 4 1 4 3s-2 3-4 3H12" stroke="#D4FF49" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <h3 class="text-[#D4FF49] text-[20px] font-bold leading-[1.2]">Citizen Services & Governance</h3>
+          <p class="font-mono text-[14px] leading-[1.4] text-[#B9B9B9]">Public-sector innovation, digital services, participation, education, and inclusive communities</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- TREASURE ISLAND MIXER + INVESTOR BRUNCH (GSAP scroll pin) -->
+  <!-- Figma node 224:815 — Treasure Island is pinned, Brunch scrolls over -->
+  <!-- ============================================================ -->
+  <div id="event-panels" class="relative">
+    <!-- PANEL 1: Treasure Island Mixer (pinned by GSAP) -->
+    <section id="treasure-island" class="bg-white z-[1]">
+      <div class="flex flex-col lg:flex-row items-start gap-8 lg:gap-16 xl:gap-[106px] px-4 sm:px-6 md:px-16 lg:px-[90px] py-16 lg:py-[132px]">
+        <!-- Left: Image area (black bg behind, image offset bottom-right) -->
+        <div class="relative w-full lg:w-[48%] xl:w-[52%] flex-shrink-0">
+          <!-- Spacer for the top offset -->
+          <div class="h-[80px]"></div>
+          <!-- Black background rectangle (behind image, offset top-left) -->
+          <div class="absolute top-0 left-0 bg-black rounded-sm" style="width: calc(100% - 75px); height: calc(100% - 0px);"></div>
+          <!-- Treasure island photo (sits on top of black, offset to bottom-right) -->
+          <div class="relative z-[1]" style="margin-left: 75px; aspect-ratio: 921/683;">
+            <img src="../assets/images/treasure-island.png" alt="Treasure Island Mixer" class="w-full h-full object-cover" />
+          </div>
+          <!-- Invite only label (on the black area, bottom-left) -->
+          <div class="relative z-[1] flex flex-col gap-[2px] pl-8 py-5">
+            <span class="font-mono text-[11px] font-medium tracking-[0.22em] uppercase text-white">Invite Only</span>
+            <span class="text-white text-sm">Limited to 40 select investors</span>
+          </div>
+        </div>
+
+        <!-- Right: Content (634px wide in Figma) -->
+        <div class="flex flex-col gap-12 w-full lg:flex-1 lg:min-w-0 xl:max-w-[634px]">
+          <!-- Heading area -->
+          <div class="flex flex-col gap-4">
+            <span class="font-mono text-[14px] font-medium tracking-[0.1em] uppercase text-black">✦ NETWORKING COCKTAIL & FINGERFOOD AT</span>
+            <h2 class="text-[40px] sm:text-[52px] md:text-[64px] lg:text-[72px] font-bold leading-[0.95] uppercase text-black">
+              The Treasure<br>Island Mixer
+            </h2>
+            <div class="font-mono text-[15px] sm:text-[16px] leading-[1.4] text-black/70 space-y-4 mt-2">
+              <p>Following the Nordic Fund Day stage programme, you are exclusively invited aboard the ship taking us all to the Secret and beautiful Treasure Island Mixer.</p>
+              <p>Here, you will enjoy facilitated matchmaking with fellow investors and stakeholders, alongside compelling scale-ups and startups, in an informal, vibrant, and enjoyable setting designed to encourage dialogue, meaningful connections, and new opportunities.</p>
+              <p>Enjoy the experience.</p>
+            </div>
+          </div>
+
+          <!-- Feature badges (stacked, single column) -->
+          <div class="flex flex-col gap-[14px]">
+            <div class="flex items-center gap-3 p-2 sm:p-3 bg-[#212121] border border-white/[0.08] rounded">
+              <div class="w-8 h-8 flex items-center justify-center flex-shrink-0"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#D4FF49" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+              <span class="text-white text-[16px] font-bold leading-[1.5]">By invitation only</span>
+            </div>
+            <div class="flex items-center gap-3 p-2 sm:p-3 bg-[#212121] border border-white/[0.08] rounded">
+              <div class="w-8 h-8 flex items-center justify-center flex-shrink-0"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#D4FF49" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+              <span class="text-white text-[16px] font-bold leading-[1.5]">Curated matchmaking</span>
+            </div>
+            <div class="flex items-center gap-3 p-2 sm:p-3 bg-[#212121] border border-white/[0.08] rounded">
+              <div class="w-8 h-8 flex items-center justify-center flex-shrink-0"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#D4FF49" stroke-width="1.5"><path d="M23 6l-13.5 13.5-5.5-5.5L0 18M17 6h6v6"/></svg></div>
+              <span class="text-white text-[16px] font-bold leading-[1.5]">Rotating moments and guided introductions</span>
+            </div>
+            <div class="flex items-center gap-3 p-2 sm:p-3 bg-[#212121] border border-white/[0.08] rounded">
+              <div class="w-8 h-8 flex items-center justify-center flex-shrink-0"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#D4FF49" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg></div>
+              <span class="text-white text-[16px] font-bold leading-[1.5]">The official Nordic Fund Day Treasure hunt</span>
+            </div>
+          </div>
+
+          <a href="#" class="inline-flex items-center px-8 py-4 bg-[#CCF546] rounded-full text-black font-semibold text-base w-fit hover:bg-black hover:text-white transition-all duration-300">
+            REQUEST YOUR SPOT
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- PANEL 2: Investor Brunch (scrolls over Treasure Island) -->
+    <section id="investor-brunch" class="bg-white relative z-[2]">
+      <div class="flex flex-col-reverse lg:flex-row items-center gap-8 lg:gap-[106px] px-4 sm:px-6 md:px-16 lg:px-[90px] py-16 lg:py-[132px]">
+        <!-- Left: Content (634px wide, mirrored from Treasure Island) -->
+        <div class="flex flex-col gap-12 w-full lg:max-w-[634px]">
+          <div class="flex flex-col gap-4">
+            <span class="font-mono text-[14px] font-medium tracking-[0.1em] uppercase text-black">✦ TOP OF THE CITY – INVESTORS ONLY</span>
+            <h2 class="text-[40px] sm:text-[52px] md:text-[64px] lg:text-[72px] font-bold leading-[0.95] uppercase text-black">
+              Investor<br>Brunch
+            </h2>
+            <div class="font-mono text-[15px] sm:text-[16px] leading-[1.4] text-black/70 space-y-4 mt-2">
+              <p>Welcome to an exclusive Investor Brunch at Seid, located at the very top of the city in the iconic K8 building. Set on the 16th floor, Seid offers a unique setting with panoramic views of Stavanger.</p>
+              <p>Expect an intimate, investor-only gathering designed for deeper conversations, partnership exploration, and co-investment discussions. No pitches — just you and your investor peers building meaningful relationships over a premium brunch experience.</p>
+            </div>
+          </div>
+
+          <div class="flex flex-col gap-[14px]">
+            <div class="flex items-center gap-3 p-2 sm:p-3 bg-black border border-white/[0.08] rounded">
+              <div class="w-8 h-8 flex items-center justify-center flex-shrink-0"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#D4FF49" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+              <span class="text-white text-[16px] font-bold leading-[1.5]">Investor-to-investor networking</span>
+            </div>
+            <div class="flex items-center gap-3 p-2 sm:p-3 bg-black border border-white/[0.08] rounded">
+              <div class="w-8 h-8 flex items-center justify-center flex-shrink-0"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#D4FF49" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+              <span class="text-white text-[16px] font-bold leading-[1.5]">Co-investment & partnership discussions</span>
+            </div>
+            <div class="flex items-center gap-3 p-2 sm:p-3 bg-black border border-white/[0.08] rounded">
+              <div class="w-8 h-8 flex items-center justify-center flex-shrink-0"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#D4FF49" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg></div>
+              <span class="text-white text-[16px] font-bold leading-[1.5]">Premium, curated brunch setting</span>
+            </div>
+          </div>
+
+          <a href="#" class="inline-flex items-center px-8 py-4 bg-[#CCF546] rounded-full text-black font-semibold text-base w-fit hover:bg-black hover:text-white transition-all duration-300">
+            REQUEST YOUR SPOT
+          </a>
+        </div>
+
+        <!-- Right: Image area (lime bg behind, image offset bottom-left) -->
+        <div class="relative w-full lg:w-[52%] flex-shrink-0">
+          <!-- Spacer for the top offset -->
+          <div class="h-[80px]"></div>
+          <!-- Lime background rectangle (behind image, offset top-right) -->
+          <div class="absolute top-0 right-0 bg-[#D4FF49] rounded-sm" style="width: calc(100% - 75px); height: calc(100% - 0px);"></div>
+          <!-- Brunch photo (sits on top of lime, offset to bottom-left) -->
+          <div class="relative z-[1]" style="margin-right: 75px; aspect-ratio: 921/683;">
+            <img src="../assets/images/investor-brunch.png" alt="Investor Brunch at Seid" class="w-full h-full object-cover" />
+          </div>
+          <!-- Invite only label (on the lime area, bottom-right) -->
+          <div class="relative z-[1] flex flex-col items-end gap-[2px] pr-8 py-5">
+            <span class="font-mono text-[11px] font-medium tracking-[0.22em] uppercase text-black">Invite Only</span>
+            <span class="text-black text-sm">Limited Seats</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+  <!-- ============================================================ -->
+  <!-- BECOME A PARTNER SECTION -->
+  <!-- ============================================================ -->
+  <section id="partner" data-section class="bg-black px-4 sm:px-6 md:px-16 lg:px-[90px] py-12 md:py-20">
+    <div class="flex flex-col lg:flex-row gap-12 lg:gap-20">
+      <!-- Left Column -->
+      <div class="flex flex-col gap-10 max-w-[580px]">
+        <div class="flex flex-col gap-6">
+          <span class="text-[#D4FF49] text-sm font-medium tracking-wide">✦ Be in the Spotlight</span>
+          <h2 class="text-white text-[32px] md:text-[48px] font-bold leading-[1.1] tracking-tight">
+            Become a Partner of Nordic Fund day
+          </h2>
+        </div>
+        <p class="text-white text-lg leading-[1.6]">
+          Not traditional sponsorship. A chance to position your brand at the centre of
+          conversations, capital and future growth.
+        </p>
+        <a href="#" class="inline-flex items-center px-8 py-4 bg-[#CCF546] rounded-full text-black font-semibold text-base w-fit hover:brightness-110 transition">
+          Secure Your Partnership Spot
+        </a>
+      </div>
+
+      <!-- Right Column — Partner Cards -->
+      <div class="flex flex-col sm:flex-row gap-4 flex-1">
+        <!-- Gold Partner Card -->
+        <div class="flex-1 bg-[#212121] border border-white/[0.24] rounded overflow-hidden">
+          <div class="flex flex-col gap-2 p-6 border-b border-white/[0.24]">
+            <div class="flex items-center justify-between">
+              <div class="flex flex-col gap-1">
+                <span class="text-[#D4FF49] text-sm font-semibold">Gold Partner</span>
+                <span class="text-[#D4FF49] text-[28px] font-bold leading-tight">NOK 50,OOO</span>
+              </div>
+              <div class="inline-flex items-center px-4 py-1.5 bg-[#D4FF49]/[0.08] border border-[#D4FF49] rounded-full">
+                <span class="text-[#D4FF49] text-sm font-medium">Premium</span>
+              </div>
+            </div>
+          </div>
+          <div class="flex flex-col gap-4 p-6">
+            <div class="flex items-start gap-3">
+              <span class="text-white text-base">→</span>
+              <span class="text-white text-base">Tailored visibility and brand positioning</span>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="text-white text-base">→</span>
+              <span class="text-white text-base">Priority access and stage opportunity</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Silver Partner Card -->
+        <div class="flex-1 bg-[#212121] border border-white/[0.24] rounded overflow-hidden">
+          <div class="flex flex-col gap-2 p-6 border-b border-white/[0.24]">
+            <span class="text-white text-sm font-semibold">Silver Partner</span>
+            <span class="text-white text-[28px] font-bold leading-tight">NOK 25,OOO</span>
+          </div>
+          <div class="flex flex-col gap-4 p-6">
+            <div class="flex items-start gap-3">
+              <span class="text-white text-base">→</span>
+              <span class="text-white text-base">Strong brand presence and on-site activation</span>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="text-white text-base">→</span>
+              <span class="text-white text-base">Access to the curated network</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- COMPANIES & PARTICIPANTS SECTION -->
+  <!-- ============================================================ -->
+  <section id="about" data-section class="relative bg-black overflow-hidden">
+    <div class="absolute top-0 right-0 w-[60%] h-full">
+      <img src="../assets/images/companies-bg.png" alt="" class="w-full h-full object-cover opacity-60" />
+    </div>
+    <div class="relative z-10 px-6 md:px-[90px] py-20 md:py-32">
+      <div class="max-w-[700px]">
+        <div class="flex flex-col gap-6 mb-8">
+          <span class="text-[#D4FF49] text-sm font-medium tracking-wide">✦ The Companies & Participants</span>
+          <h2 class="text-white text-[32px] md:text-[48px] font-bold leading-[1.1] tracking-tight">
+            High-Quality Nordic Scaleups
+          </h2>
+          <p class="text-white text-lg leading-[1.6]">
+            Not early ideas. But teams with traction, customers and clear ambition. ~130 curated participants.
+          </p>
+        </div>
+
+        <!-- Investor Types -->
+        <div class="mb-10">
+          <h4 class="text-[#CACACA] text-sm font-semibold uppercase tracking-wide mb-4">Investor Types</h4>
+          <div class="flex flex-wrap items-center gap-3">
+            <span class="px-4 py-2 bg-[#21242C] border border-[#D4FF49]/20 rounded-full text-[#D4FF49] font-mono text-sm">VCs</span>
+            <span class="px-4 py-2 bg-[#21242C] border border-[#D4FF49]/20 rounded-full text-[#D4FF49] font-mono text-sm">CVCs</span>
+            <span class="px-4 py-2 bg-[#21242C] border border-[#D4FF49]/20 rounded-full text-[#D4FF49] font-mono text-sm">Family Offices</span>
+            <span class="px-4 py-2 bg-[#21242C] border border-[#D4FF49]/20 rounded-full text-[#D4FF49] font-mono text-sm">Angel Networks</span>
+            <span class="px-4 py-2 bg-[#21242C] border border-[#D4FF49]/20 rounded-full text-[#D4FF49] font-mono text-sm">Strategic Investors</span>
+          </div>
+        </div>
+
+        <!-- Focus Sectors -->
+        <div>
+          <h4 class="text-[#CACACA] text-sm font-semibold uppercase tracking-wide mb-4">Focus Sectors</h4>
+          <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+            <div class="flex flex-col items-center gap-3 p-4 bg-[#212121] border border-white/[0.08] rounded">
+              <div class="w-10 h-10 flex items-center justify-center">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#D4FF49" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+              </div>
+              <span class="text-[#E7EBEF] text-sm font-medium">Energy</span>
+            </div>
+            <div class="flex flex-col items-center gap-3 p-4 bg-[#212121] border border-white/[0.08] rounded">
+              <div class="w-10 h-10 flex items-center justify-center">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#D4FF49" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+              </div>
+              <span class="text-[#E7EBEF] text-sm font-medium">Mobility</span>
+            </div>
+            <div class="flex flex-col items-center gap-3 p-4 bg-[#212121] border border-white/[0.08] rounded">
+              <div class="w-10 h-10 flex items-center justify-center">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#D4FF49" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              </div>
+              <span class="text-[#E7EBEF] text-sm font-medium">AgriTech</span>
+            </div>
+            <div class="flex flex-col items-center gap-3 p-4 bg-[#212121] border border-white/[0.08] rounded">
+              <div class="w-10 h-10 flex items-center justify-center">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#D4FF49" stroke-width="1.5"><path d="M12 3v18M3 12h18M5.63 5.63l12.74 12.74M18.37 5.63L5.63 18.37"/></svg>
+              </div>
+              <span class="text-[#E7EBEF] text-sm font-medium">Cleantech</span>
+            </div>
+            <div class="flex flex-col items-center gap-3 p-4 bg-[#212121] border border-white/[0.08] rounded">
+              <div class="w-10 h-10 flex items-center justify-center">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#D4FF49" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+              </div>
+              <span class="text-[#E7EBEF] text-sm font-medium">Urban Dev</span>
+            </div>
+            <div class="flex flex-col items-center gap-3 p-4 bg-[#212121] border border-white/[0.08] rounded">
+              <div class="w-10 h-10 flex items-center justify-center">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#D4FF49" stroke-width="1.5"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>
+              </div>
+              <span class="text-[#E7EBEF] text-sm font-medium">Enabling Tech</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- SCHEDULE SECTION -->
+  <!-- ============================================================ -->
+  <section id="agenda" data-section class="bg-black px-6 md:px-[90px] py-20 md:py-32">
+    <div class="flex flex-col gap-10">
+      <!-- Header -->
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+        <div class="flex flex-col gap-4">
+          <span class="text-[#D4FF49] text-sm font-medium tracking-wide">✦ Full Schedule</span>
+          <h2 class="text-white text-[32px] md:text-[48px] font-bold leading-[1.1] tracking-tight">
+            Three Days.<br>One Destination.
+          </h2>
+        </div>
+        <a href="#" class="inline-flex items-center px-8 py-4 bg-[#CCF546] rounded-full text-black font-semibold text-base hover:brightness-110 transition w-fit">
+          full programme
+        </a>
+      </div>
+
+      <!-- Day Cards Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <!-- May 4 — Social & Travel Day -->
+        <div class="bg-[#212121] border border-white/[0.24] rounded overflow-hidden">
+          <div class="p-6 border-b border-white/[0.24]">
+            <span class="text-[#D4FF49] text-sm font-semibold">May 4</span>
+            <h3 class="text-white text-[28px] font-bold leading-tight mt-1">Social & Travel Day</h3>
+          </div>
+          <div class="flex flex-col divide-y divide-white/10">
+            <div class="p-6">
+              <span class="text-white/70 text-sm font-semibold block mb-2">Daytime</span>
+              <h4 class="text-white text-base font-semibold mb-1">Pulpit rock hike</h4>
+              <p class="text-white/70 text-sm">Hike to Preikestolen — one of Norway's most iconic viewpoints. Optional.</p>
+            </div>
+            <div class="p-6">
+              <span class="text-white/70 text-sm font-semibold block mb-2">All Day</span>
+              <h4 class="text-white text-base font-semibold mb-1">Work from innoasis</h4>
+              <p class="text-white/70 text-sm">Drop into our co-working space at Innoasis, Stavanger.</p>
+            </div>
+            <div class="p-6">
+              <span class="text-white/70 text-sm font-semibold block mb-2">19:00</span>
+              <h4 class="text-white text-base font-semibold mb-1">Informal Network Meetup</h4>
+              <p class="text-white/70 text-sm mb-3">Pub-style warmup evening for early arrivals. Open and relaxed.</p>
+              <div class="inline-flex items-center gap-2 px-3 py-1 bg-white/[0.08] border border-white/[0.12] rounded-sm">
+                <span class="font-mono text-xs text-white">Open</span>
+                <span class="w-1 h-1 rounded-full bg-white"></span>
+                <span class="font-mono text-xs text-white">Free</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- May 5 — Day 1: Nordic Fund Day -->
+        <div class="bg-[#212121] border border-white/[0.24] rounded overflow-hidden">
+          <div class="p-6 border-b border-white/[0.24]">
+            <span class="text-[#D4FF49] text-sm font-semibold">May 5 Day 1</span>
+            <h3 class="text-white text-[28px] font-bold leading-tight mt-1">Nordic Fund Day</h3>
+          </div>
+          <div class="flex flex-col divide-y divide-white/10">
+            <div class="p-6">
+              <span class="text-white/70 text-sm font-semibold block mb-2">09:00</span>
+              <h4 class="text-white text-base font-semibold mb-1">Nordic Edge Expo Conference</h4>
+              <p class="text-white/70 text-sm">Two parallel stages at Fiskepiren — Europe's premier smart city and AgriTech conference.</p>
+            </div>
+            <div class="p-6">
+              <span class="text-white/70 text-sm font-semibold block mb-2">16:00</span>
+              <h4 class="text-white text-base font-semibold mb-1">Investor Pitching Sessions</h4>
+              <p class="text-white/70 text-sm mb-3">70–80 curated companies pitch live on stage. Open to all attendees.</p>
+              <div class="inline-flex items-center gap-2 px-3 py-1 bg-white/[0.08] border border-white/[0.12] rounded-sm">
+                <span class="font-mono text-xs text-white">Open</span>
+                <span class="w-1 h-1 rounded-full bg-white"></span>
+                <span class="font-mono text-xs text-white">Free</span>
+              </div>
+            </div>
+            <div class="p-6">
+              <span class="text-white/70 text-sm font-semibold block mb-2">18:30</span>
+              <h4 class="text-white text-base font-semibold mb-1">The Mixer — Invitation Only</h4>
+              <p class="text-white/70 text-sm mb-3">Exclusive facilitated networking for investors, pitching companies, partners, and Nordic Edge members.</p>
+              <div class="inline-flex items-center gap-2 px-3 py-1 bg-[#D4FF49]/[0.08] border border-[#D4FF49] rounded-sm">
+                <span class="font-mono text-xs text-[#D4FF49]">BY INVITATIONS ONLY</span>
+              </div>
+            </div>
+            <div class="p-6">
+              <span class="text-white/70 text-sm font-semibold block mb-2">20:00</span>
+              <h4 class="text-white text-base font-semibold mb-1">After Party</h4>
+              <p class="text-white/70 text-sm">Drinks, mingling, and surprises for everyone at Fiskepiren.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- May 6 — Day 2: Workshops & Brunch -->
+        <div class="bg-[#212121] border border-white/[0.24] rounded overflow-hidden">
+          <div class="p-6 border-b border-white/[0.24]">
+            <span class="text-[#D4FF49] text-sm font-semibold">May 6 Day 2</span>
+            <h3 class="text-white text-[28px] font-bold leading-tight mt-1">Workshops & Brunch</h3>
+          </div>
+          <div class="flex flex-col divide-y divide-white/10">
+            <div class="p-6">
+              <span class="text-white/70 text-sm font-semibold block mb-2">09:00</span>
+              <h4 class="text-white text-base font-semibold mb-1">Nordic Edge Expo Conference</h4>
+              <p class="text-white/70 text-sm">Two parallel stages at Fiskepiren — Europe's premier smart city and AgriTech conference. Day 2.</p>
+            </div>
+            <div class="p-6">
+              <span class="text-white/70 text-sm font-semibold block mb-2">10:00</span>
+              <h4 class="text-white text-base font-semibold mb-1">Investor Brunch (Invitation Only)</h4>
+              <p class="text-white/70 text-sm mb-3">Exclusive brunch at Seid, K8 building, 16th floor. Investor-only deep conversations.</p>
+              <div class="inline-flex items-center gap-2 px-3 py-1 bg-[#D4FF49]/[0.08] border border-[#D4FF49] rounded-sm">
+                <span class="font-mono text-xs text-[#D4FF49]">BY INVITATIONS ONLY</span>
+              </div>
+            </div>
+            <div class="p-6">
+              <span class="text-white/70 text-sm font-semibold block mb-2">13:00</span>
+              <h4 class="text-white text-base font-semibold mb-1">Investor Workshops</h4>
+              <p class="text-white/70 text-sm">Deep dives on deal flow, emerging sectors and co-investment.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- MARQUEE SECTION -->
+  <!-- ============================================================ -->
+  <section class="bg-black py-6 overflow-hidden border-y border-white/10">
+    <div class="flex whitespace-nowrap animate-marquee">
+      <span class="text-white text-4xl md:text-5xl font-black uppercase tracking-tight mx-4 md:mx-6">CAPITAL</span>
+      <span class="text-[#D4FF49] text-4xl md:text-5xl mx-4 md:mx-6">✦</span>
+      <span class="text-white text-4xl md:text-5xl font-black uppercase tracking-tight mx-4 md:mx-6">COMPANIES</span>
+      <span class="text-[#D4FF49] text-4xl md:text-5xl mx-4 md:mx-6">✦</span>
+      <span class="text-white text-4xl md:text-5xl font-black uppercase tracking-tight mx-4 md:mx-6">CO-INVESTORS</span>
+      <span class="text-[#D4FF49] text-4xl md:text-5xl mx-4 md:mx-6">✦</span>
+      <span class="text-white text-4xl md:text-5xl font-black uppercase tracking-tight mx-4 md:mx-6">CONNECTIONS</span>
+      <span class="text-[#D4FF49] text-4xl md:text-5xl mx-4 md:mx-6">✦</span>
+      <span class="text-white text-4xl md:text-5xl font-black uppercase tracking-tight mx-4 md:mx-6">OPPORTUNITIES</span>
+      <span class="text-[#D4FF49] text-4xl md:text-5xl mx-4 md:mx-6">✦</span>
+      <span class="text-white text-4xl md:text-5xl font-black uppercase tracking-tight mx-4 md:mx-6">CAPITAL</span>
+      <span class="text-[#D4FF49] text-4xl md:text-5xl mx-4 md:mx-6">✦</span>
+      <span class="text-white text-4xl md:text-5xl font-black uppercase tracking-tight mx-4 md:mx-6">COMPANIES</span>
+      <span class="text-[#D4FF49] text-4xl md:text-5xl mx-4 md:mx-6">✦</span>
+      <span class="text-white text-4xl md:text-5xl font-black uppercase tracking-tight mx-4 md:mx-6">CO-INVESTORS</span>
+      <span class="text-[#D4FF49] text-4xl md:text-5xl mx-4 md:mx-6">✦</span>
+      <span class="text-white text-4xl md:text-5xl font-black uppercase tracking-tight mx-4 md:mx-6">CONNECTIONS</span>
+      <span class="text-[#D4FF49] text-4xl md:text-5xl mx-4 md:mx-6">✦</span>
+      <span class="text-white text-4xl md:text-5xl font-black uppercase tracking-tight mx-4 md:mx-6">OPPORTUNITIES</span>
+      <span class="text-[#D4FF49] text-4xl md:text-5xl mx-4 md:mx-6">✦</span>
+    </div>
+  </section>
+
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- PARTNER LOGOS -->
+  <!-- ============================================================ -->
+  <section class="bg-black py-8">
+    <div class="flex items-center justify-center gap-6 px-6 md:px-[90px] opacity-60">
+      <img src="../assets/images/logo-badge.png" alt="Partner" class="h-14 object-contain grayscale brightness-200" />
+      <img src="../assets/images/logo-badge.png" alt="Partner" class="h-14 object-contain grayscale brightness-200" />
+      <img src="../assets/images/logo-badge.png" alt="Partner" class="h-14 object-contain grayscale brightness-200" />
+      <img src="../assets/images/logo-badge.png" alt="Partner" class="h-14 object-contain grayscale brightness-200" />
+      <img src="../assets/images/logo-badge.png" alt="Partner" class="h-14 object-contain grayscale brightness-200" />
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- FOOTER / CTA SECTION -->
+  <!-- ============================================================ -->
+  <footer class="relative min-h-[700px] overflow-hidden">
+    <div class="absolute inset-0">
+      <img src="../assets/images/faroe-aerial.png" alt="" class="w-full h-full object-cover" />
+    </div>
+    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-black/40"></div>
+    <div class="relative z-10 flex flex-col items-center justify-center min-h-[700px] px-6 md:px-[90px]">
+      <div class="absolute top-8 left-6 md:left-[90px] right-6 md:right-[90px] flex items-center justify-between">
+        <span class="text-white/80 text-xs">© 2026 Nordic Funday. A Nordic Edge Initiative. All rights reserved.</span>
+        <span class="text-white/80 text-xs">Powered by Kilowott</span>
+      </div>
+      <div class="flex flex-col lg:flex-row gap-12 lg:gap-24 items-center w-full">
+        <div class="flex flex-col gap-4">
+          <div class="inline-flex items-center px-4 py-2 rounded-full bg-white/20 border border-white/30 w-fit">
+            <span class="text-white text-xs font-bold tracking-[0.12em] uppercase">May 5–6, 2026 · Stavanger, Norway</span>
+          </div>
+          <h2 class="text-white text-[40px] md:text-[64px] font-extrabold leading-[1] tracking-tight">
+            Be Where<br>Deals Happen
+          </h2>
+          <p class="text-white/60 text-lg leading-[1.6] max-w-[445px]">
+            Join the most curated investor event in the Nordics. Where capital meets innovation, and networks form that last.
+          </p>
+        </div>
+        <div class="flex flex-col gap-8">
+          <div class="flex flex-wrap items-center gap-3">
+            <a href="#" class="inline-flex items-center px-8 py-4 bg-[#D4FF49] rounded-full text-black font-semibold text-base hover:brightness-110 transition">request your spot</a>
+            <a href="#" class="inline-flex items-center px-8 py-4 bg-transparent border border-white/40 rounded-full text-white font-semibold text-base hover:bg-white/10 transition">Become a Partner</a>
+            <a href="#" class="inline-flex items-center px-8 py-4 bg-transparent border border-white/40 rounded-full text-white font-semibold text-base hover:bg-white/10 transition">EXPO PROGRAMME</a>
+          </div>
+          <div class="flex items-center gap-6">
+            <span class="text-white text-lg font-bold">200+ Investors</span>
+            <span class="w-1.5 h-1.5 rounded-full bg-gray-400"></span>
+            <span class="text-white text-lg font-bold">80+ Startups</span>
+            <span class="w-1.5 h-1.5 rounded-full bg-gray-400"></span>
+            <span class="text-white text-lg font-bold">5 Nordic Cities</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ============================================================
+    // LENIS SMOOTH SCROLL
+    // ============================================================
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      orientation: 'vertical',
+      gestureOrientation: 'vertical',
+      smoothWheel: true,
+      wheelMultiplier: 1,
+      touchMultiplier: 2,
+    });
+
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+
+    // Connect Lenis to GSAP ScrollTrigger
+    lenis.on('scroll', ScrollTrigger.update);
+    gsap.ticker.add((time) => { lenis.raf(time * 1000); });
+    gsap.ticker.lagSmoothing(0);
+
+    // ============================================================
+    // NAVBAR SCROLL STATE
+    // ============================================================
+    const nav = document.querySelector('nav');
+    lenis.on('scroll', ({ scroll }) => {
+      if (scroll > 50) {
+        nav.classList.add('scrolled');
+      } else {
+        nav.classList.remove('scrolled');
+      }
+    });
+
+    // ============================================================
+    // GSAP REGISTER
+    // ============================================================
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Set initial states via JS (not CSS — so content shows if JS fails)
+    gsap.set('nav', { y: -30, opacity: 0 });
+    gsap.set('[data-hero-badge]', { y: 20, opacity: 0, scale: 0.9 });
+    gsap.set('[data-hero-title]', { y: 80, opacity: 0 });
+    gsap.set('[data-hero-cta]', { y: 30, opacity: 0 });
+    gsap.set('[data-hero-bottom]', { y: 50, opacity: 0 });
+
+    // ============================================================
+    // HERO ANIMATIONS (on load, not scroll-triggered)
+    // ============================================================
+    const heroTL = gsap.timeline({ delay: 0.3 });
+
+    // Navbar fade in
+    heroTL.fromTo('nav',
+      { y: -30, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out' }
+    );
+
+    // Date badge
+    heroTL.fromTo('[data-hero-badge]',
+      { y: 20, opacity: 0, scale: 0.9 },
+      { y: 0, opacity: 1, scale: 1, duration: 0.7, ease: 'power3.out' },
+      '-=0.4'
+    );
+
+    // Title lines — staggered reveal
+    heroTL.fromTo('[data-hero-title]',
+      { y: 80, opacity: 0 },
+      { y: 0, opacity: 1, duration: 1, stagger: 0.12, ease: 'power4.out' },
+      '-=0.5'
+    );
+
+    // CTA buttons
+    heroTL.fromTo('[data-hero-cta]',
+      { y: 30, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out' },
+      '-=0.4'
+    );
+
+    // Bottom section (logos + card + stats)
+    heroTL.fromTo('[data-hero-bottom]',
+      { y: 50, opacity: 0 },
+      { y: 0, opacity: 1, duration: 1, ease: 'power3.out' },
+      '-=0.3'
+    );
+
+    // ============================================================
+    // HERO PARALLAX — subtle background movement on scroll
+    // ============================================================
+    gsap.to('.parallax-hero', {
+      y: '-8%',
+      ease: 'none',
+      scrollTrigger: {
+        trigger: '.parallax-hero',
+        start: 'top top',
+        end: 'bottom top',
+        scrub: 0.5,
+      }
+    });
+
+    // ============================================================
+    // SECTION REVEALS — scroll-triggered
+    // ============================================================
+    document.querySelectorAll('[data-section]').forEach((section) => {
+      // Fade up headings
+      const headings = section.querySelectorAll('h2, h3');
+      headings.forEach((h) => {
+        gsap.fromTo(h,
+          { y: 40, opacity: 0 },
+          {
+            y: 0, opacity: 1, duration: 0.9, ease: 'power3.out',
+            scrollTrigger: { trigger: h, start: 'top 85%', toggleActions: 'play none none none' }
+          }
+        );
+      });
+
+      // Fade up paragraphs
+      const paragraphs = section.querySelectorAll('p');
+      paragraphs.forEach((p) => {
+        gsap.fromTo(p,
+          { y: 25, opacity: 0 },
+          {
+            y: 0, opacity: 1, duration: 0.8, ease: 'power2.out',
+            scrollTrigger: { trigger: p, start: 'top 88%', toggleActions: 'play none none none' }
+          }
+        );
+      });
+
+      // Fade up labels (✦ text)
+      const labels = section.querySelectorAll('span[class*="text-\\[\\#D4FF49\\]"]');
+      labels.forEach((l) => {
+        gsap.fromTo(l,
+          { x: -20, opacity: 0 },
+          {
+            x: 0, opacity: 1, duration: 0.6, ease: 'power2.out',
+            scrollTrigger: { trigger: l, start: 'top 90%', toggleActions: 'play none none none' }
+          }
+        );
+      });
+    });
+
+    // ============================================================
+    // CARD STAGGER ANIMATIONS — schedule cards, sector cards, etc.
+    // ============================================================
+    // Schedule day cards
+    gsap.utils.toArray('#agenda .grid > div').forEach((card, i) => {
+      gsap.fromTo(card,
+        { y: 60, opacity: 0 },
+        {
+          y: 0, opacity: 1, duration: 0.8, delay: i * 0.15, ease: 'power3.out',
+          scrollTrigger: { trigger: card, start: 'top 85%', toggleActions: 'play none none none' }
+        }
+      );
+    });
+
+    // Expo sector cards
+    gsap.utils.toArray('.grid .bg-\\[\\#212121\\]').forEach((card, i) => {
+      gsap.fromTo(card,
+        { y: 40, opacity: 0, scale: 0.95 },
+        {
+          y: 0, opacity: 1, scale: 1, duration: 0.7, delay: i * 0.08, ease: 'power2.out',
+          scrollTrigger: { trigger: card, start: 'top 88%', toggleActions: 'play none none none' }
+        }
+      );
+    });
+
+    // Partner cards (Gold / Silver)
+    gsap.utils.toArray('#partner .flex-1.bg-\\[\\#212121\\]').forEach((card, i) => {
+      gsap.fromTo(card,
+        { y: 50, opacity: 0, scale: 0.96 },
+        {
+          y: 0, opacity: 1, scale: 1, duration: 0.9, delay: i * 0.2, ease: 'power3.out',
+          scrollTrigger: { trigger: card, start: 'top 85%', toggleActions: 'play none none none' }
+        }
+      );
+    });
+
+    // ============================================================
+    // INVESTOR TYPE PILLS — stagger in
+    // ============================================================
+    gsap.utils.toArray('.bg-\\[\\#21242C\\].border').forEach((pill, i) => {
+      gsap.fromTo(pill,
+        { scale: 0, opacity: 0 },
+        {
+          scale: 1, opacity: 1, duration: 0.5, delay: i * 0.06, ease: 'back.out(1.7)',
+          scrollTrigger: { trigger: pill, start: 'top 90%', toggleActions: 'play none none none' }
+        }
+      );
+    });
+
+    // ============================================================
+    // CTA BUTTONS THROUGHOUT — subtle scale on reveal
+    // ============================================================
+    gsap.utils.toArray('a.bg-\\[\\#CCF546\\]').forEach((btn) => {
+      gsap.fromTo(btn,
+        { y: 20, opacity: 0, scale: 0.9 },
+        {
+          y: 0, opacity: 1, scale: 1, duration: 0.7, ease: 'power3.out',
+          scrollTrigger: { trigger: btn, start: 'top 90%', toggleActions: 'play none none none' }
+        }
+      );
+    });
+
+    // ============================================================
+    // NEW FORMAT SECTION — split reveal
+    // ============================================================
+    const newFormatImg = document.querySelector('.bg-\\[\\#010101\\] .relative.min-h-\\[500px\\]');
+    if (newFormatImg) {
+      gsap.fromTo(newFormatImg,
+        { clipPath: 'inset(0 100% 0 0)' },
+        {
+          clipPath: 'inset(0 0% 0 0)', duration: 1.2, ease: 'power3.inOut',
+          scrollTrigger: { trigger: newFormatImg, start: 'top 70%', toggleActions: 'play none none none' }
+        }
+      );
+    }
+
+    // ============================================================
+    // MARQUEE — speed up slightly on scroll
+    // ============================================================
+    const marqueeEl = document.querySelector('.animate-marquee');
+    if (marqueeEl) {
+      ScrollTrigger.create({
+        trigger: marqueeEl.parentElement,
+        start: 'top bottom',
+        end: 'bottom top',
+        onUpdate: (self) => {
+          const speed = 20 - (self.progress * 8);
+          marqueeEl.style.animationDuration = speed + 's';
+        }
+      });
+    }
+
+    // ============================================================
+    // SPLIT SECTIONS (Treasure Island, Investor Brunch) — image reveal
+    // ============================================================
+    gsap.utils.toArray('.lg\\:min-h-\\[800px\\], .lg\\:min-h-\\[700px\\]').forEach((imgWrap) => {
+      gsap.fromTo(imgWrap,
+        { scale: 1.1 },
+        {
+          scale: 1, duration: 1.5, ease: 'power2.out',
+          scrollTrigger: { trigger: imgWrap, start: 'top 80%', toggleActions: 'play none none none' }
+        }
+      );
+    });
+
+    // ============================================================
+    // STATS COUNTER ANIMATION
+    // ============================================================
+    gsap.utils.toArray('[data-hero-bottom] .font-mono').forEach((stat) => {
+      const text = stat.textContent;
+      const num = parseInt(text);
+      if (!isNaN(num)) {
+        const suffix = text.replace(String(num), '');
+        gsap.fromTo(stat,
+          { textContent: '0' + suffix },
+          {
+            textContent: num + suffix,
+            duration: 2, ease: 'power2.out',
+            snap: { textContent: 1 },
+            scrollTrigger: { trigger: stat, start: 'top 90%', toggleActions: 'play none none none' },
+            modifiers: {
+              textContent: (v) => Math.round(parseFloat(v)) + suffix
+            }
+          }
+        );
+      }
+    });
+
+    // ============================================================
+    // TREASURE ISLAND + INVESTOR BRUNCH — scroll pin
+    // Treasure Island stays pinned while Investor Brunch scrolls over it
+    // ============================================================
+    const treasureSection = document.getElementById('treasure-island');
+    const brunchSection = document.getElementById('investor-brunch');
+    const eventPanels = document.getElementById('event-panels');
+    // Only pin on desktop (lg+) — mobile scrolls normally
+    if (treasureSection && brunchSection && eventPanels && window.innerWidth >= 1024) {
+      ScrollTrigger.create({
+        trigger: eventPanels,
+        start: 'top top',
+        end: () => '+=' + brunchSection.offsetHeight,
+        pin: treasureSection,
+        pinSpacing: false,
+      });
+    }
+
+    // ============================================================
+    // FOOTER CTA — parallax background
+    // ============================================================
+    const footerImg = document.querySelector('footer .absolute img');
+    if (footerImg) {
+      gsap.fromTo(footerImg,
+        { scale: 1.15 },
+        {
+          scale: 1, ease: 'none',
+          scrollTrigger: {
+            trigger: 'footer',
+            start: 'top bottom',
+            end: 'bottom top',
+            scrub: 0.8,
+          }
+        }
+      );
+    }
+
+    // ============================================================
+    // MAGNETIC HOVER EFFECT — for all rounded pill buttons
+    // ============================================================
+    document.querySelectorAll('.rounded-full').forEach((btn) => {
+      btn.addEventListener('mousemove', (e) => {
+        const rect = btn.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
+        gsap.to(btn, { x: x * 0.15, y: y * 0.15, duration: 0.3, ease: 'power2.out' });
+      });
+      btn.addEventListener('mouseleave', () => {
+        gsap.to(btn, { x: 0, y: 0, duration: 0.5, ease: 'elastic.out(1, 0.5)' });
+      });
+    });
+  </script>
+</body>
+</html>
