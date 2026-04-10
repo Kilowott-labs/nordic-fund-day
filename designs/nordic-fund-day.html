@@ -102,8 +102,8 @@
       <img src="../assets/images/hero-layer.png.png" alt="" class="w-full h-full object-cover" />
     </div>
 
-    <!-- Hero Content Container — Figma: pt 198px, pl 385px on 1920w -->
-    <div class="relative z-10 flex flex-col px-4 sm:px-6 md:pl-[10vw] lg:pl-[20%] md:pr-[5vw] lg:pr-[90px] pt-[100px] sm:pt-[7vw] md:pt-[10.3vw] pb-[25vw] sm:pb-[20vw] md:pb-[15vw] lg:pb-[300px]">
+    <!-- Hero Content Container — flexible for <1600, original Figma padding for >=1600 -->
+    <div class="relative z-10 flex flex-col w-full max-w-[1920px] mx-auto px-4 sm:px-6 md:px-[5vw] lg:px-[90px] min-[1600px]:pl-[20%] min-[1600px]:pr-[90px] pt-[100px] sm:pt-[7vw] md:pt-[10.3vw] pb-[25vw] sm:pb-[20vw] md:pb-[15vw] lg:pb-[150px] min-[1600px]:pb-[300px]">
 
       <!-- Top: Title Area -->
       <div class="flex flex-col items-start gap-3 md:gap-4">
@@ -114,9 +114,9 @@
 
         <!-- Main Title -->
         <div class="flex flex-col gap-0 sm:gap-1 hero-glow overflow-hidden">
-          <h1 data-hero-title class="text-[36px] sm:text-[56px] md:text-[80px] lg:text-[120px] xl:text-[140px] font-black leading-[0.85] uppercase text-white">Nordic fund</h1>
-          <h1 data-hero-title class="text-[36px] sm:text-[56px] md:text-[80px] lg:text-[120px] xl:text-[140px] font-black leading-[0.85] uppercase text-white">day, STAVANGER,</h1>
-          <h1 data-hero-title class="text-[36px] sm:text-[56px] md:text-[80px] lg:text-[120px] xl:text-[140px] font-black leading-[0.85] uppercase text-white">NORWAY</h1>
+          <h1 data-hero-title class="text-[36px] sm:text-[56px] md:text-[80px] lg:text-[90px] xl:text-[110px] min-[1600px]:text-[140px] font-black leading-[0.85] uppercase text-white">Nordic fund</h1>
+          <h1 data-hero-title class="text-[36px] sm:text-[56px] md:text-[80px] lg:text-[90px] xl:text-[110px] min-[1600px]:text-[140px] font-black leading-[0.85] uppercase text-white">day, STAVANGER,</h1>
+          <h1 data-hero-title class="text-[36px] sm:text-[56px] md:text-[80px] lg:text-[90px] xl:text-[110px] min-[1600px]:text-[140px] font-black leading-[0.85] uppercase text-white">NORWAY</h1>
         </div>
 
         <!-- CTA Buttons Row -->
@@ -145,10 +145,10 @@
       </div>
 
       <!-- Spacer -->
-      <div class="h-[30px] sm:h-[60px] md:h-[80px] lg:h-[360px]"></div>
+      <div class="h-[30px] sm:h-[60px] md:h-[80px] lg:h-[180px] min-[1600px]:h-[360px]"></div>
 
       <!-- Bottom: Partner Logos + Card (positioned at bottom-right on desktop, full-width on mobile) -->
-      <div data-hero-bottom class="relative z-10 flex flex-col items-end gap-3 lg:gap-6 w-full lg:self-end lg:max-w-[704px]">
+      <div data-hero-bottom class="relative z-10 flex flex-col items-end gap-3 lg:gap-6 w-full lg:self-end lg:max-w-[55%] min-[1600px]:max-w-[704px]">
 
         <!-- Partner Logos Row -->
         <div class="flex items-center flex-wrap justify-end gap-4 sm:gap-5 lg:gap-[21px]">
@@ -206,7 +206,7 @@
         <!-- Top: Label + Heading -->
         <div class="flex flex-col gap-4 sm:gap-6">
           <span class="font-mono text-[11px] sm:text-[14px] font-medium tracking-[0.11em] uppercase text-white">✦ A New Format for Real Connections</span>
-          <h2 class="text-[32px] sm:text-[44px] md:text-[52px] lg:text-[64px] font-bold leading-[1] uppercase text-white">
+          <h2 class="text-[32px] sm:text-[44px] md:text-[52px] lg:text-[56px] xl:text-[64px] font-bold leading-[1] uppercase text-white">
             If there is one event you should prioritise this year. <span class="text-[#D4FF49]">This is it.</span>
           </h2>
         </div>
@@ -282,7 +282,7 @@
       <div class="flex flex-col lg:flex-row justify-between items-start gap-6 lg:gap-12 mb-8 lg:mb-10">
         <div class="flex flex-col gap-4 max-w-[642px]">
           <span class="font-mono text-[14px] font-medium tracking-[0.1em] uppercase text-white">✦ Startup Pitch Experience</span>
-          <h2 class="text-[32px] sm:text-[48px] md:text-[56px] lg:text-[64px] font-bold leading-[1] uppercase text-white">
+          <h2 class="text-[32px] sm:text-[48px] md:text-[56px] lg:text-[56px] xl:text-[64px] font-bold leading-[1] uppercase text-white">
             70–80+ Companies<br>Pitching Live
           </h2>
           <span class="text-white text-[20px] sm:text-[24px] font-bold">MAY 5, 2026 at 7pm</span>
@@ -310,7 +310,7 @@
         </div>
         <div class="flex-1 min-w-[200px] bg-[#212121] rounded-[5px] p-6 sm:p-7 flex flex-col gap-4">
           <div class="w-10 h-10 flex items-center justify-center"><svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M14 26V14M14 14C14 14 8 12 6 6c6 2 8 8 8 8z" stroke="#D4FF49" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M14 14C14 14 20 12 22 6c-6 2-8 8-8 8z" stroke="#D4FF49" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-          <h3 class="text-[#D4FF49] text-[20px] font-bold leading-[1.2]">Agri- &<br>Foodtech</h3>
+          <h3 class="text-[#D4FF49] text-[20px] font-bold leading-[1.2]">Agri- & Foodtech</h3>
           <p class="font-mono text-[14px] leading-[1.4] text-[#B9B9B9]">Solutions for producing, distributing, and preserving food, enabling efficient, resilient, and sustainable food systems</p>
         </div>
         <div class="flex-1 min-w-[200px] bg-[#212121] rounded-[5px] p-6 sm:p-7 flex flex-col gap-4">
@@ -357,7 +357,7 @@
           <!-- Heading area -->
           <div class="flex flex-col gap-4">
             <span class="font-mono text-[14px] font-medium tracking-[0.1em] uppercase text-black">✦ NETWORKING COCKTAIL & FINGERFOOD AT</span>
-            <h2 class="text-[40px] sm:text-[52px] md:text-[64px] lg:text-[72px] font-bold leading-[0.95] uppercase text-black">
+            <h2 class="text-[40px] sm:text-[52px] md:text-[56px] lg:text-[56px] xl:text-[64px] min-[1600px]:text-[72px] font-bold leading-[0.95] uppercase text-black">
               The Treasure<br>Island Mixer
             </h2>
             <div class="font-mono text-[15px] sm:text-[16px] leading-[1.4] text-black/70 space-y-4 mt-2">
@@ -401,7 +401,7 @@
         <div class="flex flex-col gap-12 w-full lg:max-w-[634px]">
           <div class="flex flex-col gap-4">
             <span class="font-mono text-[14px] font-medium tracking-[0.1em] uppercase text-black">✦ TOP OF THE CITY – INVESTORS ONLY</span>
-            <h2 class="text-[40px] sm:text-[52px] md:text-[64px] lg:text-[72px] font-bold leading-[0.95] uppercase text-black">
+            <h2 class="text-[40px] sm:text-[52px] md:text-[56px] lg:text-[56px] xl:text-[64px] min-[1600px]:text-[72px] font-bold leading-[0.95] uppercase text-black">
               Investor<br>Brunch
             </h2>
             <div class="font-mono text-[15px] sm:text-[16px] leading-[1.4] text-black/70 space-y-4 mt-2">
@@ -529,7 +529,7 @@
       <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
         <div class="flex flex-col gap-4">
           <span class="font-mono text-[14px] font-medium tracking-[0.1em] uppercase text-black">✦ Full Schedule</span>
-          <h2 class="text-black text-[40px] sm:text-[48px] md:text-[56px] lg:text-[64px] font-bold leading-[1.05] uppercase">
+          <h2 class="text-black text-[40px] sm:text-[48px] md:text-[56px] lg:text-[56px] xl:text-[64px] font-bold leading-[1.05] uppercase">
             What's on in<br>Stavanger May 4–6
           </h2>
         </div>
@@ -705,7 +705,7 @@
           <span class="text-black text-[14px] font-bold tracking-[0.32em] uppercase">May 5–6, 2026 · Stavanger, Norway</span>
         </div>
         <!-- Heading -->
-        <h2 class="text-black text-[56px] sm:text-[72px] md:text-[84px] lg:text-[96px] font-black leading-[1] tracking-tight uppercase">
+        <h2 class="text-black text-[56px] sm:text-[72px] md:text-[76px] lg:text-[80px] xl:text-[88px] min-[1600px]:text-[96px] font-black leading-[1] tracking-tight uppercase">
           Be Where<br>Deals Happen
         </h2>
       </div>
