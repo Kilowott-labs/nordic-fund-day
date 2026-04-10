@@ -46,8 +46,21 @@
     .hero-glow { text-shadow: 0px 0px 13px rgba(255, 255, 255, 0.8); }
     .date-glow { text-shadow: 0px 0.77px 3.1px rgba(255, 255, 255, 0.45); }
     /* Mobile menu */
-    .mobile-menu { display: none; }
-    .mobile-menu.open { display: flex; }
+    .mobile-menu {
+      display: flex;
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: max-height 0.4s ease, opacity 0.3s ease, padding 0.3s ease;
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+    .mobile-menu.open {
+      max-height: 400px;
+      opacity: 1;
+      padding-top: 16px;
+      padding-bottom: 24px;
+    }
     /* Navbar scroll state */
     nav { transition: background 0.4s ease, backdrop-filter 0.4s ease; }
     nav.scrolled { background: rgba(0,0,0,0.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
@@ -80,16 +93,17 @@
         <a href="#" class="inline-flex items-center justify-center px-[19px] py-[9px] bg-white rounded-full text-black text-base font-bold uppercase tracking-[0.05em] hover:bg-[#D4FF49] hover:text-black transition-all duration-300">request ACCESS</a>
       </div>
       <!-- Mobile menu button -->
-      <button class="md:hidden text-white" onclick="document.getElementById('mobile-menu').classList.toggle('open')">
-        <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h20M4 14h20M4 21h20"/></svg>
+      <button id="menu-toggle" class="md:hidden text-white relative w-[28px] h-[28px]" aria-label="Toggle menu">
+        <svg class="hamburger-icon transition-all duration-300" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h20M4 14h20M4 21h20"/></svg>
+        <svg class="close-icon absolute inset-0 transition-all duration-300 opacity-0 scale-75" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l16 16M22 6L6 22"/></svg>
       </button>
     </div>
     <!-- Mobile menu dropdown -->
-    <div id="mobile-menu" class="mobile-menu flex-col gap-4 px-4 pb-6 bg-black/95 backdrop-blur-md md:hidden">
-      <a href="#treasure-island" class="text-white text-base font-bold py-2 border-b border-white/10">About</a>
-      <a href="#agenda" class="text-white text-base font-bold py-2 border-b border-white/10">Agenda</a>
-      <a href="#partner" class="text-white text-base font-bold py-2 border-b border-white/10">Become Partner</a>
-      <a href="#" class="inline-flex items-center justify-center px-5 py-3 bg-white rounded-full text-black text-sm font-bold uppercase tracking-wide mt-2">request ACCESS</a>
+    <div id="mobile-menu" class="mobile-menu flex-col gap-4 px-4 bg-black/95 backdrop-blur-md md:hidden">
+      <a href="#treasure-island" class="text-white text-[18px] font-bold py-3 border-b border-white/10">About</a>
+      <a href="#agenda" class="text-white text-[18px] font-bold py-3 border-b border-white/10">Agenda</a>
+      <a href="#partner" class="text-white text-[18px] font-bold py-3 border-b border-white/10">Become Partner</a>
+      <a href="#" class="inline-flex items-center justify-center w-full px-5 py-3.5 bg-white rounded-full text-black text-sm font-bold uppercase tracking-wide mt-3">REQUEST ACCESS</a>
     </div>
   </nav>
 
@@ -338,11 +352,11 @@
         <!-- Left: Image area (black bg behind, image offset bottom-right) -->
         <div class="relative w-full lg:w-[52%] flex-shrink-0">
           <!-- Spacer for the top offset -->
-          <div class="h-[80px]"></div>
+          <div class="h-[40px] sm:h-[60px] lg:h-[80px]"></div>
           <!-- Black background rectangle (behind image, offset top-left) -->
-          <div class="absolute top-0 left-0 bg-black rounded-sm" style="width: calc(100% - 75px); height: calc(100% - 0px);"></div>
+          <div class="absolute top-0 left-0 bg-black rounded-sm w-[calc(100%-30px)] sm:w-[calc(100%-50px)] lg:w-[calc(100%-75px)] h-full"></div>
           <!-- Treasure island photo (sits on top of black, offset to bottom-right) -->
-          <div class="relative z-[1]" style="margin-left: 75px; aspect-ratio: 921/683;">
+          <div class="relative z-[1] ml-[30px] sm:ml-[50px] lg:ml-[75px]" style="aspect-ratio: 921/683;">
             <img src="../assets/images/treasure-island.png" alt="Treasure Island Mixer" class="w-full h-full object-cover" />
           </div>
           <!-- Invite only label (on the black area, bottom-left) -->
@@ -435,11 +449,11 @@
         <!-- Right: Image area (lime bg behind, image offset bottom-left) -->
         <div class="relative w-full lg:w-[52%] flex-shrink-0">
           <!-- Spacer for the top offset -->
-          <div class="h-[80px]"></div>
+          <div class="h-[40px] sm:h-[60px] lg:h-[80px]"></div>
           <!-- Lime background rectangle (behind image, offset top-right) -->
-          <div class="absolute top-0 right-0 bg-[#D4FF49] rounded-sm" style="width: calc(100% - 75px); height: calc(100% - 0px);"></div>
+          <div class="absolute top-0 right-0 bg-[#D4FF49] rounded-sm w-[calc(100%-30px)] sm:w-[calc(100%-50px)] lg:w-[calc(100%-75px)] h-full"></div>
           <!-- Brunch photo (sits on top of lime, offset to bottom-left) -->
-          <div class="relative z-[1]" style="margin-right: 75px; aspect-ratio: 921/683;">
+          <div class="relative z-[1] mr-[30px] sm:mr-[50px] lg:mr-[75px]" style="aspect-ratio: 921/683;">
             <img src="../assets/images/investor-brunch.png" alt="Investor Brunch at Seid" class="w-full h-full object-cover" />
           </div>
           <!-- Invite only label (on the lime area, bottom-right) -->
@@ -461,7 +475,7 @@
       <div class="flex flex-col gap-10 lg:w-[34%] lg:flex-shrink-0">
         <div class="flex flex-col gap-5">
           <span class="font-mono text-[14px] font-medium tracking-[0.1em] uppercase text-[#D4FF49]">✦ Be in the Spotlight</span>
-          <h2 class="text-white text-[48px] sm:text-[56px] md:text-[68px] lg:text-[56px] xl:text-[56px] font-bold leading-[1.05] uppercase">
+          <h2 class="text-white text-[36px] sm:text-[44px] md:text-[56px] lg:text-[56px] xl:text-[56px] font-bold leading-[1.05] uppercase">
             Become a Partner<br>of Nordic Fund Day
           </h2>
         </div>
@@ -525,7 +539,7 @@
   <!-- ============================================================ -->
   <!-- SCHEDULE SECTION -->
   <!-- ============================================================ -->
-  <section id="agenda" data-section class="bg-white px-4 sm:px-6 md:px-[90px] py-16 md:py-24 lg:py-[100px]">
+  <section id="agenda" data-section class="bg-white px-4 sm:px-6 md:px-[90px] py-12 sm:py-16 md:py-24 lg:py-[100px]">
     <div class="flex flex-col gap-12">
       <!-- Header -->
       <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
@@ -699,7 +713,7 @@
     <!-- Bottom gradient fade to black -->
     <div class="absolute inset-x-0 bottom-0 h-[220px] bg-gradient-to-t from-black/80 to-transparent pointer-events-none"></div>
     <!-- Content -->
-    <div class="relative z-10 flex flex-col max-w-[861px] mx-auto pt-[140px] px-6">
+    <div class="relative z-10 flex flex-col max-w-[861px] mx-auto pt-[80px] sm:pt-[100px] md:pt-[140px] px-4 sm:px-6">
       <!-- Heading group -->
       <div class="flex flex-col gap-2">
         <!-- Date badge — white bg, subtle border, black text -->
@@ -716,13 +730,13 @@
         Nordic Fund Day — where capital meets Nordic & Baltic innovation. Twice a year. A carefully curated program guiding you to the people you came to meet. Investors, don't miss out — request a spot on our invitation list.
       </p>
       <!-- CTAs — all on one row, ghost buttons have backdrop-blur -->
-      <div class="flex flex-row flex-wrap items-center gap-3 mt-[120px]">
-        <a href="#" class="inline-flex items-center justify-center px-8 h-[48px] bg-[#D4FF49] border border-black/10 rounded-full text-black font-bold text-[16px] tracking-[0.07em] uppercase hover:bg-white hover:text-black transition-all duration-300 whitespace-nowrap">REQUEST YOUR SPOT</a>
-        <a href="#" class="inline-flex items-center justify-center px-8 h-[48px] bg-white/10 backdrop-blur-md border border-white/40 rounded-full text-white font-bold text-[16px] tracking-[0.07em] uppercase hover:bg-[#D4FF49] hover:text-black hover:border-[#D4FF49] transition-all duration-300 whitespace-nowrap">BECOME A PARTNER</a>
-        <a href="#" class="inline-flex items-center justify-center px-8 h-[48px] bg-white/10 backdrop-blur-md border border-white/40 rounded-full text-white font-bold text-[16px] tracking-[0.07em] uppercase hover:bg-[#D4FF49] hover:text-black hover:border-[#D4FF49] transition-all duration-300 whitespace-nowrap">FULL PROGRAMME</a>
+      <div class="flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-3 mt-[60px] sm:mt-[120px]">
+        <a href="#" class="inline-flex items-center justify-center px-8 h-[48px] bg-[#D4FF49] border border-black/10 rounded-full text-black font-bold text-[14px] sm:text-[16px] tracking-[0.07em] uppercase hover:bg-white hover:text-black transition-all duration-300 whitespace-nowrap">REQUEST YOUR SPOT</a>
+        <a href="#" class="inline-flex items-center justify-center px-8 h-[48px] bg-white/10 backdrop-blur-md border border-white/40 rounded-full text-white font-bold text-[14px] sm:text-[16px] tracking-[0.07em] uppercase hover:bg-[#D4FF49] hover:text-black hover:border-[#D4FF49] transition-all duration-300 whitespace-nowrap">BECOME A PARTNER</a>
+        <a href="#" class="inline-flex items-center justify-center px-8 h-[48px] bg-white/10 backdrop-blur-md border border-white/40 rounded-full text-white font-bold text-[14px] sm:text-[16px] tracking-[0.07em] uppercase hover:bg-[#D4FF49] hover:text-black hover:border-[#D4FF49] transition-all duration-300 whitespace-nowrap">FULL PROGRAMME</a>
       </div>
       <!-- Stats row — spans full width under buttons -->
-      <div class="flex items-center justify-center gap-6 mt-4">
+      <div class="flex flex-wrap items-center justify-center gap-4 sm:gap-6 mt-4">
         <span class="text-white text-[13px] font-semibold tracking-[0.1em] uppercase">200+ Investors</span>
         <span class="text-white/40 text-[10px]">•</span>
         <span class="text-white text-[13px] font-semibold tracking-[0.1em] uppercase">80+ Startups</span>
@@ -730,7 +744,7 @@
         <span class="text-white text-[13px] font-semibold tracking-[0.1em] uppercase">5 Nordic Cities</span>
       </div>
       <!-- Spacer to bottom -->
-      <div class="h-[193px]"></div>
+      <div class="h-[100px] sm:h-[140px] md:h-[193px]"></div>
     </div>
     <!-- Copyright bar — absolute at bottom -->
     <div class="absolute bottom-6 left-6 md:left-[90px] right-6 md:right-[90px] flex items-center justify-between">
@@ -765,6 +779,22 @@
     gsap.ticker.lagSmoothing(0);
 
     // ============================================================
+    // MOBILE MENU TOGGLE
+    // ============================================================
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const hamburgerIcon = menuToggle.querySelector('.hamburger-icon');
+    const closeIcon = menuToggle.querySelector('.close-icon');
+
+    menuToggle.addEventListener('click', () => {
+      const isOpen = mobileMenu.classList.toggle('open');
+      hamburgerIcon.style.opacity = isOpen ? '0' : '1';
+      hamburgerIcon.style.transform = isOpen ? 'scale(0.75) rotate(45deg)' : 'scale(1) rotate(0)';
+      closeIcon.style.opacity = isOpen ? '1' : '0';
+      closeIcon.style.transform = isOpen ? 'scale(1) rotate(0)' : 'scale(0.75) rotate(-45deg)';
+    });
+
+    // ============================================================
     // SMOOTH SCROLL — NAV ANCHOR LINKS
     // ============================================================
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -772,6 +802,12 @@
         const target = document.querySelector(anchor.getAttribute('href'));
         if (target) {
           e.preventDefault();
+          // Close mobile menu if open
+          mobileMenu.classList.remove('open');
+          hamburgerIcon.style.opacity = '1';
+          hamburgerIcon.style.transform = 'scale(1) rotate(0)';
+          closeIcon.style.opacity = '0';
+          closeIcon.style.transform = 'scale(0.75) rotate(-45deg)';
           lenis.scrollTo(target, { offset: -90 });
         }
       });
