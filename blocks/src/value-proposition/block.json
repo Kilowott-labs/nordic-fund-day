@@ -1,0 +1,59 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "agent-theme/value-proposition",
+  "version": "1.0.0",
+  "title": "Value Proposition",
+  "category": "edge",
+  "icon": "lightbulb",
+  "description": "Split-layout section with heading, body text, pain-point cards on the left, and dual images with gradient overlays and quote on the right.",
+  "textdomain": "agent-theme",
+  "attributes": {
+    "subtitle": {
+      "type": "string",
+      "default": "✦ A New Format for Real Connections"
+    },
+    "heading": {
+      "type": "string",
+      "default": "If there is one event you should prioritise this year. <span class=\"text-[var(--wp--preset--color--lime)]\">This is it.</span>"
+    },
+    "bodyText": {
+      "type": "string",
+      "default": "Not because it's bigger. But because it's built differently. We've taken everything that usually doesn't work at investor events and redesigned it."
+    },
+    "painPoints": {
+      "type": "array",
+      "default": [
+        { "id": 1, "text": "No crowded rooms where you miss the right people." },
+        { "id": 2, "text": "No endless small talk without direction." }
+      ]
+    },
+    "imageLeft": {
+      "type": "string",
+      "default": ""
+    },
+    "imageLeftId": {
+      "type": "number",
+      "default": 0
+    },
+    "imageRight": {
+      "type": "string",
+      "default": ""
+    },
+    "imageRightId": {
+      "type": "number",
+      "default": 0
+    },
+    "quoteText": {
+      "type": "string",
+      "default": "A carefully curated program where you are guided towards the people you actually came to meet."
+    }
+  },
+  "supports": {
+    "html": false,
+    "anchor": true,
+    "align": ["wide", "full"],
+    "spacing": { "padding": true, "margin": true }
+  },
+  "editorScript": "file:./index.js"
+}

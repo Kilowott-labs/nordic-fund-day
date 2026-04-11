@@ -59,9 +59,13 @@ add_filter( 'block_categories_all', function( $categories, $post ) {
 		'title' => 'Hjelper'
 	);
 
-    // add category to first
+    // add categories to first
     return array_merge(
         [
+            [
+                'slug'  => 'edge',
+                'title' => __( 'Nordic Edge', 'agent-theme' ),
+            ],
             [
                 'slug'  => 'ytf',
                 'title' => __( 'YTF', 'ytf' ),

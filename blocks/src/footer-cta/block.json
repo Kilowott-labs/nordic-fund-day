@@ -1,0 +1,64 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "agent-theme/footer-cta",
+  "version": "1.0.0",
+  "title": "Footer CTA",
+  "category": "edge",
+  "icon": "megaphone",
+  "description": "Full-width footer CTA section with background image, heading, description, CTA buttons, stats, and copyright bar.",
+  "textdomain": "agent-theme",
+  "attributes": {
+    "backgroundImage": {
+      "type": "string",
+      "default": ""
+    },
+    "backgroundImageId": {
+      "type": "number",
+      "default": 0
+    },
+    "dateBadge": {
+      "type": "string",
+      "default": "May 5–6, 2026 · Stavanger, Norway"
+    },
+    "heading": {
+      "type": "string",
+      "default": "Be Where<br>Deals Happen"
+    },
+    "description": {
+      "type": "string",
+      "default": "Nordic Fund Day — where capital meets Nordic & Baltic innovation. Twice a year. A carefully curated program guiding you to the people you came to meet. Investors, don't miss out — request a spot on our invitation list."
+    },
+    "buttons": {
+      "type": "array",
+      "default": [
+        { "id": 1, "label": "REQUEST YOUR SPOT", "url": "#", "style": "primary" },
+        { "id": 2, "label": "BECOME A PARTNER", "url": "#", "style": "ghost" },
+        { "id": 3, "label": "FULL PROGRAMME", "url": "#", "style": "ghost" }
+      ]
+    },
+    "stats": {
+      "type": "array",
+      "default": [
+        { "id": 1, "text": "200+ Investors" },
+        { "id": 2, "text": "80+ Startups" },
+        { "id": 3, "text": "5 Nordic Cities" }
+      ]
+    },
+    "copyrightLeft": {
+      "type": "string",
+      "default": "© 2026 Nordic Funday. A Nordic Edge Initiative."
+    },
+    "copyrightRight": {
+      "type": "string",
+      "default": "Powered by Kilowott"
+    }
+  },
+  "supports": {
+    "html": false,
+    "anchor": true,
+    "align": ["wide", "full"],
+    "spacing": { "padding": true, "margin": true }
+  },
+  "editorScript": "file:./index.js"
+}

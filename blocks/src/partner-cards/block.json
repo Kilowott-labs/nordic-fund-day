@@ -1,0 +1,73 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "agent-theme/partner-cards",
+  "version": "1.0.0",
+  "title": "Partner Cards",
+  "category": "edge",
+  "icon": "awards",
+  "description": "Become a Partner section with heading, description, CTA and Gold/Silver partner pricing cards.",
+  "textdomain": "agent-theme",
+  "attributes": {
+    "subtitle": {
+      "type": "string",
+      "default": "✦ Be in the Spotlight"
+    },
+    "heading": {
+      "type": "string",
+      "default": "Become a Partner<br>of Nordic Fund Day"
+    },
+    "description": {
+      "type": "string",
+      "default": "Not traditional sponsorship. A chance to position your brand at the centre of conversations, capital and future growth."
+    },
+    "ctaLabel": {
+      "type": "string",
+      "default": "Secure Your Partnership Spot"
+    },
+    "ctaUrl": {
+      "type": "string",
+      "default": "#"
+    },
+    "ctaOpenInNewTab": {
+      "type": "boolean",
+      "default": false
+    },
+    "cards": {
+      "type": "array",
+      "default": [
+        {
+          "id": 1,
+          "label": "Gold Partner",
+          "price": "NOK 50,000",
+          "badgeText": "Premium",
+          "isPremium": true,
+          "labelColor": "lime",
+          "features": [
+            { "text": "Tailored visibility and brand positioning" },
+            { "text": "Priority access and stage opportunity" }
+          ]
+        },
+        {
+          "id": 2,
+          "label": "Silver Partner",
+          "price": "NOK 25,000",
+          "badgeText": "",
+          "isPremium": false,
+          "labelColor": "white",
+          "features": [
+            { "text": "Strong brand presence and on-site activation" },
+            { "text": "Access to the curated network" }
+          ]
+        }
+      ]
+    }
+  },
+  "supports": {
+    "html": false,
+    "anchor": true,
+    "align": ["wide", "full"],
+    "spacing": { "padding": true, "margin": true }
+  },
+  "editorScript": "file:./index.js"
+}

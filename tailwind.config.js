@@ -8,12 +8,12 @@ module.exports = {
     './src/**/*.jsx',
     './templates/**/*.html',
     './core/src/**/*.js',
+    './designs/**/*.html',
   ],
   theme: {
     extend: {
       fontFamily: {
-        ragna: ['"Ragna"', 'serif'],
-        poppins: ['"Poppins"', 'sans-serif'],
+        mono: ['"DM Mono"', 'ui-monospace', 'SFMono-Regular', 'monospace'],
       },
     },
   },

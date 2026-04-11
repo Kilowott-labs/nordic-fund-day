@@ -1,0 +1,77 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "agent-theme/schedule-grid",
+  "version": "1.0.0",
+  "title": "Schedule Grid",
+  "category": "edge",
+  "icon": "calendar-alt",
+  "description": "Three-column day schedule grid with event times, descriptions, and access badges.",
+  "textdomain": "agent-theme",
+  "attributes": {
+    "subtitle": {
+      "type": "string",
+      "default": "✦ Full Schedule"
+    },
+    "heading": {
+      "type": "string",
+      "default": "What's on in<br>Stavanger May 4–6"
+    },
+    "ctaLabel": {
+      "type": "string",
+      "default": "Full Programme"
+    },
+    "ctaUrl": {
+      "type": "string",
+      "default": "#"
+    },
+    "ctaOpenInNewTab": {
+      "type": "boolean",
+      "default": false
+    },
+    "days": {
+      "type": "array",
+      "default": [
+        {
+          "id": 1,
+          "dateLabel": "May 4",
+          "title": "Social & Travel Day",
+          "events": [
+            { "time": "Daytime", "title": "Pulpit rock hike", "description": "Hike to Preikestolen — one of Norway's most iconic viewpoints. Optional.", "badge": "", "badgeType": "" },
+            { "time": "All Day", "title": "Work from innoasis", "description": "Drop into our co-working space at Innoasis, Stavanger.", "badge": "", "badgeType": "" },
+            { "time": "19:00", "title": "Informal Network Meetup", "description": "Pub-style warmup evening for early arrivals. Open and relaxed.", "badge": "Open • Free", "badgeType": "white" }
+          ]
+        },
+        {
+          "id": 2,
+          "dateLabel": "May 5  Day 1",
+          "title": "Nordic Fund Day & Mixer",
+          "events": [
+            { "time": "09:00", "title": "Nordic Edge Expo", "description": "The Nordic cross-sectoral meeting place for smart and sustainable societies.", "badge": "Expo Ticket Required", "badgeType": "lime" },
+            { "time": "16:00", "title": "Nordic Fund Day", "description": "Stage program. Pitches, context, and direction for Nordic dealflow", "badge": "Open to All", "badgeType": "white" },
+            { "time": "18:30", "title": "Nordic Fund Day", "description": "Treasure Island Mixer. Facilitated matchmaking for investors, companies, and partners.", "badge": "By Invitations Only", "badgeType": "lime" },
+            { "time": "20:00", "title": "After Party", "description": "Drinks, mingling and surprises for all Expo and Nordic Fund Day guests at Fiskepiren.", "badge": "", "badgeType": "" }
+          ]
+        },
+        {
+          "id": 3,
+          "dateLabel": "May 6  Day 2",
+          "title": "Program Highlights",
+          "events": [
+            { "time": "09:00", "title": "Workshop", "description": "AI and Digital Maturity – Turning Ambition into Capability, featuring Lars Rinnan.", "badge": "Expo Ticket Required", "badgeType": "lime" },
+            { "time": "10:00", "title": "Investor Brunch", "description": "", "badge": "Invitation Only", "badgeType": "lime" },
+            { "time": "12:00", "title": "Workshop", "description": "Investor Academy presents – Land, Food, and Natural Capital.", "badge": "Open to All", "badgeType": "white" },
+            { "time": "13:00", "title": "UK Insights × London & Beyond", "description": "Proptech Focus", "badge": "Open to All", "badgeType": "white" }
+          ]
+        }
+      ]
+    }
+  },
+  "supports": {
+    "html": false,
+    "anchor": true,
+    "align": ["wide", "full"],
+    "spacing": { "padding": true, "margin": true }
+  },
+  "editorScript": "file:./index.js"
+}

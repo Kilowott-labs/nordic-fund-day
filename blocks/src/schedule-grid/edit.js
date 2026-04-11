@@ -1,0 +1,240 @@
+import { __ } from '@wordpress/i18n';
+import {
+	useBlockProps,
+	InspectorControls,
+	RichText,
+} from '@wordpress/block-editor';
+import {
+	PanelBody,
+	TextControl,
+	ToggleControl,
+	SelectControl,
+	Button,
+} from '@wordpress/components';
+
+function Badge( { text, type } ) {
+	if ( ! text ) return null;
+	const isLime = type === 'lime';
+	const borderClass = isLime
+		? 'border-[var(--wp--preset--color--lime)]'
+		: 'border-white/20';
+	const textClass = isLime
+		? 'text-[var(--wp--preset--color--lime)]'
+		: 'text-white';
+
+	return (
+		<div className={ `inline-flex items-center px-3 py-1 border ${ borderClass } rounded-sm` }>
+			<span className={ `font-mono text-[11px] font-medium tracking-[0.08em] uppercase ${ textClass }` }>
+				{ text }
+			</span>
+		</div>
+	);
+}
+
+export default function Edit( { attributes, setAttributes } ) {
+	const { subtitle, heading, ctaLabel, ctaUrl, ctaOpenInNewTab, days } = attributes;
+
+	const blockProps = useBlockProps( {
+		className: 'bg-white px-4 sm:px-6 md:px-[90px] py-12 sm:py-16 md:py-24 lg:py-[100px]',
+	} );
+
+	const updateDay = ( dayIndex, fields ) => {
+		const updated = [ ...days ];
+		updated[ dayIndex ] = { ...updated[ dayIndex ], ...fields };
+		setAttributes( { days: updated } );
+	};
+
+	const updateEvent = ( dayIndex, eventIndex, fields ) => {
+		const updated = [ ...days ];
+		const events = [ ...updated[ dayIndex ].events ];
+		events[ eventIndex ] = { ...events[ eventIndex ], ...fields };
+		updated[ dayIndex ] = { ...updated[ dayIndex ], events };
+		setAttributes( { days: updated } );
+	};
+
+	const addEvent = ( dayIndex ) => {
+		const updated = [ ...days ];
+		const events = [
+			...updated[ dayIndex ].events,
+			{ time: '00:00', title: __( 'New Event', 'agent-theme' ), description: '', badge: '', badgeType: '' },
+		];
+		updated[ dayIndex ] = { ...updated[ dayIndex ], events };
+		setAttributes( { days: updated } );
+	};
+
+	const removeEvent = ( dayIndex, eventIndex ) => {
+		const updated = [ ...days ];
+		const events = updated[ dayIndex ].events.filter( ( _, i ) => i !== eventIndex );
+		updated[ dayIndex ] = { ...updated[ dayIndex ], events };
+		setAttributes( { days: updated } );
+	};
+
+	return (
+		<>
+			<InspectorControls>
+				<PanelBody title={ __( 'CTA Button', 'agent-theme' ) } initialOpen={ true }>
+					<TextControl
+						label={ __( 'Button Label', 'agent-theme' ) }
+						value={ ctaLabel }
+						onChange={ ( value ) => setAttributes( { ctaLabel: value } ) }
+					/>
+					<TextControl
+						label={ __( 'Button URL', 'agent-theme' ) }
+						value={ ctaUrl }
+						onChange={ ( value ) => setAttributes( { ctaUrl: value } ) }
+						type="url"
+					/>
+					<ToggleControl
+						label={ __( 'Open in new tab', 'agent-theme' ) }
+						checked={ ctaOpenInNewTab }
+						onChange={ ( value ) => setAttributes( { ctaOpenInNewTab: value } ) }
+					/>
+				</PanelBody>
+
+				{ days.map( ( day, dIdx ) => (
+					<PanelBody
+						key={ day.id }
+						title={ day.title || `${ __( 'Day', 'agent-theme' ) } ${ dIdx + 1 }` }
+						initialOpen={ false }
+					>
+						<TextControl
+							label={ __( 'Date Label', 'agent-theme' ) }
+							value={ day.dateLabel }
+							onChange={ ( value ) => updateDay( dIdx, { dateLabel: value } ) }
+						/>
+						<TextControl
+							label={ __( 'Day Title', 'agent-theme' ) }
+							value={ day.title }
+							onChange={ ( value ) => updateDay( dIdx, { title: value } ) }
+						/>
+
+						<p style={ { fontWeight: 600, marginTop: '16px', marginBottom: '8px' } }>
+							{ __( 'Events', 'agent-theme' ) } ({ day.events.length })
+						</p>
+
+						{ day.events.map( ( event, eIdx ) => (
+							<PanelBody
+								key={ eIdx }
+								title={ `${ event.time } — ${ event.title }` }
+								initialOpen={ false }
+							>
+								<TextControl
+									label={ __( 'Time', 'agent-theme' ) }
+									value={ event.time }
+									onChange={ ( value ) => updateEvent( dIdx, eIdx, { time: value } ) }
+								/>
+								<TextControl
+									label={ __( 'Title', 'agent-theme' ) }
+									value={ event.title }
+									onChange={ ( value ) => updateEvent( dIdx, eIdx, { title: value } ) }
+								/>
+								<TextControl
+									label={ __( 'Description', 'agent-theme' ) }
+									value={ event.description }
+									onChange={ ( value ) => updateEvent( dIdx, eIdx, { description: value } ) }
+								/>
+								<TextControl
+									label={ __( 'Badge Text', 'agent-theme' ) }
+									value={ event.badge }
+									onChange={ ( value ) => updateEvent( dIdx, eIdx, { badge: value } ) }
+									help={ __( 'Leave empty for no badge', 'agent-theme' ) }
+								/>
+								{ event.badge && (
+									<SelectControl
+										label={ __( 'Badge Style', 'agent-theme' ) }
+										value={ event.badgeType }
+										options={ [
+											{ label: __( 'White (Open)', 'agent-theme' ), value: 'white' },
+											{ label: __( 'Lime (Restricted)', 'agent-theme' ), value: 'lime' },
+										] }
+										onChange={ ( value ) => updateEvent( dIdx, eIdx, { badgeType: value } ) }
+									/>
+								) }
+								<Button
+									onClick={ () => removeEvent( dIdx, eIdx ) }
+									variant="secondary"
+									isDestructive
+									style={ { width: '100%', marginTop: '8px' } }
+								>
+									{ __( 'Remove Event', 'agent-theme' ) }
+								</Button>
+							</PanelBody>
+						) ) }
+
+						<Button
+							onClick={ () => addEvent( dIdx ) }
+							variant="secondary"
+							style={ { width: '100%', marginTop: '8px' } }
+						>
+							{ __( '+ Add Event', 'agent-theme' ) }
+						</Button>
+					</PanelBody>
+				) ) }
+			</InspectorControls>
+
+			<section { ...blockProps }>
+				<div className="flex flex-col gap-12">
+					{ /* Header */ }
+					<div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
+						<div className="flex flex-col gap-4">
+							<RichText
+								tagName="span"
+								value={ subtitle }
+								onChange={ ( value ) => setAttributes( { subtitle: value } ) }
+								className="font-mono text-[14px] font-medium tracking-[0.1em] uppercase text-black"
+								placeholder={ __( 'Subtitle…', 'agent-theme' ) }
+							/>
+							<RichText
+								tagName="h2"
+								value={ heading }
+								onChange={ ( value ) => setAttributes( { heading: value } ) }
+								className="text-black text-[40px] sm:text-[48px] md:text-[56px] lg:text-[56px] xl:text-[64px] font-bold leading-[1.05] uppercase"
+								placeholder={ __( 'Heading…', 'agent-theme' ) }
+							/>
+						</div>
+						<div className="inline-flex items-center px-8 py-3.5 bg-[var(--wp--preset--color--lime-cta)] rounded-full text-black font-semibold text-[15px] uppercase tracking-[0.03em] w-fit">
+							{ ctaLabel }
+						</div>
+					</div>
+
+					{ /* Day Cards Grid */ }
+					<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+						{ days.map( ( day ) => (
+							<div key={ day.id } className="bg-[var(--wp--preset--color--dark-pill)] rounded-lg overflow-hidden">
+								<div className="p-7 pb-6">
+									<span className="font-mono text-[var(--wp--preset--color--lime)] text-[13px] font-medium tracking-[0.05em]">
+										{ day.dateLabel }
+									</span>
+									<h3 className="text-white text-[28px] sm:text-[32px] font-bold leading-tight mt-2">
+										{ day.title }
+									</h3>
+									<div className="w-full h-px bg-white/15 mt-6"></div>
+								</div>
+								<div className="flex flex-col px-7 pb-7">
+									{ day.events.map( ( event, eIdx ) => (
+										<div key={ eIdx } className="flex gap-6 py-5">
+											<span className="font-mono text-white/50 text-[14px] w-[70px] flex-shrink-0 pt-[2px]">
+												{ event.time }
+											</span>
+											<div>
+												<h4 className="text-white text-[16px] font-bold mb-1">
+													{ event.title }
+												</h4>
+												{ event.description && (
+													<p className={ `text-white/60 text-[14px] leading-[1.5]${ event.badge ? ' mb-3' : '' }` }>
+														{ event.description }
+													</p>
+												) }
+												<Badge text={ event.badge } type={ event.badgeType } />
+											</div>
+										</div>
+									) ) }
+								</div>
+							</div>
+						) ) }
+					</div>
+				</div>
+			</section>
+		</>
+	);
+}
