@@ -18,4 +18,14 @@
 	.parallax-hero {
 		will-change: transform;
 	}
+
+	/* Hide animated elements before GSAP initializes to prevent flash */
+	[data-hero-badge],
+	[data-hero-title],
+	[data-hero-cta],
+	[data-hero-bottom] {
+		opacity: 0;
+	}
+
+	/* Once GSAP has initialized it will set inline opacity, which overrides this */
 }

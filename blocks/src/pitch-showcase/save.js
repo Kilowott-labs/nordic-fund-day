@@ -52,7 +52,7 @@ export default function save( { attributes } ) {
 				</div>
 
 				{ /* Sector Cards */ }
-				<div className="flex flex-col sm:flex-row gap-4 overflow-x-auto pb-2">
+				<div className="flex flex-col sm:flex-row gap-4 overflow-hidden pb-2">
 					{ sectors.map( ( sector ) => (
 						<div key={ sector.id } className="flex-1 min-w-[200px] bg-[var(--wp--preset--color--dark-card)] rounded-[5px] p-6 sm:p-7 flex flex-col gap-4">
 							<div

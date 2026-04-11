@@ -136,6 +136,7 @@
       ]
     },
     "spacing": {
+      "blockGap": true,
       "units": ["px", "rem", "em", "%", "vw"],
       "spacingSizes": [
         { "slug": "xs", "size": "0.5rem", "name": "XS" },

@@ -65,7 +65,7 @@ function initHeaderNav() {
 			} );
 		} );
 
-		// Nav background on scroll
+		// Nav background on scroll — works with both native scroll and Lenis
 		const handleScroll = () => {
 			if ( window.scrollY > 50 ) {
 				nav.classList.add( 'scrolled' );
@@ -75,6 +75,22 @@ function initHeaderNav() {
 		};
 
 		window.addEventListener( 'scroll', handleScroll, { passive: true } );
+
+		// Also listen to Lenis scroll if available (Lenis may override native scroll)
+		const checkLenis = setInterval( () => {
+			if ( window.lenis ) {
+				window.lenis.on( 'scroll', ( { scroll } ) => {
+					if ( scroll > 50 ) {
+						nav.classList.add( 'scrolled' );
+					} else {
+						nav.classList.remove( 'scrolled' );
+					}
+				} );
+				clearInterval( checkLenis );
+			}
+		}, 100 );
+		setTimeout( () => clearInterval( checkLenis ), 5000 ); // stop checking after 5s
+
 		handleScroll(); // check initial state
 	} );
 }

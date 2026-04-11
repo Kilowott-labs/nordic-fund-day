@@ -118,52 +118,62 @@
 			);
 		} );
 
-		// Schedule day cards
-		document.querySelectorAll( '.bg-\\[var\\(--wp--preset--color--dark-pill\\)\\]' ).forEach( ( card, i ) => {
-			gsap.fromTo(
-				card,
-				{ y: 30, opacity: 0 },
-				{
-					y: 0,
-					opacity: 1,
-					duration: 0.5,
-					delay: i * 0.1,
-					ease: 'power2.out',
-					scrollTrigger: { trigger: card, start: 'top 88%', toggleActions: 'play none none none' },
-				}
-			);
-		} );
+		// Schedule day cards — use block class selector
+		const scheduleBlock = document.querySelector( '.wp-block-agent-theme-schedule-grid' );
+		if ( scheduleBlock ) {
+			scheduleBlock.querySelectorAll( '.rounded-lg' ).forEach( ( card, i ) => {
+				gsap.fromTo(
+					card,
+					{ y: 30, opacity: 0 },
+					{
+						y: 0,
+						opacity: 1,
+						duration: 0.5,
+						delay: i * 0.1,
+						ease: 'power2.out',
+						scrollTrigger: { trigger: card, start: 'top 88%', toggleActions: 'play none none none' },
+					}
+				);
+			} );
+		}
 
 		// Partner cards
-		document.querySelectorAll( '.bg-\\[var\\(--wp--preset--color--dark-card\\)\\]' ).forEach( ( card, i ) => {
-			gsap.fromTo(
-				card,
-				{ y: 30, opacity: 0 },
-				{
-					y: 0,
-					opacity: 1,
-					duration: 0.5,
-					delay: i * 0.1,
-					ease: 'power2.out',
-					scrollTrigger: { trigger: card, start: 'top 85%', toggleActions: 'play none none none' },
-				}
-			);
-		} );
+		const partnerBlock = document.querySelector( '.wp-block-agent-theme-partner-cards' );
+		if ( partnerBlock ) {
+			partnerBlock.querySelectorAll( '.rounded-lg' ).forEach( ( card, i ) => {
+				gsap.fromTo(
+					card,
+					{ y: 30, opacity: 0 },
+					{
+						y: 0,
+						opacity: 1,
+						duration: 0.5,
+						delay: i * 0.1,
+						ease: 'power2.out',
+						scrollTrigger: { trigger: card, start: 'top 85%', toggleActions: 'play none none none' },
+					}
+				);
+			} );
+		}
 
-		// CTA buttons
-		document.querySelectorAll( '.bg-\\[var\\(--wp--preset--color--lime-cta\\)\\]' ).forEach( ( btn ) => {
-			gsap.fromTo(
-				btn,
-				{ y: 15, opacity: 0 },
-				{
-					y: 0,
-					opacity: 1,
-					duration: 0.5,
-					ease: 'power2.out',
-					scrollTrigger: { trigger: btn, start: 'top 90%', toggleActions: 'play none none none' },
-				}
-			);
-		} );
+		// Pitch sector cards
+		const pitchBlock = document.querySelector( '.wp-block-agent-theme-pitch-showcase' );
+		if ( pitchBlock ) {
+			pitchBlock.querySelectorAll( '.rounded-\\[5px\\]' ).forEach( ( card, i ) => {
+				gsap.fromTo(
+					card,
+					{ y: 30, opacity: 0 },
+					{
+						y: 0,
+						opacity: 1,
+						duration: 0.5,
+						delay: i * 0.08,
+						ease: 'power2.out',
+						scrollTrigger: { trigger: card, start: 'top 88%', toggleActions: 'play none none none' },
+					}
+				);
+			} );
+		}
 
 		// ============================================================
 		// TREASURE ISLAND + INVESTOR BRUNCH — SCROLL PIN
@@ -172,18 +182,21 @@
 		const brunchBlock = document.querySelector( '.wp-block-agent-theme-investor-brunch' );
 
 		if ( treasureBlock && brunchBlock && window.innerWidth >= 1024 ) {
-			// Wrap both in a container for the pin effect if not already wrapped
-			const parent = treasureBlock.parentElement;
 			const overflow = Math.max( 0, treasureBlock.offsetHeight - window.innerHeight );
 
+			// Pin treasure island — it stays fixed while brunch scrolls over
 			ScrollTrigger.create( {
 				trigger: treasureBlock,
 				start: () => 'top -' + overflow + 'px',
 				end: () => '+=' + brunchBlock.offsetHeight,
-				pin: treasureBlock,
+				pin: true,
 				pinSpacing: false,
 				invalidateOnRefresh: true,
 			} );
+
+			// Ensure brunch overlaps by giving it a higher z-index
+			brunchBlock.style.position = 'relative';
+			brunchBlock.style.zIndex = '2';
 		}
 
 		// ============================================================

@@ -60,7 +60,7 @@
     "html": false,
     "anchor": true,
     "align": ["wide", "full"],
-    "spacing": { "padding": true, "margin": true }
+    "spacing": { "padding": true, "margin": false }
   },
   "editorScript": "file:./index.js"
 }
