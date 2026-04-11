@@ -161,7 +161,7 @@ export default function Edit( { attributes, setAttributes } ) {
 					<div className="relative z-10 flex flex-col items-end gap-3 lg:gap-6 w-full lg:self-end lg:max-w-[55%]">
 						<div className="flex items-center flex-wrap justify-end gap-4 sm:gap-5 lg:gap-[21px]">
 							{ partnerLogos.map( ( logo ) => (
-								logo.url ? <img key={ logo.id } src={ logo.url } alt={ logo.alt } className="h-[28px] sm:h-[40px] lg:h-[56px] w-auto object-contain" /> : null
+								logo.url ? <img key={ logo.id } src={ logo.url } alt={ logo.alt } className="h-[28px] sm:h-[40px] lg:h-[56px] w-auto max-w-[100px] sm:max-w-[120px] lg:max-w-[150px] object-contain" /> : null
 							) ) }
 						</div>
 						<div className="w-full bg-black/10 backdrop-blur-md border border-white/30 rounded-[10px] p-4 sm:p-[30px_40px]">

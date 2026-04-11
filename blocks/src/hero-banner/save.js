@@ -74,7 +74,7 @@ export default function save( { attributes } ) {
 					<div className="flex items-center flex-wrap justify-end gap-4 sm:gap-5 lg:gap-[21px]">
 						{ partnerLogos.map( ( logo ) => (
 							logo.url ? (
-								<img key={ logo.id } src={ logo.url } alt={ logo.alt } className="h-[28px] sm:h-[40px] lg:h-[56px] w-auto object-contain" loading="lazy" />
+								<img key={ logo.id } src={ logo.url } alt={ logo.alt } className="h-[28px] sm:h-[40px] lg:h-[56px] w-auto max-w-[100px] sm:max-w-[120px] lg:max-w-[150px] object-contain" loading="lazy" />
 							) : null
 						) ) }
 					</div>

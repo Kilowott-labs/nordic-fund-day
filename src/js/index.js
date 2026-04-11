@@ -186,48 +186,62 @@
 
 		// ============================================================
 		// TREASURE ISLAND + INVESTOR BRUNCH — SCROLL PIN
+		// Wraps both blocks in a container, then pins treasure while
+		// brunch scrolls over it. This replicates the static HTML
+		// #event-panels wrapper approach.
 		// ============================================================
 		const treasureBlock = document.querySelector( '.wp-block-agent-theme-treasure-mixer' );
 		const brunchBlock = document.querySelector( '.wp-block-agent-theme-investor-brunch' );
 
 		if ( treasureBlock && brunchBlock && window.innerWidth >= 1024 ) {
-			const overflow = Math.max( 0, treasureBlock.offsetHeight - window.innerHeight );
+			// Wrap both blocks in a container div (like #event-panels in static)
+			const wrapper = document.createElement( 'div' );
+			wrapper.className = 'event-panels-wrapper relative overflow-hidden';
+			treasureBlock.parentNode.insertBefore( wrapper, treasureBlock );
+			wrapper.appendChild( treasureBlock );
+			wrapper.appendChild( brunchBlock );
 
-			// Pin treasure island — it stays fixed while brunch scrolls over
-			ScrollTrigger.create( {
-				trigger: treasureBlock,
-				start: () => 'top -' + overflow + 'px',
-				end: () => '+=' + brunchBlock.offsetHeight,
-				pin: true,
-				pinSpacing: false,
-				invalidateOnRefresh: true,
-			} );
-
-			// Ensure brunch overlaps by giving it a higher z-index
+			// Set z-indexes
+			treasureBlock.style.zIndex = '1';
 			brunchBlock.style.position = 'relative';
 			brunchBlock.style.zIndex = '2';
+
+			// Simple pin — treasure stays fixed while brunch scrolls over
+			ScrollTrigger.create( {
+				trigger: wrapper,
+				start: 'top top',
+				end: () => '+=' + brunchBlock.offsetHeight,
+				pin: treasureBlock,
+				pinSpacing: false,
+			} );
 		}
 
 		// ============================================================
 		// STATS COUNTER ANIMATION (Hero bottom)
 		// ============================================================
 		document.querySelectorAll( '[data-hero-bottom] .font-mono' ).forEach( ( stat ) => {
-			const text = stat.textContent;
-			const match = text.match( /^(\d+)/ );
+			const originalText = stat.textContent;
+			const match = originalText.match( /^(\d+)(.*)$/ );
 			if ( match ) {
 				const target = parseInt( match[ 1 ], 10 );
-				const suffix = text.replace( match[ 1 ], '' );
-				gsap.fromTo(
-					stat,
-					{ textContent: '0' + suffix },
-					{
-						textContent: target + suffix,
-						duration: 1.5,
-						ease: 'power1.out',
-						snap: { textContent: 1 },
-						scrollTrigger: { trigger: stat, start: 'top 90%', toggleActions: 'play none none none' },
-					}
-				);
+				const suffix = match[ 2 ];
+				const counter = { val: 0 };
+
+				ScrollTrigger.create( {
+					trigger: stat,
+					start: 'top 90%',
+					once: true,
+					onEnter: () => {
+						gsap.to( counter, {
+							val: target,
+							duration: 1.5,
+							ease: 'power1.out',
+							onUpdate: () => {
+								stat.textContent = Math.round( counter.val ) + suffix;
+							},
+						} );
+					},
+				} );
 			}
 		} );
 	}
