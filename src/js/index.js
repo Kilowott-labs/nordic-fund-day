@@ -185,12 +185,8 @@
 		}
 
 		// ============================================================
-		// TREASURE ISLAND + INVESTOR BRUNCH
-		// Both sections scroll normally — no pinning in WP context.
-		// The pin effect from the static page requires both blocks to
-		// be wrapped in a single container, which isn't possible with
-		// separate Gutenberg blocks without DOM manipulation that
-		// conflicts with GSAP's pin-spacer system.
+		// TREASURE ISLAND + INVESTOR BRUNCH — SCROLL PIN
+		// Handled by event-panels wrapper block's own view.js
 		// ============================================================
 
 		// ============================================================

@@ -1,0 +1,23 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "agent-theme/event-panels",
+  "version": "1.0.0",
+  "title": "Event Panels (Pin Wrapper)",
+  "category": "edge",
+  "icon": "columns",
+  "description": "Wrapper block for Treasure Island Mixer and Investor Brunch — enables the scroll-pin effect where Treasure Island stays fixed while Investor Brunch scrolls over it.",
+  "textdomain": "agent-theme",
+  "allowedBlocks": [
+    "agent-theme/treasure-mixer",
+    "agent-theme/investor-brunch"
+  ],
+  "attributes": {},
+  "supports": {
+    "html": false,
+    "anchor": true,
+    "spacing": { "padding": false, "margin": false }
+  },
+  "editorScript": "file:./index.js",
+  "viewScript": "file:./view.js"
+}
