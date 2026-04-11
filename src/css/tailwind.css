@@ -22,6 +22,53 @@
   }
 }
 
+/* ============================================================ */
+/* Header Nav — scroll state + mobile menu                      */
+/* Must be OUTSIDE @layer to beat Tailwind utility specificity   */
+/* ============================================================ */
+.wp-block-agent-theme-header-nav {
+  background: transparent;
+  transition: background 0.4s ease, backdrop-filter 0.4s ease;
+}
+
+.wp-block-agent-theme-header-nav.scrolled {
+  background: rgba(0, 0, 0, 0.85) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+}
+
+.wp-block-agent-theme-header-nav .mobile-menu {
+  display: flex;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.4s ease, opacity 0.3s ease, padding 0.3s ease;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.wp-block-agent-theme-header-nav .mobile-menu.open {
+  max-height: 400px;
+  opacity: 1;
+  padding-top: 16px;
+  padding-bottom: 24px;
+}
+
+/* ============================================================ */
+/* Hero Banner — text glow + parallax                           */
+/* ============================================================ */
+.wp-block-agent-theme-hero-banner .hero-glow {
+  text-shadow: 0px 0px 13px rgba(255, 255, 255, 0.8);
+}
+
+.wp-block-agent-theme-hero-banner .date-glow {
+  text-shadow: 0px 0.77px 3.1px rgba(255, 255, 255, 0.45);
+}
+
+.wp-block-agent-theme-hero-banner .parallax-hero {
+  will-change: transform;
+}
+
 @layer components {
   /* Banner Text block — collection item interactivity */
   .collection-item {

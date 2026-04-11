@@ -37,6 +37,11 @@
 		}
 		requestAnimationFrame( raf );
 
+		// ============================================================
+		// GSAP REGISTER (must be before any ScrollTrigger usage)
+		// ============================================================
+		gsap.registerPlugin( ScrollTrigger );
+
 		// Connect Lenis to GSAP ScrollTrigger
 		lenis.on( 'scroll', ScrollTrigger.update );
 		gsap.ticker.add( ( time ) => {
@@ -45,20 +50,24 @@
 		gsap.ticker.lagSmoothing( 0 );
 
 		// ============================================================
-		// GSAP REGISTER
+		// NAV ENTRANCE ANIMATION
 		// ============================================================
-		gsap.registerPlugin( ScrollTrigger );
+		const navBlock = document.querySelector( '[data-header-nav]' );
+		if ( navBlock ) {
+			gsap.set( navBlock, { y: -30, opacity: 0 } );
+			gsap.to( navBlock, { y: 0, opacity: 1, duration: 0.6, delay: 0.2, ease: 'power2.out' } );
+		}
 
 		// ============================================================
 		// HERO ENTRANCE ANIMATIONS
 		// ============================================================
 		const heroBanner = document.querySelector( '[data-hero-banner]' );
 		if ( heroBanner ) {
-			// Initial states
-			gsap.set( '[data-hero-badge]', { y: 20, opacity: 0, scale: 0.9 } );
-			gsap.set( '[data-hero-title]', { y: 80, opacity: 0 } );
-			gsap.set( '[data-hero-cta]', { y: 30, opacity: 0 } );
-			gsap.set( '[data-hero-bottom]', { y: 50, opacity: 0 } );
+			// Set transform positions (opacity:0 already inline in HTML)
+			gsap.set( '[data-hero-badge]', { y: 20, scale: 0.9 } );
+			gsap.set( '[data-hero-title]', { y: 80 } );
+			gsap.set( '[data-hero-cta]', { y: 30 } );
+			gsap.set( '[data-hero-bottom]', { y: 50 } );
 
 			const heroTL = gsap.timeline( { delay: 0.3 } );
 			heroTL

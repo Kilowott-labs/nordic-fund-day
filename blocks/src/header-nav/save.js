@@ -4,8 +4,7 @@ export default function save( { attributes } ) {
 	const { logo, logoAlt, navLinks, ctaLabel, ctaUrl } = attributes;
 
 	const blockProps = useBlockProps.save( {
-		className: 'fixed top-0 left-0 right-0 z-50 bg-transparent',
-		tagName: 'nav',
+		className: 'fixed top-0 left-0 right-0 z-50',
 	} );
 
 	return (

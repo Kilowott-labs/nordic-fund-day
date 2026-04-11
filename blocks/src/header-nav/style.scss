@@ -5,11 +5,12 @@
  */
 
 .wp-block-agent-theme-header-nav {
-	/* Nav scroll state transition — toggled by view.js */
+	/* Default transparent state — Tailwind bg-transparent conflicts with scrolled */
+	background: transparent !important;
 	transition: background 0.4s ease, backdrop-filter 0.4s ease;
 
 	&.scrolled {
-		background: rgba(0, 0, 0, 0.85);
+		background: rgba(0, 0, 0, 0.85) !important;
 		backdrop-filter: blur(12px);
 		-webkit-backdrop-filter: blur(12px);
 	}

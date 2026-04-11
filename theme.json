@@ -150,13 +150,16 @@
     }
   },
   "styles": {
+    "spacing": {
+      "blockGap": "0px"
+    },
     "typography": {
       "fontFamily": "var(--wp--preset--font-family--dm-sans)",
       "lineHeight": "1.5"
     },
     "color": {
-      "background": "var(--wp--preset--color--white)",
-      "text": "var(--wp--preset--color--black)"
+      "background": "var(--wp--preset--color--black)",
+      "text": "var(--wp--preset--color--white)"
     },
     "elements": {
       "h1": {
