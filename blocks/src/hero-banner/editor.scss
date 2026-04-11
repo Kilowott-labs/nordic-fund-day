@@ -1,0 +1,15 @@
+/**
+ * editor.scss — hero-banner
+ * Editor-only overrides to prevent horizontal overflow while
+ * allowing the block to show its full content height.
+ */
+
+.wp-block-agent-theme-hero-banner {
+	/* Remove aspect-ratio and min-height that cause overflow in editor */
+	min-height: auto !important;
+	aspect-ratio: auto !important;
+	/* Let content determine height naturally */
+	height: auto !important;
+	/* Prevent horizontal overflow */
+	overflow-x: hidden;
+}

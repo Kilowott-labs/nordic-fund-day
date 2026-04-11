@@ -114,7 +114,7 @@ export default function Edit( { attributes, setAttributes } ) {
 			</InspectorControls>
 
 			<section { ...blockProps }>
-				<div className="flex flex-col-reverse lg:flex-row items-start gap-8 lg:gap-[106px] px-4 sm:px-6 md:px-16 lg:px-[90px] py-16 lg:py-[132px]">
+				<div className="flex flex-col-reverse lg:flex-row items-start gap-8 lg:gap-12 xl:gap-16 min-[1600px]:gap-[106px] px-4 sm:px-6 md:px-16 lg:px-[60px] xl:px-[90px] py-16 lg:py-[100px] min-[1600px]:py-[132px]">
 					<div className="flex flex-col gap-12 w-full lg:max-w-[634px]">
 						<div className="flex flex-col gap-4">
 							<RichText tagName="span" value={ subtitle } onChange={ ( v ) => setAttributes( { subtitle: v } ) } className="font-mono text-[14px] font-medium tracking-[0.1em] uppercase text-black" placeholder={ __( 'Subtitle…', 'agent-theme' ) } />
@@ -143,7 +143,7 @@ export default function Edit( { attributes, setAttributes } ) {
 						</div>
 					</div>
 
-					<div className="relative w-full lg:w-[52%] flex-shrink-0">
+					<div className="relative w-full lg:w-[45%] xl:w-[48%] min-[1600px]:w-[52%] flex-shrink-0">
 						<div className="h-[40px] sm:h-[60px] lg:h-[80px]"></div>
 						<div className="absolute top-0 right-0 bg-[var(--wp--preset--color--lime)] rounded-sm w-[calc(100%-30px)] sm:w-[calc(100%-50px)] lg:w-[calc(100%-75px)] h-full"></div>
 						<div className="relative z-[1] mr-[30px] sm:mr-[50px] lg:mr-[75px]" style={ { aspectRatio: '921/683' } }>
