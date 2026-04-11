@@ -19,13 +19,6 @@
 		will-change: transform;
 	}
 
-	/* Hide animated elements before GSAP initializes to prevent flash */
-	[data-hero-badge],
-	[data-hero-title],
-	[data-hero-cta],
-	[data-hero-bottom] {
-		opacity: 0;
-	}
-
-	/* Once GSAP has initialized it will set inline opacity, which overrides this */
+	/* Animated elements have inline style="opacity:0" to prevent flash.
+	   GSAP sets inline opacity during animation, which overrides it. */
 }
