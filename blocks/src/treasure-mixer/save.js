@@ -49,10 +49,13 @@ export default function save( { attributes } ) {
 					<div className="flex flex-col gap-[14px]">
 						{ badges.map( ( badge ) => (
 							<div key={ badge.id } className="flex items-center gap-3 p-2 sm:p-3 bg-[var(--wp--preset--color--dark-card)] border border-white/[0.08] rounded">
-								<div
-									className="w-8 h-8 flex items-center justify-center flex-shrink-0 text-[var(--wp--preset--color--lime)]"
-									dangerouslySetInnerHTML={ { __html: badge.iconSvg } }
-								/>
+								<div className="w-8 h-8 flex items-center justify-center flex-shrink-0 text-[var(--wp--preset--color--lime)]">
+									{ badge.iconUrl ? (
+										<img src={ badge.iconUrl } alt="" className="w-6 h-6 object-contain" loading="lazy" />
+									) : (
+										<span dangerouslySetInnerHTML={ { __html: badge.iconSvg } } />
+									) }
+								</div>
 								<span className="text-white text-[16px] font-bold leading-[1.5]">{ badge.text }</span>
 							</div>
 						) ) }

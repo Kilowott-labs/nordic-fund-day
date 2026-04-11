@@ -82,7 +82,26 @@ export default function Edit( { attributes, setAttributes } ) {
 					{ badges.map( ( badge, idx ) => (
 						<PanelBody key={ badge.id } title={ badge.text || `Badge ${ idx + 1 }` } initialOpen={ false }>
 							<TextControl label={ __( 'Text', 'agent-theme' ) } value={ badge.text } onChange={ ( v ) => updateBadge( idx, { text: v } ) } />
-							<TextareaControl label={ __( 'Icon SVG', 'agent-theme' ) } value={ badge.iconSvg } onChange={ ( v ) => updateBadge( idx, { iconSvg: v } ) } help={ __( 'Use currentColor for stroke/fill.', 'agent-theme' ) } />
+							<p style={ { fontWeight: 600, marginTop: '8px', marginBottom: '4px' } }>{ __( 'Icon', 'agent-theme' ) }</p>
+							{ badge.iconUrl && <img src={ badge.iconUrl } alt="" style={ { width: '32px', height: '32px', objectFit: 'contain', marginBottom: '8px' } } /> }
+							<MediaUploadCheck>
+								<MediaUpload
+									onSelect={ ( media ) => updateBadge( idx, { iconUrl: media.url, iconId: media.id } ) }
+									allowedTypes={ [ 'image' ] }
+									value={ badge.iconId }
+									render={ ( { open } ) => (
+										<Button onClick={ open } variant="secondary" style={ { width: '100%' } }>
+											{ badge.iconUrl ? __( 'Change Icon', 'agent-theme' ) : __( 'Upload Icon', 'agent-theme' ) }
+										</Button>
+									) }
+								/>
+							</MediaUploadCheck>
+							{ badge.iconUrl && (
+								<Button onClick={ () => updateBadge( idx, { iconUrl: '', iconId: 0 } ) } variant="link" isDestructive style={ { marginTop: '4px' } }>
+									{ __( 'Reset to Default SVG', 'agent-theme' ) }
+								</Button>
+							) }
+							<TextareaControl label={ __( 'Default SVG (fallback)', 'agent-theme' ) } value={ badge.iconSvg } onChange={ ( v ) => updateBadge( idx, { iconSvg: v } ) } help={ __( 'Used when no icon uploaded.', 'agent-theme' ) } />
 							{ badges.length > 1 && (
 								<Button onClick={ () => removeBadge( idx ) } variant="secondary" isDestructive style={ { width: '100%', marginTop: '8px' } }>
 									{ __( 'Remove Badge', 'agent-theme' ) }
@@ -109,7 +128,13 @@ export default function Edit( { attributes, setAttributes } ) {
 						<div className="flex flex-col gap-[14px]">
 							{ badges.map( ( badge ) => (
 								<div key={ badge.id } className="flex items-center gap-3 p-2 sm:p-3 bg-black border border-white/[0.08] rounded">
-									<div className="w-8 h-8 flex items-center justify-center flex-shrink-0 text-[var(--wp--preset--color--lime)]" dangerouslySetInnerHTML={ { __html: badge.iconSvg } } />
+									<div className="w-8 h-8 flex items-center justify-center flex-shrink-0 text-[var(--wp--preset--color--lime)]">
+									{ badge.iconUrl ? (
+										<img src={ badge.iconUrl } alt="" className="w-6 h-6 object-contain" />
+									) : (
+										<span dangerouslySetInnerHTML={ { __html: badge.iconSvg } } />
+									) }
+								</div>
 									<span className="text-white text-[16px] font-bold leading-[1.5]">{ badge.text }</span>
 								</div>
 							) ) }

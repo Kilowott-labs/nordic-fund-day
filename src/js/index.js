@@ -250,6 +250,44 @@
 				} );
 			}
 		} );
+
+		// ============================================================
+		// FOOTER CTA — parallax background (scale 1.15 → 1)
+		// ============================================================
+		const footerBlock = document.querySelector( '.wp-block-agent-theme-footer-cta' );
+		if ( footerBlock ) {
+			gsap.fromTo( footerBlock,
+				{ backgroundSize: '115%' },
+				{
+					backgroundSize: '100%', ease: 'none',
+					scrollTrigger: {
+						trigger: footerBlock,
+						start: 'top bottom',
+						end: 'bottom top',
+						scrub: 0.8,
+					},
+				}
+			);
+		}
+
+		// ============================================================
+		// MAGNETIC HOVER EFFECT — all rounded pill buttons
+		// Buttons follow mouse slightly, snap back with elastic ease
+		// ============================================================
+		document.querySelectorAll( '.rounded-full' ).forEach( ( btn ) => {
+			if ( btn.closest( '[data-header-nav]' ) ) return;
+
+			btn.addEventListener( 'mousemove', ( e ) => {
+				const rect = btn.getBoundingClientRect();
+				const x = e.clientX - rect.left - rect.width / 2;
+				const y = e.clientY - rect.top - rect.height / 2;
+				gsap.to( btn, { x: x * 0.15, y: y * 0.15, duration: 0.3, ease: 'power2.out' } );
+			} );
+
+			btn.addEventListener( 'mouseleave', () => {
+				gsap.to( btn, { x: 0, y: 0, duration: 0.5, ease: 'elastic.out(1, 0.5)' } );
+			} );
+		} );
 	}
 
 	// Initialize when DOM is ready
