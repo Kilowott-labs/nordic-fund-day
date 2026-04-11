@@ -255,7 +255,7 @@
 		// FOOTER CTA — parallax background (scale 1.15 → 1)
 		// ============================================================
 		const footerBlock = document.querySelector( '.wp-block-nordic-fund-day-footer-cta' );
-		if ( footerBlock ) {
+		if ( footerBlock && window.innerWidth >= 1024 ) {
 			gsap.fromTo( footerBlock,
 				{ backgroundSize: '115%' },
 				{
