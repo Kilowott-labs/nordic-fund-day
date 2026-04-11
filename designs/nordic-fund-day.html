@@ -1061,19 +1061,29 @@
 
     // ============================================================
     // TREASURE ISLAND + INVESTOR BRUNCH — scroll pin
-    // Treasure Island stays pinned while Investor Brunch scrolls over it
+    // Treasure Island pins once user has seen the full section,
+    // then Investor Brunch scrolls over it from below
     // ============================================================
     const treasureSection = document.getElementById('treasure-island');
     const brunchSection = document.getElementById('investor-brunch');
     const eventPanels = document.getElementById('event-panels');
     // Only pin on desktop (lg+) — mobile scrolls normally
     if (treasureSection && brunchSection && eventPanels && window.innerWidth >= 1024) {
+      // Pin starts after the user has scrolled enough to see most of the section.
+      // We offset by the overflow amount so the bottom content is visible when pinned.
+      const getOverflow = () => {
+        const sectionH = treasureSection.offsetHeight;
+        const viewH = window.innerHeight;
+        return Math.max(0, sectionH - viewH);
+      };
+
       ScrollTrigger.create({
         trigger: eventPanels,
-        start: 'top top',
-        end: () => '+=' + brunchSection.offsetHeight,
+        start: () => 'top -' + getOverflow() + 'px',
+        end: () => '+=' + (brunchSection.offsetHeight + getOverflow()),
         pin: treasureSection,
         pinSpacing: false,
+        invalidateOnRefresh: true,
       });
     }
 
