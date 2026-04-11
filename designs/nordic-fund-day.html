@@ -345,7 +345,7 @@
   <!-- TREASURE ISLAND MIXER + INVESTOR BRUNCH (GSAP scroll pin) -->
   <!-- Figma node 224:815 — Treasure Island is pinned, Brunch scrolls over -->
   <!-- ============================================================ -->
-  <div id="event-panels" class="relative">
+  <div id="event-panels" class="relative overflow-hidden">
     <!-- PANEL 1: Treasure Island Mixer (pinned by GSAP) -->
     <section id="treasure-island" class="bg-white z-[1]">
       <div class="flex flex-col lg:flex-row items-center gap-8 lg:gap-[106px] px-4 sm:px-6 md:px-16 lg:px-[90px] py-16 lg:py-[132px]">
@@ -465,6 +465,8 @@
       </div>
     </section>
 
+  </div>
+  <!-- end #event-panels -->
 
   <!-- ============================================================ -->
   <!-- BECOME A PARTNER SECTION -->
@@ -702,9 +704,6 @@
       </div>
     </div>
   </section>
-
-
-  </div>
 
   <!-- ============================================================ -->
   <!-- FOOTER / CTA SECTION -->
@@ -1069,22 +1068,27 @@
     const eventPanels = document.getElementById('event-panels');
     // Only pin on desktop (lg+) — mobile scrolls normally
     if (treasureSection && brunchSection && eventPanels && window.innerWidth >= 1024) {
-      // Pin starts after the user has scrolled enough to see most of the section.
-      // We offset by the overflow amount so the bottom content is visible when pinned.
-      const getOverflow = () => {
-        const sectionH = treasureSection.offsetHeight;
-        const viewH = window.innerHeight;
-        return Math.max(0, sectionH - viewH);
-      };
+      // Pin starts after user scrolls past the overflow so the full
+      // section content is visible before pinning.
+      const overflow = Math.max(0, treasureSection.offsetHeight - window.innerHeight);
 
       ScrollTrigger.create({
         trigger: eventPanels,
-        start: () => 'top -' + getOverflow() + 'px',
-        end: () => '+=' + (brunchSection.offsetHeight + getOverflow()),
+        start: () => 'top -' + overflow + 'px',
+        end: () => '+=' + brunchSection.offsetHeight,
         pin: treasureSection,
         pinSpacing: false,
         invalidateOnRefresh: true,
       });
+
+      // Compensate for the dead space left after pinning.
+      // With pinSpacing:false the pin-spacer takes treasureHeight in flow.
+      // After brunch scrolls over, there's a gap = treasureHeight - brunchHeight (if positive).
+      // But the real gap is the white space visible, which equals overflow.
+      const gap = treasureSection.offsetHeight - brunchSection.offsetHeight;
+      if (gap > 0) {
+        eventPanels.style.marginBottom = -gap + 'px';
+      }
     }
 
     // ============================================================
