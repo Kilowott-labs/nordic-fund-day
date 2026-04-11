@@ -144,8 +144,8 @@ add_action('wp_footer', 'boost_ai_chat_scripts');
 
 add_action( 'wp_enqueue_scripts', function () {
 	wp_enqueue_style(
-		'coretrek-dm-sans',
-		'https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&display=swap',
+		'coretrek-google-fonts',
+		'https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900&display=swap',
 		[],
 		null
 	);
@@ -154,8 +154,8 @@ add_action( 'wp_enqueue_scripts', function () {
 
 add_action( 'enqueue_block_editor_assets', function () {
 	wp_enqueue_style(
-		'coretrek-dm-sans-editor',
-		'https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&display=swap',
+		'coretrek-google-fonts-editor',
+		'https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900&display=swap',
 		[],
 		null
 	);
@@ -188,14 +188,23 @@ add_action( 'wp_enqueue_scripts', function () {
 		true
 	);
 	
-	// Enqueue scroll animations utility
-	// wp_enqueue_script(
-	// 	'ytf-scroll-animations',
-	// 	get_template_directory_uri() . '/assets/js/scroll-animations.js',
-	// 	['gsap', 'gsap-scrolltrigger'],
-	// 	filemtime(get_template_directory() . '/assets/js/scroll-animations.js'),
-	// 	true
-	// );
+	// Enqueue Lenis smooth scroll
+	wp_enqueue_script(
+		'lenis',
+		'https://unpkg.com/lenis@1.1.18/dist/lenis.min.js',
+		[],
+		'1.1.18',
+		true
+	);
+
+	// Enqueue global page animations (Lenis, GSAP scroll effects, section reveals)
+	wp_enqueue_script(
+		'nfd-page-animations',
+		get_template_directory_uri() . '/dist/main.js',
+		['gsap', 'gsap-scrolltrigger', 'lenis'],
+		filemtime(get_template_directory() . '/dist/main.js'),
+		true
+	);
 } );
 
 add_action( 'enqueue_block_editor_assets', function () {
@@ -208,9 +217,10 @@ add_action( 'enqueue_block_editor_assets', function () {
 	);
 } );
 
-// Load Tailwind CSS into the editor iframe canvas
+// Load Tailwind CSS and Google Fonts into the editor iframe canvas
 add_action( 'after_setup_theme', function () {
 	add_editor_style( 'dist/tailwind.css' );
+	add_editor_style( 'https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900&display=swap' );
 } );
 
 // Blockstudio LLM file rewrite

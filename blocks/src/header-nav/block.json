@@ -1,0 +1,49 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "agent-theme/header-nav",
+  "version": "1.0.0",
+  "title": "Header Navigation",
+  "category": "edge",
+  "icon": "menu",
+  "description": "Fixed top navigation bar with logo, desktop links, mobile hamburger menu with smooth transition, and CTA button.",
+  "textdomain": "agent-theme",
+  "attributes": {
+    "logo": {
+      "type": "string",
+      "default": ""
+    },
+    "logoId": {
+      "type": "number",
+      "default": 0
+    },
+    "logoAlt": {
+      "type": "string",
+      "default": "Nordic Fund Day"
+    },
+    "navLinks": {
+      "type": "array",
+      "default": [
+        { "id": 1, "label": "About", "url": "#treasure-island" },
+        { "id": 2, "label": "Agenda", "url": "#agenda" },
+        { "id": 3, "label": "Become Partner", "url": "#partner" }
+      ]
+    },
+    "ctaLabel": {
+      "type": "string",
+      "default": "REQUEST ACCESS"
+    },
+    "ctaUrl": {
+      "type": "string",
+      "default": "#"
+    }
+  },
+  "supports": {
+    "html": false,
+    "anchor": true,
+    "multiple": false
+  },
+  "editorScript": "file:./index.js",
+  "viewScript": "file:./view.js",
+  "style": "file:./style-index.css"
+}

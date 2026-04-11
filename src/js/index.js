@@ -1,0 +1,219 @@
+/**
+ * Nordic Fund Day — Global Page Animations
+ *
+ * Initializes Lenis smooth scroll, GSAP ScrollTrigger effects,
+ * hero parallax, treasure island pin, and section reveal animations.
+ *
+ * Dependencies: gsap, gsap-scrolltrigger, lenis (loaded via functions.php)
+ * Compiled to: dist/main.js
+ */
+
+( function () {
+	'use strict';
+
+	// Wait for DOM + all scripts to load
+	function init() {
+		if ( typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined' || typeof Lenis === 'undefined' ) {
+			return;
+		}
+
+		// ============================================================
+		// LENIS SMOOTH SCROLL
+		// ============================================================
+		const lenis = new Lenis( {
+			duration: 1.2,
+			easing: ( t ) => Math.min( 1, 1.001 - Math.pow( 2, -10 * t ) ),
+			orientation: 'vertical',
+			gestureOrientation: 'vertical',
+			smoothWheel: true,
+		} );
+
+		// Expose globally for header-nav view.js to use
+		window.lenis = lenis;
+
+		function raf( time ) {
+			lenis.raf( time );
+			requestAnimationFrame( raf );
+		}
+		requestAnimationFrame( raf );
+
+		// Connect Lenis to GSAP ScrollTrigger
+		lenis.on( 'scroll', ScrollTrigger.update );
+		gsap.ticker.add( ( time ) => {
+			lenis.raf( time * 1000 );
+		} );
+		gsap.ticker.lagSmoothing( 0 );
+
+		// ============================================================
+		// GSAP REGISTER
+		// ============================================================
+		gsap.registerPlugin( ScrollTrigger );
+
+		// ============================================================
+		// HERO ENTRANCE ANIMATIONS
+		// ============================================================
+		const heroBanner = document.querySelector( '[data-hero-banner]' );
+		if ( heroBanner ) {
+			// Initial states
+			gsap.set( '[data-hero-badge]', { y: 20, opacity: 0, scale: 0.9 } );
+			gsap.set( '[data-hero-title]', { y: 80, opacity: 0 } );
+			gsap.set( '[data-hero-cta]', { y: 30, opacity: 0 } );
+			gsap.set( '[data-hero-bottom]', { y: 50, opacity: 0 } );
+
+			const heroTL = gsap.timeline( { delay: 0.3 } );
+			heroTL
+				.to( '[data-hero-badge]', { y: 0, opacity: 1, scale: 1, duration: 0.6, ease: 'back.out(1.7)' } )
+				.to( '[data-hero-title]', { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out', stagger: 0.15 }, '-=0.3' )
+				.to( '[data-hero-cta]', { y: 0, opacity: 1, duration: 0.6, ease: 'power2.out' }, '-=0.3' )
+				.to( '[data-hero-bottom]', { y: 0, opacity: 1, duration: 0.8, ease: 'power2.out' }, '-=0.2' );
+
+			// Hero parallax
+			const parallaxHero = heroBanner.querySelector( '.parallax-hero' );
+			if ( parallaxHero ) {
+				gsap.to( parallaxHero, {
+					yPercent: 15,
+					ease: 'none',
+					scrollTrigger: {
+						trigger: heroBanner,
+						start: 'top top',
+						end: 'bottom top',
+						scrub: true,
+					},
+				} );
+			}
+		}
+
+		// ============================================================
+		// SECTION REVEAL ANIMATIONS
+		// ============================================================
+
+		// Headings fade-in
+		document.querySelectorAll( 'h2' ).forEach( ( h ) => {
+			gsap.fromTo(
+				h,
+				{ y: 40, opacity: 0 },
+				{
+					y: 0,
+					opacity: 1,
+					duration: 0.7,
+					ease: 'power2.out',
+					scrollTrigger: { trigger: h, start: 'top 85%', toggleActions: 'play none none none' },
+				}
+			);
+		} );
+
+		// Body paragraphs fade-in
+		document.querySelectorAll( '[data-section] p, .font-mono' ).forEach( ( p ) => {
+			if ( p.closest( '[data-hero-banner]' ) ) return; // skip hero
+			gsap.fromTo(
+				p,
+				{ y: 20, opacity: 0 },
+				{
+					y: 0,
+					opacity: 1,
+					duration: 0.6,
+					ease: 'power2.out',
+					scrollTrigger: { trigger: p, start: 'top 88%', toggleActions: 'play none none none' },
+				}
+			);
+		} );
+
+		// Schedule day cards
+		document.querySelectorAll( '.bg-\\[var\\(--wp--preset--color--dark-pill\\)\\]' ).forEach( ( card, i ) => {
+			gsap.fromTo(
+				card,
+				{ y: 30, opacity: 0 },
+				{
+					y: 0,
+					opacity: 1,
+					duration: 0.5,
+					delay: i * 0.1,
+					ease: 'power2.out',
+					scrollTrigger: { trigger: card, start: 'top 88%', toggleActions: 'play none none none' },
+				}
+			);
+		} );
+
+		// Partner cards
+		document.querySelectorAll( '.bg-\\[var\\(--wp--preset--color--dark-card\\)\\]' ).forEach( ( card, i ) => {
+			gsap.fromTo(
+				card,
+				{ y: 30, opacity: 0 },
+				{
+					y: 0,
+					opacity: 1,
+					duration: 0.5,
+					delay: i * 0.1,
+					ease: 'power2.out',
+					scrollTrigger: { trigger: card, start: 'top 85%', toggleActions: 'play none none none' },
+				}
+			);
+		} );
+
+		// CTA buttons
+		document.querySelectorAll( '.bg-\\[var\\(--wp--preset--color--lime-cta\\)\\]' ).forEach( ( btn ) => {
+			gsap.fromTo(
+				btn,
+				{ y: 15, opacity: 0 },
+				{
+					y: 0,
+					opacity: 1,
+					duration: 0.5,
+					ease: 'power2.out',
+					scrollTrigger: { trigger: btn, start: 'top 90%', toggleActions: 'play none none none' },
+				}
+			);
+		} );
+
+		// ============================================================
+		// TREASURE ISLAND + INVESTOR BRUNCH — SCROLL PIN
+		// ============================================================
+		const treasureBlock = document.querySelector( '.wp-block-agent-theme-treasure-mixer' );
+		const brunchBlock = document.querySelector( '.wp-block-agent-theme-investor-brunch' );
+
+		if ( treasureBlock && brunchBlock && window.innerWidth >= 1024 ) {
+			// Wrap both in a container for the pin effect if not already wrapped
+			const parent = treasureBlock.parentElement;
+			const overflow = Math.max( 0, treasureBlock.offsetHeight - window.innerHeight );
+
+			ScrollTrigger.create( {
+				trigger: treasureBlock,
+				start: () => 'top -' + overflow + 'px',
+				end: () => '+=' + brunchBlock.offsetHeight,
+				pin: treasureBlock,
+				pinSpacing: false,
+				invalidateOnRefresh: true,
+			} );
+		}
+
+		// ============================================================
+		// STATS COUNTER ANIMATION (Hero bottom)
+		// ============================================================
+		document.querySelectorAll( '[data-hero-bottom] .font-mono' ).forEach( ( stat ) => {
+			const text = stat.textContent;
+			const match = text.match( /^(\d+)/ );
+			if ( match ) {
+				const target = parseInt( match[ 1 ], 10 );
+				const suffix = text.replace( match[ 1 ], '' );
+				gsap.fromTo(
+					stat,
+					{ textContent: '0' + suffix },
+					{
+						textContent: target + suffix,
+						duration: 1.5,
+						ease: 'power1.out',
+						snap: { textContent: 1 },
+						scrollTrigger: { trigger: stat, start: 'top 90%', toggleActions: 'play none none none' },
+					}
+				);
+			}
+		} );
+	}
+
+	// Initialize when DOM is ready
+	if ( document.readyState === 'loading' ) {
+		document.addEventListener( 'DOMContentLoaded', init );
+	} else {
+		init();
+	}
+} )();
