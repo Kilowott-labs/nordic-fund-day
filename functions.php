@@ -223,6 +223,65 @@ add_action( 'after_setup_theme', function () {
 	add_editor_style( 'https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900&display=swap' );
 } );
 
+// ============================================================
+// PERFORMANCE: Dequeue unused assets on Nordic Fund Day landing
+// ============================================================
+add_action( 'wp_enqueue_scripts', function () {
+	if ( ! is_page( 'nordic-fund-day' ) ) {
+		return;
+	}
+
+	// --- Remove WooCommerce CSS ---
+	wp_dequeue_style( 'woocommerce-layout' );
+	wp_dequeue_style( 'woocommerce-general' );
+	wp_dequeue_style( 'woocommerce-smallscreen' );
+	wp_dequeue_style( 'wc-blocks-style' );
+	wp_dequeue_style( 'woocommerce-blocktheme' );
+	wp_dequeue_style( 'wc-blocks-vendors-style' );
+	wp_dequeue_style( 'brands-styles' );
+
+	// --- Remove WooCommerce JS ---
+	wp_dequeue_script( 'wc-add-to-cart' );
+	wp_dequeue_script( 'woocommerce' );
+	wp_dequeue_script( 'wc-cart-fragments' );
+	wp_dequeue_script( 'jquery-blockui' );
+	wp_dequeue_script( 'js-cookie' );
+	wp_dequeue_script( 'sourcebuster' );
+	wp_dequeue_script( 'wc-order-attribution' );
+
+	// --- Remove Algolia search ---
+	wp_dequeue_style( 'algolia-live-search' );
+	wp_dequeue_style( 'algolia-autocomplete-theme-classic' );
+	wp_dequeue_script( 'algolia-live-search' );
+	wp_dequeue_script( 'algolia-autocomplete' );
+	wp_dequeue_script( 'algoliasearch' );
+
+	// --- Remove jQuery (not used by our blocks) ---
+	wp_dequeue_script( 'jquery' );
+	wp_dequeue_script( 'jquery-core' );
+	wp_dequeue_script( 'jquery-migrate' );
+
+	// --- Remove Boost.ai chat on landing page ---
+	wp_dequeue_script( 'boost-ai-chatpanel' );
+}, 999 );
+
+// Disable WP emoji scripts/styles on landing page
+add_action( 'init', function () {
+	if ( isset( $_SERVER['REQUEST_URI'] ) && strpos( $_SERVER['REQUEST_URI'], 'nordic-fund-day' ) !== false ) {
+		remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
+		remove_action( 'wp_print_styles', 'print_emoji_styles' );
+	}
+} );
+
+// Preload critical fonts
+add_action( 'wp_head', function () {
+	if ( ! is_page( 'nordic-fund-day' ) ) {
+		return;
+	}
+	echo '<link rel="preload" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900&display=swap" as="style">' . "\n";
+	echo '<meta name="description" content="Nordic Fund Day — the must-attend investor event for Nordic and Baltic deal flow. May 5-6, 2026 in Stavanger, Norway.">' . "\n";
+}, 1 );
+
 // Blockstudio LLM file rewrite
 add_action('init', function() {
     add_rewrite_rule(
