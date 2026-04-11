@@ -54,12 +54,12 @@ export default function save( { attributes } ) {
 						) }
 						<div className="absolute inset-0" style={ { background: 'linear-gradient(0deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 31%)' } }></div>
 						<div className="absolute inset-0" style={ { background: 'linear-gradient(0deg, rgba(0,0,0,0) 44%, rgba(0,0,0,0.5) 99%)' } }></div>
-						{ /* Two diagonal lime slashes — top-left of image, parallel */ }
+						{ /* Two parallel diagonal lime slashes — top-left of image */ }
 						<div className="hidden xl:block absolute inset-0 pointer-events-none overflow-hidden">
-							{ /* Smaller bar — thinner, slightly left */ }
-							<div className="absolute top-[-15%] left-[5%] w-[14px] min-[1600px]:w-[20px] h-[75%] bg-[var(--wp--preset--color--lime)]" style={ { transform: 'rotate(30deg)' } }></div>
-							{ /* Bigger bar — thicker, slightly right */ }
-							<div className="absolute top-[-10%] left-[15%] w-[22px] min-[1600px]:w-[34px] h-[80%] bg-[var(--wp--preset--color--lime)]" style={ { transform: 'rotate(30deg)' } }></div>
+							{ /* First bar — thinner */ }
+							<div className="absolute top-[-15%] left-[8%] w-[12px] min-[1600px]:w-[18px] h-[75%] bg-[var(--wp--preset--color--lime)]" style={ { transform: 'rotate(30deg)' } }></div>
+							{ /* Second bar — slightly thicker, right next to first */ }
+							<div className="absolute top-[-15%] left-[14%] w-[12px] min-[1600px]:w-[18px] h-[75%] bg-[var(--wp--preset--color--lime)]" style={ { transform: 'rotate(30deg)' } }></div>
 						</div>
 					</div>
 
