@@ -113,7 +113,7 @@ export default function Edit( { attributes, setAttributes } ) {
 
 			<section { ...blockProps }>
 				<div className="flex flex-col lg:flex-row justify-between">
-					<div className="flex flex-col gap-16 sm:gap-20 lg:gap-[172px] px-4 sm:px-6 md:px-16 lg:pl-[90px] lg:pr-0 py-16 sm:py-20 lg:py-[132px] w-full lg:w-[42%] lg:max-w-[634px] flex-shrink-0">
+					<div className="flex flex-col gap-16 sm:gap-20 lg:gap-[100px] xl:gap-[140px] min-[1600px]:gap-[172px] px-4 sm:px-6 md:px-16 lg:pl-[90px] lg:pr-0 py-16 sm:py-20 lg:py-[80px] xl:py-[100px] min-[1600px]:py-[132px] w-full lg:w-[42%] lg:max-w-[634px] flex-shrink-0">
 						<div className="flex flex-col gap-4 sm:gap-6">
 							<RichText
 								tagName="span"
@@ -126,7 +126,7 @@ export default function Edit( { attributes, setAttributes } ) {
 								tagName="h2"
 								value={ heading }
 								onChange={ ( value ) => setAttributes( { heading: value } ) }
-								className="text-[32px] sm:text-[44px] md:text-[52px] lg:text-[56px] xl:text-[64px] font-bold leading-[1] uppercase text-white"
+								className="text-[32px] sm:text-[44px] md:text-[48px] lg:text-[44px] xl:text-[52px] min-[1600px]:text-[64px] font-bold leading-[1] uppercase text-white"
 								placeholder={ __( 'Heading…', 'agent-theme' ) }
 							/>
 						</div>
@@ -151,7 +151,7 @@ export default function Edit( { attributes, setAttributes } ) {
 						</div>
 					</div>
 
-					<div className="relative w-full lg:w-[58%] h-[350px] sm:h-[450px] md:h-[550px] lg:h-[779px] flex flex-row overflow-hidden self-start">
+					<div className="relative w-full lg:w-[58%] h-[350px] sm:h-[450px] md:h-[550px] lg:h-[600px] xl:h-[700px] min-[1600px]:h-[779px] flex flex-row overflow-hidden self-start">
 						<div className="relative w-[39%] flex-shrink-0 overflow-hidden bg-black/50">
 							{ imageLeft ? (
 								<img src={ imageLeft } alt="Presenter" className="w-full h-full object-cover object-center" />
