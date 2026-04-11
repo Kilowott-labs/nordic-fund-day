@@ -185,7 +185,7 @@ export default function Edit( { attributes, setAttributes } ) {
 					<div className="h-[100px] sm:h-[140px] md:h-[193px]"></div>
 				</div>
 
-				<div className="absolute bottom-4 sm:bottom-6 left-4 sm:left-6 md:left-[90px] right-4 sm:right-6 md:right-[90px] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-1">
+				<div className="absolute bottom-4 sm:bottom-6 left-4 sm:left-6 md:left-[90px] right-4 sm:right-6 md:right-[90px] flex flex-col sm:flex-row items-center sm:items-center justify-between gap-1 text-center sm:text-left">
 					<span className="font-mono text-[10px] sm:text-[12px] font-medium" style={ { color: 'rgba(255,255,255,0.8)' } }>{ copyrightLeft }</span>
 					<span className="font-mono text-[10px] sm:text-[12px] font-medium" style={ { color: 'rgba(255,255,255,0.8)' } }>{ copyrightRight }</span>
 				</div>

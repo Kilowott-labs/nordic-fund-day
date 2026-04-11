@@ -4,7 +4,7 @@ export default function save( { attributes } ) {
 	const { subtitle, heading, bodyText, painPoints, imageLeft, imageRight, quoteText } = attributes;
 
 	const blockProps = useBlockProps.save( {
-		className: 'relative bg-[var(--wp--preset--color--near-black)]',
+		className: 'relative bg-[var(--wp--preset--color--near-black)] pt-8 sm:pt-12 lg:pt-16',
 	} );
 
 	return (

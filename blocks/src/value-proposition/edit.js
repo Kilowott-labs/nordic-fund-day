@@ -16,7 +16,7 @@ export default function Edit( { attributes, setAttributes } ) {
 	const { subtitle, heading, bodyText, painPoints, imageLeft, imageLeftId, imageRight, imageRightId, quoteText } = attributes;
 
 	const blockProps = useBlockProps( {
-		className: 'relative bg-[var(--wp--preset--color--near-black)]',
+		className: 'relative bg-[var(--wp--preset--color--near-black)] pt-8 sm:pt-12 lg:pt-16',
 	} );
 
 	const updatePainPoint = ( index, text ) => {

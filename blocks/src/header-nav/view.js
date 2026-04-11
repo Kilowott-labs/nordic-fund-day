@@ -16,6 +16,19 @@ function initHeaderNav() {
 
 		if ( ! menuToggle || ! mobileMenu ) return;
 
+		// Logo click — scroll to top
+		const scrollTopBtn = nav.querySelector( '[data-scroll-top]' );
+		if ( scrollTopBtn ) {
+			scrollTopBtn.addEventListener( 'click', ( e ) => {
+				e.preventDefault();
+				if ( window.lenis ) {
+					window.lenis.scrollTo( 0 );
+				} else {
+					window.scrollTo( { top: 0, behavior: 'smooth' } );
+				}
+			} );
+		}
+
 		// Mobile menu toggle with icon animation
 		menuToggle.addEventListener( 'click', () => {
 			const isOpen = mobileMenu.classList.toggle( 'open' );

@@ -10,14 +10,14 @@ export default function save( { attributes } ) {
 	return (
 		<nav { ...blockProps } data-header-nav="">
 			<div className="flex items-center justify-between px-4 sm:px-6 md:px-[90px] py-[13px]">
-				{ /* Logo */ }
-				<div className="flex-shrink-0">
+				{ /* Logo — clicks scroll to top */ }
+				<a href="#" className="flex-shrink-0 cursor-pointer" data-scroll-top="" aria-label="Scroll to top">
 					{ logo ? (
 						<img src={ logo } alt={ logoAlt } className="h-[40px] sm:h-[52px] md:h-[64px] w-auto" />
 					) : (
 						<span className="text-white text-xl font-bold">{ logoAlt }</span>
 					) }
-				</div>
+				</a>
 
 				{ /* Desktop Nav Links */ }
 				<div className="hidden md:flex items-center gap-[43px]">
