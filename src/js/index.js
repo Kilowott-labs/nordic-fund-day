@@ -94,96 +94,127 @@
 
 		// ============================================================
 		// SECTION REVEAL ANIMATIONS
+		// Matches the static reference page animations exactly
 		// ============================================================
 
-		// Headings fade-in
-		document.querySelectorAll( 'h2' ).forEach( ( h ) => {
-			gsap.fromTo(
-				h,
+		// Headings (h2, h3) fade-up
+		document.querySelectorAll( 'h2, h3' ).forEach( ( h ) => {
+			if ( h.closest( '[data-hero-banner]' ) ) return;
+			gsap.fromTo( h,
 				{ y: 40, opacity: 0 },
 				{
-					y: 0,
-					opacity: 1,
-					duration: 0.7,
-					ease: 'power2.out',
+					y: 0, opacity: 1, duration: 0.9, ease: 'power3.out',
 					scrollTrigger: { trigger: h, start: 'top 85%', toggleActions: 'play none none none' },
 				}
 			);
 		} );
 
-		// Body paragraphs fade-in (skip hero, footer copyright, and absolute elements)
+		// Paragraphs fade-up (skip hero, footer, absolute)
 		document.querySelectorAll( 'section p' ).forEach( ( p ) => {
 			if ( p.closest( '[data-hero-banner]' ) ) return;
 			if ( p.closest( 'footer' ) ) return;
 			if ( window.getComputedStyle( p.parentElement ).position === 'absolute' ) return;
-			gsap.fromTo(
-				p,
-				{ y: 20, opacity: 0 },
+			gsap.fromTo( p,
+				{ y: 25, opacity: 0 },
 				{
-					y: 0,
-					opacity: 1,
-					duration: 0.6,
-					ease: 'power2.out',
+					y: 0, opacity: 1, duration: 0.8, ease: 'power2.out',
 					scrollTrigger: { trigger: p, start: 'top 88%', toggleActions: 'play none none none' },
 				}
 			);
 		} );
 
-		// Schedule day cards — use block class selector
+		// Subtitle labels (✦ text) — slide from left
+		document.querySelectorAll( '.font-mono.uppercase' ).forEach( ( label ) => {
+			if ( label.closest( '[data-hero-banner]' ) ) return;
+			if ( label.closest( 'footer' ) ) return;
+			gsap.fromTo( label,
+				{ x: -20, opacity: 0 },
+				{
+					x: 0, opacity: 1, duration: 0.6, ease: 'power2.out',
+					scrollTrigger: { trigger: label, start: 'top 90%', toggleActions: 'play none none none' },
+				}
+			);
+		} );
+
+		// CTA buttons — scale + fade up
+		document.querySelectorAll( 'a.rounded-full' ).forEach( ( btn ) => {
+			if ( btn.closest( '[data-hero-banner]' ) ) return;
+			if ( btn.closest( '[data-header-nav]' ) ) return;
+			gsap.fromTo( btn,
+				{ y: 20, opacity: 0, scale: 0.9 },
+				{
+					y: 0, opacity: 1, scale: 1, duration: 0.7, ease: 'power3.out',
+					scrollTrigger: { trigger: btn, start: 'top 90%', toggleActions: 'play none none none' },
+				}
+			);
+		} );
+
+		// Schedule day cards — stagger
 		const scheduleBlock = document.querySelector( '.wp-block-agent-theme-schedule-grid' );
 		if ( scheduleBlock ) {
 			scheduleBlock.querySelectorAll( '.rounded-lg' ).forEach( ( card, i ) => {
-				gsap.fromTo(
-					card,
-					{ y: 30, opacity: 0 },
+				gsap.fromTo( card,
+					{ y: 60, opacity: 0 },
 					{
-						y: 0,
-						opacity: 1,
-						duration: 0.5,
-						delay: i * 0.1,
-						ease: 'power2.out',
-						scrollTrigger: { trigger: card, start: 'top 88%', toggleActions: 'play none none none' },
-					}
-				);
-			} );
-		}
-
-		// Partner cards
-		const partnerBlock = document.querySelector( '.wp-block-agent-theme-partner-cards' );
-		if ( partnerBlock ) {
-			partnerBlock.querySelectorAll( '.rounded-lg' ).forEach( ( card, i ) => {
-				gsap.fromTo(
-					card,
-					{ y: 30, opacity: 0 },
-					{
-						y: 0,
-						opacity: 1,
-						duration: 0.5,
-						delay: i * 0.1,
-						ease: 'power2.out',
+						y: 0, opacity: 1, duration: 0.8, delay: i * 0.15, ease: 'power3.out',
 						scrollTrigger: { trigger: card, start: 'top 85%', toggleActions: 'play none none none' },
 					}
 				);
 			} );
 		}
 
-		// Pitch sector cards
+		// Partner cards — stagger with scale
+		const partnerBlock = document.querySelector( '.wp-block-agent-theme-partner-cards' );
+		if ( partnerBlock ) {
+			partnerBlock.querySelectorAll( '.rounded-lg' ).forEach( ( card, i ) => {
+				gsap.fromTo( card,
+					{ y: 50, opacity: 0, scale: 0.96 },
+					{
+						y: 0, opacity: 1, scale: 1, duration: 0.9, delay: i * 0.2, ease: 'power3.out',
+						scrollTrigger: { trigger: card, start: 'top 85%', toggleActions: 'play none none none' },
+					}
+				);
+			} );
+		}
+
+		// Pitch sector cards — stagger with scale
 		const pitchBlock = document.querySelector( '.wp-block-agent-theme-pitch-showcase' );
 		if ( pitchBlock ) {
 			pitchBlock.querySelectorAll( '.rounded-\\[5px\\]' ).forEach( ( card, i ) => {
-				gsap.fromTo(
-					card,
-					{ y: 30, opacity: 0 },
+				gsap.fromTo( card,
+					{ y: 40, opacity: 0, scale: 0.95 },
 					{
-						y: 0,
-						opacity: 1,
-						duration: 0.5,
-						delay: i * 0.08,
-						ease: 'power2.out',
+						y: 0, opacity: 1, scale: 1, duration: 0.7, delay: i * 0.08, ease: 'power2.out',
 						scrollTrigger: { trigger: card, start: 'top 88%', toggleActions: 'play none none none' },
 					}
 				);
 			} );
+		}
+
+		// Feature badges (treasure, brunch) — stagger
+		document.querySelectorAll( '.wp-block-agent-theme-treasure-mixer .rounded, .wp-block-agent-theme-investor-brunch .rounded' ).forEach( ( badge, i ) => {
+			gsap.fromTo( badge,
+				{ x: -30, opacity: 0 },
+				{
+					x: 0, opacity: 1, duration: 0.5, delay: i * 0.1, ease: 'power2.out',
+					scrollTrigger: { trigger: badge, start: 'top 88%', toggleActions: 'play none none none' },
+				}
+			);
+		} );
+
+		// Value proposition image reveal — clipPath wipe
+		const vpBlock = document.querySelector( '.wp-block-agent-theme-value-proposition' );
+		if ( vpBlock ) {
+			const imgContainer = vpBlock.querySelector( '.overflow-hidden.self-start' );
+			if ( imgContainer ) {
+				gsap.fromTo( imgContainer,
+					{ clipPath: 'inset(0 100% 0 0)' },
+					{
+						clipPath: 'inset(0 0% 0 0)', duration: 1.2, ease: 'power3.inOut',
+						scrollTrigger: { trigger: imgContainer, start: 'top 70%', toggleActions: 'play none none none' },
+					}
+				);
+			}
 		}
 
 		// ============================================================

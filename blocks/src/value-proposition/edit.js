@@ -112,7 +112,7 @@ export default function Edit( { attributes, setAttributes } ) {
 			</InspectorControls>
 
 			<section { ...blockProps }>
-				<div className="flex flex-col lg:flex-row justify-between">
+				<div className="flex flex-col lg:flex-row justify-between gap-8 lg:gap-6 xl:gap-0">
 					<div className="flex flex-col gap-12 sm:gap-16 lg:gap-[60px] xl:gap-[100px] min-[1600px]:gap-[172px] px-4 sm:px-6 md:px-16 lg:pl-[60px] xl:pl-[90px] lg:pr-0 py-12 sm:py-16 lg:py-[60px] xl:py-[80px] min-[1600px]:py-[132px] w-full lg:w-[42%] lg:max-w-[634px] flex-shrink-0">
 						<div className="flex flex-col gap-4 sm:gap-6">
 							<RichText
