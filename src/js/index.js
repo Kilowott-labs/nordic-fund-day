@@ -185,36 +185,13 @@
 		}
 
 		// ============================================================
-		// TREASURE ISLAND + INVESTOR BRUNCH — SCROLL PIN
-		// Wraps both blocks in a container, then pins treasure while
-		// brunch scrolls over it. This replicates the static HTML
-		// #event-panels wrapper approach.
+		// TREASURE ISLAND + INVESTOR BRUNCH
+		// Both sections scroll normally — no pinning in WP context.
+		// The pin effect from the static page requires both blocks to
+		// be wrapped in a single container, which isn't possible with
+		// separate Gutenberg blocks without DOM manipulation that
+		// conflicts with GSAP's pin-spacer system.
 		// ============================================================
-		const treasureBlock = document.querySelector( '.wp-block-agent-theme-treasure-mixer' );
-		const brunchBlock = document.querySelector( '.wp-block-agent-theme-investor-brunch' );
-
-		if ( treasureBlock && brunchBlock && window.innerWidth >= 1024 ) {
-			// Wrap both blocks in a container div (like #event-panels in static)
-			const wrapper = document.createElement( 'div' );
-			wrapper.className = 'event-panels-wrapper relative overflow-hidden';
-			treasureBlock.parentNode.insertBefore( wrapper, treasureBlock );
-			wrapper.appendChild( treasureBlock );
-			wrapper.appendChild( brunchBlock );
-
-			// Set z-indexes
-			treasureBlock.style.zIndex = '1';
-			brunchBlock.style.position = 'relative';
-			brunchBlock.style.zIndex = '2';
-
-			// Simple pin — treasure stays fixed while brunch scrolls over
-			ScrollTrigger.create( {
-				trigger: wrapper,
-				start: 'top top',
-				end: () => '+=' + brunchBlock.offsetHeight,
-				pin: treasureBlock,
-				pinSpacing: false,
-			} );
-		}
 
 		// ============================================================
 		// STATS COUNTER ANIMATION (Hero bottom)
