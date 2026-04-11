@@ -28,13 +28,17 @@
 /* ============================================================ */
 .wp-block-agent-theme-header-nav {
   background: transparent;
-  transition: background 0.4s ease, backdrop-filter 0.4s ease;
+  transition: background 0.4s ease, backdrop-filter 0.4s ease, transform 0.35s ease;
 }
 
 .wp-block-agent-theme-header-nav.scrolled {
   background: rgba(0, 0, 0, 0.85) !important;
   backdrop-filter: blur(12px) !important;
   -webkit-backdrop-filter: blur(12px) !important;
+}
+
+.wp-block-agent-theme-header-nav.nav-hidden {
+  transform: translateY(-100%) !important;
 }
 
 .wp-block-agent-theme-header-nav .mobile-menu {

@@ -76,9 +76,9 @@
 				.to( '[data-hero-cta]', { y: 0, opacity: 1, duration: 0.6, ease: 'power2.out' }, '-=0.3' )
 				.to( '[data-hero-bottom]', { y: 0, opacity: 1, duration: 0.8, ease: 'power2.out' }, '-=0.2' );
 
-			// Hero parallax
+			// Hero parallax — desktop only to avoid mobile jerk
 			const parallaxHero = heroBanner.querySelector( '.parallax-hero' );
-			if ( parallaxHero ) {
+			if ( parallaxHero && window.innerWidth >= 1024 ) {
 				gsap.to( parallaxHero, {
 					yPercent: 15,
 					ease: 'none',
@@ -111,9 +111,11 @@
 			);
 		} );
 
-		// Body paragraphs fade-in
-		document.querySelectorAll( '[data-section] p, .font-mono' ).forEach( ( p ) => {
-			if ( p.closest( '[data-hero-banner]' ) ) return; // skip hero
+		// Body paragraphs fade-in (skip hero, footer copyright, and absolute elements)
+		document.querySelectorAll( 'section p' ).forEach( ( p ) => {
+			if ( p.closest( '[data-hero-banner]' ) ) return;
+			if ( p.closest( 'footer' ) ) return;
+			if ( window.getComputedStyle( p.parentElement ).position === 'absolute' ) return;
 			gsap.fromTo(
 				p,
 				{ y: 20, opacity: 0 },

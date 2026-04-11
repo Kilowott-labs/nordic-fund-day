@@ -65,33 +65,52 @@ function initHeaderNav() {
 			} );
 		} );
 
-		// Nav background on scroll — works with both native scroll and Lenis
-		const handleScroll = () => {
-			if ( window.scrollY > 50 ) {
-				nav.classList.add( 'scrolled' );
-			} else {
-				nav.classList.remove( 'scrolled' );
+		// Smart sticky nav: visible at top + on scroll-up, hidden on scroll-down
+		let lastScroll = 0;
+		let navHidden = false;
+
+		const updateNav = ( scroll ) => {
+			// Always visible at top of page
+			if ( scroll <= 50 ) {
+				nav.classList.remove( 'scrolled', 'nav-hidden' );
+				navHidden = false;
+				lastScroll = scroll;
+				return;
 			}
+
+			// Add dark background when past hero
+			nav.classList.add( 'scrolled' );
+
+			const delta = scroll - lastScroll;
+
+			// Scrolling DOWN — hide nav
+			if ( delta > 5 && ! navHidden ) {
+				nav.classList.add( 'nav-hidden' );
+				navHidden = true;
+			}
+
+			// Scrolling UP — show nav
+			if ( delta < -5 && navHidden ) {
+				nav.classList.remove( 'nav-hidden' );
+				navHidden = false;
+			}
+
+			lastScroll = scroll;
 		};
 
-		window.addEventListener( 'scroll', handleScroll, { passive: true } );
+		// Listen to native scroll
+		window.addEventListener( 'scroll', () => updateNav( window.scrollY ), { passive: true } );
 
-		// Also listen to Lenis scroll if available (Lenis may override native scroll)
+		// Also listen to Lenis if available
 		const checkLenis = setInterval( () => {
 			if ( window.lenis ) {
-				window.lenis.on( 'scroll', ( { scroll } ) => {
-					if ( scroll > 50 ) {
-						nav.classList.add( 'scrolled' );
-					} else {
-						nav.classList.remove( 'scrolled' );
-					}
-				} );
+				window.lenis.on( 'scroll', ( { scroll } ) => updateNav( scroll ) );
 				clearInterval( checkLenis );
 			}
 		}, 100 );
-		setTimeout( () => clearInterval( checkLenis ), 5000 ); // stop checking after 5s
+		setTimeout( () => clearInterval( checkLenis ), 5000 );
 
-		handleScroll(); // check initial state
+		updateNav( window.scrollY ); // check initial state
 	} );
 }
 
