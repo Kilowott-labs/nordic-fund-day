@@ -11,33 +11,33 @@ export default function save( { attributes } ) {
 		<section { ...blockProps }>
 			<div className="flex flex-col lg:flex-row justify-between">
 				{ /* Left Column */ }
-				<div className="flex flex-col gap-16 sm:gap-20 lg:gap-[100px] xl:gap-[140px] min-[1600px]:gap-[172px] px-4 sm:px-6 md:px-16 lg:pl-[90px] lg:pr-0 py-16 sm:py-20 lg:py-[80px] xl:py-[100px] min-[1600px]:py-[132px] w-full lg:w-[42%] lg:max-w-[634px] flex-shrink-0">
+				<div className="flex flex-col gap-12 sm:gap-16 lg:gap-[60px] xl:gap-[100px] min-[1600px]:gap-[172px] px-4 sm:px-6 md:px-16 lg:pl-[60px] xl:pl-[90px] lg:pr-0 py-12 sm:py-16 lg:py-[60px] xl:py-[80px] min-[1600px]:py-[132px] w-full lg:w-[42%] lg:max-w-[634px] flex-shrink-0">
 					{ /* Top: Label + Heading */ }
-					<div className="flex flex-col gap-4 sm:gap-6">
+					<div className="flex flex-col gap-3 sm:gap-5">
 						<RichText.Content
 							tagName="span"
 							value={ subtitle }
-							className="font-mono text-[11px] sm:text-[14px] font-medium tracking-[0.11em] uppercase text-white"
+							className="font-mono text-[11px] sm:text-[14px] lg:text-[12px] xl:text-[14px] font-medium tracking-[0.11em] uppercase text-white"
 						/>
 						<RichText.Content
 							tagName="h2"
 							value={ heading }
-							className="text-[32px] sm:text-[44px] md:text-[48px] lg:text-[44px] xl:text-[52px] min-[1600px]:text-[64px] font-bold leading-[1] uppercase text-white"
+							className="text-[32px] sm:text-[44px] md:text-[48px] lg:text-[36px] xl:text-[48px] min-[1600px]:text-[64px] font-bold leading-[1] uppercase text-white"
 						/>
 					</div>
 					{ /* Bottom: Body + Pain points */ }
-					<div className="flex flex-col gap-5 max-w-[532px]">
+					<div className="flex flex-col gap-4 max-w-[532px]">
 						<RichText.Content
 							tagName="p"
 							value={ bodyText }
-							className="font-mono text-white text-[15px] sm:text-lg leading-[1.6]"
+							className="font-mono text-white text-[13px] sm:text-[15px] lg:text-[13px] xl:text-[15px] min-[1600px]:text-lg leading-[1.6]"
 						/>
-						<div className="flex flex-col gap-3 sm:gap-4">
+						<div className="flex flex-col gap-2 sm:gap-3">
 							{ painPoints.map( ( point ) => (
-								<div key={ point.id } className="bg-white/10 border border-white/[0.18] rounded p-2.5">
+								<div key={ point.id } className="bg-white/10 border border-white/[0.18] rounded p-2 lg:p-2">
 									<div className="flex items-center gap-3">
-										<span className="text-[var(--wp--preset--color--red-cross)] font-bold text-base w-[10px] flex-shrink-0">&#10007;</span>
-										<span className="font-mono text-white/60 text-sm sm:text-base">{ point.text }</span>
+										<span className="text-[var(--wp--preset--color--red-cross)] font-bold text-sm lg:text-xs xl:text-base w-[10px] flex-shrink-0">&#10007;</span>
+										<span className="font-mono text-white/60 text-xs sm:text-sm lg:text-xs xl:text-sm min-[1600px]:text-base">{ point.text }</span>
 									</div>
 								</div>
 							) ) }
@@ -46,7 +46,7 @@ export default function save( { attributes } ) {
 				</div>
 
 				{ /* Right Column — Dual images */ }
-				<div className="relative w-full lg:w-[58%] h-[350px] sm:h-[450px] md:h-[550px] lg:h-[600px] xl:h-[700px] min-[1600px]:h-[779px] flex flex-row overflow-hidden self-start">
+				<div className="relative w-full lg:w-[58%] h-[350px] sm:h-[450px] md:h-[500px] lg:h-[500px] xl:h-[600px] min-[1600px]:h-[779px] flex flex-row overflow-hidden self-start">
 					{ /* Left image */ }
 					<div className="relative w-[39%] flex-shrink-0 overflow-hidden">
 						{ imageLeft && (
@@ -54,12 +54,12 @@ export default function save( { attributes } ) {
 						) }
 						<div className="absolute inset-0" style={ { background: 'linear-gradient(0deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 31%)' } }></div>
 						<div className="absolute inset-0" style={ { background: 'linear-gradient(0deg, rgba(0,0,0,0) 44%, rgba(0,0,0,0.5) 99%)' } }></div>
-						{ /* Diagonal lime slashes */ }
-						<div className="absolute top-0 left-0 w-[55%] h-[45%] pointer-events-none overflow-hidden">
-							<div className="absolute top-0 left-[-10%] w-[30px] h-[160%] bg-[var(--wp--preset--color--lime)] origin-top-left" style={ { transform: 'rotate(30deg)' } }></div>
+						{ /* Diagonal lime slashes — hidden on mobile, smaller on tablet */ }
+						<div className="hidden md:block absolute top-0 left-0 w-[55%] h-[45%] pointer-events-none overflow-hidden">
+							<div className="absolute top-0 left-[-10%] w-[15px] lg:w-[20px] min-[1600px]:w-[30px] h-[160%] bg-[var(--wp--preset--color--lime)] origin-top-left" style={ { transform: 'rotate(30deg)' } }></div>
 						</div>
-						<div className="absolute bottom-0 right-0 w-[60%] h-[50%] pointer-events-none overflow-hidden">
-							<div className="absolute bottom-0 right-[-10%] w-[30px] h-[160%] bg-[var(--wp--preset--color--lime)] origin-bottom-right" style={ { transform: 'rotate(30deg)' } }></div>
+						<div className="hidden md:block absolute bottom-0 right-0 w-[60%] h-[50%] pointer-events-none overflow-hidden">
+							<div className="absolute bottom-0 right-[-10%] w-[15px] lg:w-[20px] min-[1600px]:w-[30px] h-[160%] bg-[var(--wp--preset--color--lime)] origin-bottom-right" style={ { transform: 'rotate(30deg)' } }></div>
 						</div>
 					</div>
 

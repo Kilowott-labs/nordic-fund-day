@@ -113,7 +113,7 @@ export default function Edit( { attributes, setAttributes } ) {
 
 			<section { ...blockProps }>
 				<div className="flex flex-col lg:flex-row justify-between">
-					<div className="flex flex-col gap-16 sm:gap-20 lg:gap-[100px] xl:gap-[140px] min-[1600px]:gap-[172px] px-4 sm:px-6 md:px-16 lg:pl-[90px] lg:pr-0 py-16 sm:py-20 lg:py-[80px] xl:py-[100px] min-[1600px]:py-[132px] w-full lg:w-[42%] lg:max-w-[634px] flex-shrink-0">
+					<div className="flex flex-col gap-12 sm:gap-16 lg:gap-[60px] xl:gap-[100px] min-[1600px]:gap-[172px] px-4 sm:px-6 md:px-16 lg:pl-[60px] xl:pl-[90px] lg:pr-0 py-12 sm:py-16 lg:py-[60px] xl:py-[80px] min-[1600px]:py-[132px] w-full lg:w-[42%] lg:max-w-[634px] flex-shrink-0">
 						<div className="flex flex-col gap-4 sm:gap-6">
 							<RichText
 								tagName="span"
@@ -126,7 +126,7 @@ export default function Edit( { attributes, setAttributes } ) {
 								tagName="h2"
 								value={ heading }
 								onChange={ ( value ) => setAttributes( { heading: value } ) }
-								className="text-[32px] sm:text-[44px] md:text-[48px] lg:text-[44px] xl:text-[52px] min-[1600px]:text-[64px] font-bold leading-[1] uppercase text-white"
+								className="text-[32px] sm:text-[44px] md:text-[48px] lg:text-[36px] xl:text-[48px] min-[1600px]:text-[64px] font-bold leading-[1] uppercase text-white"
 								placeholder={ __( 'Heading…', 'agent-theme' ) }
 							/>
 						</div>
@@ -135,7 +135,7 @@ export default function Edit( { attributes, setAttributes } ) {
 								tagName="p"
 								value={ bodyText }
 								onChange={ ( value ) => setAttributes( { bodyText: value } ) }
-								className="font-mono text-white text-[15px] sm:text-lg leading-[1.6]"
+								className="font-mono text-white text-[13px] sm:text-[15px] lg:text-[13px] xl:text-[15px] min-[1600px]:text-lg leading-[1.6]"
 								placeholder={ __( 'Body text…', 'agent-theme' ) }
 							/>
 							<div className="flex flex-col gap-3 sm:gap-4">
@@ -143,7 +143,7 @@ export default function Edit( { attributes, setAttributes } ) {
 									<div key={ point.id } className="bg-white/10 border border-white/[0.18] rounded p-2.5">
 										<div className="flex items-center gap-3">
 											<span className="text-[var(--wp--preset--color--red-cross)] font-bold text-base w-[10px] flex-shrink-0">&#10007;</span>
-											<span className="font-mono text-white/60 text-sm sm:text-base">{ point.text }</span>
+											<span className="font-mono text-white/60 text-xs sm:text-sm lg:text-xs xl:text-sm min-[1600px]:text-base">{ point.text }</span>
 										</div>
 									</div>
 								) ) }
@@ -151,7 +151,7 @@ export default function Edit( { attributes, setAttributes } ) {
 						</div>
 					</div>
 
-					<div className="relative w-full lg:w-[58%] h-[350px] sm:h-[450px] md:h-[550px] lg:h-[600px] xl:h-[700px] min-[1600px]:h-[779px] flex flex-row overflow-hidden self-start">
+					<div className="relative w-full lg:w-[58%] h-[350px] sm:h-[450px] md:h-[500px] lg:h-[500px] xl:h-[600px] min-[1600px]:h-[779px] flex flex-row overflow-hidden self-start">
 						<div className="relative w-[39%] flex-shrink-0 overflow-hidden bg-black/50">
 							{ imageLeft ? (
 								<img src={ imageLeft } alt="Presenter" className="w-full h-full object-cover object-center" />
