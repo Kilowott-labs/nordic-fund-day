@@ -9,7 +9,6 @@ import {
 import {
 	PanelBody,
 	TextControl,
-	TextareaControl,
 	ToggleControl,
 	Button,
 } from '@wordpress/components';
@@ -101,7 +100,6 @@ export default function Edit( { attributes, setAttributes } ) {
 									{ __( 'Reset to Default SVG', 'agent-theme' ) }
 								</Button>
 							) }
-							<TextareaControl label={ __( 'Default SVG (fallback)', 'agent-theme' ) } value={ badge.iconSvg } onChange={ ( v ) => updateBadge( idx, { iconSvg: v } ) } help={ __( 'Used when no icon uploaded.', 'agent-theme' ) } />
 							{ badges.length > 1 && (
 								<Button onClick={ () => removeBadge( idx ) } variant="secondary" isDestructive style={ { width: '100%', marginTop: '8px' } }>
 									{ __( 'Remove Badge', 'agent-theme' ) }
@@ -116,7 +114,7 @@ export default function Edit( { attributes, setAttributes } ) {
 			</InspectorControls>
 
 			<section { ...blockProps }>
-				<div className="flex flex-col-reverse lg:flex-row items-center gap-8 lg:gap-[106px] px-4 sm:px-6 md:px-16 lg:px-[90px] py-16 lg:py-[132px]">
+				<div className="flex flex-col-reverse lg:flex-row items-start gap-8 lg:gap-[106px] px-4 sm:px-6 md:px-16 lg:px-[90px] py-16 lg:py-[132px]">
 					<div className="flex flex-col gap-12 w-full lg:max-w-[634px]">
 						<div className="flex flex-col gap-4">
 							<RichText tagName="span" value={ subtitle } onChange={ ( v ) => setAttributes( { subtitle: v } ) } className="font-mono text-[14px] font-medium tracking-[0.1em] uppercase text-black" placeholder={ __( 'Subtitle…', 'agent-theme' ) } />

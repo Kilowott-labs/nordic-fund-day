@@ -93,12 +93,25 @@ export default function Edit( { attributes, setAttributes } ) {
 								value={ sector.description }
 								onChange={ ( value ) => updateSector( idx, { description: value } ) }
 							/>
-							<TextareaControl
-								label={ __( 'Icon SVG', 'agent-theme' ) }
-								value={ sector.iconSvg }
-								onChange={ ( value ) => updateSector( idx, { iconSvg: value } ) }
-								help={ __( 'Paste SVG markup. Use currentColor for stroke/fill.', 'agent-theme' ) }
-							/>
+							<p style={ { fontWeight: 600, marginTop: '8px', marginBottom: '4px' } }>{ __( 'Icon', 'agent-theme' ) }</p>
+							{ sector.iconUrl && <img src={ sector.iconUrl } alt="" style={ { width: '32px', height: '32px', objectFit: 'contain', marginBottom: '8px' } } /> }
+							<MediaUploadCheck>
+								<MediaUpload
+									onSelect={ ( media ) => updateSector( idx, { iconUrl: media.url, iconId: media.id } ) }
+									allowedTypes={ [ 'image' ] }
+									value={ sector.iconId }
+									render={ ( { open } ) => (
+										<Button onClick={ open } variant="secondary" style={ { width: '100%' } }>
+											{ sector.iconUrl ? __( 'Change Icon', 'agent-theme' ) : __( 'Upload Icon', 'agent-theme' ) }
+										</Button>
+									) }
+								/>
+							</MediaUploadCheck>
+							{ sector.iconUrl && (
+								<Button onClick={ () => updateSector( idx, { iconUrl: '', iconId: 0 } ) } variant="link" isDestructive style={ { marginTop: '4px' } }>
+									{ __( 'Reset to Default', 'agent-theme' ) }
+								</Button>
+							) }
 						</PanelBody>
 					) ) }
 				</PanelBody>
@@ -151,10 +164,13 @@ export default function Edit( { attributes, setAttributes } ) {
 					<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 pb-2">
 						{ sectors.map( ( sector ) => (
 							<div key={ sector.id } className="bg-[var(--wp--preset--color--dark-card)] rounded-[5px] p-6 sm:p-7 flex flex-col gap-4">
-								<div
-									className="w-10 h-10 flex items-center justify-center text-[var(--wp--preset--color--lime)]"
-									dangerouslySetInnerHTML={ { __html: sector.iconSvg } }
-								/>
+								<div className="w-10 h-10 flex items-center justify-center text-[var(--wp--preset--color--lime)]">
+									{ sector.iconUrl ? (
+										<img src={ sector.iconUrl } alt="" className="w-8 h-8 object-contain" />
+									) : (
+										<span dangerouslySetInnerHTML={ { __html: sector.iconSvg } } />
+									) }
+								</div>
 								<h3 className="text-[var(--wp--preset--color--lime)] text-[20px] font-bold leading-[1.2]">
 									{ sector.title }
 								</h3>

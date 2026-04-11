@@ -55,10 +55,13 @@ export default function save( { attributes } ) {
 				<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 pb-2">
 					{ sectors.map( ( sector ) => (
 						<div key={ sector.id } className="bg-[var(--wp--preset--color--dark-card)] rounded-[5px] p-6 sm:p-7 flex flex-col gap-4">
-							<div
-								className="w-10 h-10 flex items-center justify-center text-[var(--wp--preset--color--lime)]"
-								dangerouslySetInnerHTML={ { __html: sector.iconSvg } }
-							/>
+							<div className="w-10 h-10 flex items-center justify-center text-[var(--wp--preset--color--lime)]">
+								{ sector.iconUrl ? (
+									<img src={ sector.iconUrl } alt="" className="w-8 h-8 object-contain" loading="lazy" />
+								) : (
+									<span dangerouslySetInnerHTML={ { __html: sector.iconSvg } } />
+								) }
+							</div>
 							<h3 className="text-[var(--wp--preset--color--lime)] text-[20px] font-bold leading-[1.2]">
 								{ sector.title }
 							</h3>

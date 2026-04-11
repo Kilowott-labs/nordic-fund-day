@@ -9,7 +9,7 @@ export default function save( { attributes } ) {
 
 	return (
 		<section { ...blockProps }>
-			<div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-[106px] px-4 sm:px-6 md:px-16 lg:px-[90px] py-16 lg:py-[132px]">
+			<div className="flex flex-col lg:flex-row items-start gap-8 lg:gap-[106px] px-4 sm:px-6 md:px-16 lg:px-[90px] py-16 lg:py-[132px]">
 				{ /* Left: Image area (black bg behind, image offset right) */ }
 				<div className="relative w-full lg:w-[52%] flex-shrink-0">
 					<div className="h-[40px] sm:h-[60px] lg:h-[80px]"></div>
