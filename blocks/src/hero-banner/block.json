@@ -1,0 +1,87 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "agent-theme/hero-banner",
+  "version": "1.0.0",
+  "title": "Hero Banner",
+  "category": "edge",
+  "icon": "cover-image",
+  "description": "Full-screen hero section with parallax background, event title, date badge, dual CTAs, partner logos, description card, and stats row.",
+  "textdomain": "agent-theme",
+  "attributes": {
+    "backgroundImage": {
+      "type": "string",
+      "default": ""
+    },
+    "backgroundImageId": {
+      "type": "number",
+      "default": 0
+    },
+    "dateBadge": {
+      "type": "string",
+      "default": "May 5–6, 2026"
+    },
+    "titleLines": {
+      "type": "array",
+      "default": [
+        { "id": 1, "text": "Nordic fund" },
+        { "id": 2, "text": "day, STAVANGER," },
+        { "id": 3, "text": "NORWAY" }
+      ]
+    },
+    "primaryCta": {
+      "type": "object",
+      "default": {
+        "label": "INVESTORS",
+        "sublabel": "Request your spot",
+        "url": "#"
+      }
+    },
+    "secondaryCta": {
+      "type": "object",
+      "default": {
+        "label": "EXCLUSIVE",
+        "sublabel": "Become a Partner",
+        "url": "#"
+      }
+    },
+    "partnerLogos": {
+      "type": "array",
+      "default": [
+        { "id": 1, "url": "", "imageId": 0, "alt": "TGC Capital" },
+        { "id": 2, "url": "", "imageId": 0, "alt": "Rogfk" },
+        { "id": 3, "url": "", "imageId": 0, "alt": "EDIH" },
+        { "id": 4, "url": "", "imageId": 0, "alt": "EU Co-Funded" },
+        { "id": 5, "url": "", "imageId": 0, "alt": "Dealroom" }
+      ]
+    },
+    "cardText": {
+      "type": "string",
+      "default": "The must-attend event for Nordic and Baltic deal flow tackling some of the most pressing environmental challenges across agriculture, food, and our urban environments"
+    },
+    "cardButton1": {
+      "type": "object",
+      "default": { "label": "INVESTOR PROGRAMME", "url": "#" }
+    },
+    "cardButton2": {
+      "type": "object",
+      "default": { "label": "BECOME A PARTNER", "url": "#" }
+    },
+    "stats": {
+      "type": "array",
+      "default": [
+        { "id": 1, "value": "100+", "label": "Companies" },
+        { "id": 2, "value": "350+", "label": "Investors" },
+        { "id": 3, "value": "50M+", "label": "Deal Flow" }
+      ]
+    }
+  },
+  "supports": {
+    "html": false,
+    "anchor": true,
+    "align": ["wide", "full"],
+    "spacing": { "padding": true, "margin": true }
+  },
+  "editorScript": "file:./index.js",
+  "style": "file:./style-index.css"
+}

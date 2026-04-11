@@ -1,0 +1,77 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "agent-theme/treasure-mixer",
+  "version": "1.0.0",
+  "title": "Treasure Island Mixer",
+  "category": "edge",
+  "icon": "palmtree",
+  "description": "Event showcase section with offset image (black accent, image-left), heading, description, feature badges, and CTA. Used for the Treasure Island Mixer.",
+  "textdomain": "agent-theme",
+  "attributes": {
+    "subtitle": {
+      "type": "string",
+      "default": "✦ NETWORKING COCKTAIL & FINGERFOOD AT"
+    },
+    "heading": {
+      "type": "string",
+      "default": "The Treasure<br>Island Mixer"
+    },
+    "dateInfo": {
+      "type": "string",
+      "default": "May 5, 18:30 at Fiskepiren, Stavanger"
+    },
+    "description": {
+      "type": "string",
+      "default": "<p>Following the Nordic Fund Day stage programme, you are exclusively invited aboard the ship taking us all to the Secret and beautiful Treasure Island Mixer.</p><p>Here, you will enjoy facilitated matchmaking with fellow investors and stakeholders, alongside compelling scale-ups and startups, in an informal, vibrant, and enjoyable setting designed to encourage dialogue, meaningful connections, and new opportunities.</p><p>Enjoy the experience.</p>"
+    },
+    "image": {
+      "type": "string",
+      "default": ""
+    },
+    "imageId": {
+      "type": "number",
+      "default": 0
+    },
+    "imageAlt": {
+      "type": "string",
+      "default": "Treasure Island Mixer"
+    },
+    "labelLine1": {
+      "type": "string",
+      "default": "INVITE ONLY"
+    },
+    "labelLine2": {
+      "type": "string",
+      "default": "LIMITED SEATS"
+    },
+    "badges": {
+      "type": "array",
+      "default": [
+        { "id": 1, "text": "By invitation only", "iconSvg": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"><rect x=\"3\" y=\"11\" width=\"18\" height=\"11\" rx=\"2\"/><path d=\"M7 11V7a5 5 0 0 1 10 0v4\"/></svg>" },
+        { "id": 2, "text": "Curated matchmaking", "iconSvg": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"><path d=\"M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2\"/><circle cx=\"9\" cy=\"7\" r=\"4\"/><path d=\"M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75\"/></svg>" },
+        { "id": 3, "text": "Rotating moments and guided introductions", "iconSvg": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"><path d=\"M23 6l-13.5 13.5-5.5-5.5L0 18M17 6h6v6\"/></svg>" },
+        { "id": 4, "text": "The official Nordic Fund Day Treasure hunt", "iconSvg": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"><circle cx=\"11\" cy=\"11\" r=\"8\"/><path d=\"M21 21l-4.35-4.35\"/></svg>" }
+      ]
+    },
+    "ctaLabel": {
+      "type": "string",
+      "default": "REQUEST YOUR SPOT"
+    },
+    "ctaUrl": {
+      "type": "string",
+      "default": "#"
+    },
+    "ctaOpenInNewTab": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "supports": {
+    "html": false,
+    "anchor": true,
+    "align": ["wide", "full"],
+    "spacing": { "padding": true, "margin": true }
+  },
+  "editorScript": "file:./index.js"
+}
