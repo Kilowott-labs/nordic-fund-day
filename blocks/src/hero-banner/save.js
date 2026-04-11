@@ -66,7 +66,7 @@ export default function save( { attributes } ) {
 				</div>
 
 				{ /* Spacer */ }
-				<div className="h-[60px] sm:h-[80px] md:h-[100px] lg:h-[180px] min-[1600px]:h-[360px]"></div>
+				<div className="h-[60px] sm:h-[80px] md:h-[60px] lg:h-[80px] xl:h-[120px] min-[1600px]:h-[360px]"></div>
 
 				{ /* Bottom Section */ }
 				<div data-hero-bottom="" className="relative z-10 flex flex-col items-end gap-3 lg:gap-6 w-full lg:self-end lg:max-w-[55%] min-[1600px]:max-w-[704px]" style={ { opacity: 0 } }>

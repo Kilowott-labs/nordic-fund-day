@@ -156,7 +156,7 @@ export default function Edit( { attributes, setAttributes } ) {
 						</div>
 					</div>
 
-					<div className="h-[60px] sm:h-[80px] md:h-[100px] lg:h-[180px]"></div>
+					<div className="h-[60px] sm:h-[80px] md:h-[60px] lg:h-[80px] xl:h-[120px] min-[1600px]:h-[360px]"></div>
 
 					<div className="relative z-10 flex flex-col items-end gap-3 lg:gap-6 w-full lg:self-end lg:max-w-[55%]">
 						<div className="flex items-center flex-wrap justify-end gap-4 sm:gap-5 lg:gap-[21px]">
