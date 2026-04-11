@@ -112,8 +112,8 @@ export default function Edit( { attributes, setAttributes } ) {
 			</InspectorControls>
 
 			<section { ...blockProps }>
-				<div className="flex flex-col lg:flex-row justify-between gap-8 lg:gap-6 xl:gap-0">
-					<div className="flex flex-col gap-12 sm:gap-16 lg:gap-[60px] xl:gap-[100px] min-[1600px]:gap-[172px] px-4 sm:px-6 md:px-16 lg:pl-[60px] xl:pl-[90px] lg:pr-0 py-12 sm:py-16 lg:py-[60px] xl:py-[80px] min-[1600px]:py-[132px] w-full lg:w-[42%] lg:max-w-[634px] flex-shrink-0">
+				<div className="flex flex-col lg:flex-row gap-8 lg:gap-8 xl:gap-6 min-[1600px]:gap-0">
+					<div className="flex flex-col gap-12 sm:gap-16 lg:gap-[60px] xl:gap-[100px] min-[1600px]:gap-[172px] px-4 sm:px-6 md:px-16 lg:pl-[60px] xl:pl-[90px] lg:pr-0 py-12 sm:py-16 lg:py-[60px] xl:py-[80px] min-[1600px]:py-[132px] w-full lg:w-[48%] xl:w-[44%] min-[1600px]:w-[42%] lg:max-w-[634px] flex-shrink-0">
 						<div className="flex flex-col gap-4 sm:gap-6">
 							<RichText
 								tagName="span"
@@ -151,7 +151,7 @@ export default function Edit( { attributes, setAttributes } ) {
 						</div>
 					</div>
 
-					<div className="relative w-full lg:w-[58%] h-[350px] sm:h-[450px] md:h-[500px] lg:h-[500px] xl:h-[600px] min-[1600px]:h-[779px] flex flex-row overflow-hidden self-start">
+					<div className="relative w-full lg:w-[52%] xl:w-[56%] min-[1600px]:w-[58%] h-[350px] sm:h-[450px] md:h-[500px] lg:h-[420px] xl:h-[540px] min-[1600px]:h-[779px] flex flex-row overflow-hidden self-start">
 						<div className="relative w-[39%] flex-shrink-0 overflow-hidden bg-black/50">
 							{ imageLeft ? (
 								<img src={ imageLeft } alt="Presenter" className="w-full h-full object-cover object-center" />
