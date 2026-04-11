@@ -56,7 +56,7 @@ export default function Edit( { attributes, setAttributes } ) {
 		const updated = [ ...days ];
 		const events = [
 			...updated[ dayIndex ].events,
-			{ time: '00:00', title: __( 'New Event', 'agent-theme' ), description: '', badge: '', badgeType: '' },
+			{ time: '00:00', title: __( 'New Event', 'nordic-fund-day' ), description: '', badge: '', badgeType: '' },
 		];
 		updated[ dayIndex ] = { ...updated[ dayIndex ], events };
 		setAttributes( { days: updated } );
@@ -72,20 +72,20 @@ export default function Edit( { attributes, setAttributes } ) {
 	return (
 		<>
 			<InspectorControls>
-				<PanelBody title={ __( 'CTA Button', 'agent-theme' ) } initialOpen={ true }>
+				<PanelBody title={ __( 'CTA Button', 'nordic-fund-day' ) } initialOpen={ true }>
 					<TextControl
-						label={ __( 'Button Label', 'agent-theme' ) }
+						label={ __( 'Button Label', 'nordic-fund-day' ) }
 						value={ ctaLabel }
 						onChange={ ( value ) => setAttributes( { ctaLabel: value } ) }
 					/>
 					<TextControl
-						label={ __( 'Button URL', 'agent-theme' ) }
+						label={ __( 'Button URL', 'nordic-fund-day' ) }
 						value={ ctaUrl }
 						onChange={ ( value ) => setAttributes( { ctaUrl: value } ) }
 						type="url"
 					/>
 					<ToggleControl
-						label={ __( 'Open in new tab', 'agent-theme' ) }
+						label={ __( 'Open in new tab', 'nordic-fund-day' ) }
 						checked={ ctaOpenInNewTab }
 						onChange={ ( value ) => setAttributes( { ctaOpenInNewTab: value } ) }
 					/>
@@ -94,22 +94,22 @@ export default function Edit( { attributes, setAttributes } ) {
 				{ days.map( ( day, dIdx ) => (
 					<PanelBody
 						key={ day.id }
-						title={ day.title || `${ __( 'Day', 'agent-theme' ) } ${ dIdx + 1 }` }
+						title={ day.title || `${ __( 'Day', 'nordic-fund-day' ) } ${ dIdx + 1 }` }
 						initialOpen={ false }
 					>
 						<TextControl
-							label={ __( 'Date Label', 'agent-theme' ) }
+							label={ __( 'Date Label', 'nordic-fund-day' ) }
 							value={ day.dateLabel }
 							onChange={ ( value ) => updateDay( dIdx, { dateLabel: value } ) }
 						/>
 						<TextControl
-							label={ __( 'Day Title', 'agent-theme' ) }
+							label={ __( 'Day Title', 'nordic-fund-day' ) }
 							value={ day.title }
 							onChange={ ( value ) => updateDay( dIdx, { title: value } ) }
 						/>
 
 						<p style={ { fontWeight: 600, marginTop: '16px', marginBottom: '8px' } }>
-							{ __( 'Events', 'agent-theme' ) } ({ day.events.length })
+							{ __( 'Events', 'nordic-fund-day' ) } ({ day.events.length })
 						</p>
 
 						{ day.events.map( ( event, eIdx ) => (
@@ -119,33 +119,33 @@ export default function Edit( { attributes, setAttributes } ) {
 								initialOpen={ false }
 							>
 								<TextControl
-									label={ __( 'Time', 'agent-theme' ) }
+									label={ __( 'Time', 'nordic-fund-day' ) }
 									value={ event.time }
 									onChange={ ( value ) => updateEvent( dIdx, eIdx, { time: value } ) }
 								/>
 								<TextControl
-									label={ __( 'Title', 'agent-theme' ) }
+									label={ __( 'Title', 'nordic-fund-day' ) }
 									value={ event.title }
 									onChange={ ( value ) => updateEvent( dIdx, eIdx, { title: value } ) }
 								/>
 								<TextControl
-									label={ __( 'Description', 'agent-theme' ) }
+									label={ __( 'Description', 'nordic-fund-day' ) }
 									value={ event.description }
 									onChange={ ( value ) => updateEvent( dIdx, eIdx, { description: value } ) }
 								/>
 								<TextControl
-									label={ __( 'Badge Text', 'agent-theme' ) }
+									label={ __( 'Badge Text', 'nordic-fund-day' ) }
 									value={ event.badge }
 									onChange={ ( value ) => updateEvent( dIdx, eIdx, { badge: value } ) }
-									help={ __( 'Leave empty for no badge', 'agent-theme' ) }
+									help={ __( 'Leave empty for no badge', 'nordic-fund-day' ) }
 								/>
 								{ event.badge && (
 									<SelectControl
-										label={ __( 'Badge Style', 'agent-theme' ) }
+										label={ __( 'Badge Style', 'nordic-fund-day' ) }
 										value={ event.badgeType }
 										options={ [
-											{ label: __( 'White (Open)', 'agent-theme' ), value: 'white' },
-											{ label: __( 'Lime (Restricted)', 'agent-theme' ), value: 'lime' },
+											{ label: __( 'White (Open)', 'nordic-fund-day' ), value: 'white' },
+											{ label: __( 'Lime (Restricted)', 'nordic-fund-day' ), value: 'lime' },
 										] }
 										onChange={ ( value ) => updateEvent( dIdx, eIdx, { badgeType: value } ) }
 									/>
@@ -156,7 +156,7 @@ export default function Edit( { attributes, setAttributes } ) {
 									isDestructive
 									style={ { width: '100%', marginTop: '8px' } }
 								>
-									{ __( 'Remove Event', 'agent-theme' ) }
+									{ __( 'Remove Event', 'nordic-fund-day' ) }
 								</Button>
 							</PanelBody>
 						) ) }
@@ -166,7 +166,7 @@ export default function Edit( { attributes, setAttributes } ) {
 							variant="secondary"
 							style={ { width: '100%', marginTop: '8px' } }
 						>
-							{ __( '+ Add Event', 'agent-theme' ) }
+							{ __( '+ Add Event', 'nordic-fund-day' ) }
 						</Button>
 					</PanelBody>
 				) ) }
@@ -182,14 +182,14 @@ export default function Edit( { attributes, setAttributes } ) {
 								value={ subtitle }
 								onChange={ ( value ) => setAttributes( { subtitle: value } ) }
 								className="font-mono text-[14px] font-medium tracking-[0.1em] uppercase text-black"
-								placeholder={ __( 'Subtitle…', 'agent-theme' ) }
+								placeholder={ __( 'Subtitle…', 'nordic-fund-day' ) }
 							/>
 							<RichText
 								tagName="h2"
 								value={ heading }
 								onChange={ ( value ) => setAttributes( { heading: value } ) }
 								className="text-black text-[40px] sm:text-[48px] md:text-[56px] lg:text-[56px] xl:text-[64px] font-bold leading-[1.05] uppercase"
-								placeholder={ __( 'Heading…', 'agent-theme' ) }
+								placeholder={ __( 'Heading…', 'nordic-fund-day' ) }
 							/>
 						</div>
 						<div className="inline-flex items-center px-8 py-3.5 bg-[var(--wp--preset--color--lime-cta)] rounded-full text-black font-semibold text-[15px] uppercase tracking-[0.03em] w-fit">

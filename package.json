@@ -1,11 +1,12 @@
 {
-    "name": "ytf-package",
+    "name": "nordic-fund-day",
     "version": "1.0.0",
     "private": true,
-    "description": "YTF Package",
-    "author": "coretrek",
+    "description": "Nordic Fund Day landing page theme",
+    "author": "Kilowott",
     "keywords": [
-        "YTF"
+        "nordic-fund-day",
+        "nordic-edge"
     ],
     "main": "dist/main.js",
     "devDependencies": {

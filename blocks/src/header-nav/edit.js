@@ -27,7 +27,7 @@ export default function Edit( { attributes, setAttributes } ) {
 	const addLink = () => {
 		const newId = navLinks.length > 0 ? Math.max( ...navLinks.map( ( l ) => l.id ) ) + 1 : 1;
 		setAttributes( {
-			navLinks: [ ...navLinks, { id: newId, label: __( 'New Link', 'agent-theme' ), url: '#' } ],
+			navLinks: [ ...navLinks, { id: newId, label: __( 'New Link', 'nordic-fund-day' ), url: '#' } ],
 		} );
 	};
 
@@ -39,7 +39,7 @@ export default function Edit( { attributes, setAttributes } ) {
 	return (
 		<>
 			<InspectorControls>
-				<PanelBody title={ __( 'Logo', 'agent-theme' ) } initialOpen={ true }>
+				<PanelBody title={ __( 'Logo', 'nordic-fund-day' ) } initialOpen={ true }>
 					<MediaUploadCheck>
 						<MediaUpload
 							onSelect={ ( media ) => setAttributes( { logo: media.url, logoId: media.id } ) }
@@ -49,7 +49,7 @@ export default function Edit( { attributes, setAttributes } ) {
 								<>
 									{ logo && <img src={ logo } alt="" style={ { maxHeight: '64px', marginBottom: '8px' } } /> }
 									<Button onClick={ open } variant="secondary" style={ { width: '100%' } }>
-										{ logo ? __( 'Change Logo', 'agent-theme' ) : __( 'Upload Logo', 'agent-theme' ) }
+										{ logo ? __( 'Change Logo', 'nordic-fund-day' ) : __( 'Upload Logo', 'nordic-fund-day' ) }
 									</Button>
 								</>
 							) }
@@ -57,32 +57,32 @@ export default function Edit( { attributes, setAttributes } ) {
 					</MediaUploadCheck>
 					{ logo && (
 						<Button onClick={ () => setAttributes( { logo: '', logoId: 0 } ) } variant="link" isDestructive style={ { marginTop: '4px' } }>
-							{ __( 'Remove', 'agent-theme' ) }
+							{ __( 'Remove', 'nordic-fund-day' ) }
 						</Button>
 					) }
-					<TextControl label={ __( 'Logo Alt Text', 'agent-theme' ) } value={ logoAlt } onChange={ ( v ) => setAttributes( { logoAlt: v } ) } />
+					<TextControl label={ __( 'Logo Alt Text', 'nordic-fund-day' ) } value={ logoAlt } onChange={ ( v ) => setAttributes( { logoAlt: v } ) } />
 				</PanelBody>
 
-				<PanelBody title={ __( 'Navigation Links', 'agent-theme' ) } initialOpen={ true }>
+				<PanelBody title={ __( 'Navigation Links', 'nordic-fund-day' ) } initialOpen={ true }>
 					{ navLinks.map( ( link, idx ) => (
 						<div key={ link.id } style={ { marginBottom: '12px', paddingBottom: '12px', borderBottom: '1px solid #ddd' } }>
-							<TextControl label={ __( 'Label', 'agent-theme' ) } value={ link.label } onChange={ ( v ) => updateLink( idx, { label: v } ) } />
-							<TextControl label={ __( 'URL / Anchor', 'agent-theme' ) } value={ link.url } onChange={ ( v ) => updateLink( idx, { url: v } ) } help={ __( 'Use #section-id for scroll links', 'agent-theme' ) } />
+							<TextControl label={ __( 'Label', 'nordic-fund-day' ) } value={ link.label } onChange={ ( v ) => updateLink( idx, { label: v } ) } />
+							<TextControl label={ __( 'URL / Anchor', 'nordic-fund-day' ) } value={ link.url } onChange={ ( v ) => updateLink( idx, { url: v } ) } help={ __( 'Use #section-id for scroll links', 'nordic-fund-day' ) } />
 							{ navLinks.length > 1 && (
 								<Button onClick={ () => removeLink( idx ) } variant="secondary" isDestructive style={ { width: '100%', marginTop: '4px' } }>
-									{ __( 'Remove', 'agent-theme' ) }
+									{ __( 'Remove', 'nordic-fund-day' ) }
 								</Button>
 							) }
 						</div>
 					) ) }
 					<Button onClick={ addLink } variant="secondary" style={ { width: '100%' } }>
-						{ __( '+ Add Link', 'agent-theme' ) }
+						{ __( '+ Add Link', 'nordic-fund-day' ) }
 					</Button>
 				</PanelBody>
 
-				<PanelBody title={ __( 'CTA Button', 'agent-theme' ) } initialOpen={ false }>
-					<TextControl label={ __( 'Label', 'agent-theme' ) } value={ ctaLabel } onChange={ ( v ) => setAttributes( { ctaLabel: v } ) } />
-					<TextControl label={ __( 'URL', 'agent-theme' ) } value={ ctaUrl } onChange={ ( v ) => setAttributes( { ctaUrl: v } ) } type="url" />
+				<PanelBody title={ __( 'CTA Button', 'nordic-fund-day' ) } initialOpen={ false }>
+					<TextControl label={ __( 'Label', 'nordic-fund-day' ) } value={ ctaLabel } onChange={ ( v ) => setAttributes( { ctaLabel: v } ) } />
+					<TextControl label={ __( 'URL', 'nordic-fund-day' ) } value={ ctaUrl } onChange={ ( v ) => setAttributes( { ctaUrl: v } ) } type="url" />
 				</PanelBody>
 			</InspectorControls>
 

@@ -36,7 +36,7 @@ export default function Edit( { attributes, setAttributes } ) {
 	return (
 		<>
 			<InspectorControls>
-				<PanelBody title={ __( 'Background Image', 'agent-theme' ) } initialOpen={ true }>
+				<PanelBody title={ __( 'Background Image', 'nordic-fund-day' ) } initialOpen={ true }>
 					<MediaUploadCheck>
 						<MediaUpload
 							onSelect={ ( media ) => setAttributes( { backgroundImage: media.url, backgroundImageId: media.id } ) }
@@ -52,7 +52,7 @@ export default function Edit( { attributes, setAttributes } ) {
 										/>
 									) }
 									<Button onClick={ open } variant="secondary" style={ { width: '100%' } }>
-										{ backgroundImage ? __( 'Change Image', 'agent-theme' ) : __( 'Upload Image', 'agent-theme' ) }
+										{ backgroundImage ? __( 'Change Image', 'nordic-fund-day' ) : __( 'Upload Image', 'nordic-fund-day' ) }
 									</Button>
 								</>
 							) }
@@ -65,39 +65,39 @@ export default function Edit( { attributes, setAttributes } ) {
 							isDestructive
 							style={ { marginTop: '4px' } }
 						>
-							{ __( 'Remove Image', 'agent-theme' ) }
+							{ __( 'Remove Image', 'nordic-fund-day' ) }
 						</Button>
 					) }
 				</PanelBody>
 
-				<PanelBody title={ __( 'Content', 'agent-theme' ) } initialOpen={ false }>
+				<PanelBody title={ __( 'Content', 'nordic-fund-day' ) } initialOpen={ false }>
 					<TextControl
-						label={ __( 'Date Badge', 'agent-theme' ) }
+						label={ __( 'Date Badge', 'nordic-fund-day' ) }
 						value={ dateBadge }
 						onChange={ ( value ) => setAttributes( { dateBadge: value } ) }
 					/>
 				</PanelBody>
 
-				<PanelBody title={ __( 'CTA Buttons', 'agent-theme' ) } initialOpen={ false }>
+				<PanelBody title={ __( 'CTA Buttons', 'nordic-fund-day' ) } initialOpen={ false }>
 					{ buttons.map( ( btn, idx ) => (
 						<PanelBody key={ btn.id } title={ btn.label } initialOpen={ false }>
 							<TextControl
-								label={ __( 'Label', 'agent-theme' ) }
+								label={ __( 'Label', 'nordic-fund-day' ) }
 								value={ btn.label }
 								onChange={ ( value ) => updateButton( idx, { label: value } ) }
 							/>
 							<TextControl
-								label={ __( 'URL', 'agent-theme' ) }
+								label={ __( 'URL', 'nordic-fund-day' ) }
 								value={ btn.url }
 								onChange={ ( value ) => updateButton( idx, { url: value } ) }
 								type="url"
 							/>
 							<SelectControl
-								label={ __( 'Style', 'agent-theme' ) }
+								label={ __( 'Style', 'nordic-fund-day' ) }
 								value={ btn.style }
 								options={ [
-									{ label: __( 'Primary (Green)', 'agent-theme' ), value: 'primary' },
-									{ label: __( 'Ghost (Transparent)', 'agent-theme' ), value: 'ghost' },
+									{ label: __( 'Primary (Green)', 'nordic-fund-day' ), value: 'primary' },
+									{ label: __( 'Ghost (Transparent)', 'nordic-fund-day' ), value: 'ghost' },
 								] }
 								onChange={ ( value ) => updateButton( idx, { style: value } ) }
 							/>
@@ -105,25 +105,25 @@ export default function Edit( { attributes, setAttributes } ) {
 					) ) }
 				</PanelBody>
 
-				<PanelBody title={ __( 'Stats', 'agent-theme' ) } initialOpen={ false }>
+				<PanelBody title={ __( 'Stats', 'nordic-fund-day' ) } initialOpen={ false }>
 					{ stats.map( ( stat, idx ) => (
 						<TextControl
 							key={ stat.id }
-							label={ `${ __( 'Stat', 'agent-theme' ) } ${ idx + 1 }` }
+							label={ `${ __( 'Stat', 'nordic-fund-day' ) } ${ idx + 1 }` }
 							value={ stat.text }
 							onChange={ ( value ) => updateStat( idx, value ) }
 						/>
 					) ) }
 				</PanelBody>
 
-				<PanelBody title={ __( 'Copyright', 'agent-theme' ) } initialOpen={ false }>
+				<PanelBody title={ __( 'Copyright', 'nordic-fund-day' ) } initialOpen={ false }>
 					<TextControl
-						label={ __( 'Left text', 'agent-theme' ) }
+						label={ __( 'Left text', 'nordic-fund-day' ) }
 						value={ copyrightLeft }
 						onChange={ ( value ) => setAttributes( { copyrightLeft: value } ) }
 					/>
 					<TextControl
-						label={ __( 'Right text', 'agent-theme' ) }
+						label={ __( 'Right text', 'nordic-fund-day' ) }
 						value={ copyrightRight }
 						onChange={ ( value ) => setAttributes( { copyrightRight: value } ) }
 					/>
@@ -145,7 +145,7 @@ export default function Edit( { attributes, setAttributes } ) {
 							value={ heading }
 							onChange={ ( value ) => setAttributes( { heading: value } ) }
 							className="text-black text-[56px] sm:text-[72px] md:text-[76px] lg:text-[80px] xl:text-[88px] min-[1600px]:text-[96px] font-black leading-[1] tracking-tight uppercase"
-							placeholder={ __( 'Heading…', 'agent-theme' ) }
+							placeholder={ __( 'Heading…', 'nordic-fund-day' ) }
 						/>
 					</div>
 
@@ -155,7 +155,7 @@ export default function Edit( { attributes, setAttributes } ) {
 						onChange={ ( value ) => setAttributes( { description: value } ) }
 						className="font-mono text-[16px] leading-[1.6] max-w-[483px] mt-2"
 						style={ { color: '#373737' } }
-						placeholder={ __( 'Description…', 'agent-theme' ) }
+						placeholder={ __( 'Description…', 'nordic-fund-day' ) }
 					/>
 
 					<div className="flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-3 mt-[60px] sm:mt-[120px]">

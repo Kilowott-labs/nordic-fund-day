@@ -27,7 +27,7 @@ export default function Edit( { attributes, setAttributes } ) {
 
 	const addPainPoint = () => {
 		const newId = painPoints.length > 0 ? Math.max( ...painPoints.map( ( p ) => p.id ) ) + 1 : 1;
-		setAttributes( { painPoints: [ ...painPoints, { id: newId, text: __( 'New pain point', 'agent-theme' ) } ] } );
+		setAttributes( { painPoints: [ ...painPoints, { id: newId, text: __( 'New pain point', 'nordic-fund-day' ) } ] } );
 	};
 
 	const removePainPoint = ( index ) => {
@@ -38,8 +38,8 @@ export default function Edit( { attributes, setAttributes } ) {
 	return (
 		<>
 			<InspectorControls>
-				<PanelBody title={ __( 'Images', 'agent-theme' ) } initialOpen={ true }>
-					<p style={ { fontWeight: 600, marginBottom: '8px' } }>{ __( 'Left Image (Speaker)', 'agent-theme' ) }</p>
+				<PanelBody title={ __( 'Images', 'nordic-fund-day' ) } initialOpen={ true }>
+					<p style={ { fontWeight: 600, marginBottom: '8px' } }>{ __( 'Left Image (Speaker)', 'nordic-fund-day' ) }</p>
 					<MediaUploadCheck>
 						<MediaUpload
 							onSelect={ ( media ) => setAttributes( { imageLeft: media.url, imageLeftId: media.id } ) }
@@ -49,7 +49,7 @@ export default function Edit( { attributes, setAttributes } ) {
 								<>
 									{ imageLeft && <img src={ imageLeft } alt="" style={ { width: '100%', height: 'auto', marginBottom: '8px', borderRadius: '4px' } } /> }
 									<Button onClick={ open } variant="secondary" style={ { width: '100%' } }>
-										{ imageLeft ? __( 'Change', 'agent-theme' ) : __( 'Upload', 'agent-theme' ) }
+										{ imageLeft ? __( 'Change', 'nordic-fund-day' ) : __( 'Upload', 'nordic-fund-day' ) }
 									</Button>
 								</>
 							) }
@@ -57,11 +57,11 @@ export default function Edit( { attributes, setAttributes } ) {
 					</MediaUploadCheck>
 					{ imageLeft && (
 						<Button onClick={ () => setAttributes( { imageLeft: '', imageLeftId: 0 } ) } variant="link" isDestructive style={ { marginTop: '4px' } }>
-							{ __( 'Remove', 'agent-theme' ) }
+							{ __( 'Remove', 'nordic-fund-day' ) }
 						</Button>
 					) }
 
-					<p style={ { fontWeight: 600, marginTop: '16px', marginBottom: '8px' } }>{ __( 'Right Image (Audience)', 'agent-theme' ) }</p>
+					<p style={ { fontWeight: 600, marginTop: '16px', marginBottom: '8px' } }>{ __( 'Right Image (Audience)', 'nordic-fund-day' ) }</p>
 					<MediaUploadCheck>
 						<MediaUpload
 							onSelect={ ( media ) => setAttributes( { imageRight: media.url, imageRightId: media.id } ) }
@@ -71,7 +71,7 @@ export default function Edit( { attributes, setAttributes } ) {
 								<>
 									{ imageRight && <img src={ imageRight } alt="" style={ { width: '100%', height: 'auto', marginBottom: '8px', borderRadius: '4px' } } /> }
 									<Button onClick={ open } variant="secondary" style={ { width: '100%' } }>
-										{ imageRight ? __( 'Change', 'agent-theme' ) : __( 'Upload', 'agent-theme' ) }
+										{ imageRight ? __( 'Change', 'nordic-fund-day' ) : __( 'Upload', 'nordic-fund-day' ) }
 									</Button>
 								</>
 							) }
@@ -79,20 +79,20 @@ export default function Edit( { attributes, setAttributes } ) {
 					</MediaUploadCheck>
 					{ imageRight && (
 						<Button onClick={ () => setAttributes( { imageRight: '', imageRightId: 0 } ) } variant="link" isDestructive style={ { marginTop: '4px' } }>
-							{ __( 'Remove', 'agent-theme' ) }
+							{ __( 'Remove', 'nordic-fund-day' ) }
 						</Button>
 					) }
 				</PanelBody>
 
-				<PanelBody title={ __( 'Quote', 'agent-theme' ) } initialOpen={ false }>
+				<PanelBody title={ __( 'Quote', 'nordic-fund-day' ) } initialOpen={ false }>
 					<TextControl
-						label={ __( 'Quote text', 'agent-theme' ) }
+						label={ __( 'Quote text', 'nordic-fund-day' ) }
 						value={ quoteText }
 						onChange={ ( value ) => setAttributes( { quoteText: value } ) }
 					/>
 				</PanelBody>
 
-				<PanelBody title={ __( 'Pain Points', 'agent-theme' ) } initialOpen={ false }>
+				<PanelBody title={ __( 'Pain Points', 'nordic-fund-day' ) } initialOpen={ false }>
 					{ painPoints.map( ( point, idx ) => (
 						<div key={ point.id } style={ { display: 'flex', gap: '4px', marginBottom: '6px' } }>
 							<TextControl
@@ -101,12 +101,12 @@ export default function Edit( { attributes, setAttributes } ) {
 								style={ { flex: 1 } }
 							/>
 							{ painPoints.length > 1 && (
-								<Button onClick={ () => removePainPoint( idx ) } icon="no-alt" isDestructive label={ __( 'Remove', 'agent-theme' ) } />
+								<Button onClick={ () => removePainPoint( idx ) } icon="no-alt" isDestructive label={ __( 'Remove', 'nordic-fund-day' ) } />
 							) }
 						</div>
 					) ) }
 					<Button onClick={ addPainPoint } variant="secondary" style={ { width: '100%' } }>
-						{ __( '+ Add Pain Point', 'agent-theme' ) }
+						{ __( '+ Add Pain Point', 'nordic-fund-day' ) }
 					</Button>
 				</PanelBody>
 			</InspectorControls>
@@ -115,11 +115,11 @@ export default function Edit( { attributes, setAttributes } ) {
 				<div className="flex flex-col lg:flex-row justify-between">
 					<div className="flex flex-col gap-12 sm:gap-16 lg:gap-[60px] xl:gap-[100px] min-[1600px]:gap-[172px] px-4 sm:px-6 md:px-16 lg:pl-[60px] xl:pl-[90px] lg:pr-8 xl:pr-12 py-12 sm:py-16 lg:py-[60px] xl:py-[80px] min-[1600px]:py-[132px] w-full lg:w-[42%] lg:max-w-[634px] flex-shrink-0">
 						<div className="flex flex-col gap-3 sm:gap-5">
-							<RichText tagName="span" value={ subtitle } onChange={ ( v ) => setAttributes( { subtitle: v } ) } className="font-mono text-[11px] sm:text-[14px] lg:text-[12px] xl:text-[14px] font-medium tracking-[0.11em] uppercase text-white" placeholder={ __( 'Subtitle…', 'agent-theme' ) } />
-							<RichText tagName="h2" value={ heading } onChange={ ( v ) => setAttributes( { heading: v } ) } className="text-[32px] sm:text-[44px] md:text-[48px] lg:text-[36px] xl:text-[48px] min-[1600px]:text-[64px] font-bold leading-[1] uppercase text-white" placeholder={ __( 'Heading…', 'agent-theme' ) } />
+							<RichText tagName="span" value={ subtitle } onChange={ ( v ) => setAttributes( { subtitle: v } ) } className="font-mono text-[11px] sm:text-[14px] lg:text-[12px] xl:text-[14px] font-medium tracking-[0.11em] uppercase text-white" placeholder={ __( 'Subtitle…', 'nordic-fund-day' ) } />
+							<RichText tagName="h2" value={ heading } onChange={ ( v ) => setAttributes( { heading: v } ) } className="text-[32px] sm:text-[44px] md:text-[48px] lg:text-[36px] xl:text-[48px] min-[1600px]:text-[64px] font-bold leading-[1] uppercase text-white" placeholder={ __( 'Heading…', 'nordic-fund-day' ) } />
 						</div>
 						<div className="flex flex-col gap-4 max-w-[532px]">
-							<RichText tagName="p" value={ bodyText } onChange={ ( v ) => setAttributes( { bodyText: v } ) } className="font-mono text-white text-[13px] sm:text-[15px] lg:text-[13px] xl:text-[15px] min-[1600px]:text-lg leading-[1.6]" placeholder={ __( 'Body text…', 'agent-theme' ) } />
+							<RichText tagName="p" value={ bodyText } onChange={ ( v ) => setAttributes( { bodyText: v } ) } className="font-mono text-white text-[13px] sm:text-[15px] lg:text-[13px] xl:text-[15px] min-[1600px]:text-lg leading-[1.6]" placeholder={ __( 'Body text…', 'nordic-fund-day' ) } />
 							<div className="flex flex-col gap-2 sm:gap-3">
 								{ painPoints.map( ( point ) => (
 									<div key={ point.id } className="bg-white/10 border border-white/[0.18] rounded p-2">

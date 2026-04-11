@@ -1,9 +1,9 @@
 <?php
 /*
-    Module Name: Coretrek Basic
+    Module Name: Nordic Fund Day Blocks
     Description: Module that adds Coretrek blocks
     Version: 3.0
-    Author: Coretrek
+    Author: Nordic Fund Day
 */
 
 
@@ -19,7 +19,7 @@
 // require_once __DIR__ . '/templates/post-reading-time.php';
 // require_once __DIR__ . '/templates/service-icon.php';
 
-function register_ytf_blocks() {
+function register_nfd_blocks() {
 	// Automatically register all blocks in the dist directory
 	$dist_dir = get_template_directory() . '/dist';
 	
@@ -37,7 +37,7 @@ function register_ytf_blocks() {
 	}
 }
 
-add_action( 'init', 'register_ytf_blocks' );
+add_action( 'init', 'register_nfd_blocks' );
 
 // function unregister_wp_core_patterns() {
 // 	// let's remove native patterns
@@ -64,11 +64,11 @@ add_filter( 'block_categories_all', function( $categories, $post ) {
         [
             [
                 'slug'  => 'edge',
-                'title' => __( 'Nordic Edge', 'agent-theme' ),
+                'title' => __( 'Nordic Edge', 'nordic-fund-day' ),
             ],
             [
-                'slug'  => 'ytf',
-                'title' => __( 'YTF', 'ytf' ),
+                'slug'  => 'nordic-fund-day',
+                'title' => __( 'YTF', 'nordic-fund-day' ),
             ],
         ],
         $categories

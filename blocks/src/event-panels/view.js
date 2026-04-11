@@ -14,8 +14,8 @@ function initEventPanels() {
 			return;
 		}
 
-		const treasureSection = wrapper.querySelector( '.wp-block-agent-theme-treasure-mixer' );
-		const brunchSection = wrapper.querySelector( '.wp-block-agent-theme-investor-brunch' );
+		const treasureSection = wrapper.querySelector( '.wp-block-nordic-fund-day-treasure-mixer' );
+		const brunchSection = wrapper.querySelector( '.wp-block-nordic-fund-day-investor-brunch' );
 
 		if ( ! treasureSection || ! brunchSection ) return;
 

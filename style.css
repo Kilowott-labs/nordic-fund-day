@@ -1,14 +1,14 @@
 /*
-Theme Name: Agent Theme v
-Theme URI: 
-Author: CoreTrek
-Author URI: 
-Description: Wordpress template for  testing purposes
-Requires PHP: 6.7
-Version: 1.0
+Theme Name: Nordic Fund Day
+Theme URI:
+Author: Kilowott
+Author URI:
+Description: Landing page theme for Nordic Fund Day — investor event by Nordic Edge
+Requires PHP: 8.0
+Version: 1.0.0
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Text Domain: test
+Text Domain: nordic-fund-day
 */
 
 html, body {

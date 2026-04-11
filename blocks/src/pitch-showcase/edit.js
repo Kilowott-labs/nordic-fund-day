@@ -30,7 +30,7 @@ export default function Edit( { attributes, setAttributes } ) {
 	return (
 		<>
 			<InspectorControls>
-				<PanelBody title={ __( 'Background Image', 'agent-theme' ) } initialOpen={ true }>
+				<PanelBody title={ __( 'Background Image', 'nordic-fund-day' ) } initialOpen={ true }>
 					<MediaUploadCheck>
 						<MediaUpload
 							onSelect={ ( media ) => setAttributes( { backgroundImage: media.url, backgroundImageId: media.id } ) }
@@ -40,7 +40,7 @@ export default function Edit( { attributes, setAttributes } ) {
 								<>
 									{ backgroundImage && <img src={ backgroundImage } alt="" style={ { width: '100%', height: 'auto', marginBottom: '8px', borderRadius: '4px' } } /> }
 									<Button onClick={ open } variant="secondary" style={ { width: '100%' } }>
-										{ backgroundImage ? __( 'Change Image', 'agent-theme' ) : __( 'Upload Image', 'agent-theme' ) }
+										{ backgroundImage ? __( 'Change Image', 'nordic-fund-day' ) : __( 'Upload Image', 'nordic-fund-day' ) }
 									</Button>
 								</>
 							) }
@@ -48,52 +48,52 @@ export default function Edit( { attributes, setAttributes } ) {
 					</MediaUploadCheck>
 					{ backgroundImage && (
 						<Button onClick={ () => setAttributes( { backgroundImage: '', backgroundImageId: 0 } ) } variant="link" isDestructive style={ { marginTop: '4px' } }>
-							{ __( 'Remove', 'agent-theme' ) }
+							{ __( 'Remove', 'nordic-fund-day' ) }
 						</Button>
 					) }
 				</PanelBody>
 
-				<PanelBody title={ __( 'Content', 'agent-theme' ) } initialOpen={ false }>
+				<PanelBody title={ __( 'Content', 'nordic-fund-day' ) } initialOpen={ false }>
 					<TextControl
-						label={ __( 'Date Info', 'agent-theme' ) }
+						label={ __( 'Date Info', 'nordic-fund-day' ) }
 						value={ dateInfo }
 						onChange={ ( value ) => setAttributes( { dateInfo: value } ) }
 					/>
 				</PanelBody>
 
-				<PanelBody title={ __( 'CTA Button', 'agent-theme' ) } initialOpen={ false }>
+				<PanelBody title={ __( 'CTA Button', 'nordic-fund-day' ) } initialOpen={ false }>
 					<TextControl
-						label={ __( 'Label', 'agent-theme' ) }
+						label={ __( 'Label', 'nordic-fund-day' ) }
 						value={ ctaLabel }
 						onChange={ ( value ) => setAttributes( { ctaLabel: value } ) }
 					/>
 					<TextControl
-						label={ __( 'URL', 'agent-theme' ) }
+						label={ __( 'URL', 'nordic-fund-day' ) }
 						value={ ctaUrl }
 						onChange={ ( value ) => setAttributes( { ctaUrl: value } ) }
 						type="url"
 					/>
 					<ToggleControl
-						label={ __( 'Open in new tab', 'agent-theme' ) }
+						label={ __( 'Open in new tab', 'nordic-fund-day' ) }
 						checked={ ctaOpenInNewTab }
 						onChange={ ( value ) => setAttributes( { ctaOpenInNewTab: value } ) }
 					/>
 				</PanelBody>
 
-				<PanelBody title={ __( 'Sector Cards', 'agent-theme' ) } initialOpen={ false }>
+				<PanelBody title={ __( 'Sector Cards', 'nordic-fund-day' ) } initialOpen={ false }>
 					{ sectors.map( ( sector, idx ) => (
 						<PanelBody key={ sector.id } title={ sector.title || `Sector ${ idx + 1 }` } initialOpen={ false }>
 							<TextControl
-								label={ __( 'Title', 'agent-theme' ) }
+								label={ __( 'Title', 'nordic-fund-day' ) }
 								value={ sector.title }
 								onChange={ ( value ) => updateSector( idx, { title: value } ) }
 							/>
 							<TextareaControl
-								label={ __( 'Description', 'agent-theme' ) }
+								label={ __( 'Description', 'nordic-fund-day' ) }
 								value={ sector.description }
 								onChange={ ( value ) => updateSector( idx, { description: value } ) }
 							/>
-							<p style={ { fontWeight: 600, marginTop: '8px', marginBottom: '4px' } }>{ __( 'Icon', 'agent-theme' ) }</p>
+							<p style={ { fontWeight: 600, marginTop: '8px', marginBottom: '4px' } }>{ __( 'Icon', 'nordic-fund-day' ) }</p>
 							{ sector.iconUrl && <img src={ sector.iconUrl } alt="" style={ { width: '32px', height: '32px', objectFit: 'contain', marginBottom: '8px' } } /> }
 							<MediaUploadCheck>
 								<MediaUpload
@@ -102,14 +102,14 @@ export default function Edit( { attributes, setAttributes } ) {
 									value={ sector.iconId }
 									render={ ( { open } ) => (
 										<Button onClick={ open } variant="secondary" style={ { width: '100%' } }>
-											{ sector.iconUrl ? __( 'Change Icon', 'agent-theme' ) : __( 'Upload Icon', 'agent-theme' ) }
+											{ sector.iconUrl ? __( 'Change Icon', 'nordic-fund-day' ) : __( 'Upload Icon', 'nordic-fund-day' ) }
 										</Button>
 									) }
 								/>
 							</MediaUploadCheck>
 							{ sector.iconUrl && (
 								<Button onClick={ () => updateSector( idx, { iconUrl: '', iconId: 0 } ) } variant="link" isDestructive style={ { marginTop: '4px' } }>
-									{ __( 'Reset to Default', 'agent-theme' ) }
+									{ __( 'Reset to Default', 'nordic-fund-day' ) }
 								</Button>
 							) }
 						</PanelBody>
@@ -136,14 +136,14 @@ export default function Edit( { attributes, setAttributes } ) {
 								value={ subtitle }
 								onChange={ ( value ) => setAttributes( { subtitle: value } ) }
 								className="font-mono text-[14px] font-medium tracking-[0.1em] uppercase text-white"
-								placeholder={ __( 'Subtitle…', 'agent-theme' ) }
+								placeholder={ __( 'Subtitle…', 'nordic-fund-day' ) }
 							/>
 							<RichText
 								tagName="h2"
 								value={ heading }
 								onChange={ ( value ) => setAttributes( { heading: value } ) }
 								className="text-[32px] sm:text-[48px] md:text-[56px] lg:text-[56px] xl:text-[64px] font-bold leading-[1] uppercase text-white"
-								placeholder={ __( 'Heading…', 'agent-theme' ) }
+								placeholder={ __( 'Heading…', 'nordic-fund-day' ) }
 							/>
 							<span className="text-white text-[20px] sm:text-[24px] font-bold">{ dateInfo }</span>
 						</div>
@@ -153,7 +153,7 @@ export default function Edit( { attributes, setAttributes } ) {
 								value={ descriptionText }
 								onChange={ ( value ) => setAttributes( { descriptionText: value } ) }
 								className="font-mono text-[14px] sm:text-[16px] leading-[1.4] text-white mb-5"
-								placeholder={ __( 'Description…', 'agent-theme' ) }
+								placeholder={ __( 'Description…', 'nordic-fund-day' ) }
 							/>
 							<div className="inline-flex items-center justify-center px-6 py-3 bg-white rounded-full text-black text-[14px] sm:text-[16px] font-semibold uppercase tracking-[0.03em]">
 								{ ctaLabel }

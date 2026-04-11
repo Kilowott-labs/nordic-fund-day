@@ -34,7 +34,7 @@ export default function Edit( { attributes, setAttributes } ) {
 
 	const addFeature = ( cardIndex ) => {
 		const updated = [ ...cards ];
-		const features = [ ...updated[ cardIndex ].features, { text: __( 'New feature', 'agent-theme' ) } ];
+		const features = [ ...updated[ cardIndex ].features, { text: __( 'New feature', 'nordic-fund-day' ) } ];
 		updated[ cardIndex ] = { ...updated[ cardIndex ], features };
 		setAttributes( { cards: updated } );
 	};
@@ -49,20 +49,20 @@ export default function Edit( { attributes, setAttributes } ) {
 	return (
 		<>
 			<InspectorControls>
-				<PanelBody title={ __( 'CTA Button', 'agent-theme' ) } initialOpen={ true }>
+				<PanelBody title={ __( 'CTA Button', 'nordic-fund-day' ) } initialOpen={ true }>
 					<TextControl
-						label={ __( 'Button Label', 'agent-theme' ) }
+						label={ __( 'Button Label', 'nordic-fund-day' ) }
 						value={ ctaLabel }
 						onChange={ ( value ) => setAttributes( { ctaLabel: value } ) }
 					/>
 					<TextControl
-						label={ __( 'Button URL', 'agent-theme' ) }
+						label={ __( 'Button URL', 'nordic-fund-day' ) }
 						value={ ctaUrl }
 						onChange={ ( value ) => setAttributes( { ctaUrl: value } ) }
 						type="url"
 					/>
 					<ToggleControl
-						label={ __( 'Open in new tab', 'agent-theme' ) }
+						label={ __( 'Open in new tab', 'nordic-fund-day' ) }
 						checked={ ctaOpenInNewTab }
 						onChange={ ( value ) => setAttributes( { ctaOpenInNewTab: value } ) }
 					/>
@@ -71,34 +71,34 @@ export default function Edit( { attributes, setAttributes } ) {
 				{ cards.map( ( card, cIdx ) => (
 					<PanelBody
 						key={ card.id }
-						title={ card.label || `${ __( 'Card', 'agent-theme' ) } ${ cIdx + 1 }` }
+						title={ card.label || `${ __( 'Card', 'nordic-fund-day' ) } ${ cIdx + 1 }` }
 						initialOpen={ false }
 					>
 						<TextControl
-							label={ __( 'Label', 'agent-theme' ) }
+							label={ __( 'Label', 'nordic-fund-day' ) }
 							value={ card.label }
 							onChange={ ( value ) => updateCard( cIdx, { label: value } ) }
 						/>
 						<TextControl
-							label={ __( 'Price', 'agent-theme' ) }
+							label={ __( 'Price', 'nordic-fund-day' ) }
 							value={ card.price }
 							onChange={ ( value ) => updateCard( cIdx, { price: value } ) }
 						/>
 						<ToggleControl
-							label={ __( 'Premium tier', 'agent-theme' ) }
+							label={ __( 'Premium tier', 'nordic-fund-day' ) }
 							checked={ card.isPremium }
 							onChange={ ( value ) => updateCard( cIdx, { isPremium: value } ) }
 						/>
 						{ card.isPremium && (
 							<TextControl
-								label={ __( 'Badge text', 'agent-theme' ) }
+								label={ __( 'Badge text', 'nordic-fund-day' ) }
 								value={ card.badgeText }
 								onChange={ ( value ) => updateCard( cIdx, { badgeText: value } ) }
 							/>
 						) }
 
 						<p style={ { fontWeight: 600, marginTop: '16px', marginBottom: '8px' } }>
-							{ __( 'Features', 'agent-theme' ) }
+							{ __( 'Features', 'nordic-fund-day' ) }
 						</p>
 						{ card.features.map( ( feature, fIdx ) => (
 							<div key={ fIdx } style={ { display: 'flex', gap: '4px', marginBottom: '6px' } }>
@@ -112,7 +112,7 @@ export default function Edit( { attributes, setAttributes } ) {
 										onClick={ () => removeFeature( cIdx, fIdx ) }
 										icon="no-alt"
 										isDestructive
-										label={ __( 'Remove', 'agent-theme' ) }
+										label={ __( 'Remove', 'nordic-fund-day' ) }
 									/>
 								) }
 							</div>
@@ -122,7 +122,7 @@ export default function Edit( { attributes, setAttributes } ) {
 							variant="secondary"
 							style={ { width: '100%' } }
 						>
-							{ __( '+ Add Feature', 'agent-theme' ) }
+							{ __( '+ Add Feature', 'nordic-fund-day' ) }
 						</Button>
 					</PanelBody>
 				) ) }
@@ -138,14 +138,14 @@ export default function Edit( { attributes, setAttributes } ) {
 								value={ subtitle }
 								onChange={ ( value ) => setAttributes( { subtitle: value } ) }
 								className="font-mono text-[14px] font-medium tracking-[0.1em] uppercase text-[var(--wp--preset--color--lime)]"
-								placeholder={ __( 'Subtitle…', 'agent-theme' ) }
+								placeholder={ __( 'Subtitle…', 'nordic-fund-day' ) }
 							/>
 							<RichText
 								tagName="h2"
 								value={ heading }
 								onChange={ ( value ) => setAttributes( { heading: value } ) }
 								className="text-white text-[36px] sm:text-[44px] md:text-[56px] lg:text-[56px] xl:text-[56px] font-bold leading-[1.05] uppercase"
-								placeholder={ __( 'Heading…', 'agent-theme' ) }
+								placeholder={ __( 'Heading…', 'nordic-fund-day' ) }
 							/>
 						</div>
 						<RichText
@@ -153,7 +153,7 @@ export default function Edit( { attributes, setAttributes } ) {
 							value={ description }
 							onChange={ ( value ) => setAttributes( { description: value } ) }
 							className="font-mono text-[15px] sm:text-[16px] leading-[1.6] text-white max-w-[380px]"
-							placeholder={ __( 'Description…', 'agent-theme' ) }
+							placeholder={ __( 'Description…', 'nordic-fund-day' ) }
 						/>
 						<div className="inline-flex items-center px-6 sm:px-10 py-3.5 sm:py-4 bg-[var(--wp--preset--color--lime-cta)] rounded-full text-black font-semibold text-[13px] sm:text-[16px] uppercase tracking-[0.02em] w-fit whitespace-nowrap">
 							{ ctaLabel }

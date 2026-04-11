@@ -40,7 +40,7 @@ export default function Edit( { attributes, setAttributes } ) {
 	return (
 		<>
 			<InspectorControls>
-				<PanelBody title={ __( 'Background Image', 'agent-theme' ) } initialOpen={ true }>
+				<PanelBody title={ __( 'Background Image', 'nordic-fund-day' ) } initialOpen={ true }>
 					<MediaUploadCheck>
 						<MediaUpload
 							onSelect={ ( media ) => setAttributes( { backgroundImage: media.url, backgroundImageId: media.id } ) }
@@ -50,7 +50,7 @@ export default function Edit( { attributes, setAttributes } ) {
 								<>
 									{ backgroundImage && <img src={ backgroundImage } alt="" style={ { width: '100%', height: 'auto', marginBottom: '8px', borderRadius: '4px' } } /> }
 									<Button onClick={ open } variant="secondary" style={ { width: '100%' } }>
-										{ backgroundImage ? __( 'Change', 'agent-theme' ) : __( 'Upload', 'agent-theme' ) }
+										{ backgroundImage ? __( 'Change', 'nordic-fund-day' ) : __( 'Upload', 'nordic-fund-day' ) }
 									</Button>
 								</>
 							) }
@@ -58,34 +58,34 @@ export default function Edit( { attributes, setAttributes } ) {
 					</MediaUploadCheck>
 					{ backgroundImage && (
 						<Button onClick={ () => setAttributes( { backgroundImage: '', backgroundImageId: 0 } ) } variant="link" isDestructive style={ { marginTop: '4px' } }>
-							{ __( 'Remove', 'agent-theme' ) }
+							{ __( 'Remove', 'nordic-fund-day' ) }
 						</Button>
 					) }
 				</PanelBody>
 
-				<PanelBody title={ __( 'Title & Date', 'agent-theme' ) } initialOpen={ false }>
-					<TextControl label={ __( 'Date Badge', 'agent-theme' ) } value={ dateBadge } onChange={ ( v ) => setAttributes( { dateBadge: v } ) } />
+				<PanelBody title={ __( 'Title & Date', 'nordic-fund-day' ) } initialOpen={ false }>
+					<TextControl label={ __( 'Date Badge', 'nordic-fund-day' ) } value={ dateBadge } onChange={ ( v ) => setAttributes( { dateBadge: v } ) } />
 					{ titleLines.map( ( line, idx ) => (
-						<TextControl key={ line.id } label={ `${ __( 'Title Line', 'agent-theme' ) } ${ idx + 1 }` } value={ line.text } onChange={ ( v ) => updateTitleLine( idx, v ) } />
+						<TextControl key={ line.id } label={ `${ __( 'Title Line', 'nordic-fund-day' ) } ${ idx + 1 }` } value={ line.text } onChange={ ( v ) => updateTitleLine( idx, v ) } />
 					) ) }
 				</PanelBody>
 
-				<PanelBody title={ __( 'Hero CTAs', 'agent-theme' ) } initialOpen={ false }>
-					<p style={ { fontWeight: 600, marginBottom: '8px' } }>{ __( 'Primary CTA (Green)', 'agent-theme' ) }</p>
-					<TextControl label={ __( 'Label', 'agent-theme' ) } value={ primaryCta.label } onChange={ ( v ) => setAttributes( { primaryCta: { ...primaryCta, label: v } } ) } />
-					<TextControl label={ __( 'Sublabel', 'agent-theme' ) } value={ primaryCta.sublabel } onChange={ ( v ) => setAttributes( { primaryCta: { ...primaryCta, sublabel: v } } ) } />
-					<TextControl label={ __( 'URL', 'agent-theme' ) } value={ primaryCta.url } onChange={ ( v ) => setAttributes( { primaryCta: { ...primaryCta, url: v } } ) } type="url" />
+				<PanelBody title={ __( 'Hero CTAs', 'nordic-fund-day' ) } initialOpen={ false }>
+					<p style={ { fontWeight: 600, marginBottom: '8px' } }>{ __( 'Primary CTA (Green)', 'nordic-fund-day' ) }</p>
+					<TextControl label={ __( 'Label', 'nordic-fund-day' ) } value={ primaryCta.label } onChange={ ( v ) => setAttributes( { primaryCta: { ...primaryCta, label: v } } ) } />
+					<TextControl label={ __( 'Sublabel', 'nordic-fund-day' ) } value={ primaryCta.sublabel } onChange={ ( v ) => setAttributes( { primaryCta: { ...primaryCta, sublabel: v } } ) } />
+					<TextControl label={ __( 'URL', 'nordic-fund-day' ) } value={ primaryCta.url } onChange={ ( v ) => setAttributes( { primaryCta: { ...primaryCta, url: v } } ) } type="url" />
 
-					<p style={ { fontWeight: 600, marginTop: '16px', marginBottom: '8px' } }>{ __( 'Secondary CTA (Glass)', 'agent-theme' ) }</p>
-					<TextControl label={ __( 'Label', 'agent-theme' ) } value={ secondaryCta.label } onChange={ ( v ) => setAttributes( { secondaryCta: { ...secondaryCta, label: v } } ) } />
-					<TextControl label={ __( 'Sublabel', 'agent-theme' ) } value={ secondaryCta.sublabel } onChange={ ( v ) => setAttributes( { secondaryCta: { ...secondaryCta, sublabel: v } } ) } />
-					<TextControl label={ __( 'URL', 'agent-theme' ) } value={ secondaryCta.url } onChange={ ( v ) => setAttributes( { secondaryCta: { ...secondaryCta, url: v } } ) } type="url" />
+					<p style={ { fontWeight: 600, marginTop: '16px', marginBottom: '8px' } }>{ __( 'Secondary CTA (Glass)', 'nordic-fund-day' ) }</p>
+					<TextControl label={ __( 'Label', 'nordic-fund-day' ) } value={ secondaryCta.label } onChange={ ( v ) => setAttributes( { secondaryCta: { ...secondaryCta, label: v } } ) } />
+					<TextControl label={ __( 'Sublabel', 'nordic-fund-day' ) } value={ secondaryCta.sublabel } onChange={ ( v ) => setAttributes( { secondaryCta: { ...secondaryCta, sublabel: v } } ) } />
+					<TextControl label={ __( 'URL', 'nordic-fund-day' ) } value={ secondaryCta.url } onChange={ ( v ) => setAttributes( { secondaryCta: { ...secondaryCta, url: v } } ) } type="url" />
 				</PanelBody>
 
-				<PanelBody title={ __( 'Partner Logos', 'agent-theme' ) } initialOpen={ false }>
+				<PanelBody title={ __( 'Partner Logos', 'nordic-fund-day' ) } initialOpen={ false }>
 					{ partnerLogos.map( ( logo, idx ) => (
 						<div key={ logo.id } style={ { marginBottom: '12px', paddingBottom: '12px', borderBottom: '1px solid #ddd' } }>
-							<TextControl label={ `${ __( 'Alt Text', 'agent-theme' ) } ${ idx + 1 }` } value={ logo.alt } onChange={ ( v ) => updatePartnerLogo( idx, { alt: v } ) } />
+							<TextControl label={ `${ __( 'Alt Text', 'nordic-fund-day' ) } ${ idx + 1 }` } value={ logo.alt } onChange={ ( v ) => updatePartnerLogo( idx, { alt: v } ) } />
 							<MediaUploadCheck>
 								<MediaUpload
 									onSelect={ ( media ) => updatePartnerLogo( idx, { url: media.url, imageId: media.id } ) }
@@ -93,7 +93,7 @@ export default function Edit( { attributes, setAttributes } ) {
 									value={ logo.imageId }
 									render={ ( { open } ) => (
 										<Button onClick={ open } variant="secondary" style={ { width: '100%' } }>
-											{ logo.url ? __( 'Change Logo', 'agent-theme' ) : __( 'Upload Logo', 'agent-theme' ) }
+											{ logo.url ? __( 'Change Logo', 'nordic-fund-day' ) : __( 'Upload Logo', 'nordic-fund-day' ) }
 										</Button>
 									) }
 								/>
@@ -102,18 +102,18 @@ export default function Edit( { attributes, setAttributes } ) {
 					) ) }
 				</PanelBody>
 
-				<PanelBody title={ __( 'Bottom Card', 'agent-theme' ) } initialOpen={ false }>
-					<TextControl label={ __( 'Button 1 Label', 'agent-theme' ) } value={ cardButton1.label } onChange={ ( v ) => setAttributes( { cardButton1: { ...cardButton1, label: v } } ) } />
-					<TextControl label={ __( 'Button 1 URL', 'agent-theme' ) } value={ cardButton1.url } onChange={ ( v ) => setAttributes( { cardButton1: { ...cardButton1, url: v } } ) } type="url" />
-					<TextControl label={ __( 'Button 2 Label', 'agent-theme' ) } value={ cardButton2.label } onChange={ ( v ) => setAttributes( { cardButton2: { ...cardButton2, label: v } } ) } />
-					<TextControl label={ __( 'Button 2 URL', 'agent-theme' ) } value={ cardButton2.url } onChange={ ( v ) => setAttributes( { cardButton2: { ...cardButton2, url: v } } ) } type="url" />
+				<PanelBody title={ __( 'Bottom Card', 'nordic-fund-day' ) } initialOpen={ false }>
+					<TextControl label={ __( 'Button 1 Label', 'nordic-fund-day' ) } value={ cardButton1.label } onChange={ ( v ) => setAttributes( { cardButton1: { ...cardButton1, label: v } } ) } />
+					<TextControl label={ __( 'Button 1 URL', 'nordic-fund-day' ) } value={ cardButton1.url } onChange={ ( v ) => setAttributes( { cardButton1: { ...cardButton1, url: v } } ) } type="url" />
+					<TextControl label={ __( 'Button 2 Label', 'nordic-fund-day' ) } value={ cardButton2.label } onChange={ ( v ) => setAttributes( { cardButton2: { ...cardButton2, label: v } } ) } />
+					<TextControl label={ __( 'Button 2 URL', 'nordic-fund-day' ) } value={ cardButton2.url } onChange={ ( v ) => setAttributes( { cardButton2: { ...cardButton2, url: v } } ) } type="url" />
 				</PanelBody>
 
-				<PanelBody title={ __( 'Stats', 'agent-theme' ) } initialOpen={ false }>
+				<PanelBody title={ __( 'Stats', 'nordic-fund-day' ) } initialOpen={ false }>
 					{ stats.map( ( stat, idx ) => (
 						<div key={ stat.id } style={ { display: 'flex', gap: '8px', marginBottom: '8px' } }>
-							<TextControl label={ __( 'Value', 'agent-theme' ) } value={ stat.value } onChange={ ( v ) => updateStat( idx, { value: v } ) } style={ { flex: 1 } } />
-							<TextControl label={ __( 'Label', 'agent-theme' ) } value={ stat.label } onChange={ ( v ) => updateStat( idx, { label: v } ) } style={ { flex: 1 } } />
+							<TextControl label={ __( 'Value', 'nordic-fund-day' ) } value={ stat.value } onChange={ ( v ) => updateStat( idx, { value: v } ) } style={ { flex: 1 } } />
+							<TextControl label={ __( 'Label', 'nordic-fund-day' ) } value={ stat.label } onChange={ ( v ) => updateStat( idx, { label: v } ) } style={ { flex: 1 } } />
 						</div>
 					) ) }
 				</PanelBody>
@@ -166,7 +166,7 @@ export default function Edit( { attributes, setAttributes } ) {
 						</div>
 						<div className="w-full bg-black/10 backdrop-blur-md border border-white/30 rounded-[10px] p-4 sm:p-[30px_40px]">
 							<div className="flex flex-col items-end gap-4 sm:gap-8">
-								<RichText tagName="p" value={ cardText } onChange={ ( v ) => setAttributes( { cardText: v } ) } className="text-white text-[16px] sm:text-[20px] lg:text-[24px] font-bold leading-[1.2] text-right" placeholder={ __( 'Card text…', 'agent-theme' ) } />
+								<RichText tagName="p" value={ cardText } onChange={ ( v ) => setAttributes( { cardText: v } ) } className="text-white text-[16px] sm:text-[20px] lg:text-[24px] font-bold leading-[1.2] text-right" placeholder={ __( 'Card text…', 'nordic-fund-day' ) } />
 								<div className="flex flex-row items-center gap-2 sm:gap-3">
 									<div className="inline-flex items-center justify-center px-3 sm:px-6 py-2.5 sm:py-4 h-[40px] sm:h-[48px] bg-black rounded-full text-white text-[11px] sm:text-[14px] lg:text-[16px] font-semibold uppercase tracking-[0.03em] whitespace-nowrap">{ cardButton1.label }</div>
 									<div className="inline-flex items-center justify-center px-3 sm:px-6 py-2.5 sm:py-4 h-[40px] sm:h-[48px] bg-white rounded-full text-black text-[11px] sm:text-[14px] lg:text-[16px] font-semibold uppercase tracking-[0.03em] whitespace-nowrap">{ cardButton2.label }</div>

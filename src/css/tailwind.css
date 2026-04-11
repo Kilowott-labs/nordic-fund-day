@@ -26,22 +26,22 @@
 /* Header Nav — scroll state + mobile menu                      */
 /* Must be OUTSIDE @layer to beat Tailwind utility specificity   */
 /* ============================================================ */
-.wp-block-agent-theme-header-nav {
+.wp-block-nordic-fund-day-header-nav {
   background: transparent;
   transition: background 0.4s ease, backdrop-filter 0.4s ease, transform 0.35s ease;
 }
 
-.wp-block-agent-theme-header-nav.scrolled {
+.wp-block-nordic-fund-day-header-nav.scrolled {
   background: rgba(0, 0, 0, 0.85) !important;
   backdrop-filter: blur(12px) !important;
   -webkit-backdrop-filter: blur(12px) !important;
 }
 
-.wp-block-agent-theme-header-nav.nav-hidden {
+.wp-block-nordic-fund-day-header-nav.nav-hidden {
   transform: translateY(-100%) !important;
 }
 
-.wp-block-agent-theme-header-nav .mobile-menu {
+.wp-block-nordic-fund-day-header-nav .mobile-menu {
   display: flex;
   max-height: 0;
   overflow: hidden;
@@ -51,7 +51,7 @@
   padding-bottom: 0;
 }
 
-.wp-block-agent-theme-header-nav .mobile-menu.open {
+.wp-block-nordic-fund-day-header-nav .mobile-menu.open {
   max-height: 400px;
   opacity: 1;
   padding-top: 16px;
@@ -61,15 +61,15 @@
 /* ============================================================ */
 /* Hero Banner — text glow + parallax                           */
 /* ============================================================ */
-.wp-block-agent-theme-hero-banner .hero-glow {
+.wp-block-nordic-fund-day-hero-banner .hero-glow {
   text-shadow: 0px 0px 13px rgba(255, 255, 255, 0.8);
 }
 
-.wp-block-agent-theme-hero-banner .date-glow {
+.wp-block-nordic-fund-day-hero-banner .date-glow {
   text-shadow: 0px 0.77px 3.1px rgba(255, 255, 255, 0.45);
 }
 
-.wp-block-agent-theme-hero-banner .parallax-hero {
+.wp-block-nordic-fund-day-hero-banner .parallax-hero {
   will-change: transform;
 }
 

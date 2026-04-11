@@ -1,10 +1,10 @@
 <?php
 /**
- * Coretrek functions and definitions
+ * Nordic Fund Day functions and definitions
  *
  * @link https://developer.wordpress.org/themes/basics/theme-functions/
  *
- * @package coretrek
+ * @package nordic-fund-day
  */
 define( 'YOAST_ACTIVE', defined( 'WPSEO_VERSION' ) ? true : false );
 
@@ -33,11 +33,11 @@ require_once __DIR__ . '/inc/category_functions.php';
 require_once __DIR__ . '/inc/user_functions.php';
 require_once __DIR__ . '/inc/block_render_functions.php';
 
-add_action('enqueue_block_assets', 'coretrek_enqueue_scripts_styles');
-function coretrek_enqueue_scripts_styles(){
+add_action('enqueue_block_assets', 'nfd_enqueue_scripts_styles');
+function nfd_enqueue_scripts_styles(){
     // Enqueue main theme styles from consolidated dist folder
     if ( file_exists( get_template_directory() . '/dist/styles.css' ) ) {
-        wp_enqueue_style('coretrek-style', get_template_directory_uri() . "/dist/styles.css", [], filemtime(get_template_directory() . "/dist/styles.css"), "all");
+        wp_enqueue_style('nfd-style', get_template_directory_uri() . "/dist/styles.css", [], filemtime(get_template_directory() . "/dist/styles.css"), "all");
     }
 }
 
@@ -46,13 +46,13 @@ function theme_register_pattern_categories() {
     register_block_pattern_category(
         'YTF', 
         array(
-            'label' => __( 'YTF', 'coretrek' ) 
+            'label' => __( 'YTF', 'nordic-fund-day' ) 
         )
     );
 }
 add_action( 'init', 'theme_register_pattern_categories' );
 
-function coretrek_featured_image_placeholder( $block_content, $block ) {
+function nfd_featured_image_placeholder( $block_content, $block ) {
     // Target the specific block by its name.
     if ( 'core/post-featured-image' !== $block['blockName'] ) {
         return $block_content;
@@ -111,22 +111,22 @@ function coretrek_featured_image_placeholder( $block_content, $block ) {
             </figure>',
             $class_name,
             esc_url( $placeholder_url ),
-            esc_attr__( 'Default Image Placeholder', 'coretrek' )
+            esc_attr__( 'Default Image Placeholder', 'nordic-fund-day' )
         );
         
     }
     
     return $block_content;
 }
-add_filter( 'render_block', 'coretrek_featured_image_placeholder', 10, 2 );
+add_filter( 'render_block', 'nfd_featured_image_placeholder', 10, 2 );
 
 //localize assets path
-function coretrek_block_assets() {
-    wp_localize_script('wp-blocks', 'coretrekThemeUrl', [
+function nfd_block_assets() {
+    wp_localize_script('wp-blocks', 'nfdThemeUrl', [
         'assets' => get_template_directory_uri() . '/assets'
     ]);
 }
-add_action('enqueue_block_editor_assets', 'coretrek_block_assets');
+add_action('enqueue_block_editor_assets', 'nfd_block_assets');
 
 
 function boost_ai_chat_scripts() {
@@ -144,7 +144,7 @@ add_action('wp_footer', 'boost_ai_chat_scripts');
 
 add_action( 'wp_enqueue_scripts', function () {
 	wp_enqueue_style(
-		'coretrek-google-fonts',
+		'nfd-google-fonts',
 		'https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900&display=swap',
 		[],
 		null
@@ -154,7 +154,7 @@ add_action( 'wp_enqueue_scripts', function () {
 
 add_action( 'enqueue_block_editor_assets', function () {
 	wp_enqueue_style(
-		'coretrek-google-fonts-editor',
+		'nfd-google-fonts-editor',
 		'https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900&display=swap',
 		[],
 		null

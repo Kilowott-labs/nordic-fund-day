@@ -46,7 +46,25 @@
       "mcp__chrome-devtools-mcp__list_pages",
       "Bash(git init:*)",
       "Bash(git branch:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(gh repo:*)",
+      "Bash(npx wp-scripts:*)",
+      "Bash(npm ls:*)",
+      "Bash(ls node_modules/.bin/rimraf*)",
+      "Bash(npm install:*)",
+      "Bash(grep:*)",
+      "Bash(ls -lhS /c/xampp/htdocs/nordic-fund-day/*.png /c/xampp/htdocs/nordic-fund-day/*.jpg)",
+      "Bash(wc:*)",
+      "Bash(ls:*)",
+      "Bash(sed -i 's/wp-block-agent-theme/wp-block-nordic-fund-day/g' src/css/tailwind.css blocks/src/header-nav/style.scss blocks/src/hero-banner/style.scss blocks/src/hero-banner/editor.scss blocks/src/marquee/style.scss blocks/src/testimonial-highlight/editor.scss blocks/src/testimonial-highlight/style.scss)",
+      "Bash(sed -i 's/wp-block-agent-theme/wp-block-nordic-fund-day/g' src/js/index.js blocks/src/event-panels/view.js)",
+      "Bash(sed -i \"s/register_ytf_blocks/register_nfd_blocks/g; s/'ytf'/'nordic-fund-day'/g; s/Coretrek Basic/Nordic Fund Day Blocks/g; s/Author: Coretrek/Author: Nordic Fund Day/g; s/'agent-theme'/'nordic-fund-day'/g\" blocks/blocks.php)",
+      "Bash(sed -i \"s/coretrek_enqueue_scripts_styles/nfd_enqueue_scripts_styles/g; s/'coretrek-style'/'nfd-style'/g; s/coretrek_featured_image_placeholder/nfd_featured_image_placeholder/g; s/'coretrek'/'nordic-fund-day'/g; s/coretrek_block_assets/nfd_block_assets/g; s/coretrekThemeUrl/nfdThemeUrl/g; s/'coretrek-google-fonts'/'nfd-google-fonts'/g; s/'coretrek-google-fonts-editor'/'nfd-google-fonts-editor'/g; s/Coretrek functions/Nordic Fund Day functions/g; s/@package coretrek/@package nordic-fund-day/g\" functions.php)",
+      "Bash(rm -f screenshot-full.png full-page.jpg wp-full-page.png mobile-full.png section-*.png 2.jpg)",
+      "Bash(rm -rf blocks/src/banner-text blocks/src/marquee blocks/src/testimonial-highlight blocks/src/usp-numbers blocks/src/usp-simple)",
+      "Bash(rm -rf output)"
     ]
   },
   "enabledMcpjsonServers": [

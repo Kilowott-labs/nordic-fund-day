@@ -150,7 +150,7 @@
 		} );
 
 		// Schedule day cards — stagger
-		const scheduleBlock = document.querySelector( '.wp-block-agent-theme-schedule-grid' );
+		const scheduleBlock = document.querySelector( '.wp-block-nordic-fund-day-schedule-grid' );
 		if ( scheduleBlock ) {
 			scheduleBlock.querySelectorAll( '.rounded-lg' ).forEach( ( card, i ) => {
 				gsap.fromTo( card,
@@ -164,7 +164,7 @@
 		}
 
 		// Partner cards — stagger with scale
-		const partnerBlock = document.querySelector( '.wp-block-agent-theme-partner-cards' );
+		const partnerBlock = document.querySelector( '.wp-block-nordic-fund-day-partner-cards' );
 		if ( partnerBlock ) {
 			partnerBlock.querySelectorAll( '.rounded-lg' ).forEach( ( card, i ) => {
 				gsap.fromTo( card,
@@ -178,7 +178,7 @@
 		}
 
 		// Pitch sector cards — stagger with scale
-		const pitchBlock = document.querySelector( '.wp-block-agent-theme-pitch-showcase' );
+		const pitchBlock = document.querySelector( '.wp-block-nordic-fund-day-pitch-showcase' );
 		if ( pitchBlock ) {
 			pitchBlock.querySelectorAll( '.rounded-\\[5px\\]' ).forEach( ( card, i ) => {
 				gsap.fromTo( card,
@@ -192,7 +192,7 @@
 		}
 
 		// Feature badges (treasure, brunch) — stagger
-		document.querySelectorAll( '.wp-block-agent-theme-treasure-mixer .rounded, .wp-block-agent-theme-investor-brunch .rounded' ).forEach( ( badge, i ) => {
+		document.querySelectorAll( '.wp-block-nordic-fund-day-treasure-mixer .rounded, .wp-block-nordic-fund-day-investor-brunch .rounded' ).forEach( ( badge, i ) => {
 			gsap.fromTo( badge,
 				{ x: -30, opacity: 0 },
 				{
@@ -203,7 +203,7 @@
 		} );
 
 		// Value proposition image reveal — clipPath wipe
-		const vpBlock = document.querySelector( '.wp-block-agent-theme-value-proposition' );
+		const vpBlock = document.querySelector( '.wp-block-nordic-fund-day-value-proposition' );
 		if ( vpBlock ) {
 			const imgContainer = vpBlock.querySelector( '.overflow-hidden.self-start' );
 			if ( imgContainer ) {
@@ -254,7 +254,7 @@
 		// ============================================================
 		// FOOTER CTA — parallax background (scale 1.15 → 1)
 		// ============================================================
-		const footerBlock = document.querySelector( '.wp-block-agent-theme-footer-cta' );
+		const footerBlock = document.querySelector( '.wp-block-nordic-fund-day-footer-cta' );
 		if ( footerBlock ) {
 			gsap.fromTo( footerBlock,
 				{ backgroundSize: '115%' },

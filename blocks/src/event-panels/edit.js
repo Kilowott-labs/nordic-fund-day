@@ -2,13 +2,13 @@ import { __ } from '@wordpress/i18n';
 import { useBlockProps, InnerBlocks } from '@wordpress/block-editor';
 
 const TEMPLATE = [
-	[ 'agent-theme/treasure-mixer', {} ],
-	[ 'agent-theme/investor-brunch', {} ],
+	[ 'nordic-fund-day/treasure-mixer', {} ],
+	[ 'nordic-fund-day/investor-brunch', {} ],
 ];
 
 const ALLOWED_BLOCKS = [
-	'agent-theme/treasure-mixer',
-	'agent-theme/investor-brunch',
+	'nordic-fund-day/treasure-mixer',
+	'nordic-fund-day/investor-brunch',
 ];
 
 export default function Edit() {
