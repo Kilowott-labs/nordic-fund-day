@@ -1081,14 +1081,6 @@
         invalidateOnRefresh: true,
       });
 
-      // Compensate for the dead space left after pinning.
-      // With pinSpacing:false the pin-spacer takes treasureHeight in flow.
-      // After brunch scrolls over, there's a gap = treasureHeight - brunchHeight (if positive).
-      // But the real gap is the white space visible, which equals overflow.
-      const gap = treasureSection.offsetHeight - brunchSection.offsetHeight;
-      if (gap > 0) {
-        eventPanels.style.marginBottom = -gap + 'px';
-      }
     }
 
     // ============================================================
