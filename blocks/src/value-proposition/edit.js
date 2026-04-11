@@ -135,7 +135,7 @@ export default function Edit( { attributes, setAttributes } ) {
 								tagName="p"
 								value={ bodyText }
 								onChange={ ( value ) => setAttributes( { bodyText: value } ) }
-								className="text-white text-[15px] sm:text-lg leading-[1.6]"
+								className="font-mono text-white text-[15px] sm:text-lg leading-[1.6]"
 								placeholder={ __( 'Body text…', 'agent-theme' ) }
 							/>
 							<div className="flex flex-col gap-3 sm:gap-4">
@@ -143,7 +143,7 @@ export default function Edit( { attributes, setAttributes } ) {
 									<div key={ point.id } className="bg-white/10 border border-white/[0.18] rounded p-2.5">
 										<div className="flex items-center gap-3">
 											<span className="text-[var(--wp--preset--color--red-cross)] font-bold text-base w-[10px] flex-shrink-0">&#10007;</span>
-											<span className="text-white/60 text-sm sm:text-base">{ point.text }</span>
+											<span className="font-mono text-white/60 text-sm sm:text-base">{ point.text }</span>
 										</div>
 									</div>
 								) ) }
@@ -168,7 +168,7 @@ export default function Edit( { attributes, setAttributes } ) {
 							<div className="absolute top-5 sm:top-7 right-4 sm:right-6 max-w-[85%] sm:max-w-[75%] lg:max-w-[334px] z-[2]">
 								<div className="flex items-start gap-2 sm:gap-3">
 									<span className="text-[var(--wp--preset--color--lime)] font-bold text-sm sm:text-base flex-shrink-0">&#10038;</span>
-									<p className="text-white text-[12px] sm:text-[14px] lg:text-[16px] leading-[1.5]">{ quoteText }</p>
+									<p className="font-mono text-white text-[12px] sm:text-[14px] lg:text-[16px] leading-[1.5]">{ quoteText }</p>
 								</div>
 							</div>
 						</div>
