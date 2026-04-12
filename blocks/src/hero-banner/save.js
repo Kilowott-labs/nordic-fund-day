@@ -23,7 +23,7 @@ export default function save( { attributes } ) {
 			</div>
 
 			{ /* Content Container */ }
-			<div className="relative z-10 flex flex-col w-full max-w-[1920px] mx-auto px-4 sm:px-6 md:px-[5vw] lg:px-[90px] min-[1600px]:pl-[20%] min-[1600px]:pr-[90px] pt-[120px] sm:pt-[7vw] md:pt-[10.3vw] pb-[15vw] sm:pb-[20vw] md:pb-[15vw] lg:pb-[150px] min-[1600px]:pb-[300px]">
+			<div className="relative z-10 flex flex-col w-full max-w-[1920px] mx-auto px-4 sm:px-6 md:px-[5vw] lg:px-[90px] min-[1600px]:pl-[20%] min-[1600px]:pr-[90px] pt-[120px] sm:pt-[7vw] md:pt-[10.3vw] pb-[8vw] sm:pb-[20vw] md:pb-[15vw] lg:pb-[150px] min-[1600px]:pb-[300px]">
 
 				{ /* Title Area */ }
 				<div className="flex flex-col items-start gap-3 md:gap-4">
