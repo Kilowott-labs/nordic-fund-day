@@ -169,7 +169,7 @@ add_action( 'wp_enqueue_scripts', function () {
 		[],
 		filemtime(get_template_directory() . '/dist/tailwind.css')
 	);
-	
+
 	// Enqueue GSAP for Hero Design block animations
 	wp_enqueue_script(
 		'gsap',
@@ -178,7 +178,7 @@ add_action( 'wp_enqueue_scripts', function () {
 		'3.12.5',
 		true
 	);
-	
+
 	// Enqueue GSAP ScrollTrigger plugin
 	wp_enqueue_script(
 		'gsap-scrolltrigger',
@@ -187,7 +187,7 @@ add_action( 'wp_enqueue_scripts', function () {
 		'3.12.5',
 		true
 	);
-	
+
 	// Enqueue Lenis smooth scroll
 	wp_enqueue_script(
 		'lenis',
@@ -205,6 +205,43 @@ add_action( 'wp_enqueue_scripts', function () {
 		filemtime(get_template_directory() . '/dist/main.js'),
 		true
 	);
+} );
+
+// ============================================================
+// PERFORMANCE: Defer/async scripts, preconnect, resource hints
+// ============================================================
+
+// Add defer to all theme scripts (non-blocking)
+add_filter( 'script_loader_tag', function ( $tag, $handle ) {
+	$defer_handles = [ 'gsap', 'gsap-scrolltrigger', 'lenis', 'nfd-page-animations' ];
+	if ( in_array( $handle, $defer_handles, true ) ) {
+		return str_replace( ' src=', ' defer src=', $tag );
+	}
+	return $tag;
+}, 10, 2 );
+
+// Add preconnect for CDN domains
+add_action( 'wp_head', function () {
+	echo '<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>' . "\n";
+	echo '<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>' . "\n";
+	echo '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>' . "\n";
+	echo '<link rel="dns-prefetch" href="https://unpkg.com">' . "\n";
+}, 1 );
+
+// Remove WordPress default bloat
+remove_action( 'wp_head', 'wp_generator' );
+remove_action( 'wp_head', 'wlwmanifest_link' );
+remove_action( 'wp_head', 'rsd_link' );
+remove_action( 'wp_head', 'wp_shortlink_wp_head' );
+remove_action( 'wp_head', 'rest_output_link_wp_head' );
+
+// Add cache headers for static assets via .htaccess alternative
+add_action( 'send_headers', function () {
+	if ( is_page( 'nordic-fund-day' ) ) {
+		header( 'X-Content-Type-Options: nosniff' );
+		header( 'X-Frame-Options: SAMEORIGIN' );
+		header( 'Referrer-Policy: strict-origin-when-cross-origin' );
+	}
 } );
 
 add_action( 'enqueue_block_editor_assets', function () {
@@ -273,13 +310,21 @@ add_action( 'init', function () {
 	}
 } );
 
-// Preload critical fonts
+// Preload critical assets + SEO meta
 add_action( 'wp_head', function () {
 	if ( ! is_page( 'nordic-fund-day' ) ) {
 		return;
 	}
+	// Preload fonts
 	echo '<link rel="preload" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900&display=swap" as="style">' . "\n";
+	// Preload hero background image (LCP element)
+	echo '<link rel="preload" as="image" href="' . esc_url( get_template_directory_uri() ) . '/assets/images/hero-layer.png.png" fetchpriority="high">' . "\n";
+	// SEO
 	echo '<meta name="description" content="Nordic Fund Day — the must-attend investor event for Nordic and Baltic deal flow. May 5-6, 2026 in Stavanger, Norway.">' . "\n";
+	// Open Graph
+	echo '<meta property="og:title" content="Nordic Fund Day — Stavanger, Norway">' . "\n";
+	echo '<meta property="og:description" content="The must-attend investor event for Nordic and Baltic deal flow. May 5-6, 2026.">' . "\n";
+	echo '<meta property="og:type" content="website">' . "\n";
 }, 1 );
 
 // Blockstudio LLM file rewrite

@@ -59,24 +59,11 @@
 		}
 
 		// ============================================================
-		// HERO ENTRANCE ANIMATIONS
+		// HERO — CSS handles entrance animations (no JS delay).
+		// GSAP only handles parallax scroll effect.
 		// ============================================================
 		const heroBanner = document.querySelector( '[data-hero-banner]' );
 		if ( heroBanner ) {
-			// Set transform positions (opacity:0 already inline in HTML)
-			gsap.set( '[data-hero-badge]', { y: 20, scale: 0.9 } );
-			gsap.set( '[data-hero-title]', { y: 80 } );
-			gsap.set( '[data-hero-cta]', { y: 30 } );
-			gsap.set( '[data-hero-bottom]', { y: 50 } );
-
-			const heroTL = gsap.timeline( { delay: 0.3 } );
-			heroTL
-				.to( '[data-hero-badge]', { y: 0, opacity: 1, scale: 1, duration: 0.6, ease: 'back.out(1.7)' } )
-				.to( '[data-hero-title]', { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out', stagger: 0.15 }, '-=0.3' )
-				.to( '[data-hero-cta]', { y: 0, opacity: 1, duration: 0.6, ease: 'power2.out' }, '-=0.3' )
-				.to( '[data-hero-bottom]', { y: 0, opacity: 1, duration: 0.8, ease: 'power2.out' }, '-=0.2' );
-
-			// Hero parallax — desktop only to avoid mobile jerk
 			const parallaxHero = heroBanner.querySelector( '.parallax-hero' );
 			if ( parallaxHero && window.innerWidth >= 1024 ) {
 				gsap.to( parallaxHero, {

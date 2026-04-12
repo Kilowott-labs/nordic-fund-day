@@ -1,24 +1,82 @@
 /**
  * style.scss — hero-banner
- * CSS that Tailwind cannot express: text-shadow glow effects, parallax will-change.
+ * CSS-first hero entrance animations — no JS dependency for initial reveal.
+ * GSAP handles scroll effects after page load.
  */
 
 .wp-block-nordic-fund-day-hero-banner {
-	/* Text glow on hero title — Tailwind has no text-shadow utility */
+	/* Text glow on hero title */
 	.hero-glow {
 		text-shadow: 0px 0px 13px rgba(255, 255, 255, 0.8);
 	}
 
-	/* Date badge subtle glow — Tailwind has no text-shadow */
+	/* Date badge subtle glow */
 	.date-glow {
 		text-shadow: 0px 0.77px 3.1px rgba(255, 255, 255, 0.45);
 	}
 
-	/* Parallax layer GPU compositing hint — Tailwind has no will-change utility for transform */
+	/* Parallax GPU hint */
 	.parallax-hero {
 		will-change: transform;
 	}
 
-	/* Animated elements have inline style="opacity:0" to prevent flash.
-	   GSAP sets inline opacity during animation, which overrides it. */
+	/* ============================================================
+	   CSS-first hero entrance animations
+	   These fire immediately on paint — no JS wait.
+	   GSAP can override later for scroll effects.
+	   ============================================================ */
+
+	@keyframes heroFadeUp {
+		from {
+			opacity: 0;
+			transform: translateY(40px);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+
+	@keyframes heroBadgePop {
+		from {
+			opacity: 0;
+			transform: translateY(20px) scale(0.9);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0) scale(1);
+		}
+	}
+
+	/* Badge — appears first */
+	[data-hero-badge] {
+		opacity: 0;
+		animation: heroBadgePop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.2s forwards;
+	}
+
+	/* Title lines — staggered */
+	[data-hero-title]:nth-child(1) {
+		opacity: 0;
+		animation: heroFadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards;
+	}
+	[data-hero-title]:nth-child(2) {
+		opacity: 0;
+		animation: heroFadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.55s forwards;
+	}
+	[data-hero-title]:nth-child(3) {
+		opacity: 0;
+		animation: heroFadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.7s forwards;
+	}
+
+	/* CTA buttons */
+	[data-hero-cta] {
+		opacity: 0;
+		animation: heroFadeUp 0.6s ease-out 0.85s forwards;
+	}
+
+	/* Bottom section (logos + card + stats) */
+	[data-hero-bottom] {
+		opacity: 0;
+		animation: heroFadeUp 0.8s ease-out 1s forwards;
+	}
 }

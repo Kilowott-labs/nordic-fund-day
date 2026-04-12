@@ -18,7 +18,7 @@ export default function save( { attributes } ) {
 			{ /* Background */ }
 			<div className="absolute inset-0 parallax-hero">
 				{ backgroundImage && (
-					<img src={ backgroundImage } alt="" className="w-full h-full object-cover" loading="eager" />
+					<img src={ backgroundImage } alt="" className="w-full h-full object-cover" loading="eager" fetchpriority="high" width="1920" height="1948" />
 				) }
 			</div>
 
@@ -27,7 +27,7 @@ export default function save( { attributes } ) {
 
 				{ /* Title Area */ }
 				<div className="flex flex-col items-start gap-3 md:gap-4">
-					<div data-hero-badge="" className="inline-flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 rounded-full bg-white/20 border border-white/50" style={ { opacity: 0 } }>
+					<div data-hero-badge="" className="inline-flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 rounded-full bg-white/20 border border-white/50">
 						<span className="text-white text-[11px] sm:text-[14px] font-bold tracking-[0.29em] uppercase date-glow">
 							{ dateBadge }
 						</span>
@@ -39,7 +39,6 @@ export default function save( { attributes } ) {
 								key={ line.id }
 								data-hero-title=""
 								className="text-[36px] sm:text-[56px] md:text-[72px] lg:text-[80px] xl:text-[90px] min-[1400px]:text-[110px] min-[1600px]:text-[140px] font-black leading-[0.85] uppercase text-white"
-								style={ { opacity: 0 } }
 							>
 								{ line.text }
 							</h1>
@@ -47,7 +46,7 @@ export default function save( { attributes } ) {
 					</div>
 
 					{ /* CTA Buttons */ }
-					<div data-hero-cta="" className="flex items-stretch gap-2 sm:gap-4 mt-2 sm:mt-4" style={ { opacity: 0 } }>
+					<div data-hero-cta="" className="flex items-stretch gap-2 sm:gap-4 mt-2 sm:mt-4">
 						<a href={ primaryCta.url || '#' } className="group flex flex-col gap-2 sm:gap-3 px-3 sm:px-5 py-3 sm:py-6 w-[140px] sm:w-[195px] bg-[var(--wp--preset--color--lime)] hover:bg-white shadow-[0_4px_24px_rgba(212,255,73,0.3)] hover:shadow-[0_4px_32px_rgba(255,255,255,0.3)] transition-all duration-300">
 							<div className="flex items-center justify-between w-full">
 								<span className="text-[var(--wp--preset--color--dark-olive)] text-[10px] sm:text-[12px] font-bold tracking-[0.12em] uppercase leading-[1.75]">{ primaryCta.label }</span>
@@ -69,7 +68,7 @@ export default function save( { attributes } ) {
 				<div className="h-[60px] sm:h-[80px] md:h-[60px] lg:h-[80px] xl:h-[120px] min-[1600px]:h-[360px]"></div>
 
 				{ /* Bottom Section */ }
-				<div data-hero-bottom="" className="relative z-10 flex flex-col items-end gap-3 lg:gap-6 w-full lg:self-end lg:max-w-[55%] min-[1600px]:max-w-[704px]" style={ { opacity: 0 } }>
+				<div data-hero-bottom="" className="relative z-10 flex flex-col items-end gap-3 lg:gap-6 w-full lg:self-end lg:max-w-[55%] min-[1600px]:max-w-[704px]">
 					{ /* Partner Logos */ }
 					<div className="flex items-center flex-wrap justify-end gap-4 sm:gap-5 lg:gap-[21px]">
 						{ partnerLogos.map( ( logo ) => (
