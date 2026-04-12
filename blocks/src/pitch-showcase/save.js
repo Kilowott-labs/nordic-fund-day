@@ -4,7 +4,7 @@ export default function save( { attributes } ) {
 	const { backgroundImage, subtitle, heading, dateInfo, descriptionText, ctaLabel, ctaUrl, ctaOpenInNewTab, sectors } = attributes;
 
 	const blockProps = useBlockProps.save( {
-		className: 'relative min-h-[600px] md:min-h-[900px] lg:min-h-0 lg:aspect-[1920/1200] overflow-hidden',
+		className: 'relative min-h-[600px] md:min-h-[1000px] overflow-hidden flex items-end',
 	} );
 
 	return (
@@ -15,14 +15,11 @@ export default function save( { attributes } ) {
 					<img src={ backgroundImage } alt="" className="w-full h-full object-cover object-top" loading="lazy" />
 				) }
 			</div>
-			{ /* Gradient overlays */ }
-			<div className="absolute inset-0" style={ { background: 'linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 20%)' } }></div>
-			<div className="absolute inset-0" style={ { background: 'linear-gradient(180deg, rgba(0,0,0,0) 22%, rgba(0,0,0,0.7) 73%)' } }></div>
 
 			{ /* Content */ }
-			<div className="relative z-10 flex flex-col justify-end h-full min-h-[600px] md:min-h-[900px] lg:min-h-0 lg:aspect-[1920/1200] px-4 sm:px-6 md:px-[90px] py-8 md:py-12 lg:py-16">
-				<div className="flex flex-col lg:flex-row justify-between items-start gap-6 lg:gap-12 mb-8 lg:mb-10">
-					<div className="flex flex-col gap-4 max-w-[642px]">
+			<div className="relative z-10 flex flex-col justify-end h-full px-4 sm:px-6 md:px-[90px] py-8 md:py-12 lg:py-16">
+				<div className="flex flex-col lg:flex-row justify-between items-start gap-6 lg:gap-12 mb-8">
+					<div className="flex flex-col gap-4 ">
 						<RichText.Content
 							tagName="span"
 							value={ subtitle }
@@ -35,7 +32,7 @@ export default function save( { attributes } ) {
 						/>
 						<span className="text-white text-[20px] sm:text-[24px] font-bold">{ dateInfo }</span>
 					</div>
-					<div className="bg-black/20 backdrop-blur-sm rounded-lg p-5 sm:p-7 max-w-[520px] w-full lg:w-[520px] border border-white/10" style={ { outline: '1px solid #bfbfbf' } }>
+					<div className="bg-black/20 backdrop-blur-md rounded-lg p-5 sm:p-7 max-w-[520px] w-full lg:w-[520px] border border-white/10" style={ { outline: '1px solid #bfbfbf' } }>
 						<RichText.Content
 							tagName="p"
 							value={ descriptionText }

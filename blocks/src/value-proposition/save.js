@@ -72,7 +72,7 @@ export default function save( { attributes } ) {
 						<div className="absolute inset-0" style={ { background: 'linear-gradient(0deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0) 30%)' } }></div>
 
 						{ /* Quote overlay */ }
-						<div className="absolute top-5 sm:top-7 right-4 sm:right-6 max-w-[85%] sm:max-w-[75%] lg:max-w-[334px] z-[2]">
+						<div className="absolute top-5 right-4 sm:right-14 max-w-[85%] sm:max-w-[75%] lg:max-w-[334px] z-[2]">
 							<div className="flex items-start gap-2 sm:gap-3">
 								<span className="text-[var(--wp--preset--color--lime)] font-bold text-sm sm:text-base flex-shrink-0">&#10038;</span>
 								<p className="font-mono text-white text-[12px] sm:text-[14px] lg:text-[16px] leading-[1.5]">{ quoteText }</p>
