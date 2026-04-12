@@ -18,7 +18,7 @@ export default function Edit( { attributes, setAttributes } ) {
 	const { backgroundImage, backgroundImageId, subtitle, heading, dateInfo, descriptionText, ctaLabel, ctaUrl, ctaOpenInNewTab, sectors } = attributes;
 
 	const blockProps = useBlockProps( {
-		className: 'relative min-h-[600px] md:min-h-[1000px] flex items-end overflow-hidden',
+		className: 'relative min-h-[600px] md:min-h-[1200px] flex items-end overflow-hidden',
 	} );
 
 	const updateSector = ( index, fields ) => {
@@ -126,7 +126,7 @@ export default function Edit( { attributes, setAttributes } ) {
 					) }
 				</div>
 
-				<div className="relative z-10 flex flex-col justify-end h-full px-4 sm:px-6 md:px-[90px] py-8 md:py-12 lg:py-16">
+				<div className="relative z-10 flex flex-col justify-end h-full px-4 sm:px-6 md:px-[90px] py-8">
 					<div className="flex flex-col lg:flex-row justify-between items-start gap-6 lg:gap-12 mb-8">
 						<div className="flex flex-col gap-4 max-w-[642px]">
 							<RichText
