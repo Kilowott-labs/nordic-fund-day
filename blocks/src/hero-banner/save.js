@@ -79,7 +79,7 @@ export default function save( { attributes } ) {
 					</div>
 
 					{ /* CTA Card */ }
-					<div className="w-full bg-black/10 backdrop-blur-md border border-white/30 rounded-[10px] p-4 sm:p-[30px_40px] shadow-[0px_5px_33px_rgba(0,0,0,0.05)]">
+					<div className="w-full bg-black/20 backdrop-blur-xl border border-white/20 rounded-[10px] p-4 sm:p-[30px_40px] shadow-[0px_5px_33px_rgba(0,0,0,0.15)]">
 						<div className="flex flex-col items-end gap-4 sm:gap-8">
 							<RichText.Content
 								tagName="p"

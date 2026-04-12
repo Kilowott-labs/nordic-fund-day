@@ -166,7 +166,7 @@ export default function Edit( { attributes, setAttributes } ) {
 						</div>
 						<div className="w-full bg-black/10 backdrop-blur-md border border-white/30 rounded-[10px] p-4 sm:p-[30px_40px]">
 							<div className="flex flex-col items-end gap-4 sm:gap-8">
-								<RichText tagName="p" value={ cardText } onChange={ ( v ) => setAttributes( { cardText: v } ) } className="text-white text-[16px] sm:text-[20px] lg:text-[24px] font-bold leading-[1.2] text-right" placeholder={ __( 'Card text…', 'nordic-fund-day' ) } />
+								<RichText tagName="p" value={ cardText } onChange={ ( v ) => setAttributes( { cardText: v } ) } className="text-white text-[16px] sm:text-[20px] lg:text-[24px] font-medium leading-[1.2] text-right" placeholder={ __( 'Card text…', 'nordic-fund-day' ) } />
 								<div className="flex flex-row items-center gap-2 sm:gap-3">
 									<div className="inline-flex items-center justify-center px-3 sm:px-6 py-2.5 sm:py-4 h-[40px] sm:h-[48px] bg-black rounded-full text-white text-[11px] sm:text-[14px] lg:text-[16px] font-semibold uppercase tracking-[0.03em] whitespace-nowrap">{ cardButton1.label }</div>
 									<div className="inline-flex items-center justify-center px-3 sm:px-6 py-2.5 sm:py-4 h-[40px] sm:h-[48px] bg-white rounded-full text-black text-[11px] sm:text-[14px] lg:text-[16px] font-semibold uppercase tracking-[0.03em] whitespace-nowrap">{ cardButton2.label }</div>
