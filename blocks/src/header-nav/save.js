@@ -20,12 +20,12 @@ export default function save( { attributes } ) {
 				</a>
 
 				{ /* Desktop Nav Links */ }
-				<div className="hidden md:flex items-center gap-[43px]">
+				<div className="hidden md:flex items-center gap-[30px] min-[1500px]:gap-[43px]">
 					{ navLinks.map( ( link ) => (
 						<a
 							key={ link.id }
 							href={ link.url || '#' }
-							className="text-white text-lg font-bold hover:text-[var(--wp--preset--color--lime)] transition-colors"
+							className="text-white text-[0.8rem] min-[1500px]:text-lg font-bold hover:text-[var(--wp--preset--color--lime)] transition-colors"
 							data-nav-link=""
 						>
 							{ link.label }
@@ -33,7 +33,7 @@ export default function save( { attributes } ) {
 					) ) }
 					<a
 						href={ ctaUrl || '#' }
-						className="inline-flex items-center justify-center px-[19px] py-[9px] bg-white rounded-full text-black text-base font-bold uppercase tracking-[0.05em] hover:bg-[var(--wp--preset--color--lime)] hover:text-black transition-all duration-300"
+						className="inline-flex items-center justify-center px-[14px] min-[1500px]:px-[19px] py-[7px] min-[1500px]:py-[9px] bg-white rounded-full text-black text-[0.8rem] min-[1500px]:text-base font-bold uppercase tracking-[0.05em] hover:bg-[var(--wp--preset--color--lime)] hover:text-black transition-all duration-300"
 					>
 						{ ctaLabel }
 					</a>

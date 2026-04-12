@@ -9,6 +9,7 @@
     font-display: swap;
   }
 
+
   /*
    * overflow-x: clip on html/body prevents horizontal scroll without
    * creating a new scroll container (unlike overflow-x: hidden which

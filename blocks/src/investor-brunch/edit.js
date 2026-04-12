@@ -114,8 +114,8 @@ export default function Edit( { attributes, setAttributes } ) {
 			</InspectorControls>
 
 			<section { ...blockProps }>
-				<div className="flex flex-col-reverse lg:flex-row items-start gap-8 lg:gap-12 xl:gap-16 min-[1600px]:gap-[106px] px-4 sm:px-6 md:px-16 lg:px-[60px] xl:px-[90px] py-16 lg:py-[100px] min-[1600px]:py-[132px]">
-					<div className="flex flex-col gap-12 w-full lg:max-w-[634px]">
+				<div className="flex flex-col-reverse lg:flex-row items-start gap-8 lg:gap-12 xl:gap-16 min-[1600px]:gap-[106px] px-4 sm:px-6 md:px-16 lg:px-[60px] xl:px-[90px] py-8 sm:py-12 lg:py-[100px] min-[1600px]:py-[132px]">
+					<div className="flex flex-col gap-[2rem] lg:gap-12 w-full lg:max-w-[634px]">
 						<div className="flex flex-col gap-4">
 							<RichText tagName="span" value={ subtitle } onChange={ ( v ) => setAttributes( { subtitle: v } ) } className="font-mono text-[14px] font-medium tracking-[0.1em] uppercase text-black" placeholder={ __( 'Subtitle…', 'nordic-fund-day' ) } />
 							<RichText tagName="h2" value={ heading } onChange={ ( v ) => setAttributes( { heading: v } ) } className="text-[40px] sm:text-[52px] md:text-[56px] lg:text-[56px] xl:text-[64px] min-[1600px]:text-[72px] font-bold leading-[0.95] uppercase text-black" placeholder={ __( 'Heading…', 'nordic-fund-day' ) } />

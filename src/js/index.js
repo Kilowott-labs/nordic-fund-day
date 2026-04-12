@@ -238,24 +238,7 @@
 			}
 		} );
 
-		// ============================================================
-		// FOOTER CTA — parallax background (scale 1.15 → 1)
-		// ============================================================
-		const footerBlock = document.querySelector( '.wp-block-nordic-fund-day-footer-cta' );
-		if ( footerBlock && window.innerWidth >= 1024 ) {
-			gsap.fromTo( footerBlock,
-				{ backgroundSize: '115%' },
-				{
-					backgroundSize: '100%', ease: 'none',
-					scrollTrigger: {
-						trigger: footerBlock,
-						start: 'top bottom',
-						end: 'bottom top',
-						scrub: 0.8,
-					},
-				}
-			);
-		}
+		// FOOTER CTA — parallax removed per designer feedback
 
 		// ============================================================
 		// MAGNETIC HOVER EFFECT — all rounded pill buttons

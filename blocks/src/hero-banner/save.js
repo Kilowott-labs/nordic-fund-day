@@ -38,7 +38,7 @@ export default function save( { attributes } ) {
 							<h1
 								key={ line.id }
 								data-hero-title=""
-								className="text-[36px] sm:text-[56px] md:text-[72px] lg:text-[80px] xl:text-[90px] min-[1400px]:text-[110px] min-[1600px]:text-[140px] font-black leading-[0.85] uppercase text-white"
+								className="text-[50px] sm:text-[56px] md:text-[72px] lg:text-[80px] xl:text-[90px] min-[1400px]:text-[110px] min-[1600px]:text-[140px] font-black leading-[0.85] uppercase text-white"
 							>
 								{ line.text }
 							</h1>
@@ -65,7 +65,7 @@ export default function save( { attributes } ) {
 				</div>
 
 				{ /* Spacer */ }
-				<div className="h-[60px] sm:h-[80px] md:h-[60px] lg:h-[80px] xl:h-[120px] min-[1600px]:h-[360px]"></div>
+				<div className="h-[2rem] sm:h-[80px] md:h-[60px] lg:h-[80px] xl:h-[120px] min-[1600px]:h-[360px]"></div>
 
 				{ /* Bottom Section */ }
 				<div data-hero-bottom="" className="relative z-10 flex flex-col items-end gap-3 lg:gap-6 w-full lg:self-end lg:max-w-[55%] min-[1600px]:max-w-[704px]">
@@ -84,7 +84,7 @@ export default function save( { attributes } ) {
 							<RichText.Content
 								tagName="p"
 								value={ cardText }
-								className="text-white text-[16px] sm:text-[20px] lg:text-[24px] font-bold leading-[1.2] text-right"
+								className="text-white text-[16px] sm:text-[18px] lg:text-[20px] font-medium leading-[1.2] text-right"
 							/>
 							<div className="flex flex-row items-center gap-2 sm:gap-3">
 								<a href={ cardButton1.url || '#' } className="inline-flex items-center justify-center px-3 sm:px-6 py-2.5 sm:py-4 h-[40px] sm:h-[48px] bg-black rounded-full text-white text-[11px] sm:text-[14px] lg:text-[16px] font-semibold uppercase tracking-[0.03em] hover:bg-[var(--wp--preset--color--lime)] hover:text-black transition-all duration-300 whitespace-nowrap">

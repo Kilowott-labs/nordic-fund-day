@@ -9,9 +9,9 @@ export default function save( { attributes } ) {
 
 	return (
 		<section { ...blockProps }>
-			<div className="flex flex-col-reverse lg:flex-row items-start gap-8 lg:gap-12 xl:gap-16 min-[1600px]:gap-[106px] px-4 sm:px-6 md:px-16 lg:px-[60px] xl:px-[90px] py-16 lg:py-[100px] min-[1600px]:py-[132px]">
+			<div className="flex flex-col-reverse lg:flex-row items-start gap-8 lg:gap-12 xl:gap-16 min-[1600px]:gap-[106px] px-4 sm:px-6 md:px-16 lg:px-[60px] xl:px-[90px] py-8 sm:py-12 lg:py-[100px] min-[1600px]:py-[132px]">
 				{ /* Left: Content */ }
-				<div className="flex flex-col gap-12 w-full lg:max-w-[634px]">
+				<div className="flex flex-col gap-[2rem] lg:gap-12 w-full lg:max-w-[634px]">
 					<div className="flex flex-col gap-4">
 						<RichText.Content
 							tagName="span"
