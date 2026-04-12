@@ -38,7 +38,7 @@ export default function save( { attributes } ) {
 							value={ heading }
 							className="text-[40px] sm:text-[52px] md:text-[56px] lg:text-[56px] xl:text-[64px] min-[1600px]:text-[72px] font-bold leading-[0.95] uppercase text-black"
 						/>
-						<span className="text-black text-[18px] sm:text-[20px] font-bold">{ dateInfo }</span>
+						<span className="text-black text-[18px] sm:text-[24px] font-bold">{ dateInfo }</span>
 						<RichText.Content
 							tagName="div"
 							value={ description }

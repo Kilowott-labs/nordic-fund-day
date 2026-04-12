@@ -33,7 +33,7 @@ export default function save( { attributes } ) {
 				<RichText.Content
 					tagName="p"
 					value={ description }
-					className="font-mono text-[16px] leading-[1.6] max-w-[483px] mt-2"
+					className="font-mono text-[16px] leading-[1.6] max-w-[630px] mt-2"
 					style={ { color: '#373737' } }
 				/>
 
@@ -64,13 +64,13 @@ export default function save( { attributes } ) {
 				</div>
 
 				{ /* Stats row */ }
-				<div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 mt-4">
+				<div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 mt-4 font-mono font-medium">
 					{ stats.map( ( stat, idx ) => (
 						<>
 							{ idx > 0 && (
 								<span key={ `sep-${ stat.id }` } className="text-white/40 text-[10px]">•</span>
 							) }
-							<span key={ stat.id } className="text-white text-[13px] font-semibold tracking-[0.1em] uppercase">
+							<span key={ stat.id } className="text-white text-[13px] tracking-[0.1em] uppercase">
 								{ stat.text }
 							</span>
 						</>

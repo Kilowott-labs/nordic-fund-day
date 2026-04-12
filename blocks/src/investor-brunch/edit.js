@@ -119,7 +119,7 @@ export default function Edit( { attributes, setAttributes } ) {
 						<div className="flex flex-col gap-4">
 							<RichText tagName="span" value={ subtitle } onChange={ ( v ) => setAttributes( { subtitle: v } ) } className="font-mono text-[14px] font-medium tracking-[0.1em] uppercase text-black" placeholder={ __( 'Subtitle…', 'nordic-fund-day' ) } />
 							<RichText tagName="h2" value={ heading } onChange={ ( v ) => setAttributes( { heading: v } ) } className="text-[40px] sm:text-[52px] md:text-[56px] lg:text-[56px] xl:text-[64px] min-[1600px]:text-[72px] font-bold leading-[0.95] uppercase text-black" placeholder={ __( 'Heading…', 'nordic-fund-day' ) } />
-							<span className="text-black text-[18px] sm:text-[20px] font-bold">{ dateInfo }</span>
+							<span className="text-black text-[18px] sm:text-[24px] font-bold">{ dateInfo }</span>
 							<RichText tagName="div" value={ description } onChange={ ( v ) => setAttributes( { description: v } ) } className="font-mono text-[15px] sm:text-[16px] leading-[1.4] text-black/70 space-y-4 mt-2" placeholder={ __( 'Description…', 'nordic-fund-day' ) } multiline="p" />
 						</div>
 

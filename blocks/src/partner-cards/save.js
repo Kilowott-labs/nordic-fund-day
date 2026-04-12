@@ -50,7 +50,7 @@ export default function save( { attributes } ) {
 									{ card.isPremium ? (
 										<div className="flex items-start justify-between gap-4">
 											<div className="flex flex-col gap-1">
-												<span className={ `${ textColorClass } text-[15px] font-semibold` }>
+												<span className={ `${ textColorClass } text-[15px] font-medium font-mono` }>
 													{ card.label }
 												</span>
 												<span className={ `${ textColorClass } text-[32px] sm:text-[36px] lg:text-[40px] font-bold leading-[1.1] tracking-tight` }>
@@ -67,7 +67,7 @@ export default function save( { attributes } ) {
 										</div>
 									) : (
 										<>
-											<span className={ `${ textColorClass } text-[15px] font-semibold` }>
+											<span className={ `${ textColorClass } text-[15px] font-medium font-mono` }>
 												{ card.label }
 											</span>
 											<span className={ `${ textColorClass } text-[32px] sm:text-[36px] lg:text-[40px] font-bold leading-[1.1] tracking-tight block mt-1` }>
@@ -76,7 +76,7 @@ export default function save( { attributes } ) {
 										</>
 									) }
 								</div>
-								<div className="flex flex-col gap-5 p-7 sm:p-8">
+								<div className="flex flex-col gap-3 p-7 sm:p-8 font-mono">
 									{ card.features.map( ( feature, fIdx ) => (
 										<div key={ fIdx } className="flex items-start gap-3">
 											<span className="text-white/50 text-[16px] mt-[1px]">→</span>

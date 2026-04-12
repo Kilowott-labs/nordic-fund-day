@@ -64,7 +64,10 @@
       "Bash(sed -i \"s/coretrek_enqueue_scripts_styles/nfd_enqueue_scripts_styles/g; s/'coretrek-style'/'nfd-style'/g; s/coretrek_featured_image_placeholder/nfd_featured_image_placeholder/g; s/'coretrek'/'nordic-fund-day'/g; s/coretrek_block_assets/nfd_block_assets/g; s/coretrekThemeUrl/nfdThemeUrl/g; s/'coretrek-google-fonts'/'nfd-google-fonts'/g; s/'coretrek-google-fonts-editor'/'nfd-google-fonts-editor'/g; s/Coretrek functions/Nordic Fund Day functions/g; s/@package coretrek/@package nordic-fund-day/g\" functions.php)",
       "Bash(rm -f screenshot-full.png full-page.jpg wp-full-page.png mobile-full.png section-*.png 2.jpg)",
       "Bash(rm -rf blocks/src/banner-text blocks/src/marquee blocks/src/testimonial-highlight blocks/src/usp-numbers blocks/src/usp-simple)",
-      "Bash(rm -rf output)"
+      "Bash(rm -rf output)",
+      "mcp__chrome-devtools-mcp__lighthouse_audit",
+      "mcp__chrome-devtools-mcp__list_network_requests",
+      "mcp__chrome-devtools-mcp__list_console_messages"
     ]
   },
   "enabledMcpjsonServers": [
