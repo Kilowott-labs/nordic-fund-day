@@ -21,9 +21,10 @@ function Badge( { text, type } ) {
 	const textClass = isLime
 		? 'text-[var(--wp--preset--color--lime)]'
 		: 'text-white';
+	const bgStyle = isLime ? { backgroundColor: 'rgba(212, 255, 73, 0.12)' } : {};
 
 	return (
-		<div className={ `inline-flex items-center px-3 py-1 border ${ borderClass } rounded-sm` }>
+		<div className={ `inline-flex items-center px-3 py-1 border ${ borderClass } rounded-sm` } style={ bgStyle }>
 			<span className={ `font-mono text-[11px] font-medium tracking-[0.08em] uppercase ${ textClass }` }>
 				{ text }
 			</span>

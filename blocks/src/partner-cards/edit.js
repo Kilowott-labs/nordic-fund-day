@@ -180,7 +180,7 @@ export default function Edit( { attributes, setAttributes } ) {
 													</span>
 												</div>
 												{ card.badgeText && (
-													<div className="inline-flex items-center px-5 py-2 bg-[var(--wp--preset--color--lime)]/[0.08] border border-[var(--wp--preset--color--lime)] rounded-full mt-2">
+													<div className="inline-flex items-center px-5 py-2 border border-[var(--wp--preset--color--lime)] rounded-full mt-2" style={ { backgroundColor: 'rgba(212, 255, 73, 0.12)' } }>
 														<span className="text-[var(--wp--preset--color--lime)] text-[13px] font-semibold uppercase tracking-[0.1em]">
 															{ card.badgeText }
 														</span>
