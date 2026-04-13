@@ -1,7 +1,7 @@
 import { useBlockProps, RichText } from '@wordpress/block-editor';
 
 export default function save( { attributes } ) {
-	const { backgroundImage, dateBadge, heading, description, buttons, stats, copyrightLeft, copyrightRight } = attributes;
+	const { backgroundImage, dateBadge, heading, description, buttons, stats, copyrightLeft, copyrightRight, contactName, contactTitle, contactCompany, contactEmail, contactPhone } = attributes;
 
 	const blockProps = useBlockProps.save( {
 		className: 'relative overflow-hidden bg-cover bg-center bg-no-repeat bg-white',
@@ -36,6 +36,24 @@ export default function save( { attributes } ) {
 					className="font-mono text-[16px] leading-[1.6] max-w-[630px] mt-2"
 					style={ { color: '#373737' } }
 				/>
+
+				{ /* Contact Card */ }
+				<div className="mt-8 sm:mt-10 inline-flex flex-col sm:flex-row sm:items-center gap-5 sm:gap-10 bg-black/30 border border-white/10 rounded-xl px-7 py-5 backdrop-blur-sm w-fit">
+					<div className="flex flex-col gap-1">
+						<span className="font-mono text-white font-bold text-[15px] sm:text-[16px]">{ contactName }</span>
+						<span className="font-mono text-white/60 text-[13px] sm:text-[14px]">{ contactTitle }</span>
+						<span className="font-mono text-white/60 text-[13px] sm:text-[14px]">{ contactCompany }</span>
+					</div>
+					<div className="w-px h-10 bg-white/15 hidden sm:block self-center"></div>
+					<div className="flex flex-col gap-2">
+						<a href={ `mailto:${ contactEmail }` } className="font-mono text-[var(--wp--preset--color--lime)] text-[13px] sm:text-[14px] hover:underline flex items-center gap-2">
+							<span>✉</span><span>{ contactEmail }</span>
+						</a>
+						<a href={ `tel:${ contactPhone.replace( /\s/g, '' ) }` } className="font-mono text-white/80 text-[13px] sm:text-[14px] hover:text-white flex items-center gap-2">
+							<span>📞</span><span>{ contactPhone }</span>
+						</a>
+					</div>
+				</div>
 
 				{ /* CTA Buttons */ }
 				<div className="flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-3 mt-[60px] sm:mt-[120px]">

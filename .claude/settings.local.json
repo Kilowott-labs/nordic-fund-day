@@ -67,7 +67,14 @@
       "Bash(rm -rf output)",
       "mcp__chrome-devtools-mcp__lighthouse_audit",
       "mcp__chrome-devtools-mcp__list_network_requests",
-      "mcp__chrome-devtools-mcp__list_console_messages"
+      "mcp__chrome-devtools-mcp__list_console_messages",
+      "Bash(npx playwright:*)",
+      "Read(//c/xampp/htdocs/nordic-fund/wp-content/themes/nordic-fund-day/dist/value-proposition//**)",
+      "Read(//c/xampp/htdocs/nordic-fund/wp-content/themes/nordic-fund-day/dist/value-proposition/**)",
+      "mcp__playwright__browser_navigate",
+      "mcp__playwright__browser_take_screenshot",
+      "mcp__playwright__browser_resize",
+      "mcp__playwright__browser_evaluate"
     ]
   },
   "enabledMcpjsonServers": [

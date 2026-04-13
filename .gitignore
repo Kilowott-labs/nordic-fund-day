@@ -1,6 +1,7 @@
 node_modules/
 .claude/mcp.json
 .mcp.json
+.playwright-mcp/
 .env
 .env.*
 *.key

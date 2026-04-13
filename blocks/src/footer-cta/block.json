@@ -33,7 +33,7 @@
       "type": "array",
       "default": [
         { "id": 1, "label": "REQUEST YOUR SPOT", "url": "#", "style": "primary" },
-        { "id": 2, "label": "BECOME A PARTNER", "url": "#", "style": "ghost" },
+        { "id": 2, "label": "SECURE YOUR PARTNERSHIP SPOT", "url": "mailto:torill@nordicedge.org?subject=Secure your partnership spot to Nordic Fund Day Stavanger 2026", "style": "ghost" },
         { "id": 3, "label": "FULL PROGRAMME", "url": "#", "style": "ghost" }
       ]
     },
@@ -52,6 +52,26 @@
     "copyrightRight": {
       "type": "string",
       "default": "Powered by Kilowott"
+    },
+    "contactName": {
+      "type": "string",
+      "default": "Torill Steinback Hoel"
+    },
+    "contactTitle": {
+      "type": "string",
+      "default": "Head of Business Development"
+    },
+    "contactCompany": {
+      "type": "string",
+      "default": "Nordic Edge AS"
+    },
+    "contactEmail": {
+      "type": "string",
+      "default": "torill@nordicedge.org"
+    },
+    "contactPhone": {
+      "type": "string",
+      "default": "+ 47 900 99 349"
     }
   },
   "supports": {
