@@ -13,7 +13,7 @@ export default function save( { attributes } ) {
 				{ /* Logo — clicks scroll to top */ }
 				<a href="#" className="flex-shrink-0 cursor-pointer" data-scroll-top="" aria-label="Scroll to top">
 					{ logo ? (
-						<img src={ logo } alt={ logoAlt } className="h-[40px] sm:h-[52px] md:h-[64px] w-auto" />
+						<img src={ logo } alt={ logoAlt } className="h-[40px] sm:h-[52px] md:h-[64px] w-auto [transform:translateZ(0)]" />
 					) : (
 						<span className="text-white text-xl font-bold">{ logoAlt }</span>
 					) }

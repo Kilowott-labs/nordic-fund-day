@@ -14,7 +14,7 @@ import {
 } from '@wordpress/components';
 
 export default function Edit( { attributes, setAttributes } ) {
-	const { backgroundImage, backgroundImageId, dateBadge, heading, description, buttons, stats, copyrightLeft, copyrightRight, contactName, contactTitle, contactCompany, contactEmail, contactPhone } = attributes;
+	const { backgroundImage, backgroundImageId, dateBadge, heading, description, buttons, stats, copyrightLeft, copyrightRight, kilowottUrl } = attributes;
 
 	const blockProps = useBlockProps( {
 		className: 'relative overflow-hidden bg-cover bg-center bg-no-repeat bg-white',
@@ -116,36 +116,7 @@ export default function Edit( { attributes, setAttributes } ) {
 					) ) }
 				</PanelBody>
 
-				<PanelBody title={ __( 'Contact', 'nordic-fund-day' ) } initialOpen={ false }>
-					<TextControl
-						label={ __( 'Name', 'nordic-fund-day' ) }
-						value={ contactName }
-						onChange={ ( value ) => setAttributes( { contactName: value } ) }
-					/>
-					<TextControl
-						label={ __( 'Title', 'nordic-fund-day' ) }
-						value={ contactTitle }
-						onChange={ ( value ) => setAttributes( { contactTitle: value } ) }
-					/>
-					<TextControl
-						label={ __( 'Company', 'nordic-fund-day' ) }
-						value={ contactCompany }
-						onChange={ ( value ) => setAttributes( { contactCompany: value } ) }
-					/>
-					<TextControl
-						label={ __( 'Email', 'nordic-fund-day' ) }
-						value={ contactEmail }
-						onChange={ ( value ) => setAttributes( { contactEmail: value } ) }
-						type="email"
-					/>
-					<TextControl
-						label={ __( 'Phone', 'nordic-fund-day' ) }
-						value={ contactPhone }
-						onChange={ ( value ) => setAttributes( { contactPhone: value } ) }
-					/>
-				</PanelBody>
-
-				<PanelBody title={ __( 'Copyright', 'nordic-fund-day' ) } initialOpen={ false }>
+<PanelBody title={ __( 'Copyright', 'nordic-fund-day' ) } initialOpen={ false }>
 					<TextControl
 						label={ __( 'Left text', 'nordic-fund-day' ) }
 						value={ copyrightLeft }
@@ -155,6 +126,12 @@ export default function Edit( { attributes, setAttributes } ) {
 						label={ __( 'Right text', 'nordic-fund-day' ) }
 						value={ copyrightRight }
 						onChange={ ( value ) => setAttributes( { copyrightRight: value } ) }
+					/>
+					<TextControl
+						label={ __( 'Kilowott URL', 'nordic-fund-day' ) }
+						value={ kilowottUrl }
+						onChange={ ( value ) => setAttributes( { kilowottUrl: value } ) }
+						type="url"
 					/>
 				</PanelBody>
 			</InspectorControls>
@@ -187,24 +164,7 @@ export default function Edit( { attributes, setAttributes } ) {
 						placeholder={ __( 'Description…', 'nordic-fund-day' ) }
 					/>
 
-					<div className="mt-8 sm:mt-10 inline-flex flex-col sm:flex-row sm:items-center gap-5 sm:gap-10 bg-black/30 border border-white/10 rounded-xl px-7 py-5 backdrop-blur-sm w-fit">
-						<div className="flex flex-col gap-1">
-							<span className="font-mono text-white font-bold text-[15px] sm:text-[16px]">{ contactName }</span>
-							<span className="font-mono text-white/60 text-[13px] sm:text-[14px]">{ contactTitle }</span>
-							<span className="font-mono text-white/60 text-[13px] sm:text-[14px]">{ contactCompany }</span>
-						</div>
-						<div className="w-px h-10 bg-white/15 hidden sm:block self-center"></div>
-						<div className="flex flex-col gap-2">
-							<span className="font-mono text-[var(--wp--preset--color--lime)] text-[13px] sm:text-[14px] flex items-center gap-2">
-								<span>✉</span><span>{ contactEmail }</span>
-							</span>
-							<span className="font-mono text-white/80 text-[13px] sm:text-[14px] flex items-center gap-2">
-								<span>📞</span><span>{ contactPhone }</span>
-							</span>
-						</div>
-					</div>
-
-					<div className="flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-3 mt-[60px] sm:mt-[120px]">
+<div className="flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-3 mt-[60px] sm:mt-[120px]">
 						{ buttons.map( ( btn ) => (
 							<div
 								key={ btn.id }
@@ -219,7 +179,7 @@ export default function Edit( { attributes, setAttributes } ) {
 						) ) }
 					</div>
 
-					<div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 mt-4 font-mono font-medium">
+					<div className="flex flex-wrap items-center justify-start gap-4 sm:gap-6 mt-4 font-mono font-medium">
 						{ stats.map( ( stat, idx ) => (
 							<>
 								{ idx > 0 && <span key={ `sep-${ stat.id }` } className="text-white/40 text-[10px]">•</span> }
@@ -233,7 +193,7 @@ export default function Edit( { attributes, setAttributes } ) {
 
 				<div className="absolute bottom-4 sm:bottom-6 left-4 sm:left-6 md:left-[90px] right-4 sm:right-6 md:right-[90px] flex flex-col sm:flex-row items-center sm:items-center justify-between gap-1 text-center sm:text-left">
 					<span className="font-mono text-[10px] sm:text-[12px] font-medium" style={ { color: 'rgba(255,255,255,0.8)' } }>{ copyrightLeft }</span>
-					<span className="font-mono text-[10px] sm:text-[12px] font-medium" style={ { color: 'rgba(255,255,255,0.8)' } }>{ copyrightRight }</span>
+					<a href={ kilowottUrl } className="font-mono text-[10px] sm:text-[12px] font-medium hover:underline" style={ { color: 'rgba(255,255,255,0.8)' } }>{ copyrightRight }</a>
 				</div>
 			</footer>
 		</>

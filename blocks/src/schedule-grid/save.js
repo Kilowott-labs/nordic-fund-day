@@ -31,30 +31,21 @@ export default function save( { attributes } ) {
 		<section { ...blockProps }>
 			<div className="flex flex-col gap-12">
 				{ /* Header */ }
-				<div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
-					<div className="flex flex-col gap-4">
-						<RichText.Content
-							tagName="span"
-							value={ subtitle }
-							className="font-mono text-[14px] font-medium tracking-[0.1em] uppercase text-black"
-						/>
-						<RichText.Content
-							tagName="h2"
-							value={ heading }
-							className="text-black text-[40px] sm:text-[48px] md:text-[56px] lg:text-[56px] xl:text-[64px] font-bold leading-[1.05] uppercase"
-						/>
-					</div>
-					<a
-						href={ ctaUrl || '#' }
-						className="inline-flex items-center px-8 py-3.5 bg-[var(--wp--preset--color--lime-cta)] border border-transparent rounded-full text-black font-semibold text-[15px] uppercase tracking-[0.03em] hover:bg-white hover:text-black hover:border-black/20 transition-all duration-300 w-fit"
-						{ ...( ctaOpenInNewTab ? { target: '_blank', rel: 'noopener noreferrer' } : {} ) }
-					>
-						{ ctaLabel }
-					</a>
+				<div className="flex flex-col gap-4">
+					<RichText.Content
+						tagName="span"
+						value={ subtitle }
+						className="font-mono text-[14px] font-medium tracking-[0.1em] uppercase text-black"
+					/>
+					<RichText.Content
+						tagName="h2"
+						value={ heading }
+						className="text-black text-[40px] sm:text-[48px] md:text-[56px] lg:text-[56px] xl:text-[64px] font-bold leading-[1.05] uppercase"
+					/>
 				</div>
 
 				{ /* Day Cards Grid */ }
-				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+				<div className="grid grid-cols-1 min-[821px]:grid-cols-2 lg:grid-cols-3 gap-5">
 					{ days.map( ( day ) => (
 						<div key={ day.id } className="bg-[var(--wp--preset--color--dark-pill)] rounded-lg overflow-hidden">
 							<div className="p-7 pb-6">

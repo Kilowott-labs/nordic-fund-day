@@ -24,7 +24,7 @@
     "navLinks": {
       "type": "array",
       "default": [
-        { "id": 1, "label": "About", "url": "#treasure-island" },
+        { "id": 1, "label": "About", "url": "#about" },
         { "id": 2, "label": "Agenda", "url": "#agenda" },
         { "id": 3, "label": "Become Partner", "url": "#partner" }
       ]

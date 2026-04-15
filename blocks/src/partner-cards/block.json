@@ -27,40 +27,39 @@
     },
     "ctaUrl": {
       "type": "string",
-      "default": "#"
+      "default": "mailto:torill@nordicedge.org?subject=Secure your partnership spot to Nordic Fund Day Stavanger 2026"
     },
     "ctaOpenInNewTab": {
       "type": "boolean",
       "default": false
     },
-    "cards": {
-      "type": "array",
-      "default": [
-        {
-          "id": 1,
-          "label": "Gold Partner",
-          "price": "NOK 50,000",
-          "badgeText": "Premium",
-          "isPremium": true,
-          "labelColor": "lime",
-          "features": [
-            { "text": "Tailored visibility and brand positioning" },
-            { "text": "Priority access and stage opportunity" }
-          ]
-        },
-        {
-          "id": 2,
-          "label": "Silver Partner",
-          "price": "NOK 25,000",
-          "badgeText": "",
-          "isPremium": false,
-          "labelColor": "white",
-          "features": [
-            { "text": "Strong brand presence and on-site activation" },
-            { "text": "Access to the curated network" }
-          ]
-        }
-      ]
+    "contactImage": {
+      "type": "string",
+      "default": ""
+    },
+    "contactImageId": {
+      "type": "number",
+      "default": 0
+    },
+    "contactName": {
+      "type": "string",
+      "default": "Torill Steinback Hoel"
+    },
+    "contactTitle": {
+      "type": "string",
+      "default": "Head of Business Development"
+    },
+    "contactCompany": {
+      "type": "string",
+      "default": "Nordic Edge AS"
+    },
+    "contactEmail": {
+      "type": "string",
+      "default": "torill@nordicedge.org"
+    },
+    "contactPhone": {
+      "type": "string",
+      "default": "+ 47 900 99 349"
     }
   },
   "supports": {

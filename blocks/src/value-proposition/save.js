@@ -5,6 +5,7 @@ export default function save( { attributes } ) {
 
 	const blockProps = useBlockProps.save( {
 		className: 'relative bg-[var(--wp--preset--color--near-black)] pt-4 sm:pt-8 lg:pt-16',
+		id: 'about',
 	} );
 
 	return (
@@ -75,7 +76,7 @@ export default function save( { attributes } ) {
 						<div className="absolute top-5 right-4 sm:right-6 md:right-16 lg:right-[90px] max-w-[85%] sm:max-w-[75%] lg:max-w-[334px] z-[2]">
 							<div className="flex items-start gap-2 sm:gap-3">
 								<span className="text-[var(--wp--preset--color--lime)] font-bold text-sm sm:text-base flex-shrink-0">&#10038;</span>
-								<p className="font-mono text-white text-[12px] sm:text-[14px] lg:text-[16px] leading-[1.5]">{ quoteText }</p>
+								<p className="font-mono text-white text-[14px] sm:text-[16px] lg:text-[17px] leading-[1.5]">{ quoteText }</p>
 							</div>
 						</div>
 					</div>

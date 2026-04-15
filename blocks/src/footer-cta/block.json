@@ -33,8 +33,7 @@
       "type": "array",
       "default": [
         { "id": 1, "label": "REQUEST YOUR SPOT", "url": "#", "style": "primary" },
-        { "id": 2, "label": "SECURE YOUR PARTNERSHIP SPOT", "url": "mailto:torill@nordicedge.org?subject=Secure your partnership spot to Nordic Fund Day Stavanger 2026", "style": "ghost" },
-        { "id": 3, "label": "FULL PROGRAMME", "url": "#", "style": "ghost" }
+        { "id": 2, "label": "SECURE YOUR PARTNERSHIP SPOT", "url": "mailto:torill@nordicedge.org?subject=Secure your partnership spot to Nordic Fund Day Stavanger 2026", "style": "ghost" }
       ]
     },
     "stats": {
@@ -52,6 +51,10 @@
     "copyrightRight": {
       "type": "string",
       "default": "Powered by Kilowott"
+    },
+    "kilowottUrl": {
+      "type": "string",
+      "default": "https://kilowott.com"
     },
     "contactName": {
       "type": "string",

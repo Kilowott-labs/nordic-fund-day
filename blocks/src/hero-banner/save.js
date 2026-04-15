@@ -54,12 +54,12 @@ export default function save( { attributes } ) {
 							</div>
 							<span className="text-[var(--wp--preset--color--dark-olive)] text-[16px] sm:text-[24px] font-semibold leading-none tracking-[-0.07em]">{ primaryCta.sublabel }</span>
 						</a>
-						<a href={ secondaryCta.url || '#' } className="group flex flex-col gap-2 sm:gap-3 px-3 sm:px-5 py-3 sm:py-6 w-[140px] sm:w-[195px] border border-white/50 bg-white/30 backdrop-blur-md shadow-[0_4px_24px_rgba(0,0,0,0.2)] hover:bg-[var(--wp--preset--color--lime)] hover:border-[var(--wp--preset--color--lime)] transition-all duration-300 no-underline">
+						<a href={ secondaryCta.url || '#' } className="group flex flex-col gap-2 sm:gap-3 px-3 sm:px-5 py-3 sm:py-6 w-[140px] sm:w-[195px] border border-white/50 bg-white/30 backdrop-blur-[2px] shadow-[0_4px_24px_rgba(0,0,0,0.2)] hover:bg-[var(--wp--preset--color--lime)] hover:border-[var(--wp--preset--color--lime)] transition-all duration-300 no-underline">
 							<div className="flex items-center justify-between w-full">
-								<span className="text-black group-hover:text-[var(--wp--preset--color--dark-olive)] transition-colors duration-300 text-[10px] sm:text-[12px] font-bold tracking-[0.12em] uppercase leading-[1.75]">{ secondaryCta.label }</span>
-								<span className="text-black group-hover:text-[var(--wp--preset--color--dark-olive)] transition-colors duration-300">{ arrowSvg }</span>
+								<span className="text-white group-hover:text-[var(--wp--preset--color--dark-olive)] transition-colors duration-300 text-[10px] sm:text-[12px] font-bold tracking-[0.12em] uppercase leading-[1.75]">{ secondaryCta.label }</span>
+								<span className="text-white group-hover:text-[var(--wp--preset--color--dark-olive)] transition-colors duration-300">{ arrowSvg }</span>
 							</div>
-							<span className="text-black group-hover:text-[var(--wp--preset--color--dark-olive)] transition-colors duration-300 text-[16px] sm:text-[24px] font-semibold leading-none tracking-[-0.07em]">{ secondaryCta.sublabel }</span>
+							<span className="text-white group-hover:text-[var(--wp--preset--color--dark-olive)] transition-colors duration-300 text-[16px] sm:text-[24px] font-semibold leading-none tracking-[-0.07em]">{ secondaryCta.sublabel }</span>
 						</a>
 					</div>
 				</div>

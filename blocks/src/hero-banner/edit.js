@@ -147,11 +147,11 @@ export default function Edit( { attributes, setAttributes } ) {
 								</div>
 								<span className="text-[var(--wp--preset--color--dark-olive)] text-[16px] sm:text-[24px] font-semibold leading-none tracking-[-0.07em]">{ primaryCta.sublabel }</span>
 							</div>
-							<div className="flex flex-col gap-2 sm:gap-3 px-3 sm:px-5 py-3 sm:py-6 w-[140px] sm:w-[195px] border border-white/50 bg-white/30 backdrop-blur-md">
+							<div className="flex flex-col gap-2 sm:gap-3 px-3 sm:px-5 py-3 sm:py-6 w-[140px] sm:w-[195px] border border-white/50 bg-white/30 backdrop-blur-[2px]">
 								<div className="flex items-center justify-between w-full">
-									<span className="text-black text-[10px] sm:text-[12px] font-bold tracking-[0.12em] uppercase">{ secondaryCta.label }</span>
+									<span className="text-white text-[10px] sm:text-[12px] font-bold tracking-[0.12em] uppercase">{ secondaryCta.label }</span>
 								</div>
-								<span className="text-black text-[16px] sm:text-[24px] font-semibold leading-none tracking-[-0.07em]">{ secondaryCta.sublabel }</span>
+								<span className="text-white text-[16px] sm:text-[24px] font-semibold leading-none tracking-[-0.07em]">{ secondaryCta.sublabel }</span>
 							</div>
 						</div>
 					</div>
