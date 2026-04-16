@@ -52,10 +52,19 @@
       "type": "string",
       "default": "Powered by Kilowott"
     },
+
     "kilowottUrl": {
       "type": "string",
       "default": "https://kilowott.com"
     },
+        "companyOutingUrl": {
+  "type": "string",
+  "default": "https://www.companyouting.ai/"
+},
+"companyOutingLabel": {
+  "type": "string",
+  "default": "Company Outing"
+},
     "contactName": {
       "type": "string",
       "default": "Torill Steinback Hoel"

@@ -21,11 +21,7 @@ function initHeaderNav() {
 		if ( scrollTopBtn ) {
 			scrollTopBtn.addEventListener( 'click', ( e ) => {
 				e.preventDefault();
-				if ( window.lenis ) {
-					window.lenis.scrollTo( 0 );
-				} else {
-					window.scrollTo( { top: 0, behavior: 'smooth' } );
-				}
+				window.scrollTo( { top: 0, behavior: 'smooth' } );
 			} );
 		}
 
@@ -67,13 +63,8 @@ function initHeaderNav() {
 					e.preventDefault();
 					closeMobileMenu();
 
-					// Use Lenis if available, otherwise native smooth scroll
-					if ( window.lenis ) {
-						window.lenis.scrollTo( target, { offset: -90 } );
-					} else {
-						const top = target.getBoundingClientRect().top + window.scrollY - 90;
-						window.scrollTo( { top, behavior: 'smooth' } );
-					}
+					const top = target.getBoundingClientRect().top + window.scrollY - 90;
+					window.scrollTo( { top, behavior: 'smooth' } );
 				}
 			} );
 		} );
@@ -113,15 +104,6 @@ function initHeaderNav() {
 
 		// Listen to native scroll
 		window.addEventListener( 'scroll', () => updateNav( window.scrollY ), { passive: true } );
-
-		// Also listen to Lenis if available
-		const checkLenis = setInterval( () => {
-			if ( window.lenis ) {
-				window.lenis.on( 'scroll', ( { scroll } ) => updateNav( scroll ) );
-				clearInterval( checkLenis );
-			}
-		}, 100 );
-		setTimeout( () => clearInterval( checkLenis ), 5000 );
 
 		updateNav( window.scrollY ); // check initial state
 	} );

@@ -123,6 +123,18 @@ export default function Edit( { attributes, setAttributes } ) {
 						onChange={ ( value ) => setAttributes( { copyrightLeft: value } ) }
 					/>
 					<TextControl
+	label="Company Outing Label"
+	value={ attributes.companyOutingLabel }
+	onChange={ ( value ) => setAttributes( { companyOutingLabel: value } ) }
+/>
+
+<TextControl
+	label="Company Outing URL"
+	value={ attributes.companyOutingUrl }
+	onChange={ ( value ) => setAttributes( { companyOutingUrl: value } ) }
+	type="url"
+/>
+					<TextControl
 						label={ __( 'Right text', 'nordic-fund-day' ) }
 						value={ copyrightRight }
 						onChange={ ( value ) => setAttributes( { copyrightRight: value } ) }
@@ -193,7 +205,30 @@ export default function Edit( { attributes, setAttributes } ) {
 
 				<div className="absolute bottom-4 sm:bottom-6 left-4 sm:left-6 md:left-[90px] right-4 sm:right-6 md:right-[90px] flex flex-col sm:flex-row items-center sm:items-center justify-between gap-1 text-center sm:text-left">
 					<span className="font-mono text-[10px] sm:text-[12px] font-medium" style={ { color: 'rgba(255,255,255,0.8)' } }>{ copyrightLeft }</span>
-					<a href={ kilowottUrl } className="font-mono text-[10px] sm:text-[12px] font-medium hover:underline" style={ { color: 'rgba(255,255,255,0.8)' } }>{ copyrightRight }</a>
+					<span
+		className="font-mono text-[10px] sm:text-[12px] font-medium"
+		style={{ color: 'rgba(255,255,255,0.8)' }}
+	>
+		Powered by{' '}
+		<a
+			href={ attributes.companyOutingUrl }
+			target="_blank"
+			rel="noopener noreferrer"
+			className="hover:underline"
+		>
+			{ attributes.companyOutingLabel }
+		</a>{' '}
+		&{' '}
+		<a
+			href={ kilowottUrl }
+			target="_blank"
+			rel="noopener noreferrer"
+			className="hover:underline"
+		>
+			Kilowott
+		</a>
+	</span>
+				
 				</div>
 			</footer>
 		</>

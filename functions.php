@@ -188,20 +188,11 @@ add_action( 'wp_enqueue_scripts', function () {
 		true
 	);
 
-	// Enqueue Lenis smooth scroll
-	wp_enqueue_script(
-		'lenis',
-		'https://unpkg.com/lenis@1.1.18/dist/lenis.min.js',
-		[],
-		'1.1.18',
-		true
-	);
-
-	// Enqueue global page animations (Lenis, GSAP scroll effects, section reveals)
+	// Enqueue global page animations (GSAP scroll effects, section reveals)
 	wp_enqueue_script(
 		'nfd-page-animations',
 		get_template_directory_uri() . '/dist/main.js',
-		['gsap', 'gsap-scrolltrigger', 'lenis'],
+		['gsap', 'gsap-scrolltrigger'],
 		filemtime(get_template_directory() . '/dist/main.js'),
 		true
 	);
@@ -213,7 +204,7 @@ add_action( 'wp_enqueue_scripts', function () {
 
 // Add defer to all theme scripts (non-blocking)
 add_filter( 'script_loader_tag', function ( $tag, $handle ) {
-	$defer_handles = [ 'gsap', 'gsap-scrolltrigger', 'lenis', 'nfd-page-animations' ];
+	$defer_handles = [ 'gsap', 'gsap-scrolltrigger', 'nfd-page-animations' ];
 	if ( in_array( $handle, $defer_handles, true ) ) {
 		return str_replace( ' src=', ' defer src=', $tag );
 	}
@@ -225,7 +216,6 @@ add_action( 'wp_head', function () {
 	echo '<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>' . "\n";
 	echo '<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>' . "\n";
 	echo '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>' . "\n";
-	echo '<link rel="dns-prefetch" href="https://unpkg.com">' . "\n";
 }, 1 );
 
 // Remove WordPress default bloat

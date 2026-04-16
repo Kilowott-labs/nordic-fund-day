@@ -1,53 +1,22 @@
 /**
  * Nordic Fund Day — Global Page Animations
  *
- * Initializes Lenis smooth scroll, GSAP ScrollTrigger effects,
- * hero parallax, treasure island pin, and section reveal animations.
+ * GSAP ScrollTrigger effects: hero parallax, section reveals, scroll pin,
+ * counter animations, magnetic hover.
  *
- * Dependencies: gsap, gsap-scrolltrigger, lenis (loaded via functions.php)
+ * Dependencies: gsap, gsap-scrolltrigger (loaded via functions.php)
  * Compiled to: dist/main.js
  */
 
 ( function () {
 	'use strict';
 
-	// Wait for DOM + all scripts to load
 	function init() {
-		if ( typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined' || typeof Lenis === 'undefined' ) {
+		if ( typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined' ) {
 			return;
 		}
 
-		// ============================================================
-		// LENIS SMOOTH SCROLL
-		// ============================================================
-		const lenis = new Lenis( {
-			duration: 1.2,
-			easing: ( t ) => Math.min( 1, 1.001 - Math.pow( 2, -10 * t ) ),
-			orientation: 'vertical',
-			gestureOrientation: 'vertical',
-			smoothWheel: true,
-		} );
-
-		// Expose globally for header-nav view.js to use
-		window.lenis = lenis;
-
-		function raf( time ) {
-			lenis.raf( time );
-			requestAnimationFrame( raf );
-		}
-		requestAnimationFrame( raf );
-
-		// ============================================================
-		// GSAP REGISTER (must be before any ScrollTrigger usage)
-		// ============================================================
 		gsap.registerPlugin( ScrollTrigger );
-
-		// Connect Lenis to GSAP ScrollTrigger
-		lenis.on( 'scroll', ScrollTrigger.update );
-		gsap.ticker.add( ( time ) => {
-			lenis.raf( time * 1000 );
-		} );
-		gsap.ticker.lagSmoothing( 0 );
 
 		// ============================================================
 		// NAV ENTRANCE ANIMATION
@@ -59,81 +28,92 @@
 		}
 
 		// ============================================================
-		// HERO — CSS handles entrance animations (no JS delay).
-		// GSAP only handles parallax scroll effect.
+		// HERO — parallax scroll only (entrance handled by CSS)
 		// ============================================================
 		const heroBanner = document.querySelector( '[data-hero-banner]' );
 		if ( heroBanner ) {
 			const parallaxHero = heroBanner.querySelector( '.parallax-hero' );
 			if ( parallaxHero && window.innerWidth >= 1024 ) {
-				gsap.to( parallaxHero, {
-					yPercent: 15,
-					ease: 'none',
-					scrollTrigger: {
-						trigger: heroBanner,
-						start: 'top top',
-						end: 'bottom top',
-						scrub: true,
-					},
-				} );
+				// Extend the div 25% above and below the container so the image
+				// always covers the hero even when the parallax shift is applied.
+				// Without this, a downward yPercent shift exposes the body background.
+				parallaxHero.style.top = '-25%';
+				parallaxHero.style.bottom = '-25%';
+
+				gsap.fromTo( parallaxHero,
+					{ yPercent: -8 },
+					{
+						yPercent: 8,
+						ease: 'none',
+						scrollTrigger: {
+							trigger: heroBanner,
+							start: 'top top',
+							end: 'bottom top',
+							scrub: true,
+						},
+					}
+				);
 			}
 		}
 
 		// ============================================================
 		// SECTION REVEAL ANIMATIONS
-		// Matches the static reference page animations exactly
+		// ScrollTrigger.batch groups many elements into far fewer observers
 		// ============================================================
 
 		// Headings (h2, h3) fade-up
-		document.querySelectorAll( 'h2, h3' ).forEach( ( h ) => {
-			if ( h.closest( '[data-hero-banner]' ) ) return;
-			gsap.fromTo( h,
+		const headings = Array.from( document.querySelectorAll( 'h2, h3' ) ).filter(
+			( h ) => ! h.closest( '[data-hero-banner]' )
+		);
+		ScrollTrigger.batch( headings, {
+			start: 'top 85%',
+			onEnter: ( els ) => gsap.fromTo( els,
 				{ y: 40, opacity: 0 },
-				{
-					y: 0, opacity: 1, duration: 0.9, ease: 'power3.out',
-					scrollTrigger: { trigger: h, start: 'top 85%', toggleActions: 'play none none none' },
-				}
-			);
+				{ y: 0, opacity: 1, duration: 0.9, ease: 'power3.out', stagger: 0.08 }
+			),
+			once: true,
 		} );
 
-		// Paragraphs fade-up (skip hero, footer, absolute)
-		document.querySelectorAll( 'section p' ).forEach( ( p ) => {
-			if ( p.closest( '[data-hero-banner]' ) ) return;
-			if ( p.closest( 'footer' ) ) return;
-			if ( window.getComputedStyle( p.parentElement ).position === 'absolute' ) return;
-			gsap.fromTo( p,
+		// Paragraphs fade-up (skip hero, footer, absolutely-positioned parents)
+		const paragraphs = Array.from( document.querySelectorAll( 'section p' ) ).filter( ( p ) => {
+			if ( p.closest( '[data-hero-banner]' ) ) return false;
+			if ( p.closest( 'footer' ) ) return false;
+			if ( window.getComputedStyle( p.parentElement ).position === 'absolute' ) return false;
+			return true;
+		} );
+		ScrollTrigger.batch( paragraphs, {
+			start: 'top 88%',
+			onEnter: ( els ) => gsap.fromTo( els,
 				{ y: 25, opacity: 0 },
-				{
-					y: 0, opacity: 1, duration: 0.8, ease: 'power2.out',
-					scrollTrigger: { trigger: p, start: 'top 88%', toggleActions: 'play none none none' },
-				}
-			);
+				{ y: 0, opacity: 1, duration: 0.8, ease: 'power2.out', stagger: 0.06 }
+			),
+			once: true,
 		} );
 
-		// Subtitle labels (✦ text) — slide from left
-		document.querySelectorAll( '.font-mono.uppercase' ).forEach( ( label ) => {
-			if ( label.closest( '[data-hero-banner]' ) ) return;
-			if ( label.closest( 'footer' ) ) return;
-			gsap.fromTo( label,
+		// Subtitle labels — slide from left
+		const labels = Array.from( document.querySelectorAll( '.font-mono.uppercase' ) ).filter(
+			( l ) => ! l.closest( '[data-hero-banner]' ) && ! l.closest( 'footer' )
+		);
+		ScrollTrigger.batch( labels, {
+			start: 'top 90%',
+			onEnter: ( els ) => gsap.fromTo( els,
 				{ x: -20, opacity: 0 },
-				{
-					x: 0, opacity: 1, duration: 0.6, ease: 'power2.out',
-					scrollTrigger: { trigger: label, start: 'top 90%', toggleActions: 'play none none none' },
-				}
-			);
+				{ x: 0, opacity: 1, duration: 0.6, ease: 'power2.out', stagger: 0.05 }
+			),
+			once: true,
 		} );
 
 		// CTA buttons — scale + fade up
-		document.querySelectorAll( 'a.rounded-full' ).forEach( ( btn ) => {
-			if ( btn.closest( '[data-hero-banner]' ) ) return;
-			if ( btn.closest( '[data-header-nav]' ) ) return;
-			gsap.fromTo( btn,
+		const ctaBtns = Array.from( document.querySelectorAll( 'a.rounded-full' ) ).filter(
+			( b ) => ! b.closest( '[data-hero-banner]' ) && ! b.closest( '[data-header-nav]' )
+		);
+		ScrollTrigger.batch( ctaBtns, {
+			start: 'top 90%',
+			onEnter: ( els ) => gsap.fromTo( els,
 				{ y: 20, opacity: 0, scale: 0.9 },
-				{
-					y: 0, opacity: 1, scale: 1, duration: 0.7, ease: 'power3.out',
-					scrollTrigger: { trigger: btn, start: 'top 90%', toggleActions: 'play none none none' },
-				}
-			);
+				{ y: 0, opacity: 1, scale: 1, duration: 0.7, ease: 'power3.out', stagger: 0.07 }
+			),
+			once: true,
 		} );
 
 		// Schedule day cards — stagger
@@ -205,11 +185,6 @@
 		}
 
 		// ============================================================
-		// TREASURE ISLAND + INVESTOR BRUNCH — SCROLL PIN
-		// Handled by event-panels wrapper block's own view.js
-		// ============================================================
-
-		// ============================================================
 		// STATS COUNTER ANIMATION (Hero bottom)
 		// ============================================================
 		document.querySelectorAll( '[data-hero-bottom] .font-mono' ).forEach( ( stat ) => {
@@ -238,20 +213,21 @@
 			}
 		} );
 
-		// FOOTER CTA — parallax removed per designer feedback
-
 		// ============================================================
-		// MAGNETIC HOVER EFFECT — all rounded pill buttons
-		// Buttons follow mouse slightly, snap back with elastic ease
+		// MAGNETIC HOVER EFFECT — rounded pill buttons
+		// gsap.quickTo reuses one tween instead of creating a new one
+		// on every mousemove event
 		// ============================================================
 		document.querySelectorAll( '.rounded-full' ).forEach( ( btn ) => {
 			if ( btn.closest( '[data-header-nav]' ) ) return;
 
+			const xTo = gsap.quickTo( btn, 'x', { duration: 0.3, ease: 'power2.out' } );
+			const yTo = gsap.quickTo( btn, 'y', { duration: 0.3, ease: 'power2.out' } );
+
 			btn.addEventListener( 'mousemove', ( e ) => {
 				const rect = btn.getBoundingClientRect();
-				const x = e.clientX - rect.left - rect.width / 2;
-				const y = e.clientY - rect.top - rect.height / 2;
-				gsap.to( btn, { x: x * 0.15, y: y * 0.15, duration: 0.3, ease: 'power2.out' } );
+				xTo( ( e.clientX - rect.left - rect.width / 2 ) * 0.15 );
+				yTo( ( e.clientY - rect.top - rect.height / 2 ) * 0.15 );
 			} );
 
 			btn.addEventListener( 'mouseleave', () => {
@@ -260,7 +236,6 @@
 		} );
 	}
 
-	// Initialize when DOM is ready
 	if ( document.readyState === 'loading' ) {
 		document.addEventListener( 'DOMContentLoaded', init );
 	} else {

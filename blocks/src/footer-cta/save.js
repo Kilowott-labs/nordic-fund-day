@@ -1,7 +1,7 @@
 import { useBlockProps, RichText } from '@wordpress/block-editor';
 
 export default function save( { attributes } ) {
-	const { backgroundImage, dateBadge, heading, description, buttons, stats, copyrightLeft, copyrightRight, kilowottUrl } = attributes;
+	const { backgroundImage, dateBadge, heading, description, buttons, stats, copyrightLeft, copyrightRight, kilowottUrl,companyOutingUrl, companyOutingLabel } = attributes;
 
 	const blockProps = useBlockProps.save( {
 		className: 'relative overflow-hidden bg-cover bg-center bg-no-repeat bg-white',
@@ -86,9 +86,16 @@ export default function save( { attributes } ) {
 				<span className="font-mono text-[10px] sm:text-[12px] font-medium" style={ { color: 'rgba(255,255,255,0.8)' } }>
 					{ copyrightLeft }
 				</span>
-				<a href={ kilowottUrl } className="font-mono text-[10px] sm:text-[12px] font-medium hover:underline" style={ { color: 'rgba(255,255,255,0.8)' } }>
-					{ copyrightRight }
-				</a>
+				<span className="font-mono text-[10px] sm:text-[12px] font-medium" style={ { color: 'rgba(255,255,255,0.8)' } }>
+	Powered by{' '}
+	<a href={ companyOutingUrl } target="_blank" rel="noopener noreferrer" className="hover:underline">
+		{ companyOutingLabel }
+	</a>{' '}
+	&{' '}
+	<a href={ kilowottUrl } target="_blank" rel="noopener noreferrer" className="hover:underline">
+		Kilowott
+	</a>
+</span>
 			</div>
 		</footer>
 	);
