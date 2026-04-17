@@ -220,6 +220,7 @@
 		// ============================================================
 		document.querySelectorAll( '.rounded-full' ).forEach( ( btn ) => {
 			if ( btn.closest( '[data-header-nav]' ) ) return;
+			if ( btn.closest( '.wp-block-nordic-fund-day-partner-cards' ) ) return;
 
 			const xTo = gsap.quickTo( btn, 'x', { duration: 0.3, ease: 'power2.out' } );
 			const yTo = gsap.quickTo( btn, 'y', { duration: 0.3, ease: 'power2.out' } );
