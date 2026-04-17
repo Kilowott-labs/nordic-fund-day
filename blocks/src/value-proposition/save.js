@@ -38,7 +38,7 @@ export default function save( { attributes } ) {
 									<img
 										src={ logo.imageUrl }
 										alt={ logo.altText || '' }
-										className="h-8 sm:h-9 md:h-10 w-auto object-contain brightness-0 invert opacity-75 hover:opacity-100 transition-opacity duration-300"
+										className="h-10 sm:h-12 md:h-14 w-auto object-contain brightness-0 invert opacity-75 hover:opacity-100 transition-opacity duration-300"
 										loading="lazy"
 									/>
 								</div>

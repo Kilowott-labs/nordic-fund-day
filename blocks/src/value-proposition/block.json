@@ -11,11 +11,11 @@
   "attributes": {
     "logosSubtitle": {
       "type": "string",
-      "default": "✦ Partners & Sponsors"
+      "default": "✦ Partners"
     },
     "logosHeading": {
       "type": "string",
-      "default": "Backed by Leaders"
+      "default": "Backed by"
     },
     "logos": {
       "type": "array",
