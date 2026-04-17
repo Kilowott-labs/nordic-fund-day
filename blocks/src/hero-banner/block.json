@@ -45,16 +45,6 @@
         "url": "#"
       }
     },
-    "partnerLogos": {
-      "type": "array",
-      "default": [
-        { "id": 1, "url": "", "imageId": 0, "alt": "TGC Capital" },
-        { "id": 2, "url": "", "imageId": 0, "alt": "Rogfk" },
-        { "id": 3, "url": "", "imageId": 0, "alt": "EDIH" },
-        { "id": 4, "url": "", "imageId": 0, "alt": "EU Co-Funded" },
-        { "id": 5, "url": "", "imageId": 0, "alt": "Dealroom" }
-      ]
-    },
     "cardText": {
       "type": "string",
       "default": "The must-attend event for Nordic and Baltic deal flow tackling some of the most pressing environmental challenges across agriculture, food, and our urban environments"

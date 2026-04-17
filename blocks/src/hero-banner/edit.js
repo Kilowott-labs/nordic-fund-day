@@ -13,7 +13,7 @@ import {
 } from '@wordpress/components';
 
 export default function Edit( { attributes, setAttributes } ) {
-	const { backgroundImage, backgroundImageId, dateBadge, titleLines, primaryCta, secondaryCta, partnerLogos, cardText, cardButton1, cardButton2, stats } = attributes;
+	const { backgroundImage, backgroundImageId, dateBadge, titleLines, primaryCta, secondaryCta, cardText, cardButton1, cardButton2, stats } = attributes;
 
 	const blockProps = useBlockProps( {
 		className: 'relative min-h-screen lg:min-h-0 lg:aspect-[1920/1948]',
@@ -29,12 +29,6 @@ export default function Edit( { attributes, setAttributes } ) {
 		const updated = [ ...stats ];
 		updated[ index ] = { ...updated[ index ], ...fields };
 		setAttributes( { stats: updated } );
-	};
-
-	const updatePartnerLogo = ( index, fields ) => {
-		const updated = [ ...partnerLogos ];
-		updated[ index ] = { ...updated[ index ], ...fields };
-		setAttributes( { partnerLogos: updated } );
 	};
 
 	return (
@@ -80,26 +74,6 @@ export default function Edit( { attributes, setAttributes } ) {
 					<TextControl label={ __( 'Label', 'nordic-fund-day' ) } value={ secondaryCta.label } onChange={ ( v ) => setAttributes( { secondaryCta: { ...secondaryCta, label: v } } ) } />
 					<TextControl label={ __( 'Sublabel', 'nordic-fund-day' ) } value={ secondaryCta.sublabel } onChange={ ( v ) => setAttributes( { secondaryCta: { ...secondaryCta, sublabel: v } } ) } />
 					<TextControl label={ __( 'URL', 'nordic-fund-day' ) } value={ secondaryCta.url } onChange={ ( v ) => setAttributes( { secondaryCta: { ...secondaryCta, url: v } } ) } type="url" />
-				</PanelBody>
-
-				<PanelBody title={ __( 'Partner Logos', 'nordic-fund-day' ) } initialOpen={ false }>
-					{ partnerLogos.map( ( logo, idx ) => (
-						<div key={ logo.id } style={ { marginBottom: '12px', paddingBottom: '12px', borderBottom: '1px solid #ddd' } }>
-							<TextControl label={ `${ __( 'Alt Text', 'nordic-fund-day' ) } ${ idx + 1 }` } value={ logo.alt } onChange={ ( v ) => updatePartnerLogo( idx, { alt: v } ) } />
-							<MediaUploadCheck>
-								<MediaUpload
-									onSelect={ ( media ) => updatePartnerLogo( idx, { url: media.url, imageId: media.id } ) }
-									allowedTypes={ [ 'image' ] }
-									value={ logo.imageId }
-									render={ ( { open } ) => (
-										<Button onClick={ open } variant="secondary" style={ { width: '100%' } }>
-											{ logo.url ? __( 'Change Logo', 'nordic-fund-day' ) : __( 'Upload Logo', 'nordic-fund-day' ) }
-										</Button>
-									) }
-								/>
-							</MediaUploadCheck>
-						</div>
-					) ) }
 				</PanelBody>
 
 				<PanelBody title={ __( 'Bottom Card', 'nordic-fund-day' ) } initialOpen={ false }>
@@ -159,11 +133,6 @@ export default function Edit( { attributes, setAttributes } ) {
 					<div className="h-[60px] sm:h-[80px] md:h-[60px] lg:h-[80px] xl:h-[120px] min-[1600px]:h-[360px]"></div>
 
 					<div className="relative z-10 flex flex-col items-end gap-3 lg:gap-6 w-full lg:self-end lg:max-w-[55%]">
-						<div className="flex items-center flex-wrap justify-end gap-4 sm:gap-5 lg:gap-[21px]">
-							{ partnerLogos.map( ( logo ) => (
-								logo.url ? <img key={ logo.id } src={ logo.url } alt={ logo.alt } className="h-[28px] sm:h-[40px] lg:h-[56px] w-auto max-w-[100px] sm:max-w-[120px] lg:max-w-[150px] object-contain" /> : null
-							) ) }
-						</div>
 						<div className="w-full bg-black/10 backdrop-blur-md border border-white/30 rounded-[10px] p-4 sm:p-[30px_40px]">
 							<div className="flex flex-col items-end gap-4 sm:gap-8">
 								<RichText tagName="p" value={ cardText } onChange={ ( v ) => setAttributes( { cardText: v } ) } className="text-white text-[16px] sm:text-[20px] lg:text-[24px] font-medium leading-[1.2] text-right" placeholder={ __( 'Card text…', 'nordic-fund-day' ) } />

@@ -1,7 +1,7 @@
 import { useBlockProps, RichText } from '@wordpress/block-editor';
 
 export default function save( { attributes } ) {
-	const { backgroundImage, dateBadge, titleLines, primaryCta, secondaryCta, partnerLogos, cardText, cardButton1, cardButton2, stats } = attributes;
+	const { backgroundImage, dateBadge, titleLines, primaryCta, secondaryCta, cardText, cardButton1, cardButton2, stats } = attributes;
 
 	const blockProps = useBlockProps.save( {
 		className: 'relative min-h-screen lg:min-h-0 lg:aspect-[1920/1948] overflow-hidden',
@@ -69,15 +69,6 @@ export default function save( { attributes } ) {
 
 				{ /* Bottom Section */ }
 				<div data-hero-bottom="" className="relative z-10 flex flex-col items-end gap-3 lg:gap-6 w-full lg:self-end lg:max-w-[55%] min-[1600px]:max-w-[704px]">
-					{ /* Partner Logos */ }
-					<div className="flex items-center flex-wrap justify-end gap-4 sm:gap-5 lg:gap-[21px]">
-						{ partnerLogos.map( ( logo ) => (
-							logo.url ? (
-								<img key={ logo.id } src={ logo.url } alt={ logo.alt } className="h-[28px] sm:h-[40px] lg:h-[56px] w-auto max-w-[100px] sm:max-w-[120px] lg:max-w-[150px] object-contain" loading="lazy" />
-							) : null
-						) ) }
-					</div>
-
 					{ /* CTA Card */ }
 					<div className="w-full bg-black/20 backdrop-blur-xl border border-white/20 rounded-[10px] p-4 sm:p-[30px_40px] shadow-[0px_5px_33px_rgba(0,0,0,0.15)]">
 						<div className="flex flex-col items-end gap-4 sm:gap-8">
