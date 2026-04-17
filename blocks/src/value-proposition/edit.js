@@ -13,12 +13,33 @@ import {
 } from '@wordpress/components';
 
 export default function Edit( { attributes, setAttributes } ) {
-	const { subtitle, heading, bodyText, painPoints, imageLeft, imageLeftId, imageRight, imageRightId, quoteText } = attributes;
+	const {
+		logosSubtitle, logosHeading, logos,
+		subtitle, heading, bodyText, painPoints,
+		imageLeft, imageLeftId, imageRight, imageRightId, quoteText,
+	} = attributes;
 
 	const blockProps = useBlockProps( {
 		className: 'relative bg-[var(--wp--preset--color--near-black)] pt-8 sm:pt-12 lg:pt-16',
 	} );
 
+	// ── Logo helpers ──────────────────────────────────────────────
+	const updateLogo = ( index, fields ) => {
+		const updated = [ ...logos ];
+		updated[ index ] = { ...updated[ index ], ...fields };
+		setAttributes( { logos: updated } );
+	};
+
+	const addLogo = () => {
+		const newId = logos.length > 0 ? Math.max( ...logos.map( ( l ) => l.id ) ) + 1 : 1;
+		setAttributes( { logos: [ ...logos, { id: newId, imageUrl: '', imageId: 0, altText: '' } ] } );
+	};
+
+	const removeLogo = ( index ) => {
+		setAttributes( { logos: logos.filter( ( _, i ) => i !== index ) } );
+	};
+
+	// ── Pain-point helpers ────────────────────────────────────────
 	const updatePainPoint = ( index, text ) => {
 		const updated = [ ...painPoints ];
 		updated[ index ] = { ...updated[ index ], text };
@@ -38,7 +59,42 @@ export default function Edit( { attributes, setAttributes } ) {
 	return (
 		<>
 			<InspectorControls>
-				<PanelBody title={ __( 'Images', 'nordic-fund-day' ) } initialOpen={ true }>
+				<PanelBody title={ __( 'Partner Logos', 'nordic-fund-day' ) } initialOpen={ true }>
+					{ logos.map( ( logo, idx ) => (
+						<div key={ logo.id } style={ { marginBottom: '12px', padding: '8px', border: '1px solid #ddd', borderRadius: '4px' } }>
+							<MediaUploadCheck>
+								<MediaUpload
+									onSelect={ ( media ) => updateLogo( idx, { imageUrl: media.url, imageId: media.id } ) }
+									allowedTypes={ [ 'image' ] }
+									value={ logo.imageId }
+									render={ ( { open } ) => (
+										<>
+											{ logo.imageUrl && (
+												<img src={ logo.imageUrl } alt="" style={ { height: '32px', width: 'auto', marginBottom: '6px', display: 'block' } } />
+											) }
+											<Button onClick={ open } variant="secondary" style={ { width: '100%', marginBottom: '4px' } }>
+												{ logo.imageUrl ? __( 'Change Logo', 'nordic-fund-day' ) : __( 'Upload Logo', 'nordic-fund-day' ) }
+											</Button>
+										</>
+									) }
+								/>
+							</MediaUploadCheck>
+							<TextControl
+								label={ __( 'Alt text', 'nordic-fund-day' ) }
+								value={ logo.altText }
+								onChange={ ( value ) => updateLogo( idx, { altText: value } ) }
+							/>
+							<Button onClick={ () => removeLogo( idx ) } variant="link" isDestructive>
+								{ __( 'Remove Logo', 'nordic-fund-day' ) }
+							</Button>
+						</div>
+					) ) }
+					<Button onClick={ addLogo } variant="secondary" style={ { width: '100%' } }>
+						{ __( '+ Add Logo', 'nordic-fund-day' ) }
+					</Button>
+				</PanelBody>
+
+				<PanelBody title={ __( 'Images', 'nordic-fund-day' ) } initialOpen={ false }>
 					<p style={ { fontWeight: 600, marginBottom: '8px' } }>{ __( 'Left Image (Speaker)', 'nordic-fund-day' ) }</p>
 					<MediaUploadCheck>
 						<MediaUpload
@@ -112,8 +168,44 @@ export default function Edit( { attributes, setAttributes } ) {
 			</InspectorControls>
 
 			<section { ...blockProps }>
+				{ /* ── Partners / Logos strip ───────────────────────────── */ }
+				<div className="px-4 sm:px-6 md:px-16 lg:px-[90px] pt-4 pb-16 md:pb-20 lg:pb-[80px] text-center">
+					<RichText
+						tagName="span"
+						value={ logosSubtitle }
+						onChange={ ( v ) => setAttributes( { logosSubtitle: v } ) }
+						className="block font-mono text-[12px] sm:text-[14px] font-medium tracking-[0.11em] uppercase text-[var(--wp--preset--color--lime)]"
+						placeholder={ __( '✦ Partners & Sponsors', 'nordic-fund-day' ) }
+					/>
+					<RichText
+						tagName="h2"
+						value={ logosHeading }
+						onChange={ ( v ) => setAttributes( { logosHeading: v } ) }
+						className="text-white text-[28px] sm:text-[36px] md:text-[44px] lg:text-[48px] font-bold uppercase leading-[1] mt-4 mb-10 md:mb-14"
+						placeholder={ __( 'Backed by Leaders', 'nordic-fund-day' ) }
+					/>
+					{ logos.length > 0 ? (
+						<div className="flex flex-wrap items-center justify-center gap-8 md:gap-12 lg:gap-16">
+							{ logos.map( ( logo ) => logo.imageUrl && (
+								<div key={ logo.id } className="flex-shrink-0">
+									<img
+										src={ logo.imageUrl }
+										alt={ logo.altText }
+										className="h-8 sm:h-9 md:h-10 w-auto object-contain brightness-0 invert opacity-75"
+									/>
+								</div>
+							) ) }
+						</div>
+					) : (
+						<div className="text-white/30 text-sm font-mono py-6 border border-dashed border-white/20 rounded-lg">
+							{ __( 'Add partner logos via the "Partner Logos" sidebar panel', 'nordic-fund-day' ) }
+						</div>
+					) }
+				</div>
+
+				{ /* ── Value-prop split layout ───────────────────────────── */ }
 				<div className="flex flex-col lg:flex-row justify-between">
-					<div className="flex flex-col gap-12 sm:gap-16 lg:gap-[60px] xl:gap-[100px] min-[1600px]:gap-[172px] px-4 sm:px-6 md:px-16 lg:pl-[60px] xl:pl-[90px] lg:pr-8 xl:pr-12 py-12 sm:py-16 lg:py-[60px] xl:py-[80px] min-[1600px]:py-[132px] w-full lg:w-[42%] lg:max-w-[634px] flex-shrink-0">
+					<div className="flex flex-col gap-12 sm:gap-16 lg:gap-[60px] xl:gap-[100px] min-[1600px]:gap-[172px] px-4 sm:px-6 md:px-16 lg:pl-[60px] xl:pl-[90px] lg:pr-8 xl:pr-12 pt-0 pb-12 sm:pb-16 lg:pb-[60px] xl:pb-[80px] min-[1600px]:pb-[132px] w-full lg:w-[42%] lg:max-w-[634px] flex-shrink-0">
 						<div className="flex flex-col gap-3 sm:gap-5">
 							<RichText tagName="span" value={ subtitle } onChange={ ( v ) => setAttributes( { subtitle: v } ) } className="font-mono text-[11px] sm:text-[14px] lg:text-[12px] xl:text-[14px] font-medium tracking-[0.11em] uppercase text-white" placeholder={ __( 'Subtitle…', 'nordic-fund-day' ) } />
 							<RichText tagName="h2" value={ heading } onChange={ ( v ) => setAttributes( { heading: v } ) } className="text-[32px] sm:text-[44px] md:text-[48px] lg:text-[36px] xl:text-[48px] min-[1600px]:text-[64px] font-bold leading-[1] uppercase text-white" placeholder={ __( 'Heading…', 'nordic-fund-day' ) } />

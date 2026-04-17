@@ -1,0 +1,17 @@
+/**
+ * style.scss — value-proposition
+ * Only CSS that Tailwind cannot express. All colors via theme.json tokens.
+ */
+
+.wp-block-nordic-fund-day-value-proposition {
+
+    /* ::webkit-scrollbar pseudo-element — not expressible in Tailwind */
+    [data-logos-track] {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
+    }
+}

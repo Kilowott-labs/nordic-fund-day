@@ -1,18 +1,57 @@
 import { useBlockProps, RichText } from '@wordpress/block-editor';
 
 export default function save( { attributes } ) {
-	const { subtitle, heading, bodyText, painPoints, imageLeft, imageRight, quoteText } = attributes;
+	const {
+		logosSubtitle, logosHeading, logos,
+		subtitle, heading, bodyText, painPoints,
+		imageLeft, imageRight, quoteText,
+	} = attributes;
 
 	const blockProps = useBlockProps.save( {
 		className: 'relative bg-[var(--wp--preset--color--near-black)] pt-4 sm:pt-8 lg:pt-16',
 		id: 'about',
 	} );
 
+	const hasLogos = logos && logos.some( ( l ) => l.imageUrl );
+
 	return (
 		<section { ...blockProps }>
+			{ /* ── Partners / Logos strip ─────────────────────────────── */ }
+			{ hasLogos && (
+				<div className="px-4 sm:px-6 md:px-16 lg:px-[90px] pt-4 pb-16 md:pb-20 lg:pb-[80px] text-center">
+					<RichText.Content
+						tagName="span"
+						value={ logosSubtitle }
+						className="block font-mono text-[12px] sm:text-[14px] font-medium tracking-[0.11em] uppercase text-[var(--wp--preset--color--lime)]"
+					/>
+					<RichText.Content
+						tagName="h2"
+						value={ logosHeading }
+						className="text-white text-[28px] sm:text-[36px] md:text-[44px] lg:text-[48px] font-bold uppercase leading-[1] mt-4 mb-10 md:mb-14"
+					/>
+
+					{ /* Carousel wrapper — view.js adds nav arrows when logos overflow */ }
+					<div className="relative" data-logos-carousel>
+						<div className="flex items-center justify-center gap-8 sm:gap-10 md:gap-12 lg:gap-16 overflow-x-auto px-2 pb-1" data-logos-track>
+							{ logos.map( ( logo ) => logo.imageUrl && (
+								<div key={ logo.id } className="flex-shrink-0" data-logo-item>
+									<img
+										src={ logo.imageUrl }
+										alt={ logo.altText || '' }
+										className="h-8 sm:h-9 md:h-10 w-auto object-contain brightness-0 invert opacity-75 hover:opacity-100 transition-opacity duration-300"
+										loading="lazy"
+									/>
+								</div>
+							) ) }
+						</div>
+					</div>
+				</div>
+			) }
+
+			{ /* ── Value-prop split layout ─────────────────────────────── */ }
 			<div className="flex flex-col lg:flex-row justify-between">
 				{ /* Left Column */ }
-				<div className="flex flex-col gap-12 sm:gap-16 lg:gap-[60px] xl:gap-[100px] min-[1600px]:gap-[172px] px-4 sm:px-6 md:px-16 lg:pl-[60px] xl:pl-[90px] lg:pr-8 xl:pr-12 py-12 sm:py-16 lg:py-[60px] xl:py-[80px] min-[1600px]:py-[132px] w-full lg:w-[42%] lg:max-w-[634px] flex-shrink-0">
+				<div className="flex flex-col gap-12 sm:gap-16 lg:gap-[60px] xl:gap-[100px] min-[1600px]:gap-[172px] px-4 sm:px-6 md:px-16 lg:pl-[60px] xl:pl-[90px] lg:pr-8 xl:pr-12 pt-0 pb-12 sm:pb-16 lg:pb-[60px] xl:pb-[80px] min-[1600px]:pb-[132px] w-full lg:w-[42%] lg:max-w-[634px] flex-shrink-0">
 					{ /* Top: Label + Heading */ }
 					<div className="flex flex-col gap-3 sm:gap-5">
 						<RichText.Content
@@ -55,11 +94,9 @@ export default function save( { attributes } ) {
 						) }
 						<div className="absolute inset-0" style={ { background: 'linear-gradient(0deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 31%)' } }></div>
 						<div className="absolute inset-0" style={ { background: 'linear-gradient(0deg, rgba(0,0,0,0) 44%, rgba(0,0,0,0.5) 99%)' } }></div>
-						{ /* Two parallel diagonal lime slashes — top-left of image */ }
+						{ /* Two parallel diagonal lime slashes */ }
 						<div className="hidden xl:block absolute inset-0 pointer-events-none overflow-hidden">
-							{ /* First bar — thinner */ }
 							<div className="absolute top-[-15%] left-[8%] w-[12px] min-[1600px]:w-[18px] h-[75%] bg-[var(--wp--preset--color--lime)]" style={ { transform: 'rotate(30deg)' } }></div>
-							{ /* Second bar — slightly thicker, right next to first */ }
 							<div className="absolute top-[-15%] left-[14%] w-[12px] min-[1600px]:w-[18px] h-[75%] bg-[var(--wp--preset--color--lime)]" style={ { transform: 'rotate(30deg)' } }></div>
 						</div>
 					</div>

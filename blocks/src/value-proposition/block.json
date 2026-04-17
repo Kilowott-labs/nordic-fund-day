@@ -6,9 +6,21 @@
   "title": "Value Proposition",
   "category": "edge",
   "icon": "lightbulb",
-  "description": "Split-layout section with heading, body text, pain-point cards on the left, and dual images with gradient overlays and quote on the right.",
+  "description": "Partners logo strip + split-layout section with heading, body text, pain-point cards, and dual images with gradient overlays and quote.",
   "textdomain": "nordic-fund-day",
   "attributes": {
+    "logosSubtitle": {
+      "type": "string",
+      "default": "✦ Partners & Sponsors"
+    },
+    "logosHeading": {
+      "type": "string",
+      "default": "Backed by Leaders"
+    },
+    "logos": {
+      "type": "array",
+      "default": []
+    },
     "subtitle": {
       "type": "string",
       "default": "✦ A New Format for Real Connections"
@@ -55,5 +67,7 @@
     "align": ["wide", "full"],
     "spacing": { "padding": true, "margin": false }
   },
-  "editorScript": "file:./index.js"
+  "editorScript": "file:./index.js",
+  "style": "file:./style-index.css",
+  "viewScript": "file:./view.js"
 }
