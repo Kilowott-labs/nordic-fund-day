@@ -1,6 +1,7 @@
 /**
- * Logo carousel — activates only when logos overflow the track width.
- * Uses native scroll + injected prev/next buttons so no dependencies needed.
+ * Logo carousel — activates only when logos overflow the container.
+ * Uses CSS translateX (no native scroll) so no scrollbar ever appears.
+ * When logos fit, they stay centered with no carousel controls.
  */
 
 function initLogoCarousels() {
@@ -8,75 +9,91 @@ function initLogoCarousels() {
 		const track = carousel.querySelector( '[data-logos-track]' );
 		if ( ! track ) return;
 
-		// Re-check on resize in case viewport changes
+		let offset = 0;
+		let prevBtn = null;
+		let nextBtn = null;
+
+		const getMax = () => Math.max( 0, track.scrollWidth - carousel.offsetWidth );
+
+		const slide = ( newOffset ) => {
+			offset = Math.max( 0, Math.min( newOffset, getMax() ) );
+			track.style.transform = `translateX(-${ offset }px)`;
+			syncButtons();
+		};
+
+		const syncButtons = () => {
+			if ( ! prevBtn || ! nextBtn ) return;
+			prevBtn.style.opacity = offset <= 0 ? '0' : '1';
+			prevBtn.style.pointerEvents = offset <= 0 ? 'none' : 'auto';
+			nextBtn.style.opacity = offset >= getMax() - 1 ? '0' : '1';
+			nextBtn.style.pointerEvents = offset >= getMax() - 1 ? 'none' : 'auto';
+		};
+
+		const makeBtn = ( dir ) => {
+			const b = document.createElement( 'button' );
+			b.setAttribute( 'aria-label', dir === 'prev' ? 'Previous logos' : 'Next logos' );
+			b.setAttribute( 'data-logo-nav', dir );
+			b.setAttribute( 'type', 'button' );
+			b.style.cssText = [
+				'position:absolute',
+				'top:50%',
+				'transform:translateY(-50%)',
+				dir === 'prev' ? 'left:0' : 'right:0',
+				'z-index:10',
+				'width:32px',
+				'height:32px',
+				'display:flex',
+				'align-items:center',
+				'justify-content:center',
+				'border-radius:9999px',
+				'border:none',
+				'cursor:pointer',
+				'background:rgba(255,255,255,0.12)',
+				'color:#fff',
+				'transition:opacity 0.2s, background 0.2s',
+			].join( ';' );
+			b.innerHTML = dir === 'prev'
+				? '<svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"/></svg>'
+				: '<svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>';
+			b.addEventListener( 'mouseenter', () => { b.style.background = 'rgba(255,255,255,0.22)'; } );
+			b.addEventListener( 'mouseleave', () => { b.style.background = 'rgba(255,255,255,0.12)'; } );
+			return b;
+		};
+
 		const setup = () => {
-			const overflows = track.scrollWidth > track.clientWidth + 2;
-
-			// Remove existing buttons before re-evaluating
+			// Reset state
 			carousel.querySelectorAll( '[data-logo-nav]' ).forEach( ( b ) => b.remove() );
+			prevBtn = null;
+			nextBtn = null;
+			offset = 0;
+			track.style.transform = '';
+			track.style.justifyContent = '';
 
-			if ( ! overflows ) return;
+			if ( track.scrollWidth <= carousel.offsetWidth + 2 ) {
+				// All logos fit — stay centered, no carousel
+				return;
+			}
 
-			const makeBtn = ( dir ) => {
-				const b = document.createElement( 'button' );
-				b.setAttribute( 'aria-label', dir === 'prev' ? 'Previous logos' : 'Next logos' );
-				b.setAttribute( 'data-logo-nav', dir );
-				b.setAttribute( 'type', 'button' );
-				b.style.cssText = [
-					'position:absolute',
-					'top:50%',
-					'transform:translateY(-50%)',
-					dir === 'prev' ? 'left:0' : 'right:0',
-					'z-index:10',
-					'width:36px',
-					'height:36px',
-					'display:flex',
-					'align-items:center',
-					'justify-content:center',
-					'border-radius:9999px',
-					'border:none',
-					'cursor:pointer',
-					'background:rgba(255,255,255,0.1)',
-					'color:#fff',
-					'transition:background 0.2s',
-				].join( ';' );
+			// Logos overflow — activate carousel, align from start so first logo is visible
+			track.style.justifyContent = 'flex-start';
+			track.style.transform = 'translateX(0)';
 
-				b.innerHTML = dir === 'prev'
-					? '<svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>'
-					: '<svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>';
+			const STEP = Math.round( carousel.offsetWidth * 0.6 );
 
-				b.addEventListener( 'mouseenter', () => { b.style.background = 'rgba(255,255,255,0.2)'; } );
-				b.addEventListener( 'mouseleave', () => { b.style.background = 'rgba(255,255,255,0.1)'; } );
-				return b;
-			};
+			prevBtn = makeBtn( 'prev' );
+			nextBtn = makeBtn( 'next' );
 
-			const STEP = 280;
-			const prevBtn = makeBtn( 'prev' );
-			const nextBtn = makeBtn( 'next' );
+			prevBtn.addEventListener( 'click', () => slide( offset - STEP ) );
+			nextBtn.addEventListener( 'click', () => slide( offset + STEP ) );
 
-			prevBtn.addEventListener( 'click', () => track.scrollBy( { left: -STEP, behavior: 'smooth' } ) );
-			nextBtn.addEventListener( 'click', () => track.scrollBy( { left: STEP, behavior: 'smooth' } ) );
-
-			carousel.style.position = 'relative';
 			carousel.appendChild( prevBtn );
 			carousel.appendChild( nextBtn );
 
-			const syncButtons = () => {
-				const atStart = track.scrollLeft <= 1;
-				const atEnd = track.scrollLeft >= track.scrollWidth - track.clientWidth - 2;
-				prevBtn.style.opacity = atStart ? '0' : '1';
-				prevBtn.style.pointerEvents = atStart ? 'none' : 'auto';
-				nextBtn.style.opacity = atEnd ? '0' : '1';
-				nextBtn.style.pointerEvents = atEnd ? 'none' : 'auto';
-			};
-
-			track.addEventListener( 'scroll', syncButtons, { passive: true } );
 			syncButtons();
 		};
 
 		setup();
 
-		// Re-evaluate on resize with debounce
 		let resizeTimer;
 		window.addEventListener( 'resize', () => {
 			clearTimeout( resizeTimer );

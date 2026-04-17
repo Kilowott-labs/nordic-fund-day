@@ -169,7 +169,7 @@ export default function Edit( { attributes, setAttributes } ) {
 
 			<section { ...blockProps }>
 				{ /* ── Partners / Logos strip ───────────────────────────── */ }
-				<div className="px-4 sm:px-6 md:px-16 lg:px-[90px] pt-4 pb-16 md:pb-20 lg:pb-[80px] text-center">
+				<div className="px-4 sm:px-6 md:px-16 lg:px-[90px] pt-4 pb-16 md:pb-20 lg:pb-[80px] text-center overflow-x-hidden">
 					<RichText
 						tagName="span"
 						value={ logosSubtitle }

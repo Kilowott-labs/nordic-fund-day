@@ -18,7 +18,7 @@ export default function save( { attributes } ) {
 		<section { ...blockProps }>
 			{ /* ── Partners / Logos strip ─────────────────────────────── */ }
 			{ hasLogos && (
-				<div className="px-4 sm:px-6 md:px-16 lg:px-[90px] pt-4 pb-16 md:pb-20 lg:pb-[80px] text-center">
+				<div className="px-4 sm:px-6 md:px-16 lg:px-[90px] pt-4 pb-16 md:pb-20 lg:pb-[80px] text-center overflow-x-hidden">
 					<RichText.Content
 						tagName="span"
 						value={ logosSubtitle }
@@ -31,8 +31,8 @@ export default function save( { attributes } ) {
 					/>
 
 					{ /* Carousel wrapper — view.js adds nav arrows when logos overflow */ }
-					<div className="relative" data-logos-carousel>
-						<div className="flex items-center justify-center gap-8 sm:gap-10 md:gap-12 lg:gap-16 overflow-x-auto px-2 pb-1" data-logos-track>
+					<div className="relative overflow-hidden" data-logos-carousel>
+						<div className="flex items-center justify-center gap-8 sm:gap-10 md:gap-12 lg:gap-16 transition-transform duration-300 ease-in-out" data-logos-track>
 							{ logos.map( ( logo ) => logo.imageUrl && (
 								<div key={ logo.id } className="flex-shrink-0" data-logo-item>
 									<img
