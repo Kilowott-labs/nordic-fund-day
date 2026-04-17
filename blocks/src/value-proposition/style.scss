@@ -3,6 +3,12 @@
  * Only CSS that Tailwind cannot express. All colors via theme.json tokens.
  */
 
+/* @keyframes must be top-level — cannot be scoped inside a selector */
+@keyframes logos-marquee {
+    from { transform: translateX(0); }
+    to   { transform: translateX(calc(-1 * var(--marquee-shift))); }
+}
+
 .wp-block-nordic-fund-day-value-proposition {
 
     /* ::webkit-scrollbar pseudo-element — not expressible in Tailwind */
@@ -13,5 +19,9 @@
         &::-webkit-scrollbar {
             display: none;
         }
+    }
+
+    .logos-marquee-active {
+        animation: logos-marquee 30s linear infinite;
     }
 }
